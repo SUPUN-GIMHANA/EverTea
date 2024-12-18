@@ -1,142 +1,95 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export default function App() {
   return (
-    <ScrollView style={styles.container}>
-      {/* Top Section with Background Image */}
-      <ImageBackground 
-        source={require('./assets/mainPhoto.png')} // Background image
-        style={styles.headerBackground}
-        imageStyle={{ borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}
-      >
-        <View style={styles.headerContent}>
-          <Text style={styles.greetingText}>
-            Hello, <Text style={styles.boldText}>EverTea</Text>
-          </Text>
-          <Image 
-            source={require('./assets/mainPhoto.png')} // Profile Image
-            style={styles.profileImage}
-          />
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
+        {/* Top Section with Background Image */}
+        <ImageBackground
+          source={require('./assets/mainPhoto.png')} // Background image
+          style={styles.headerBackground}
+          imageStyle={{ borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}
+        >
+          <View style={styles.headerContent}>
+            <Text style={styles.greetingText}>
+              Hello, <Text style={styles.boldText}>EverTea</Text>
+            </Text>
+            <Image source={require('./assets/mainPhoto.png')} style={styles.profileImage} />
+          </View>
+
+          <TouchableOpacity style={styles.plantationButton}>
+            <Text style={styles.plantationButtonText}>View All Plantations</Text>
+            <Image source={require('./assets/mainPhoto.png')} style={styles.buttonIcon} />
+          </TouchableOpacity>
+        </ImageBackground>
+
+        {/* Explore Features Section */}
+        <View style={styles.exploreSection}>
+          <Text style={styles.sectionTitle}>Explore Features</Text>
+          <View style={styles.featureCards}>
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Text style={styles.cardTitle}>Start</Text>
+              <Text style={styles.cardSubtitle}>new Plantation</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Text style={styles.cardTitle}>Weather</Text>
+              <Text style={styles.cardSubtitle}>forecasting</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.card}>
+              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Text style={styles.cardTitle}>Financial</Text>
+              <Text style={styles.cardSubtitle}>tracker</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <TouchableOpacity style={styles.plantationButton}>
-          <Text style={styles.plantationButtonText}>View All Plantations</Text>
-          <Image 
-            source={require('./assets/mainPhoto.png')} // Button Icon
-            style={styles.buttonIcon}
-          />
-        </TouchableOpacity>
-      </ImageBackground>
+        {/* Services Section */}
+        <View style={styles.servicesSection}>
+          <Text style={styles.sectionTitle}>Services</Text>
+          <View style={styles.rowContainer}>
+            <TouchableOpacity style={[styles.serviceButton, styles.greenButton]}>
+              <Image source={require('./assets/mainPhoto.png')} style={styles.serviceIcon} />
+              <Text style={styles.serviceText}>Disease Identifier</Text>
+            </TouchableOpacity>
 
-      {/* Explore Features Section */}
-      <View style={styles.exploreSection}>
-        <Text style={styles.sectionTitle}>Explore Features</Text>
-        <View style={styles.featureCards}>
-          <TouchableOpacity style={styles.card}>
-            <Image 
-              source={require('./assets/mainPhoto.png')} // Feature Image
-              style={styles.cardImage}
-            />
-            <Text style={styles.cardTitle}>Start</Text>
-            <Text style={styles.cardSubtitle}>new Plantation</Text>
+            <TouchableOpacity style={[styles.serviceButton, styles.iconButton]}>
+              <Image source={require('./assets/mainPhoto.png')} style={styles.serviceIcon} />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity style={[styles.serviceButton, styles.yellowButton]}>
+            <Text style={styles.serviceText}>Contact a Supervisor</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.card}>
-            <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.cardImage}
-            />
-            <Text style={styles.cardTitle}>Weather</Text>
-            <Text style={styles.cardSubtitle}>forecasting</Text>
+          <TouchableOpacity style={[styles.serviceButton, styles.skyblueButton]}>
+            <Text style={styles.serviceText}>Find Articles</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.card}>
-            <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.cardImage}
-            />
-            <Text style={styles.cardTitle}>Financial</Text>
-            <Text style={styles.cardSubtitle}>tracker</Text>
+          <TouchableOpacity style={[styles.serviceButton, styles.tealButton]}>
+            <Text style={styles.serviceText}>Find Video Guides</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
 
-      {/* Services Section */}
-      <View style={styles.servicesSection}>
-        <Text style={styles.sectionTitle}>Services</Text>
-        {/* Row container for two buttons */}
-        <View style={styles.rowContainer}>
-          <TouchableOpacity style={[styles.serviceButton, styles.greenButton]}>
-          <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.serviceIcon}
-            />
-            <Text style={styles.serviceText}>Disease Identifier</Text>
-            
-          </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.serviceButton, styles.iconButton]}>
-            <Image 
-              source={require('./assets/mainPhoto.png')} // Camera Image
-              style={styles.serviceIcon}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={[styles.serviceButton, styles.yellowButton]}>
-          <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.serviceIcon}
-            />
-          <Text style={styles.serviceText}>Contact a Supervisor</Text>
+      {/* Fixed Bottom Navigation Section */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity style={styles.bottomButton}>
+          <Image source={require('./assets/Home.png')} style={styles.navigationIcon} />  
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.serviceButton, styles.skyblueButton]}>
-        <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.serviceIcon}
-            />
-          <Text style={styles.serviceText}>Find Articles</Text>
+        <TouchableOpacity style={styles.bottomButton}>
+          <Image source={require('./assets/Notification.png')} style={styles.navigationIcon} />
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.serviceButton, styles.tealButton]}>
-        <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.serviceIcon}
-            />
-          <Text style={styles.serviceText}>Find Video Guides</Text>
+        <TouchableOpacity style={styles.bottomButton}>
+          <Image source={require('./assets/Fav.png')} style={styles.navigationIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomButton}>
+          <Image source={require('./assets/FT.png')} style={styles.navigationIcon} />
         </TouchableOpacity>
       </View>
-
-
-
-      {/* Navigation Section */}
-      <View style={styles.servicesSection}>
-        <Text style={styles.sectionTitle}>Services</Text>
-        {/* Row container for two buttons */}
-        <View style={styles.rowContainer}>
-          <TouchableOpacity style={[styles.serviceButton, styles.greenButton]}>
-            <Text style={styles.serviceText}>Disease Identifier</Text>
-            <Image 
-              source={require('./assets/mainPhoto.png')}
-              style={styles.serviceIcon}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.serviceButton, styles.iconButton]}>
-            <Image 
-              source={require('./assets/mainPhoto.png')} // Camera Image
-              style={styles.serviceIcon}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={[styles.serviceButton, styles.yellowButton]}>
-          <Text style={styles.serviceText}>Contact a Supervisor</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -144,6 +97,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8FCFF',
+  },
+  scrollContainer: {
+    flex: 1,
+    paddingBottom: 80, // Adds padding at the bottom to prevent content from overlapping with bottom navigation
+  },
+  scrollContent: {
+    paddingBottom: 80, // Ensures the content is spaced above the bottom navigation
   },
   headerBackground: {
     height: 300,
@@ -265,5 +225,27 @@ const styles = StyleSheet.create({
   serviceIcon: {
     width: 30,
     height: 30,
+  },
+  // Bottom Navigation Styles
+  bottomNav: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#FFF',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderRadius: 10,
+    borderTopColor: '#25B785',
+  },
+  bottomButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navigationIcon: {
+    width: 25,
+    height: 25,
   },
 });
