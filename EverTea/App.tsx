@@ -1,4 +1,5 @@
-import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function App() {
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#FFF',
+    backgroundColor: '#F8FCFF',
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 20,
