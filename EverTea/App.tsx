@@ -8,7 +8,7 @@ export default function App() {
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
         {/* Top Section with Background Image */}
         <ImageBackground
-          source={require('./assets/mainPhoto.png')} // Background image
+          source={require('./assets/Images/HomePage/mainPhoto.png')} // Background image
           style={styles.headerBackground}
           imageStyle={{ borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}
         >
@@ -16,12 +16,12 @@ export default function App() {
             <Text style={styles.greetingText}>
               Hello, <Text style={styles.boldText}>EverTea</Text>
             </Text>
-            <Image source={require('./assets/mainPhoto.png')} style={styles.profileImage} />
+            <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.profileImage} />
           </View>
 
           <TouchableOpacity style={styles.plantationButton}>
             <Text style={styles.plantationButtonText}>View All Plantations</Text>
-            <Image source={require('./assets/mainPhoto.png')} style={styles.buttonIcon} />
+            <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.buttonIcon} />
           </TouchableOpacity>
         </ImageBackground>
 
@@ -30,19 +30,19 @@ export default function App() {
           <Text style={styles.sectionTitle}>Explore Features</Text>
           <View style={styles.featureCards}>
             <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Image source={require('./assets/Images/HomePage/Start.png')} style={styles.cardImage} />
               <Text style={styles.cardTitle}>Start</Text>
               <Text style={styles.cardSubtitle}>new Plantation</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Image source={require('./assets/Images/HomePage/weather.png')} style={styles.cardImage} />
               <Text style={styles.cardTitle}>Weather</Text>
               <Text style={styles.cardSubtitle}>forecasting</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.card}>
-              <Image source={require('./assets/mainPhoto.png')} style={styles.cardImage} />
+              <Image source={require('./assets/Images/HomePage/Financial.png')} style={styles.cardImage} />
               <Text style={styles.cardTitle}>Financial</Text>
               <Text style={styles.cardSubtitle}>tracker</Text>
             </TouchableOpacity>
@@ -54,22 +54,25 @@ export default function App() {
           <Text style={styles.sectionTitle}>Services</Text>
           <View style={styles.rowContainer}>
             <TouchableOpacity style={[styles.serviceButton, styles.greenButton]}>
-              <Image source={require('./assets/mainPhoto.png')} style={styles.serviceIcon} />
+              <Image source={require('./assets/Images/HomePage/DiseaseIdentifier.png')} style={styles.serviceIcon} />
               <Text style={styles.serviceText}>Disease Identifier</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={[styles.serviceButton, styles.iconButton]}>
-              <Image source={require('./assets/mainPhoto.png')} style={styles.serviceIcon} />
+              <Image source={require('./assets/Images/HomePage/Camera.png')} style={styles.serviceIcon} />
             </TouchableOpacity>
           </View>
 
           <TouchableOpacity style={[styles.serviceButton, styles.yellowButton]}>
+          <Image source={require('./assets/Images/HomePage/Supervisor.png')} style={styles.serviceIcon} />
             <Text style={styles.serviceText}>Contact a Supervisor</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.serviceButton, styles.skyblueButton]}>
+          <Image source={require('./assets/Images/HomePage/Articles.png')} style={styles.serviceIcon} />
             <Text style={styles.serviceText}>Find Articles</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.serviceButton, styles.tealButton]}>
+            <Image source={require('./assets/Images/HomePage/Video.png')} style={styles.serviceIcon} />
             <Text style={styles.serviceText}>Find Video Guides</Text>
           </TouchableOpacity>
         </View>
@@ -208,7 +211,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDD835',
   },
   skyblueButton: {
-    backgroundColor: '#41B682',
+    backgroundColor: '#9FE9C8',
   },
   tealButton: {
     backgroundColor: '#20C58D',
