@@ -6,7 +6,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type RootStackParamList = {
   Home: undefined;
   FinancialTracker: undefined;
-  PlantationStart: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -35,13 +34,11 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           </TouchableOpacity>
         </ImageBackground>
 
-        {/* Explore Features Section  ++++Navigation++++ */}
+        {/* Explore Features Section */}
         <View style={styles.exploreSection}>
           <Text style={styles.sectionTitle}>Explore Features</Text>
           <View style={styles.featureCards}>
-            <TouchableOpacity style={styles.card} 
-              onPress={() => navigation.navigate('PlantationStart')}
-              activeOpacity={0.7}>
+            <TouchableOpacity style={styles.card} activeOpacity={0.7}>
               <Image source={require('./assets/Images/HomePage/Start.png')} style={styles.cardImage} />
               <Text style={styles.cardTitle}>Start</Text>
               <Text style={styles.cardSubtitle}>new Plantation</Text>

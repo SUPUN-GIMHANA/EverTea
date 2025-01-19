@@ -6,13 +6,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type RootStackParamList = {
   Home: undefined;
   FinancialTracker: undefined;
-  PlantationStart: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-
-export default function HomeScreen({ navigation }: HomeScreenProps) {
+export default function FinancialTracker({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
@@ -24,7 +22,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
         >
           <View style={styles.headerContent}>
             <Text style={styles.greetingText}>
-              Hello, <Text style={styles.boldText}>EverTea</Text>
+              Hello, <Text style={styles.boldText}>FinancialTracker</Text>
             </Text>
             <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.profileImage} />
           </View>
@@ -35,13 +33,11 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           </TouchableOpacity>
         </ImageBackground>
 
-        {/* Explore Features Section  ++++Navigation++++ */}
+        {/* Explore Features Section */}
         <View style={styles.exploreSection}>
           <Text style={styles.sectionTitle}>Explore Features</Text>
           <View style={styles.featureCards}>
-            <TouchableOpacity style={styles.card} 
-              onPress={() => navigation.navigate('PlantationStart')}
-              activeOpacity={0.7}>
+            <TouchableOpacity style={styles.card} activeOpacity={0.7}>
               <Image source={require('./assets/Images/HomePage/Start.png')} style={styles.cardImage} />
               <Text style={styles.cardTitle}>Start</Text>
               <Text style={styles.cardSubtitle}>new Plantation</Text>
@@ -95,7 +91,10 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
 
       {/* Fixed Bottom Navigation Section */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.bottomButton} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.bottomButton} 
+          onPress={() => navigation.navigate('Home')}
+          activeOpacity={0.7}
+          >
           <Image source={require('./assets/Home.png')} style={styles.navigationIcon} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomButton} activeOpacity={0.7}>
