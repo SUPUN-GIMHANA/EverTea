@@ -30,7 +30,9 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
           <Text style={styles.contentMain}>Recommended</Text>
           <View style={styles.cDiscription}>
             <Text style={styles.cDiscriptionText}>We recommend you to calculate average cost using this button to get good idea about the cost before start your plantation</Text>
-            <Button title='Cost' onPress={() => navigation.navigate('FinancialTracker')}></Button>
+            <TouchableOpacity onPress={() => navigation.navigate('FinancialTracker')}>
+              <Text style={styles.buttonCost}>Cost</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -46,7 +48,9 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
         </View>
       </ScrollView>
 
-      <Button title='Start Journet' onPress={() => navigation.navigate('PlantationStartDistrict')}></Button>
+      <TouchableOpacity onPress={() => navigation.navigate('PlantationStartDistrict')} activeOpacity={0.7}>
+        <Text style={styles.buttonJourney}>START JOURNEY</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '25%',
+    paddingTop: '20%',
   },
   headerTopic: {
     flexDirection: 'row',
@@ -101,8 +105,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: '80%',
   },
+  buttonCost: {
+    color: 'white',
+    fontSize: 20,
+    backgroundColor: '#094630',
+    borderRadius: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+  },
   imageContainer: {
     alignItems: 'center',    
+    // marginBottom: '-5%',
   },
   plantationStatingBackground: {
     borderRadius: 30,
@@ -116,6 +129,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#353535',
     fontWeight: 'bold',
+  },
+  buttonJourney: { 
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    backgroundColor: '#353535',
+    borderRadius: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginHorizontal: '20%',
+    marginBottom: '5%',
   },
   // Bottom Navigation Styles
   bottomNav: {
