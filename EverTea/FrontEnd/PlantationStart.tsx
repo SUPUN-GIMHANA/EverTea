@@ -115,7 +115,6 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     alignItems: 'center',    
-    // marginBottom: '-5%',
   },
   plantationStatingBackground: {
     borderRadius: 30,
