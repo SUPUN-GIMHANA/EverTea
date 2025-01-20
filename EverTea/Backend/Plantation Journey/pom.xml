@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.Nethum.Ecom</groupId>
-    <artifactId>Testing</artifactId>
+    <artifactId>Plantation_Journey</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Testing</name>
     <description>Testing</description>
