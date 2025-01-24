@@ -3,8 +3,6 @@ package com.nethum.ecom.testing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @EnableScheduling
@@ -16,12 +14,5 @@ public class TestingApplication {
         SpringApplication.run(TestingApplication.class, args);
     }
 
-    @Component
-    public static class Schduler {
 
-        @Scheduled(fixedRate = 5000)
-        public void runtask(){
-            System.out.println("task excuted");
-        }
-    }
 }
