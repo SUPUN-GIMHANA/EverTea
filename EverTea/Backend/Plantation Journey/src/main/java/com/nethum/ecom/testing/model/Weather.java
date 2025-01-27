@@ -13,7 +13,7 @@ public class Weather {
 
     @Column(nullable = false, length = 100)
     private String location;
-    
+
     @Column(nullable = false)
     private LocalDate date;
 
