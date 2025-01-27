@@ -63,5 +63,5 @@ public class UserInformation{
         this.createdAt = createdAt;
     }
 
-    
+
 }

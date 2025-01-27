@@ -18,5 +18,27 @@ public class Confirmation {
     @Column(nullable = false)
     private LocalDateTime confirmationTime;
 
+    public Long getConfirmationId() {
+        return confirmationId;
+    }
 
+    public void setConfirmationId(Long confirmationId) {
+        this.confirmationId = confirmationId;
+    }
+
+    public LocalDateTime getConfirmationTime() {
+        return confirmationTime;
+    }
+
+    public void setConfirmationTime(LocalDateTime confirmationTime) {
+        this.confirmationTime = confirmationTime;
+    }
+
+    public InstructionExecution getInstructionExecution() {
+        return instructionExecution;
+    }
+
+    public void setInstructionExecution(InstructionExecution instructionExecution) {
+        this.instructionExecution = instructionExecution;
+    }
 }
