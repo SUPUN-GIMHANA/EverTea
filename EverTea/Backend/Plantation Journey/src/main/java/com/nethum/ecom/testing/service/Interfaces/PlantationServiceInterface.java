@@ -1,4 +1,4 @@
-package com.nethum.ecom.testing.service;
+package com.nethum.ecom.testing.service.Interfaces;
 
 
 public interface PlantationServiceInterface {

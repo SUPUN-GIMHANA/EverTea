@@ -72,4 +72,16 @@ public class Instruction {
     public void setAction(String action) {
         this.action = action;
     }
+
+    @Override
+    public String toString() {
+        return "Instruction{" +
+                "InstructionId=" + InstructionId +
+                ", teaType=" + teaType +
+                ", action='" + action + '\'' +
+                ", details='" + details + '\'' +
+                ", triggerWeek=" + triggerWeek +
+                ", recurringFrequencyWeek=" + recurringFrequencyWeek +
+                '}';
+    }
 }

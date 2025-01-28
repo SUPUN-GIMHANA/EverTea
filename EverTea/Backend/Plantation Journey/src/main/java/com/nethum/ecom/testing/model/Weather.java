@@ -17,7 +17,7 @@ public class Weather {
     @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
+    @Column(name = "`weather_condition`", nullable = false)
     private int condition; //1 = Rain, 2 = small Rain, 3 = Dry
 
     @Column(nullable = false, length = 255)
