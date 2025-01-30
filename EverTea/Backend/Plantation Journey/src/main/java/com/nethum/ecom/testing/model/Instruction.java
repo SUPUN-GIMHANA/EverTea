@@ -20,7 +20,7 @@ public class Instruction {
     private String details;
 
     @Column(nullable = false)
-    private int triggerWeek;
+    private int triggerDay;
 
     @Column(nullable = true)
     private Integer recurringFrequencyWeek;
@@ -41,12 +41,12 @@ public class Instruction {
         this.recurringFrequencyWeek = recurringFrequencyWeek;
     }
 
-    public int getTriggerWeek() {
-        return triggerWeek;
+    public int getTriggerDay() {
+        return triggerDay;
     }
 
-    public void setTriggerWeek(int triggerWeek) {
-        this.triggerWeek = triggerWeek;
+    public void setTriggerDay(int triggerDay) {
+        this.triggerDay = triggerDay;
     }
 
     public String getDetails() {
@@ -80,7 +80,7 @@ public class Instruction {
                 ", teaType=" + teaType +
                 ", action='" + action + '\'' +
                 ", details='" + details + '\'' +
-                ", triggerWeek=" + triggerWeek +
+                ", triggerWeek=" + triggerDay +
                 ", recurringFrequencyWeek=" + recurringFrequencyWeek +
                 '}';
     }
