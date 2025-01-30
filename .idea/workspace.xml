@@ -5,45 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="287384fe-b393-4840-8d55-41a964572007" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/explore.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/+not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/fonts/SpaceMono-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/adaptive-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/partial-react-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/react-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/react-logo@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/react-logo@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/assets/images/splash-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/Collapsible.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ExternalLink.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HapticTab.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HelloWave.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ParallaxScrollView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/ThemedText-test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/__snapshots__/ThemedText-test.tsx.snap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ui/IconSymbol.ios.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ui/IconSymbol.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ui/TabBarBackground.ios.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ui/TabBarBackground.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/constants/Colors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/hooks/useColorScheme.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/hooks/useColorScheme.web.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/hooks/useThemeColor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/scripts/reset-project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/GrowthTracker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/PlantInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/UpcomingEvents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/_layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/explore.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/+not-found.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/_layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/Collapsible.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ExternalLink.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HapticTab.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HelloWave.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ParallaxScrollView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedText.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/ThemedText-test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/__snapshots__/ThemedText-test.tsx.snap" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +74,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IIT\2ndYear\SDGP_EverTea\EverTea\EverTea\User\BackEnd\GrouthTracker\app\(tabs)" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
