@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="287384fe-b393-4840-8d55-41a964572007" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/GrowthTracker.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/PlantInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/UpcomingEvents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/explore.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/+not-found.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/app/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/Collapsible.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ExternalLink.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HapticTab.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/HelloWave.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ParallaxScrollView.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedText.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/ThemedView.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/ThemedText-test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EverTea/User/BackEnd/GrouthTracker/components/__tests__/__snapshots__/ThemedText-test.tsx.snap" beforeDir="false" />
-    </list>
+    <list default="true" id="287384fe-b393-4840-8d55-41a964572007" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
