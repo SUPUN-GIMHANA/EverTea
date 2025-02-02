@@ -11,10 +11,6 @@ public class ExpenseRecord {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
-    @JoinColumn(name = "tracker_id") // refers to the foreign key in the database table
-    private FinancialTracker tracker;
-
     @Column(name = "amount")
     private float amount;
 
@@ -23,6 +19,10 @@ public class ExpenseRecord {
 
     @Column(name = "date")
     private String date;
+
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
+    @JoinColumn(name = "tracker_id") // refers to the foreign key in the database table
+    private FinancialTracker tracker;
 
     public ExpenseRecord(){
 
