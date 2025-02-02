@@ -23,15 +23,16 @@ CREATE TABLE "plantations" (
     CreatedDate DATE DEFAULT CURRENT_DATE
 );
 
-
-
-
-
-CREATE TABLE "userlogin" (
-    UserId INT PRIMARY KEY,
-    UserName VARCHAR(50) NOT NULL,
-    Password VARCHAR(100) NOT NULL
+create TABLE TeaModels (
+	teaId SERIAL PRIMARY KEY,
+	teaName VARCHAR NOT NULL UNIQUE,
+	mainDistrict VARCHAR NOT NULL,
+	subDistricts VARCHAR NOT NULL
 );
+
+INSERT INTO "teamodels" (teaId, teaName, mainDistrict, subDistricts) 
+VALUES (1, 'aluththee', 'gall', 'gall, nuwaraeliya');
+
 
 INSERT INTO "userlogin" (UserId, UserName, Password) 
 VALUES (1, 'admin', 'password');

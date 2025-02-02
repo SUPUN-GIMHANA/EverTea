@@ -1,10 +1,10 @@
-package com.evertea.admin;
+package com.user.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AdminApplicationTests {
+class UserApplicationTests {
 
 	@Test
 	void contextLoads() {

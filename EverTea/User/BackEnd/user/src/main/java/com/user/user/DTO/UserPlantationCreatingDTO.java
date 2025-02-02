@@ -1,4 +1,4 @@
-package com.evertea.admin.DTO;
+package com.user.user.DTO;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,11 +10,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdminLoginDTO {
+public class UserPlantationCreatingDTO {
 
-    @JsonProperty("username")
-    private String username;
+    @JsonProperty("district")
+    private String district;
 
-    @JsonProperty("password")
-    private String password;
+    private String teaNameDTO;
 }
