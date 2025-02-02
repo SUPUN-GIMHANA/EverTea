@@ -17,10 +17,16 @@ public class UserPlantationCreatingService {
         return plantMain != null;
     }
 
-    public UserPlantationCreatingDTO  getTeaNameByDistrict(String district) {
+    // public UserPlantationCreatingDTO  getTeaNameByDistrict(String district) {
 
-        UserPlantationCreatingDTO teaNameDTO = UserPlantationCreatingRepo.accessingTeaModelNamesMain(district);
+    //     UserPlantationCreatingDTO teaNameDTO = UserPlantationCreatingRepo.accessingTeaModelNamesMain(district);
 
-        return teaNameDTO;
+    //     return teaNameDTO;
+    // }
+
+    public UserPlantationCreatingDTO getTeaNameByDistrict(String district) {
+
+        return recomendedTeaPlant.accessingTeaModelNamesMain(district);
     }
+
 }

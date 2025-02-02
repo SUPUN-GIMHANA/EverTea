@@ -53,7 +53,7 @@ public class UserPlantationCreatingRepo {
                 return plantMain;
             });
         } catch (EmptyResultDataAccessException e) {
-            System.out.println("Invalid District: " + district);
+            System.out.println("Invalid District: " + district + " No Tea Name Found");
             return null;
         }
     }
