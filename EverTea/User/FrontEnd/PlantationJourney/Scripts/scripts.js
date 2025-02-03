@@ -1,26 +1,33 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export const useAppLogic = () => {
-  const [enteredGoalText, setEnteredGoalText] = useState('');
-  const [courseGoals, setCourseGoalArray] = useState([]);
+  const [district, setDistrict] = useState('');
 
-  const inputGoal = (enteredText) => {
-    setEnteredGoalText(enteredText);
+  const districtInputHandler = (input) => {
+    setDistrict(input);
+    console.log(input); // Log the district input for debugging
   };
 
-  const addGoal = () => {
-    if (enteredGoalText.trim() === '') return; // Prevent adding empty goals
-    setCourseGoalArray((currentCourseGoals) => [
-      ...currentCourseGoals,
-      { text: enteredGoalText, key: Math.random().toString() },
-    ]);
-    setEnteredGoalText(''); // Clear the input after adding a goal
+
+  const districtSearchHandler = async () => {
+    try {
+      const response = await axios.post('http://192.168.1.4:8080/api/user/plantationDistrict', {
+        district: district,  // Send district in the body
+      });
+  
+      // Handle response
+      console.log('Backend response:', response.data);
+    } catch (error) {
+      // Handle errors
+      console.error('Error sending district:', error);
+    }
   };
+
 
   return {
-    enteredGoalText,
-    courseGoals,
-    inputGoal,
-    addGoal,
+    district,
+    districtInputHandler,
+    districtSearchHandler,
   };
 };

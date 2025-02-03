@@ -8,14 +8,14 @@ import com.user.user.Service.UserPlantationCreatingService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/user")
 public class UserPlantationCreatingController {
 
     @Autowired
     private UserPlantationCreatingService DistrictPlant; // Using Service
 
-    @GetMapping("/plantationDistrict")
+    @PostMapping("/plantationDistrict")
     public String plantChoosingWithDistrict(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
         String district = districtPlantation.getDistrict();
