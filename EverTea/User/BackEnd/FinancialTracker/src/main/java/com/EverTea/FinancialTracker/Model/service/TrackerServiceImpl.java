@@ -27,4 +27,14 @@ public class TrackerServiceImpl implements TrackerService{
     public List<IncomeRecord> findAllIncomeOfTracker(int trackerId) {
         return  trackerDAO.findAllIncomeOfTracker(trackerId);
     }
+
+    @Override
+    public ExpenseRecord findExpenseById(int expenseId) {
+        return trackerDAO.findExpenseById(expenseId);
+    }
+
+    @Override
+    public IncomeRecord findIncomeById(int incomeId) {
+        return trackerDAO.findIncomeById(incomeId);
+    }
 }

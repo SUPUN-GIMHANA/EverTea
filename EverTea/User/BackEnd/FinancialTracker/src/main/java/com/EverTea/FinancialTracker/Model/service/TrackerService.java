@@ -8,4 +8,6 @@ import java.util.List;
 public interface TrackerService {
     List<ExpenseRecord> findAllExpensesOfTracker(int trackerId);
     List<IncomeRecord> findAllIncomeOfTracker(int trackerId);
+    ExpenseRecord findExpenseById(int expenseId);
+    IncomeRecord findIncomeById(int incomeId);
 }
