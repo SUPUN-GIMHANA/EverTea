@@ -29,7 +29,7 @@ public class TrackerController {
     }
 
     // Returns all income records related to a particular financial tracker
-    @GetMapping("/finances/{trackerId}/expenses")
+    @GetMapping("/finances/{trackerId}/income")
     public List<IncomeRecord> findAllIncomeOfTracker(@PathVariable int trackerId){
         return trackerService.findAllIncomeOfTracker(trackerId);
     }
