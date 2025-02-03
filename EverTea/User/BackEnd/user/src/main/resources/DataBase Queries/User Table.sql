@@ -26,13 +26,29 @@ CREATE TABLE "plantations" (
 create TABLE TeaModels (
 	teaId SERIAL PRIMARY KEY,
 	teaName VARCHAR NOT NULL UNIQUE,
-	mainDistrict VARCHAR NOT NULL,
-	subDistricts VARCHAR NOT NULL
+	mainDistrict INT NOT NULL,
+	subDistricts VARCHAR NOT NULL,
+	FOREIGN KEY (mainDistrict) REFERENCES district(districtid) ON DELETE CASCADE
 );
 
-INSERT INTO "teamodels" (teaId, teaName, mainDistrict, subDistricts) 
-VALUES (1, 'aluththee', 'gall', 'gall, nuwaraeliya');
+create TABLE District (
+	districtId SERIAL PRIMARY KEY,
+	districtName VARCHAR NOT NULL UNIQUE,
+	mainplant VARCHAR NOT NULL UNIQUE
+);
 
+
+
+INSERT INTO "teamodels" (teaId, teaName, districts) 
+VALUES (1, 'nawodatea', 'gall, nuwaraeliya'),
+(2, 'supuntea', 'matara, kurunagala, nuwaraeliya');
+
+INSERT INTO "district" (districtId, districtName, mainplant) 
+VALUES (1, 'gall', 'nawodatea'),
+(2, 'nuwareliya', 'supuntea');
 
 INSERT INTO "userlogin" (UserId, UserName, Password) 
 VALUES (1, 'admin', 'password');
+
+
+

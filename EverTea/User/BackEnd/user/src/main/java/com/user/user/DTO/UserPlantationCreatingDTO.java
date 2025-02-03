@@ -1,6 +1,8 @@
 package com.user.user.DTO;
 
 
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -15,5 +17,10 @@ public class UserPlantationCreatingDTO {
     @JsonProperty("district")
     private String district;
 
-    private String teaNameDTO;
+    private String teaNameMainDTO;
+
+    private String teaModel;
+
+    // private String teaNameSubDTO;
+    private ArrayList<String> teaNameSubDTO = new ArrayList<>();
 }

@@ -8,7 +8,7 @@ public class UserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserApplication.class, args);
-		System.out.println("EverTea Backend Started");
+		System.out.println("EverTea User Backend Started");
 	}
 
 }

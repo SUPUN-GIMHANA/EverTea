@@ -13,16 +13,15 @@ import com.user.user.Service.UserPlantationCreatingService;
 public class UserPlantationCreatingController {
 
     @Autowired
-    private UserPlantationCreatingService DistrictPlant; // Use Service instead of Repo
+    private UserPlantationCreatingService DistrictPlant; // Using Service
 
-    @GetMapping("/plantationStarting")
+    @GetMapping("/plantationDistrict")
     public String plantChoosingWithDistrict(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
         String district = districtPlantation.getDistrict();
         
         System.out.println("Received District: " + district);
-        boolean isAuthenticated = DistrictPlant.districtPlant(district, district);
-        return isAuthenticated ? "District found"+DistrictPlant.getTeaNameByDistrict(district) : "District not found";
+        return "District found " + DistrictPlant.districtChecker(district);
     }
 
     
