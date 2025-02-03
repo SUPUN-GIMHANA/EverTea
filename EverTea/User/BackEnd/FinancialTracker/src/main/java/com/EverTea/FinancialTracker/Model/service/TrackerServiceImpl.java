@@ -57,7 +57,7 @@ public class TrackerServiceImpl implements TrackerService{
         for (IncomeRecord incomeRecord: incomeRecords){
             totalIncome += incomeRecord.getAmount();
         }
-        return Map.of("Total Income",totalIncome);
+        return Map.of("Total Income: ",totalIncome);
         // returning the total income as an immutable map for JSON representation
     }
 }

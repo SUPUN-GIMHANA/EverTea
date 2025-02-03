@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/api")
 @RestController
@@ -52,6 +53,12 @@ public class TrackerController {
     @GetMapping("/finances/{trackerId}/income/{incomeId}")
     public IncomeRecord findIncomeById(@PathVariable int incomeId){
         return trackerService.findIncomeById(incomeId);
+    }
+
+    // Returns the total expense of a financial tracker
+    @GetMapping("/finances/{trackerId}/expenses/total")
+    public Map<String,Float> getTotalExpense(@PathVariable int trackerId){
+        return trackerService.calculateTotalExpense(trackerId);
     }
 
 }
