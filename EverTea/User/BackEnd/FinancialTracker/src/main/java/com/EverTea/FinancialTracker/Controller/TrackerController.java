@@ -21,5 +21,8 @@ public class TrackerController {
         this.trackerService = trackerService;
     }
 
-
+    @GetMapping("/finances/{trackerId}/expenses")
+    public List<ExpenseRecord> findAllExpensesOfTracker(@PathVariable int trackerId){
+        return trackerService.findAllExpensesOfTracker(trackerId);
+    }
 }
