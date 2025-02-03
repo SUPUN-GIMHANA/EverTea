@@ -19,4 +19,5 @@ public interface TrackerService {
     Map<String,Float> calculateTotalIncome(int trackerId);
     Map<String,Float> calculateTotalIncome(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime);
     Map<String,Float> calculateProfit(int trackerId);
+    Map<String, Float> calculateProfit(int trackerId,LocalDateTime startDateTime, LocalDateTime endDateTime);
 }

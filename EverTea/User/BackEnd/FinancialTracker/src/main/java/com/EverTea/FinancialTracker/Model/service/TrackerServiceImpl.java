@@ -90,7 +90,7 @@ public class TrackerServiceImpl implements TrackerService{
         for (ExpenseRecord expense: expenses){
             totalExpense += expense.getAmount();
         }
-        return Map.of("Total Expense : ", totalExpense);
+        return Map.of("Total Expense: ", totalExpense);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class TrackerServiceImpl implements TrackerService{
         for (IncomeRecord incomeRecord : incomeRecords){
             totalIncome += incomeRecord.getAmount();
         }
-        return Map.of("Total Income :",totalIncome);
+        return Map.of("Total Income: ",totalIncome);
     }
 
     @Override
@@ -122,6 +122,17 @@ public class TrackerServiceImpl implements TrackerService{
         Float totalExpenseFloat = totalExpense.get("Total Expense: ");
         Float totalIncomeFloat = totalIncome.get("Total Income: ");
         Float profit = totalIncomeFloat - totalExpenseFloat;
-        return Map.of("Profit : ",profit);
+        return Map.of("Profit: ",profit);
+    }
+
+    // Calculate the total profit for a particular time period
+    @Override
+    public Map<String, Float> calculateProfit(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        Map<String,Float> totalIncome = this.calculateTotalIncome(trackerId,startDateTime,endDateTime);
+        Map<String,Float> totalExpense = this.calculateTotalExpense(trackerId,startDateTime,endDateTime);
+        Float totalIncomeFloat = totalIncome.get("Total Income: ");
+        Float totalExpenseFloat = totalExpense.get("Total Expense: ");
+        Float profit = totalIncomeFloat - totalExpenseFloat;
+        return Map.of("Profit: ",profit);
     }
 }
