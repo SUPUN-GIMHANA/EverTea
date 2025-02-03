@@ -67,7 +67,7 @@ public class TrackerController {
         return trackerService.calculateTotalIncome(trackerId);
     }
 
-    // Returns the profit of a financial tracker
+    // Returns the all time profit of a financial tracker
     @GetMapping("/finances/{trackerId}/profit")
     public Map<String,Float> getProfit(@PathVariable int trackerId){
         return trackerService.calculateProfit(trackerId);

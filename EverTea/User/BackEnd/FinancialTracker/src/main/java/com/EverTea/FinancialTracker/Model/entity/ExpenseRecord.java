@@ -3,6 +3,8 @@ package com.EverTea.FinancialTracker.Model.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "expense_record")
 public class ExpenseRecord {
@@ -19,7 +21,7 @@ public class ExpenseRecord {
     private String description;
 
     @Column(name = "date")
-    private String date;
+    private LocalDateTime date;
 
     @JsonBackReference
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
@@ -30,7 +32,7 @@ public class ExpenseRecord {
 
     }
 
-    public ExpenseRecord(float amount, String description, String date) {
+    public ExpenseRecord(float amount, String description, LocalDateTime date) {
         this.amount = amount;
         this.description = description;
         this.date = date;
@@ -60,11 +62,11 @@ public class ExpenseRecord {
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
