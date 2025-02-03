@@ -83,6 +83,16 @@ public class TrackerServiceImpl implements TrackerService{
     }
 
     @Override
+    public Map<String, Float> calculateTotalExpense(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        float totalExpense = 0;
+        List<ExpenseRecord> expenses = this.findAllExpensesOfTracker(trackerId,startDateTime,endDateTime);
+        for (ExpenseRecord expense: expenses){
+            totalExpense += expense.getAmount();
+        }
+        return Map.of("Total Expense : ", totalExpense);
+    }
+
+    @Override
     public Map<String, Float> calculateTotalIncome(int trackerId) {
         float totalIncome = 0;
         List<IncomeRecord> incomeRecords = this.findAllIncomeOfTracker(trackerId);
