@@ -86,4 +86,9 @@ public class TrackerController {
         return trackerService.calculateTotalIncome(trackerId,startDateTime,endDateTime);
     }
 
+    @GetMapping("/finances/{trackerId}/profit/{startDateTime}/{endDateTime}")
+    public Map<String,Float> getTotalProfit(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime,@PathVariable LocalDateTime endDateTime){
+        return trackerService.calculateProfit(trackerId,startDateTime,endDateTime);
+    }
+
 }
