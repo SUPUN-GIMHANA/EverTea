@@ -13,4 +13,5 @@ public interface TrackerService {
     IncomeRecord findIncomeById(int incomeId);
     Map<String,Float> calculateTotalExpense(int trackerId);
     Map<String,Float> calculateTotalIncome(int trackerId);
+    Map<String,Float> calculateProfit(int trackerId);
 }
