@@ -1,5 +1,6 @@
 package com.EverTea.FinancialTracker.Model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class IncomeRecord {
     @Column(name = "date")
     private String date;
 
+    @JsonBackReference
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
     @JoinColumn(name = "tracker_id")
     private FinancialTracker tracker;
@@ -64,5 +66,15 @@ public class IncomeRecord {
 
     public void setTracker(FinancialTracker tracker) {
         this.tracker = tracker;
+    }
+
+    @Override
+    public String toString() {
+        return "IncomeRecord{" +
+                "id=" + id +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.EverTea.FinancialTracker.Model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,10 +23,12 @@ public class FinancialTracker {
     @Column(name = "budget")
     private float budget;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "tracker",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
     @Column(name = "expenses")
     private List<ExpenseRecord> expenses;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "tracker",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.LAZY)
     @Column(name = "income")
     private List<IncomeRecord> income;
@@ -78,5 +81,15 @@ public class FinancialTracker {
 
     public void setIncome(List<IncomeRecord> income) {
         this.income = income;
+    }
+
+    @Override
+    public String toString() {
+        return "FinancialTracker{" +
+                "id=" + id +
+                ", area=" + area +
+                ", teaType='" + teaType + '\'' +
+                ", budget=" + budget +
+                '}';
     }
 }
