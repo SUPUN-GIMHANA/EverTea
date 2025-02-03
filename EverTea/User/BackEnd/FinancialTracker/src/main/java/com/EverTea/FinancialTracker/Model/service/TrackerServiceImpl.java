@@ -26,9 +26,39 @@ public class TrackerServiceImpl implements TrackerService{
         return trackerDAO.findAllExpensesOfTracker(trackerId);
     }
 
+    // Finds all expenses related to a financial tracker for a particular time period
+    @Override
+    public List<ExpenseRecord> findAllExpensesOfTracker(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        List<ExpenseRecord> allTimeExpenses = this.findAllExpensesOfTracker(trackerId);
+        List<ExpenseRecord> expenses = new ArrayList<>(); // To store the expenses that occurred during the time period provided
+        for (ExpenseRecord expense : allTimeExpenses){
+            // checking if the expense occurred during the time period provided
+            if (!(expense.getDate().isAfter(endDateTime) || expense.getDate().isBefore(startDateTime)))
+            {
+                expenses.add(expense);
+            }
+        }
+        return expenses;
+    }
+
     @Override
     public List<IncomeRecord> findAllIncomeOfTracker(int trackerId) {
         return  trackerDAO.findAllIncomeOfTracker(trackerId);
+    }
+
+    // Finds all income records related to a financial tracker for a particular time period
+    @Override
+    public List<IncomeRecord> findAllIncomeOfTracker(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        List<IncomeRecord> allTimeIncome = this.findAllIncomeOfTracker(trackerId);
+        List<IncomeRecord> incomeRecords = new ArrayList<>(); // To store the income records that occurred during the time period provided
+        for (IncomeRecord income : allTimeIncome){
+            // checking if the income record occurred during the time period provided
+            if (!(income.getDate().isAfter(endDateTime) || income.getDate().isBefore(startDateTime)))
+            {
+                incomeRecords.add(income);
+            }
+        }
+        return incomeRecords;
     }
 
     @Override
@@ -63,6 +93,17 @@ public class TrackerServiceImpl implements TrackerService{
         // returning the total income as an immutable map for JSON representation
     }
 
+    // Calculate the total income for a particular time period
+    @Override
+    public Map<String, Float> calculateTotalIncome(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        float totalIncome = 0;
+        List<IncomeRecord> incomeRecords = findAllIncomeOfTracker(trackerId, startDateTime, endDateTime);
+        for (IncomeRecord incomeRecord : incomeRecords){
+            totalIncome += incomeRecord.getAmount();
+        }
+        return Map.of("Total Income :",totalIncome);
+    }
+
     @Override
     public Map<String, Float> calculateProfit(int trackerId) {
         Map<String,Float> totalIncome = calculateTotalIncome(trackerId);
@@ -71,35 +112,5 @@ public class TrackerServiceImpl implements TrackerService{
         Float totalIncomeFloat = totalIncome.get("Total Income: ");
         Float profit = totalIncomeFloat - totalExpenseFloat;
         return Map.of("Profit : ",profit);
-    }
-
-    // Finds all expenses related to a financial tracker for a particular time period
-    @Override
-    public List<ExpenseRecord> findAllExpensesOfTracker(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        List<ExpenseRecord> allTimeExpenses = trackerDAO.findAllExpensesOfTracker(trackerId);
-        List<ExpenseRecord> expenses = new ArrayList<>(); // To store the expenses that occurred during the time period provided
-        for (ExpenseRecord expense : allTimeExpenses){
-            // checking if the expense occurred during the time period provided
-            if (!(expense.getDate().isAfter(endDateTime) || expense.getDate().isBefore(startDateTime)))
-            {
-                expenses.add(expense);
-            }
-        }
-        return expenses;
-    }
-
-    // Finds all income records related to a financial tracker for a particular time period
-    @Override
-    public List<IncomeRecord> findAllIncomeOfTracker(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        List<IncomeRecord> allTimeIncome = trackerDAO.findAllIncomeOfTracker(trackerId);
-        List<IncomeRecord> incomeRecords = new ArrayList<>(); // To store the income records that occurred during the time period provided
-        for (IncomeRecord income : allTimeIncome){
-            // checking if the income record occurred during the time period provided
-            if (!(income.getDate().isAfter(endDateTime) || income.getDate().isBefore(startDateTime)))
-            {
-                incomeRecords.add(income);
-            }
-        }
-        return incomeRecords;
     }
 }
