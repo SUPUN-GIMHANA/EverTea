@@ -49,4 +49,15 @@ public class TrackerServiceImpl implements TrackerService{
         return Map.of("Total Expense: ",totalExpense);
         // returning the total expense as an immutable map for JSON representation
     }
+
+    @Override
+    public Map<String, Float> calculateTotalIncome(int trackerId) {
+        float totalIncome = 0;
+        List<IncomeRecord> incomeRecords = this.findAllIncomeOfTracker(trackerId);
+        for (IncomeRecord incomeRecord: incomeRecords){
+            totalIncome += incomeRecord.getAmount();
+        }
+        return Map.of("Total Income",totalIncome);
+        // returning the total income as an immutable map for JSON representation
+    }
 }
