@@ -61,4 +61,10 @@ public class TrackerController {
         return trackerService.calculateTotalExpense(trackerId);
     }
 
+    // Return the total income of a financial tracker
+    @GetMapping("/finances/{trackerId}/income/total")
+    public Map<String,Float> getTotalIncome(@PathVariable int trackerId){
+        return trackerService.calculateTotalIncome(trackerId);
+    }
+
 }
