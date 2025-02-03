@@ -23,6 +23,4 @@ public class UserPlantationCreatingController {
         System.out.println("Received District: " + district);
         return "District found " + DistrictPlant.districtChecker(district);
     }
-
-    
 }
