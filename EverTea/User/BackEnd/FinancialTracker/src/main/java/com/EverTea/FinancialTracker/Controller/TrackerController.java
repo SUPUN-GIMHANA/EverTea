@@ -55,19 +55,19 @@ public class TrackerController {
         return trackerService.findIncomeById(incomeId);
     }
 
-    // Returns the total expense of a financial tracker
+    // Returns all time total expense of a financial tracker
     @GetMapping("/finances/{trackerId}/expenses/total")
     public Map<String,Float> getTotalExpense(@PathVariable int trackerId){
         return trackerService.calculateTotalExpense(trackerId);
     }
 
-    // Returns the total income of a financial tracker
+    // Returns all time total income of a financial tracker
     @GetMapping("/finances/{trackerId}/income/total")
     public Map<String,Float> getTotalIncome(@PathVariable int trackerId){
         return trackerService.calculateTotalIncome(trackerId);
     }
 
-    // Returns the all time profit of a financial tracker
+    // Returns all time profit of a financial tracker
     @GetMapping("/finances/{trackerId}/profit")
     public Map<String,Float> getProfit(@PathVariable int trackerId){
         return trackerService.calculateProfit(trackerId);
