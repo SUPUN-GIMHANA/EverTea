@@ -17,4 +17,14 @@ public class TrackerServiceImpl implements TrackerService{
     public TrackerServiceImpl(TrackerDAO trackerDAO){
         this.trackerDAO = trackerDAO;
     }
+
+    @Override
+    public List<ExpenseRecord> findAllExpensesOfTracker(int trackerId) {
+        return trackerDAO.findAllExpensesOfTracker(trackerId);
+    }
+
+    @Override
+    public List<IncomeRecord> findAllIncomeOfTracker(int trackerId) {
+        return  trackerDAO.findAllIncomeOfTracker(trackerId);
+    }
 }
