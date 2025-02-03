@@ -9,5 +9,6 @@ import java.util.List;
 public interface TrackerDAO {
      List<ExpenseRecord> findAllExpensesOfTracker(int trackerId);
      List<IncomeRecord> findAllIncomeOfTracker(int trackerId);
-     ExpenseRecord findExpenseById(int expenseId );
+     ExpenseRecord findExpenseById(int expenseId);
+     IncomeRecord findIncomeById(int incomeId);
 }

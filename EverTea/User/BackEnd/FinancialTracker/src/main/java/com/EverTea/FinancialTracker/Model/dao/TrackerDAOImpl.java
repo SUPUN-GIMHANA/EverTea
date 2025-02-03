@@ -54,6 +54,12 @@ public class TrackerDAOImpl implements TrackerDAO{
     @Override
     public ExpenseRecord findExpenseById(int expenseId) {
         ExpenseRecord expense = entityManager.find(ExpenseRecord.class,expenseId);
-        return  expense;
+        return expense;
+    }
+
+    @Override
+    public IncomeRecord findIncomeById(int incomeId) {
+        IncomeRecord income = entityManager.find(IncomeRecord.class,incomeId);
+        return income;
     }
 }
