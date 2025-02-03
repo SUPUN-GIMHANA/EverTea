@@ -29,6 +29,7 @@ public class TrackerDAOImpl implements TrackerDAO{
            used here since lazy loading is set to the financial tracker class so we only load the expenses
            when required
         */
+        query.setParameter("trackerId",trackerId);
         FinancialTracker tracker = query.getSingleResult();
         List<ExpenseRecord> expenses = tracker.getExpenses();
         return expenses;
@@ -43,6 +44,7 @@ public class TrackerDAOImpl implements TrackerDAO{
            used here since lazy loading is set to the financial tracker class so we only load the income sources
            when required
         */
+        query.setParameter("trackerId",trackerId);
         FinancialTracker tracker = query.getSingleResult();
         List<IncomeRecord> income = tracker.getIncome();
         return income;
