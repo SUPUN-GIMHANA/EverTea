@@ -33,4 +33,14 @@ public class TrackerController {
     public List<IncomeRecord> findAllIncomeOfTracker(@PathVariable int trackerId){
         return trackerService.findAllIncomeOfTracker(trackerId);
     }
+
+    /* Returns an expense by Id, trackerId is not used as a method parameter
+       here since each expense record has a unique Id so the
+       tracker Id of that expense record is not required to find that particular
+       expense record
+    */
+    @GetMapping("/finances/{trackerId}/expenses/{expenseId}")
+    public ExpenseRecord findExpenseById(@PathVariable int expenseId){
+        return trackerService.findExpenseById(expenseId);
+    }
 }
