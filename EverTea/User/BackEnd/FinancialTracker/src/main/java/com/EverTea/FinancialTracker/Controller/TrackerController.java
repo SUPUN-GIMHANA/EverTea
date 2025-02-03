@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -71,6 +72,12 @@ public class TrackerController {
     @GetMapping("/finances/{trackerId}/profit")
     public Map<String,Float> getProfit(@PathVariable int trackerId){
         return trackerService.calculateProfit(trackerId);
+    }
+
+    // Returns the total expense of a financial tracker for a particular time period
+    @GetMapping("/finances/{trackerId}/expenses/total/{startDateTime}/{endDateTime}")
+    public Map<String,Float> getTotalExpense(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime, @PathVariable LocalDateTime endDateTime){
+        return trackerService.calculateTotalExpense(trackerId,startDateTime,endDateTime);
     }
 
 }

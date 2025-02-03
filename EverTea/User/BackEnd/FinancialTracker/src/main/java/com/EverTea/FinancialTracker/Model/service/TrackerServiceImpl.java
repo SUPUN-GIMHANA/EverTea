@@ -82,6 +82,7 @@ public class TrackerServiceImpl implements TrackerService{
         // returning the total expense as an immutable map for JSON representation
     }
 
+    // Calculate the total expense for a particular time period
     @Override
     public Map<String, Float> calculateTotalExpense(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
         float totalExpense = 0;
