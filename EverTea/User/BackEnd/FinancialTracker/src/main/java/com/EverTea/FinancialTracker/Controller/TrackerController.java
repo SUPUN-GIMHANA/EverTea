@@ -80,4 +80,10 @@ public class TrackerController {
         return trackerService.calculateTotalExpense(trackerId,startDateTime,endDateTime);
     }
 
+    // Returns the total income of a financial tracker for a particular time period
+    @GetMapping("/finances/{trackerId}/income/total/{startDateTime}/{endDateTime}")
+    public Map<String,Float> getTotalIncome(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime,@PathVariable LocalDateTime endDateTime){
+        return trackerService.calculateTotalIncome(trackerId,startDateTime,endDateTime);
+    }
+
 }
