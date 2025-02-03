@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TrackerServiceImpl implements TrackerService{
@@ -36,5 +37,16 @@ public class TrackerServiceImpl implements TrackerService{
     @Override
     public IncomeRecord findIncomeById(int incomeId) {
         return trackerDAO.findIncomeById(incomeId);
+    }
+
+    @Override
+    public Map<String, Float> calculateTotalExpense(int trackerId) {
+        float totalExpense = 0;
+        List<ExpenseRecord> expenses = this.findAllExpensesOfTracker(trackerId);
+        for (ExpenseRecord expense: expenses){
+            totalExpense += expense.getAmount();
+        }
+        return Map.of("Total Expense: ",totalExpense);
+        // returning the total expense as an immutable map for JSON representation
     }
 }
