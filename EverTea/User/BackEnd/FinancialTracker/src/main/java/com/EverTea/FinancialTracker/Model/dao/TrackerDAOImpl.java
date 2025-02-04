@@ -66,7 +66,6 @@ public class TrackerDAOImpl implements TrackerDAO{
         return income;
     }
 
-    @Transactional
     @Override
     public void save(FinancialTracker financialTracker) {
         entityManager.persist(financialTracker);

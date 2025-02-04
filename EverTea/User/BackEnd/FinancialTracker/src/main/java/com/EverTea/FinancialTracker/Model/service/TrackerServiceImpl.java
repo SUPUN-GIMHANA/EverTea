@@ -2,9 +2,11 @@ package com.EverTea.FinancialTracker.Model.service;
 
 import com.EverTea.FinancialTracker.Model.dao.TrackerDAO;
 import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
+import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -134,5 +136,11 @@ public class TrackerServiceImpl implements TrackerService{
         Float totalExpenseFloat = totalExpense.get("Total Expense: ");
         Float profit = totalIncomeFloat - totalExpenseFloat;
         return Map.of("Profit: ",profit);
+    }
+
+    @Transactional
+    @Override
+    public void save(FinancialTracker financialTracker) {
+        trackerDAO.save(financialTracker);
     }
 }

@@ -1,6 +1,7 @@
 package com.EverTea.FinancialTracker.Model.service;
 
 import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
+import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 
 import java.time.LocalDateTime;
@@ -20,4 +21,5 @@ public interface TrackerService {
     Map<String,Float> calculateTotalIncome(int trackerId, LocalDateTime startDateTime, LocalDateTime endDateTime);
     Map<String,Float> calculateProfit(int trackerId);
     Map<String, Float> calculateProfit(int trackerId,LocalDateTime startDateTime, LocalDateTime endDateTime);
+    public void save(FinancialTracker financialTracker);
 }
