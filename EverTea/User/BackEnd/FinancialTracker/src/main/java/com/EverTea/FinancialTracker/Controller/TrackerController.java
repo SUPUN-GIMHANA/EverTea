@@ -94,4 +94,9 @@ public class TrackerController {
         trackerService.save(financialTracker);
     }
 
+    @PostMapping("/finances/{trackerId}/expenses")
+    public void saveExpenseRecord(@RequestBody ExpenseRecord expenseRecord,@PathVariable int trackerId){
+        trackerService.save(trackerId,expenseRecord);
+    }
+
 }
