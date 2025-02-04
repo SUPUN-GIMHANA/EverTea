@@ -4,6 +4,7 @@ import HomeScreen from './HomeScreen';
 import FinancialTracker from './FinancialTracker';
 import PlantationStart from './PlantationStart'
 import PlantationStartDistrict from './PlantationJourney/PlantationStartDistrict'
+import PlantationStartLand from './PlantationJourney/PlantationStartLand'
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,8 @@ export default function App() {
         <Stack.Screen name="FinancialTracker" component={FinancialTracker} />
         <Stack.Screen name="PlantationStart" component={PlantationStart} />
         <Stack.Screen name="PlantationStartDistrict" component={PlantationStartDistrict} />
+        <Stack.Screen name="PlantationStartLand" component={PlantationStartLand} />
+
         {/* <Stack.Screen name="Profile" component={Profile} /> */}
       </Stack.Navigator>
     </NavigationContainer>

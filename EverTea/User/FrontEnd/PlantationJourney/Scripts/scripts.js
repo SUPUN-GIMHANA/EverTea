@@ -12,7 +12,7 @@ export const useAppLogic = () => {
 
   const districtSearchHandler = async () => {
     try {
-      const response = await axios.post('http://192.168.1.4:8080/api/user/plantationDistrict', {
+      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationDistrict', {
         district: district,  // Send district in the body
       });
   

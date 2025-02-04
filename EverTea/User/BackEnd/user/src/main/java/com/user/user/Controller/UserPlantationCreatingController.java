@@ -18,9 +18,18 @@ public class UserPlantationCreatingController {
     @PostMapping("/plantationDistrict")
     public String plantChoosingWithDistrict(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-        String district = districtPlantation.getDistrict();
+        String district = districtPlantation.getDistrict().toLowerCase().trim().replaceAll("\\s+", " ");
         
         System.out.println("Received District: " + district);
         return "District found " + DistrictPlant.districtChecker(district);
+    }
+
+    @PostMapping("/plantationArea")
+    public String plantationArea(@RequestBody UserPlantationCreatingDTO districtPlantation) {
+
+        Double area = districtPlantation.getArea();
+        
+        System.out.println("Received Area: " + area);
+        return "Area Enetered " + area;
     }
 }
