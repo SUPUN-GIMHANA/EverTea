@@ -143,4 +143,19 @@ public class TrackerServiceImpl implements TrackerService{
     public void save(FinancialTracker financialTracker) {
         trackerDAO.save(financialTracker);
     }
+
+    @Override
+    public FinancialTracker findTrackerById(int trackerId) {
+        return trackerDAO.findTrackerById(trackerId);
+    }
+
+    @Transactional
+    @Override
+    public void save(int trackerId, ExpenseRecord expenseRecord) {
+        // checking if the financial tracker id is invalid
+        if (this.findTrackerById(trackerId) == null){
+            throw new RuntimeException("Financial tracker Id is invalid");
+        }
+        trackerDAO.save(trackerId,expenseRecord);
+    }
 }
