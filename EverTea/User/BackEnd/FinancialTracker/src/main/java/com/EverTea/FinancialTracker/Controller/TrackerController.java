@@ -95,8 +95,13 @@ public class TrackerController {
     }
 
     @PostMapping("/finances/{trackerId}/expenses")
-    public void saveExpenseRecord(@RequestBody ExpenseRecord expenseRecord,@PathVariable int trackerId){
+    public void saveExpenseRecord(@RequestBody ExpenseRecord expenseRecord, @PathVariable int trackerId){
         trackerService.save(trackerId,expenseRecord);
+    }
+
+    @PostMapping("/finances/{trackerId}/income")
+    public void saveIncomeRecord(@RequestBody IncomeRecord incomeRecord, @PathVariable int trackerId){
+        trackerService.save(trackerId,incomeRecord);
     }
 
 }

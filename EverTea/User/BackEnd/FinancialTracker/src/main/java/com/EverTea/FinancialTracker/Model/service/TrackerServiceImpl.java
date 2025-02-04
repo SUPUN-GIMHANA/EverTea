@@ -159,6 +159,7 @@ public class TrackerServiceImpl implements TrackerService{
         trackerDAO.save(trackerId,expenseRecord);
     }
 
+    @Transactional
     @Override
     public void save(int trackerId, IncomeRecord incomeRecord) {
         if (this.findTrackerById(trackerId) == null){
