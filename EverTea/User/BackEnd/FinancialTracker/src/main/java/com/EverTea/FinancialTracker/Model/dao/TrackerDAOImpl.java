@@ -80,6 +80,7 @@ public class TrackerDAOImpl implements TrackerDAO{
     public void save(int trackerId, ExpenseRecord expenseRecord) {
         FinancialTracker financialTracker = this.findTrackerById(trackerId);
         expenseRecord.setTracker(financialTracker);
+        // sets the financial tracker to maintain the bi-directional relationship
         entityManager.persist(expenseRecord);
     }
 
@@ -87,6 +88,7 @@ public class TrackerDAOImpl implements TrackerDAO{
     public void save(int trackerId, IncomeRecord incomeRecord) {
         FinancialTracker financialTracker = this.findTrackerById(trackerId);
         incomeRecord.setTracker(financialTracker);
+        // sets the financial tracker to maintain the bi-directional relationship
         entityManager.persist(incomeRecord);
     }
 
