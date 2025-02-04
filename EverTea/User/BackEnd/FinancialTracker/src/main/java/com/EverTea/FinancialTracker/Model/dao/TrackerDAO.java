@@ -15,5 +15,6 @@ public interface TrackerDAO {
      IncomeRecord findIncomeById(int incomeId);
      void save(FinancialTracker financialTracker);
      void save(int trackerId,ExpenseRecord expenseRecord);
+     void save(int trackerId,IncomeRecord incomeRecord);
      FinancialTracker findTrackerById(int trackerId);
 }

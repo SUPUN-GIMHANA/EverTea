@@ -83,4 +83,11 @@ public class TrackerDAOImpl implements TrackerDAO{
         entityManager.persist(expenseRecord);
     }
 
+    @Override
+    public void save(int trackerId, IncomeRecord incomeRecord) {
+        FinancialTracker financialTracker = this.findTrackerById(trackerId);
+        incomeRecord.setTracker(financialTracker);
+        entityManager.persist(incomeRecord);
+    }
+
 }
