@@ -1,13 +1,11 @@
 package com.EverTea.FinancialTracker.Controller;
 
 import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
+import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 import com.EverTea.FinancialTracker.Model.service.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -89,6 +87,11 @@ public class TrackerController {
     @GetMapping("/finances/{trackerId}/profit/{startDateTime}/{endDateTime}")
     public Map<String,Float> getTotalProfit(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime,@PathVariable LocalDateTime endDateTime){
         return trackerService.calculateProfit(trackerId,startDateTime,endDateTime);
+    }
+
+    @PostMapping("/finances")
+    public void saveTracker(@RequestBody FinancialTracker financialTracker){
+        trackerService.save(financialTracker);
     }
 
 }
