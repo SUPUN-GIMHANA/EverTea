@@ -60,14 +60,31 @@ public class TrackerDAOImpl implements TrackerDAO{
         return expense;
     }
 
+    // Finds a particular income record by its Id
     @Override
     public IncomeRecord findIncomeById(int incomeId) {
         IncomeRecord income = entityManager.find(IncomeRecord.class,incomeId);
         return income;
     }
 
+    // Saves a financial tracker to the database
     @Override
     public void save(FinancialTracker financialTracker) {
         entityManager.persist(financialTracker);
     }
+
+    // Finds a financial tracker by its Id
+    @Override
+    public FinancialTracker findTrackerById(int trackerId) {
+        return entityManager.find(FinancialTracker.class,trackerId);
+    }
+
+    // Saves an expense record to the database
+    @Override
+    public void save(int trackerId, ExpenseRecord expenseRecord) {
+        FinancialTracker financialTracker = this.findTrackerById(trackerId);
+        expenseRecord.setTracker(financialTracker);
+        entityManager.persist(expenseRecord);
+    }
+
 }
