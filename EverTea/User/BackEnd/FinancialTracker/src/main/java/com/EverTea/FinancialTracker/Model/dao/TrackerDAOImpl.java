@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -63,5 +64,11 @@ public class TrackerDAOImpl implements TrackerDAO{
     public IncomeRecord findIncomeById(int incomeId) {
         IncomeRecord income = entityManager.find(IncomeRecord.class,incomeId);
         return income;
+    }
+
+    @Transactional
+    @Override
+    public void save(FinancialTracker financialTracker) {
+        entityManager.persist(financialTracker);
     }
 }

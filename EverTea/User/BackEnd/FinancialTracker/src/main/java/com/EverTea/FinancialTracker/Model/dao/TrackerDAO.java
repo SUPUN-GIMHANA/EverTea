@@ -2,6 +2,7 @@ package com.EverTea.FinancialTracker.Model.dao;
 
 
 import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
+import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 
 import java.time.LocalDateTime;
@@ -12,5 +13,5 @@ public interface TrackerDAO {
      List<IncomeRecord> findAllIncomeOfTracker(int trackerId);
      ExpenseRecord findExpenseById(int expenseId);
      IncomeRecord findIncomeById(int incomeId);
-
+     void save(FinancialTracker financialTracker);
 }
