@@ -83,6 +83,14 @@ public class FinancialTracker {
         this.income = income;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "FinancialTracker{" +

@@ -104,4 +104,9 @@ public class TrackerController {
         trackerService.save(trackerId,incomeRecord);
     }
 
+    @PutMapping("/finances/{trackerId}/expenses/{expenseId}")
+    public ExpenseRecord updateExpenseRecord(@PathVariable int expenseId, @RequestBody ExpenseRecord expenseRecord){
+        return trackerService.update(expenseId,expenseRecord);
+    }
+
 }
