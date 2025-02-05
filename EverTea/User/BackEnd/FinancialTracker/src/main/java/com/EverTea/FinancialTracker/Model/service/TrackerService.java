@@ -26,4 +26,5 @@ public interface TrackerService {
     void save(int trackerId,ExpenseRecord expenseRecord);
     void save(int trackerId, IncomeRecord incomeRecord);
     ExpenseRecord update(int expenseRecordId, ExpenseRecord expenseRecord);
+    IncomeRecord update(int incomeRecordId, IncomeRecord incomeRecord);
 }

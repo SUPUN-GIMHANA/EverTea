@@ -183,4 +183,21 @@ public class TrackerServiceImpl implements TrackerService{
         expenseRecordDB.setDate(expenseRecord.getDate());
         return trackerDAO.update(expenseRecordDB);
     }
+
+    @Transactional
+    @Override
+    public IncomeRecord update(int incomeRecordId, IncomeRecord incomeRecord) {
+        // Retrieving the income record from the database
+        IncomeRecord incomeRecordDB = this.findIncomeById(incomeRecordId);
+        // checking if the client has sent an invalid income record Id that does not exist
+        if (incomeRecordDB == null){
+            throw new RuntimeException("Income record not found");
+        }
+
+        // setting the new values sent by the client
+        incomeRecordDB.setAmount(incomeRecord.getAmount());
+        incomeRecordDB.setDescription(incomeRecord.getDescription());
+        incomeRecordDB.setDate(incomeRecord.getDate());
+        return trackerDAO.update(incomeRecordDB);
+    }
 }
