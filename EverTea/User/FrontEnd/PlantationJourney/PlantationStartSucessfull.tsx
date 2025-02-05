@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
-import { styles } from './Styles/PlantationStartDistrict'; // Import the styles
+import { styles } from './Styles/PlantationStartSucessfull'; // Import the styles
 
 
 // Define the type for the navigation stack
 type RootStackParamList = {
   Home: undefined;
-  FinancialTracker: undefined;
-  PlantationStartDistrict: undefined;
-  PlantationStartLand: undefined;
+ 
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -23,11 +22,11 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
-        <View style={styles.cancelButton}>
+        <View style={styles.closeButton}>
           <TouchableOpacity 
             onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
-            <Text style={styles.cancelBorder}>
-              <Text style={styles.cancelText}>Cancel</Text>
+            <Text style={styles.closeBorder}>
+              <Text style={styles.closeText}>Close</Text>
             </Text>
           </TouchableOpacity> 
         </View>
@@ -49,45 +48,40 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
         <View style={styles.headerContent}>
           <View style={styles.headerTopic}>
             <Text style={styles.greetingText}>
-              <Text style={styles.boldText}>Enter Your District</Text>
+              <Text style={styles.planeText}>Plantation Created </Text>
+              <Text style={styles.boldText}>Sucessfully!</Text>
             </Text>
           </View>
         </View>
-        <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} placeholder='District' onChangeText={districtInputHandler}/>
-          <View style={styles.searchContainer}>
-            <TouchableOpacity 
-              onPress={districtSearchHandler} activeOpacity={0.7}>
-              <Image source={require('../assets/Images/HomePage/Plantation Journey/Search.png')} style={styles.searchIcon} />
-            </TouchableOpacity>  
-          </View>
-        </View>
+        
         <View style={styles.bodyContent}>
-          <View style={styles.headerTopic}>
-            <Text style={styles.greetingText}>
-              <Text style={styles.topic}>Choose your tea type</Text>
-            </Text>
+          <View style={styles.budgetContainer}>
+            <View style={styles.budgetImageContainer}>
+              
+              <LinearGradient
+                colors={['#DAFDBA', '#9AEBA3', '#45C4B0', '#13678A']} // light green to blue gradient
+                start={{ x: 0, y: 0 }} // Top-left
+                end={{ x: 1, y: 1 }}   // Bottom-right
+                style={styles.borderOverlay}>
+
+              </LinearGradient>
+              <Image
+                source={require('.././assets/Images/HomePage/Plantation Journey/Plantation.png')}
+                style={styles.budgetImage}
+              />
+            </View>
           </View>
         </View>
 
-        
-        
+
       </ScrollView>
 
       <View style={styles.navButtons}>
-          <View style={styles.backButton}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
-              <Text style={styles.backButtonBorder}>
-                <Text style={styles.navButtonText}>Back</Text>
-              </Text>
-            </TouchableOpacity> 
-          </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartLand')} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
-                <Text style={styles.navButtonText}>Next</Text>
+                <Text style={styles.navButtonText}>View Plantation</Text>
               </Text>
             </TouchableOpacity> 
           </View>

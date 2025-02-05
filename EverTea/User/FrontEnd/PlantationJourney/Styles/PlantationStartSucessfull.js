@@ -15,39 +15,40 @@ export const styles = StyleSheet.create({
     },
 
 
-    cancelButton: {
+    closeButton: {
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
       paddingTop: '15%',
       paddingHorizontal: 20,
     },
-    cancelBorder: {
+    closeBorder: {
       borderWidth: 1,
-      borderColor: 'red',
+      borderColor: '#20C58D',
       borderRadius: 20,
-      backgroundColor: 'red',
+      backgroundColor: '#20C58D',
       padding: 10,
     },
-    cancelText: {
+    closeText: {
       fontSize: 20,
       color: 'lavender',
     },
+
 
     //Progress Indicator
 
 
     progressIndicator: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      paddingTop: '8%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingTop: '8%',
     },
     numberBorder1: {
         borderWidth: 1,
         width: 40,
         borderColor: 'green',
         borderRadius: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: 'green',
         padding: 10,
     },
     number1: {
@@ -60,7 +61,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'transparent',
         borderRadius: 20,
-        backgroundColor: '#BFBFBF',
+        backgroundColor: 'green',
         width: 50,
         height: 10,
         marginTop: 15,
@@ -71,9 +72,9 @@ export const styles = StyleSheet.create({
     numberBorder2: {
         borderWidth: 1,
         width: 40,
-        borderColor: '#BFBFBF',
+        borderColor: 'green',
         borderRadius: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: 'green',
         padding: 10,
     },
     number2: {
@@ -86,7 +87,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'transparent',
         borderRadius: 20,
-        backgroundColor: '#BFBFBF',
+        backgroundColor: 'green',
         width: 50,
         height: 10,
         marginTop: 15,
@@ -97,9 +98,9 @@ export const styles = StyleSheet.create({
     numberBorder3: {
       borderWidth: 1,
       width: 40,
-      borderColor: '#BFBFBF',
+      borderColor: 'green',
       borderRadius: 20,
-      backgroundColor: 'transparent',
+      backgroundColor: 'green',
       padding: 10,
     },
     number3: {
@@ -132,11 +133,15 @@ export const styles = StyleSheet.create({
       width: '80%',
     },
     greetingText: {
-      fontSize: 28,
       color: 'black',
     },
+    planeText:{
+      fontSize: 18,
+    },
     boldText: {
+      fontSize: 28,
       fontWeight: 'bold',
+      color: '#20C58D',
     },
     
     buttonIcon: {
@@ -187,36 +192,54 @@ export const styles = StyleSheet.create({
     },
 
 
+    
+    // Plantation Budget
+    bodyContent: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: 20,
+    },
+    budgetContainer: {
+      alignItems: 'center',
+      width: '100%',
+      paddingTop: 20,
+    },
+    budgetImageContainer: {
+      width: 350,
+      height: 350,
+      position: 'relative',
+      
+    },
+    budgetImage: {
+      width: '100%',
+      height: 400,
+      borderRadius: 20,
+    },
+    borderOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      borderWidth: 5,
+      borderColor: 'transparent',
+      borderRadius: 20,
+      width: 350,
+      height: 400,
+      zIndex: 0,
+    },
+
 
     // Next and Back Buttons
 
     navButtons:{
-      flexDirection: 'row',
-      justifyContent: 'space-around',
+      
       alignItems: 'center',
       paddingHorizontal: '10%',
       paddingBottom: '10%',
     },
-    backButton: {
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      alignItems: 'flex-end',
-      paddingTop: '15%',
-      paddingHorizontal: 20,
-    },
-    backButtonBorder: {
-      borderWidth: 1,
-      borderColor: 'transparent',
-      borderRadius: 20,
-      backgroundColor: '#343434',
-      padding: 10,
-      width: 100,
-      textAlign: 'center',
-    },
     nextButton: {
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      alignItems: 'flex-end',
       paddingTop: '15%',
       paddingHorizontal: 20,
     },
@@ -226,7 +249,7 @@ export const styles = StyleSheet.create({
       borderRadius: 20,
       backgroundColor: '#20C58D',
       padding: 10,
-      width: 100,
+      width: '100%',
       textAlign: 'center',
     },
     navButtonText: {

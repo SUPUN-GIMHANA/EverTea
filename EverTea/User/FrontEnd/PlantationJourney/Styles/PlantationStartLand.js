@@ -34,26 +34,56 @@ export const styles = StyleSheet.create({
       color: 'lavender',
     },
 
+
+    //Progress Indicator
+
+
     progressIndicator: {
         flexDirection: 'row',
         justifyContent: 'center',
         paddingTop: '8%',
     },
-    numberBorder: {
+    numberBorder1: {
         borderWidth: 1,
         width: 40,
-        borderColor: '#BFBFBF',
+        borderColor: 'green',
         borderRadius: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: 'green',
         padding: 10,
     },
-    number: {
+    number1: {
         color: '#BFBFBF',
         fontSize: 15,
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    numberBorderProgress: {
+    numberBorderProgress1: {
+        borderWidth: 1,
+        borderColor: 'transparent',
+        borderRadius: 20,
+        backgroundColor: 'green',
+        width: 50,
+        height: 10,
+        marginTop: 15,
+        marginLeft: 5,
+        marginRight: 5,
+    },
+
+    numberBorder2: {
+        borderWidth: 1,
+        width: 40,
+        borderColor: 'green',
+        borderRadius: 20,
+        backgroundColor: 'transparent',
+        padding: 10,
+    },
+    number2: {
+        color: '#BFBFBF',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    numberBorderProgress2: {
         borderWidth: 1,
         borderColor: 'transparent',
         borderRadius: 20,
@@ -64,6 +94,29 @@ export const styles = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5,
     },
+
+    numberBorder3: {
+      borderWidth: 1,
+      width: 40,
+      borderColor: '#BFBFBF',
+      borderRadius: 20,
+      backgroundColor: 'transparent',
+      padding: 10,
+    },
+    number3: {
+        color: '#BFBFBF',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
+
+
+
+
+
+
+
 
     headerBackground: {
       height: 300,
@@ -137,6 +190,47 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
     },
+
+    // Plantation Start Land Slope
+    slopeContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+      paddingTop: '10%',
+      paddingHorizontal: '2%',
+    },
+    slopeImage: {
+      width: 100,
+      height: 100,
+      border: 1,
+      borderColor: 'transparent',
+      borderRadius: 20,
+    },
+    landImage: {
+      width: '100%',
+      height: '100%',
+      border: 1,
+      borderColor: 'green',
+      borderRadius: 20,
+    },
+    imageContainer: { 
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: '5%',
+    },
+    bodyContentSub: {
+        border: 1,
+        backgroundColor: 'black',
+        borderRadius: 20,
+        paddingBottom: '15%',
+        
+    },
+
+
+
+
+
 
 
 

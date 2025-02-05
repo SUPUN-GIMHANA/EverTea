@@ -34,20 +34,21 @@ export const styles = StyleSheet.create({
       color: 'lavender',
     },
 
+
     //Progress Indicator
 
 
     progressIndicator: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      paddingTop: '8%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingTop: '8%',
     },
     numberBorder1: {
         borderWidth: 1,
         width: 40,
         borderColor: 'green',
         borderRadius: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: 'green',
         padding: 10,
     },
     number1: {
@@ -60,7 +61,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'transparent',
         borderRadius: 20,
-        backgroundColor: '#BFBFBF',
+        backgroundColor: 'green',
         width: 50,
         height: 10,
         marginTop: 15,
@@ -71,9 +72,9 @@ export const styles = StyleSheet.create({
     numberBorder2: {
         borderWidth: 1,
         width: 40,
-        borderColor: '#BFBFBF',
+        borderColor: 'green',
         borderRadius: 20,
-        backgroundColor: 'transparent',
+        backgroundColor: 'green',
         padding: 10,
     },
     number2: {
@@ -86,7 +87,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'transparent',
         borderRadius: 20,
-        backgroundColor: '#BFBFBF',
+        backgroundColor: 'green',
         width: 50,
         height: 10,
         marginTop: 15,
@@ -97,7 +98,7 @@ export const styles = StyleSheet.create({
     numberBorder3: {
       borderWidth: 1,
       width: 40,
-      borderColor: '#BFBFBF',
+      borderColor: 'green',
       borderRadius: 20,
       backgroundColor: 'transparent',
       padding: 10,
@@ -108,6 +109,11 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     },
+
+
+
+
+
 
 
 
@@ -186,6 +192,41 @@ export const styles = StyleSheet.create({
         color: 'black',
     },
 
+
+    
+    // Plantation Budget
+    bodyContent: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: 20,
+    },
+    budgetContainer: {
+      alignItems: 'center',
+      width: '100%',
+    },
+    budgetImageContainer: {
+      width: 350,
+      height: 350,
+      position: 'relative',
+    },
+    budgetImage: {
+      width: '100%',
+      height: '100%',
+      borderRadius: 20,
+    },
+    borderOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 25,
+      right: 25,
+      bottom: 0,
+      borderWidth: 5,
+      borderColor: 'transparent',
+      borderRadius: 20,
+      width: 300,
+      zIndex: 0,
+    },
 
 
     // Next and Back Buttons

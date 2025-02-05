@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartLand'; // Import the styles
 
@@ -10,6 +11,7 @@ type RootStackParamList = {
   Home: undefined;
   FinancialTracker: undefined;
   PlantationStartDistrict: undefined;
+  PlantationStartBudget: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -32,18 +34,17 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
         </View>
 
         <View style={styles.progressIndicator}>
-            <Text style={styles.numberBorder}>
-              <Text style={styles.number}>1</Text>
+            <Text style={styles.numberBorder1}>
+              <Text style={styles.number1}>1</Text>
             </Text>
-            <View style={styles.numberBorderProgress}/>
-            <Text style={styles.numberBorder}>
-              <Text style={styles.number}>2</Text>
+            <View style={styles.numberBorderProgress1}/>
+            <Text style={styles.numberBorder2}>
+              <Text style={styles.number2}>2</Text>
             </Text>
-            <View style={styles.numberBorderProgress}/>
-            <Text style={styles.numberBorder}>
-              <Text style={styles.number}>3</Text>
+            <View style={styles.numberBorderProgress2}/>
+            <Text style={styles.numberBorder3}>
+              <Text style={styles.number3}>3</Text>
             </Text>
-            <View style={styles.numberBorderProgress}/>
         </View>
 
         <View style={styles.headerContent}>
@@ -68,6 +69,31 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
               <Text style={styles.topic}>Select Avg slope of Land</Text>
             </Text>
           </View>
+
+          <LinearGradient
+            colors={['#FF7E5F', '#FEB47B', 'red']} // Orange to light orange gradient
+            start={{ x: 0, y: 0 }} // Top-left
+            end={{ x: 1, y: 1 }}   // Bottom-right
+            style={styles.bodyContentSub}>
+          
+          
+            <View style={styles.slopeContainer}>
+                <View >
+                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                </View>
+                <View >
+                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                </View>
+                <View >
+                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                </View>
+            </View>
+            <View style={styles.imageContainer}>
+              <Image source={require('.././assets/Images/HomePage/Plantation Journey/Land.png')} style={styles.landImage} />
+            </View>
+          </LinearGradient>
+         
+          
         </View>
 
 
@@ -76,7 +102,7 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
       <View style={styles.navButtons}>
           <View style={styles.backButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('PlantationStartDistrict')} activeOpacity={0.7}>
               <Text style={styles.backButtonBorder}>
                 <Text style={styles.navButtonText}>Back</Text>
               </Text>
@@ -84,7 +110,7 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
           </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('PlantationStartBudget')} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>
