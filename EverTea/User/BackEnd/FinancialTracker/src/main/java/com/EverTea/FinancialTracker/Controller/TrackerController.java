@@ -109,4 +109,9 @@ public class TrackerController {
         return trackerService.update(expenseId,expenseRecord);
     }
 
+    @PutMapping("/finances/{trackerId}/income/{incomeId}")
+    public IncomeRecord updateIncomeRecord(@PathVariable int incomeId, @RequestBody IncomeRecord incomeRecord){
+        return trackerService.update(incomeId,incomeRecord);
+    }
+
 }
