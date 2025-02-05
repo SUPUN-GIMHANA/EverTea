@@ -95,9 +95,13 @@ public class TrackerDAOImpl implements TrackerDAO{
 
     // Updates an expense record
     @Override
-    public ExpenseRecord update(ExpenseRecord expenseRecordDB) {
-        entityManager.merge(expenseRecordDB);
-        return expenseRecordDB;
+    public ExpenseRecord update(ExpenseRecord expenseRecord) {
+        return entityManager.merge(expenseRecord);
+    }
+
+    @Override
+    public IncomeRecord update(IncomeRecord incomeRecord) {
+        return entityManager.merge(incomeRecord);
     }
 
 }

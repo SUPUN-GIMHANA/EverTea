@@ -17,5 +17,6 @@ public interface TrackerDAO {
      void save(int trackerId,ExpenseRecord expenseRecord);
      void save(int trackerId,IncomeRecord incomeRecord);
      FinancialTracker findTrackerById(int trackerId);
-     ExpenseRecord update(ExpenseRecord expenseRecordDB);
+     ExpenseRecord update(ExpenseRecord expenseRecord);
+     IncomeRecord update(IncomeRecord incomeRecord);
 }
