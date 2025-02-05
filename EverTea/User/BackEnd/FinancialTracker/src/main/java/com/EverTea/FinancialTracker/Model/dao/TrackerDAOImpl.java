@@ -84,12 +84,30 @@ public class TrackerDAOImpl implements TrackerDAO{
         entityManager.persist(expenseRecord);
     }
 
+    // Saves an income record to the database
     @Override
     public void save(int trackerId, IncomeRecord incomeRecord) {
         FinancialTracker financialTracker = this.findTrackerById(trackerId);
         incomeRecord.setTracker(financialTracker);
         // sets the financial tracker to maintain the bi-directional relationship
         entityManager.persist(incomeRecord);
+    }
+
+    // Updates an expense record
+    @Override
+    public ExpenseRecord update(int expenseRecordId, ExpenseRecord expenseRecord) {
+        // retrieving the expense record from the database
+        ExpenseRecord expenseRecordDB = this.findExpenseById(expenseRecordId);
+        // checking if the client has sent an invalid expense record Id that does not exist
+        if (expenseRecordDB ==  null){
+            throw new RuntimeException("Expense Record not found");
+        }
+        // setting the new values sent by the client
+        expenseRecordDB.setAmount(expenseRecord.getAmount());
+        expenseRecordDB.setDescription(expenseRecord.getDescription());
+        expenseRecordDB.setDate(expenseRecord.getDate());
+        entityManager.merge(expenseRecordDB);
+        return expenseRecordDB;
     }
 
 }
