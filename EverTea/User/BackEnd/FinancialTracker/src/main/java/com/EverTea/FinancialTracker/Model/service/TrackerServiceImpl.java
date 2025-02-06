@@ -200,4 +200,14 @@ public class TrackerServiceImpl implements TrackerService{
         incomeRecordDB.setDate(incomeRecord.getDate());
         return trackerDAO.update(incomeRecordDB);
     }
+
+    @Override
+    public void deleteAllIncomeRecords(int trackerId) {
+        FinancialTracker tracker = this.findTrackerById(trackerId);
+        // checking if the client has sent a tracker Id that does not exist
+        if (tracker == null){
+            throw  new RuntimeException("Financial Tracker not found");
+        }
+        trackerDAO.deleteAllIncomeRecords(trackerId);
+    }
 }
