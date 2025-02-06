@@ -114,4 +114,9 @@ public class TrackerController {
         return trackerService.update(incomeId,incomeRecord);
     }
 
+    @DeleteMapping("/finances/{trackerId}/income")
+    public void deleteAllIncomeRecords(@PathVariable int trackerId){
+        trackerService.deleteAllIncomeRecords(trackerId);
+    }
+
 }
