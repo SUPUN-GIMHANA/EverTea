@@ -1,5 +1,6 @@
 package com.nethum.ecom.testing.service;
 
+import com.nethum.ecom.testing.Exceptions.IDNotFoundException;
 import com.nethum.ecom.testing.model.Instruction;
 import com.nethum.ecom.testing.repo.InstructionRepository;
 import com.nethum.ecom.testing.service.Interfaces.InstructionServiceInterface;
@@ -15,8 +16,12 @@ public class InstructionService implements InstructionServiceInterface {
     private InstructionRepository instructionRepository;
 
     @Override
-    public List<Instruction> getInstructionByTeaTypeId(Long teaTypeId){
-        return instructionRepository.findByTeaType_TeaTypeId(teaTypeId);
+    public List<Instruction> getInstructionByTeaTypeId(Long teaTypeId) throws IDNotFoundException{
+        List<Instruction> instructions = instructionRepository.findByTeaType_TeaTypeId(teaTypeId);
+        if(instructions.isEmpty()){
+            throw new IDNotFoundException("Tea Type "+teaTypeId+ "Can not found");
+        }
+        return instructions;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.nethum.ecom.testing.controller;
 
-
+import com.nethum.ecom.testing.Exceptions.IDNotFoundException;
 import com.nethum.ecom.testing.model.Instruction;
 import com.nethum.ecom.testing.service.InstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,7 @@ public class InstructionController {
 
     //EndPoint to get instructions for tea Type
     @GetMapping("get-instructions/tea-type/{teaTypeId}")
-    public List<Instruction> getInstructionsByTeaTypeId(@PathVariable Long teaTypeId) {
-        System.out.println(instructionService.getInstructionByTeaTypeId(teaTypeId));
+    public List<Instruction> getInstructionsByTeaTypeId(@PathVariable Long teaTypeId) throws IDNotFoundException{
         return instructionService.getInstructionByTeaTypeId(teaTypeId);
     }
 
@@ -27,5 +26,4 @@ public class InstructionController {
     public Instruction setInstructionsByTeaTypeId(@RequestBody Instruction instruction){
         return instructionService.saveInstructions(instruction);
     }
-
 }

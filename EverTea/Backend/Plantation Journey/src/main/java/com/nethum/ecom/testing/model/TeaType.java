@@ -19,7 +19,7 @@ public class TeaType {
     private int wateringIntervalDays;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    private String fertilizerSchedule; // JSON string to store fertilizer data
+    private String fertilizerSchedule;
 
     public Long getTeaTypeId() {
         return teaTypeId;
