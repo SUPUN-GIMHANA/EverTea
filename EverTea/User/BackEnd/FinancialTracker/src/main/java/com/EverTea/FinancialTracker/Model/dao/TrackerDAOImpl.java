@@ -107,6 +107,10 @@ public class TrackerDAOImpl implements TrackerDAO{
 
     @Override
     public void deleteAllIncomeRecords(int trackerId) {
+        /* using the feature of the bi-directional relationship to find income
+           records related to a financial tracker, querying from the child entity
+           to find the related parent
+           entity  */
         Query query = entityManager.createQuery("DELETE FROM IncomeRecord WHERE tracker.id =:trackerId");
         query.setParameter("trackerId",trackerId);
         query.executeUpdate();
