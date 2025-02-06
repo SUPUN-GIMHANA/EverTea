@@ -4,6 +4,7 @@ import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
 import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -106,11 +107,9 @@ public class TrackerDAOImpl implements TrackerDAO{
 
     @Override
     public void deleteAllIncomeRecords(int trackerId) {
-        // finding all the income records related to the financial tracker
-        List<IncomeRecord> incomeRecords = this.findAllIncomeOfTracker(trackerId);
-        for (IncomeRecord incomeRecord : incomeRecords){
-            entityManager.remove(incomeRecord);
-        }
+        Query query = entityManager.createQuery("DELETE FROM IncomeRecord WHERE tracker.id =:trackerId");
+        query.setParameter("trackerId",trackerId);
+        query.executeUpdate();
     }
 
 }
