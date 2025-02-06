@@ -104,4 +104,13 @@ public class TrackerDAOImpl implements TrackerDAO{
         return entityManager.merge(incomeRecord);
     }
 
+    @Override
+    public void deleteAllIncomeRecords(int trackerId) {
+        // finding all the income records related to the financial tracker
+        List<IncomeRecord> incomeRecords = this.findAllIncomeOfTracker(trackerId);
+        for (IncomeRecord incomeRecord : incomeRecords){
+            entityManager.remove(incomeRecord);
+        }
+    }
+
 }

@@ -19,4 +19,5 @@ public interface TrackerDAO {
      FinancialTracker findTrackerById(int trackerId);
      ExpenseRecord update(ExpenseRecord expenseRecord);
      IncomeRecord update(IncomeRecord incomeRecord);
+     void deleteAllIncomeRecords(int trackerId);
 }
