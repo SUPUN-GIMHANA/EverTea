@@ -29,4 +29,5 @@ public interface TrackerService {
     IncomeRecord update(int incomeRecordId, IncomeRecord incomeRecord);
     void deleteAllIncomeRecords(int trackerId);
     void deleteAllExpenseRecords(int trackerId);
+    void deleteExpenseRecord(int trackerId, int expenseId);
 }
