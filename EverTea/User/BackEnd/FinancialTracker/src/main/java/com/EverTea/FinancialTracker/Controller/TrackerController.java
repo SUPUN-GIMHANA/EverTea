@@ -72,6 +72,12 @@ public class TrackerController {
         return trackerService.calculateProfit(trackerId);
     }
 
+    // Returns the expense records that occurred during a particular time period
+    @GetMapping("/finances/{trackerId}/expenses/{startDateTime}/{endDateTime}")
+    public List<ExpenseRecord> findAllExpenses(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime, @PathVariable LocalDateTime endDateTime){
+        return trackerService.findAllExpensesOfTracker(trackerId,startDateTime,endDateTime);
+    }
+
     // Returns the total expense of a financial tracker for a particular time period
     @GetMapping("/finances/{trackerId}/expenses/total/{startDateTime}/{endDateTime}")
     public Map<String,Float> getTotalExpense(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime, @PathVariable LocalDateTime endDateTime){
