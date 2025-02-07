@@ -21,4 +21,5 @@ public interface TrackerDAO {
      IncomeRecord update(IncomeRecord incomeRecord);
      void deleteAllIncomeRecords(int trackerId);
      void deleteAllExpenseRecords(int trackerId);
+     void deleteExpenseRecord(int trackerId, int expenseId);
 }

@@ -127,4 +127,10 @@ public class TrackerDAOImpl implements TrackerDAO{
         query.executeUpdate();
     }
 
+    @Override
+    public void deleteExpenseRecord(int trackerId, int expenseId) {
+        ExpenseRecord expenseRecord = this.findExpenseById(expenseId);
+        entityManager.remove(expenseRecord);
+    }
+
 }
