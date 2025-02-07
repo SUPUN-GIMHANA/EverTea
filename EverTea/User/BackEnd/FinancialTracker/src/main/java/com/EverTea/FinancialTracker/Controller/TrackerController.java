@@ -5,6 +5,7 @@ import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
 import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
 import com.EverTea.FinancialTracker.Model.service.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -72,10 +73,16 @@ public class TrackerController {
         return trackerService.calculateProfit(trackerId);
     }
 
-    // Returns the expense records that occurred during a particular time period
+    // Returns the expense records related to a tracker that occurred during a particular time period
     @GetMapping("/finances/{trackerId}/expenses/{startDateTime}/{endDateTime}")
     public List<ExpenseRecord> findAllExpenses(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime, @PathVariable LocalDateTime endDateTime){
         return trackerService.findAllExpensesOfTracker(trackerId,startDateTime,endDateTime);
+    }
+
+    // Returns the income records related to a tracker that occurred during a particular time period
+    @GetMapping("/finances/{trackerId}/income/{startDateTime}/{endDateTime}")
+    public List<IncomeRecord> findAllIncome(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime, @PathVariable LocalDateTime endDateTime){
+        return trackerService.findAllIncomeOfTracker(trackerId,startDateTime,endDateTime);
     }
 
     // Returns the total expense of a financial tracker for a particular time period
