@@ -207,8 +207,18 @@ public class TrackerServiceImpl implements TrackerService{
         FinancialTracker tracker = this.findTrackerById(trackerId);
         // checking if the client has sent a tracker Id that does not exist
         if (tracker == null){
-            throw  new RuntimeException("Financial Tracker not found");
+            throw new RuntimeException("Financial Tracker not found");
         }
         trackerDAO.deleteAllIncomeRecords(trackerId);
+    }
+
+    @Override
+    public void deleteAllExpenseRecords(int trackerId) {
+        FinancialTracker tracker = this.findTrackerById(trackerId);
+        // checking if the client has sent a tracker Id that does not exist
+        if (tracker == null){
+            throw new RuntimeException("Financial Tracker not found");
+        }
+        trackerDAO.deleteAllExpenseRecords(trackerId);
     }
 }
