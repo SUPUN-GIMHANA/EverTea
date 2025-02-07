@@ -4,7 +4,7 @@ import { LineChart } from 'react-native-chart-kit';
 
 interface GrowthChartProps {
   data: number[];
-  status: 'Good' | 'Warning';
+  status: string; 
 }
 
 export default function GrowthChart({ data, status }: GrowthChartProps) {

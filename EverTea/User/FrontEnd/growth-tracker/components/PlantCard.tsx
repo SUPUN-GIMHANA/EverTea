@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { PlantData } from "../types";
 import GrowthChart from "./GrowthChart";
@@ -8,9 +8,10 @@ import PreviousDetails from "./PreviousDetails";
 const SAMPLE_DATA: PlantData = {
   id: "01",
   name: "Plantation 01",
-  height: 25,
+  height: 15, //initial height(I change this when backend implement)
   status: "Good",
   growthHistory: [5, 8, 12, 15, 18, 20, 22, 23, 24, 25],
+  //for the testing perpose I add these sample records
   previousDetails: [
     { date: "2024-12-25", status: "Good", growth: "+1 CM" },
     { date: "2024-12-25", status: "Good", growth: "+1.4 CM" },
@@ -18,14 +19,31 @@ const SAMPLE_DATA: PlantData = {
   ]
 };
 
+
 export default function PlantCard() {
-  const { status, height, name } = SAMPLE_DATA;
+  const { name } = SAMPLE_DATA;
+
+  //state for changing height values
+  const [heightValue, setHeightValue] = useState(SAMPLE_DATA.height);
+
+  //determine the status based on height,this is only for testing perpose,this height should comes from backend.
+  const status = heightValue < 10 ? "Warning" : "Good";
+
+  //function to increase height
+  const increaseHeight = ()=>{
+    setHeightValue((prev) => prev+1);
+  };
+
+  //function to decrease hieght
+  const decreaseHeight = ()=>{
+    setHeightValue((prev) => (prev > 0 ? prev - 1 : 0));
+  }
 
   return (
     <View>
       <LinearGradient
         colors={
-          status === "Good" ? ["#D3FFF0", "#DFF78E"] : ["#fff3e0", "#f8d7d7"]
+          status === "Good" ? ["#D3FFF0", "#DFF78E"] : ["#FFFFD3", "#F7B78E"]
         }
         style={styles.topCard}
       >
@@ -39,7 +57,9 @@ export default function PlantCard() {
                   resizeMode="contain"
                 />
               </View>
-              <Text style={styles.plantName}>{name}</Text>
+              <Text style={[styles.plantName,
+                { backgroundColor: status === "Good" ? "#78CB68" : "#FF6666" }
+              ]}>{name}</Text>
             </View>
             <View style={styles.cardRightSide}>
               <Text
@@ -50,24 +70,32 @@ export default function PlantCard() {
               >
                 {status}
               </Text>
+
               <View style={styles.heightInfo}>
-                <Text style={styles.heightLabel}>Height</Text>
-                <Text style={styles.heightValue}>{height} CM</Text>
+                <Text style={[styles.heightLabel,
+                  { color: status === "Good" ? "#2e7d32" : "#8A1414" }
+                ]}>Height</Text>
+                <Text style={[styles.heightValue,
+                  { color: status === "Good" ? "#436F29" : "#771212" }
+                ]}>{heightValue} CM</Text>
 
                 <View style={styles.controls}>
-                  <View style={styles.controlLeft}>
+                  <TouchableOpacity style={styles.controlLeft} onPress={increaseHeight}>
                     <View style={styles.controlButton}>
                       <Text style={styles.controlText}>+</Text>
                     </View>
-                  </View>
-                  <View style={styles.controlRight}>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[styles.controlRight,
+                    { backgroundColor: status === "Good" ? "#E1FFB5" : "#FFD1B5" }
+                  ]} onPress={decreaseHeight}>
                     <View
                       style={[styles.controlButton, styles.controlButtonMinus]}
                     >
                       <Text style={styles.controlText}>-</Text>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 </View>
+
               </View>
             </View>
           </View>
@@ -152,7 +180,7 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   statusText: {
-    fontSize: 48,
+    fontSize: 40,
     fontWeight: "bold",
     marginBottom: 4
   },
@@ -181,7 +209,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   controlButtonMinus: {
-    backgroundColor: "#E1FFB5"
   },
   controlText: {
     fontSize: 20,
@@ -197,7 +224,6 @@ const styles = StyleSheet.create({
   },
   controlRight: {
     flex: 1, // Takes half width
-    backgroundColor: "#E1FFB5", // Greenish color for right side
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
