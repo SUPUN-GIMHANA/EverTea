@@ -4,11 +4,14 @@ import { GrowthRecord } from '../types';
 
 interface PreviousDetailsProps {
   details: GrowthRecord[];
+  status: string;
 }
 
-export default function PreviousDetails({ details }: PreviousDetailsProps) {
+export default function PreviousDetails({ details, status }: PreviousDetailsProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,
+      { backgroundColor: status === "Good" ? "#D4FEE7" : "#FEEFD4" }
+    ]}>
       <Text style={styles.title}>Previous details</Text>
       <View style={styles.indicators}>
         {[1, 2, 3].map(i => (
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     backgroundColor: '#fff9f0',
+    borderRadius:16
   },
   title: {
     fontSize: 16,

@@ -1,5 +1,12 @@
-import React, {useState} from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { PlantData } from "../types";
 import GrowthChart from "./GrowthChart";
@@ -15,10 +22,16 @@ const SAMPLE_DATA: PlantData = {
   previousDetails: [
     { date: "2024-12-25", status: "Good", growth: "+1 CM" },
     { date: "2024-12-25", status: "Good", growth: "+1.4 CM" },
-    { date: "2024-12-25", status: "Good", growth: "+1 CM" }
+    { date: "2024-12-25", status: "Warning", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Warning", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
+    { date: "2024-12-25", status: "Good", growth: "+1 CM" },
   ]
 };
-
 
 export default function PlantCard() {
   const { name } = SAMPLE_DATA;
@@ -30,101 +43,131 @@ export default function PlantCard() {
   const status = heightValue < 10 ? "Warning" : "Good";
 
   //function to increase height
-  const increaseHeight = ()=>{
-    setHeightValue((prev) => prev+1);
+  const increaseHeight = () => {
+    setHeightValue((prev) => prev + 1);
   };
 
   //function to decrease hieght
-  const decreaseHeight = ()=>{
+  const decreaseHeight = () => {
     setHeightValue((prev) => (prev > 0 ? prev - 1 : 0));
-  }
+  };
 
   return (
-    <View>
-      <LinearGradient
-        colors={
-          status === "Good" ? ["#D3FFF0", "#DFF78E"] : ["#FFFFD3", "#F7B78E"]
-        }
-        style={styles.topCard}
-      >
-        <View style={styles.topCardContainer}>
-          <View style={styles.header}>
-            <View style={styles.plantVisual}>
-              <View style={styles.plantContainer}>
-                <Image
-                  source={require("../assets/plant.png")}
-                  style={styles.plantImage}
-                  resizeMode="contain"
-                />
-              </View>
-              <Text style={[styles.plantName,
-                { backgroundColor: status === "Good" ? "#78CB68" : "#FF6666" }
-              ]}>{name}</Text>
-            </View>
-            <View style={styles.cardRightSide}>
-              <Text
-                style={[
-                  styles.statusText,
-                  { color: status === "Good" ? "#2e7d32" : "#f4511e" }
-                ]}
-              >
-                {status}
-              </Text>
-
-              <View style={styles.heightInfo}>
-                <Text style={[styles.heightLabel,
-                  { color: status === "Good" ? "#2e7d32" : "#8A1414" }
-                ]}>Height</Text>
-                <Text style={[styles.heightValue,
-                  { color: status === "Good" ? "#436F29" : "#771212" }
-                ]}>{heightValue} CM</Text>
-
-                <View style={styles.controls}>
-                  <TouchableOpacity style={styles.controlLeft} onPress={increaseHeight}>
-                    <View style={styles.controlButton}>
-                      <Text style={styles.controlText}>+</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={[styles.controlRight,
-                    { backgroundColor: status === "Good" ? "#E1FFB5" : "#FFD1B5" }
-                  ]} onPress={decreaseHeight}>
-                    <View
-                      style={[styles.controlButton, styles.controlButtonMinus]}
-                    >
-                      <Text style={styles.controlText}>-</Text>
-                    </View>
-                  </TouchableOpacity>
+    <ScrollView style={styles.container} keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator = {false}
+    >
+      <View>
+        <LinearGradient
+          colors={
+            status === "Good" ? ["#D3FFF0", "#DFF78E"] : ["#FFFFD3", "#F7B78E"]
+          }
+          style={styles.topCard}
+        >
+          <View style={styles.topCardContainer}>
+            <View style={styles.header}>
+              <View style={styles.plantVisual}>
+                <View style={styles.plantContainer}>
+                  <Image
+                    source={require("../assets/plant.png")}
+                    style={styles.plantImage}
+                    resizeMode="contain"
+                  />
                 </View>
+                <Text
+                  style={[
+                    styles.plantName,
+                    {
+                      backgroundColor: status === "Good" ? "#78CB68" : "#FF6666"
+                    }
+                  ]}
+                >
+                  {name}
+                </Text>
+              </View>
+              <View style={styles.cardRightSide}>
+                <Text
+                  style={[
+                    styles.statusText,
+                    { color: status === "Good" ? "#2e7d32" : "#f4511e" }
+                  ]}
+                >
+                  {status}
+                </Text>
 
+                <View style={styles.heightInfo}>
+                  <Text
+                    style={[
+                      styles.heightLabel,
+                      { color: status === "Good" ? "#2e7d32" : "#8A1414" }
+                    ]}
+                  >
+                    Height
+                  </Text>
+                  <Text
+                    style={[
+                      styles.heightValue,
+                      { color: status === "Good" ? "#436F29" : "#771212" }
+                    ]}
+                  >
+                    {heightValue} CM
+                  </Text>
+
+                  <View style={styles.controls}>
+                    <TouchableOpacity
+                      style={styles.controlLeft}
+                      onPress={increaseHeight}
+                    >
+                      <View style={styles.controlButton}>
+                        <Text style={styles.controlText}>+</Text>
+                      </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={[
+                        styles.controlRight,
+                        {
+                          backgroundColor:
+                            status === "Good" ? "#E1FFB5" : "#FFD1B5"
+                        }
+                      ]}
+                      onPress={decreaseHeight}
+                    >
+                      <View
+                        style={[
+                          styles.controlButton,
+                          styles.controlButtonMinus
+                        ]}
+                      >
+                        <Text style={styles.controlText}>-</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </LinearGradient>
-      
-      <GrowthChart data={SAMPLE_DATA.growthHistory} status={status} />
-      <PreviousDetails details={SAMPLE_DATA.previousDetails} />
-    </View>
+        </LinearGradient>
+
+        <GrowthChart data={SAMPLE_DATA.growthHistory} status={status} />
+        <PreviousDetails
+          details={SAMPLE_DATA.previousDetails}
+          status={status}
+        />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    borderRadius: 12,
-    overflow: "hidden",
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4
+    flex: 1
   },
+
   topCardContainer: {
     marginBottom: 0,
     position: "relative"
   },
   topCard: {
-    marginTop: 30,
+    marginTop: 60,
     marginBottom: 30,
     borderRadius: 25
   },
@@ -207,10 +250,9 @@ const styles = StyleSheet.create({
   },
   controlButton: {
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
-  controlButtonMinus: {
-  },
+  controlButtonMinus: {},
   controlText: {
     fontSize: 20,
     fontWeight: "900",
@@ -221,13 +263,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 8,
+    paddingVertical: 8
   },
   controlRight: {
     flex: 1, // Takes half width
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 8,
-  },
+    paddingVertical: 8
+  }
 });
