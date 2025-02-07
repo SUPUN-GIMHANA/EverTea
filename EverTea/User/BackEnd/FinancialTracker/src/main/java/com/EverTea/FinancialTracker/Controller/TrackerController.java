@@ -119,4 +119,9 @@ public class TrackerController {
         trackerService.deleteAllIncomeRecords(trackerId);
     }
 
+    @DeleteMapping("/finances/{trackerId}/expenses")
+    public void deleteAllExpenseRecords(@PathVariable int trackerId){
+        trackerService.deleteAllExpenseRecords(trackerId);
+    }
+
 }

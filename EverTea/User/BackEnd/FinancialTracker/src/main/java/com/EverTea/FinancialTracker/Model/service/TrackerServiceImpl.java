@@ -212,6 +212,7 @@ public class TrackerServiceImpl implements TrackerService{
         trackerDAO.deleteAllIncomeRecords(trackerId);
     }
 
+    @Transactional
     @Override
     public void deleteAllExpenseRecords(int trackerId) {
         FinancialTracker tracker = this.findTrackerById(trackerId);
