@@ -1,7 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from "react-native";
 import Svg, { Rect, Line, Circle, Text as SvgText } from "react-native-svg";
+import ActionModal from "./ActionModal";
 
 interface GrowthChartProps {
   data: number[];
@@ -12,6 +13,9 @@ export default function GrowthChart({ data, status }: GrowthChartProps) {
   const CHART_WIDTH = Dimensions.get("window").width - 96;
   const CHART_HEIGHT = 150;
   const PADDING = 20;
+
+  //state for action popups
+  const [modalVisible, setModalVisible] = useState(false);
   
   // Calculate bar positions and heights
   const getBarProps = () => {
@@ -105,11 +109,12 @@ export default function GrowthChart({ data, status }: GrowthChartProps) {
             </SvgText>
           </Svg>
         </View>
-        <View
+        <TouchableOpacity
           style={[
             styles.actionContainer,
             { backgroundColor: status === "Good" ? "#DEF895" : "#FF6666" }
           ]}
+          onPress={() => setModalVisible(true)}
         >
           <Text style={[styles.actionText,
             { color: status === "Good" ? "#697E2C" : "#fff" }
@@ -117,8 +122,14 @@ export default function GrowthChart({ data, status }: GrowthChartProps) {
             {status === "Good" ? "No action needed" : "Action needed"}
             
           </Text>
-        </View>
+        </TouchableOpacity>
       </LinearGradient>
+       {/* Modal for actions */}
+       <ActionModal 
+        visible={modalVisible}
+        status={status === "Good" ? "noAction" : "action"}
+        onClose={() => setModalVisible(false)}
+      />
     </View>
   );
 }
