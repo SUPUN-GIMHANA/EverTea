@@ -132,4 +132,9 @@ public class TrackerDAOImpl implements TrackerDAO{
         entityManager.remove(expenseRecord);
     }
 
+    @Override
+    public void deleteIncomeRecord(IncomeRecord incomeRecord) {
+        entityManager.remove(incomeRecord);
+    }
+
 }
