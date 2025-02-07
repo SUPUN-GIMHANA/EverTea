@@ -101,6 +101,7 @@ export default function PlantCard() {
           </View>
         </View>
       </LinearGradient>
+      
       <GrowthChart data={SAMPLE_DATA.growthHistory} status={status} />
       <PreviousDetails details={SAMPLE_DATA.previousDetails} />
     </View>
