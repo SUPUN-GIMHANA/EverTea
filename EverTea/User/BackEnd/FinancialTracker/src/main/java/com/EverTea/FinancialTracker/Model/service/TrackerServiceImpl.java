@@ -236,4 +236,19 @@ public class TrackerServiceImpl implements TrackerService{
         }
         trackerDAO.deleteExpenseRecord(expenseRecord);
     }
+
+    @Override
+    public void deleteIncomeRecord(int trackerId, int incomeId) {
+        // checking if the client has sent an invalid id for the tracker or income record
+        FinancialTracker tracker = this.findTrackerById(trackerId);
+        IncomeRecord incomeRecord = this.findIncomeById(incomeId);
+        if (tracker == null){
+            throw new RuntimeException("Financial Tracker does not exist");
+        }
+        if (incomeRecord == null){
+            throw new RuntimeException("Expense record does not exist");
+        }
+        trackerDAO.deleteIncomeRecord(incomeRecord);
+    }
+    
 }
