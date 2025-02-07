@@ -223,6 +223,7 @@ public class TrackerServiceImpl implements TrackerService{
         trackerDAO.deleteAllExpenseRecords(trackerId);
     }
 
+    @Transactional
     @Override
     public void deleteExpenseRecord(int trackerId, int expenseId) {
         // checking if the client has sent an invalid id for the tracker or expense record
@@ -237,6 +238,7 @@ public class TrackerServiceImpl implements TrackerService{
         trackerDAO.deleteExpenseRecord(expenseRecord);
     }
 
+    @Transactional
     @Override
     public void deleteIncomeRecord(int trackerId, int incomeId) {
         // checking if the client has sent an invalid id for the tracker or income record
@@ -250,5 +252,5 @@ public class TrackerServiceImpl implements TrackerService{
         }
         trackerDAO.deleteIncomeRecord(incomeRecord);
     }
-    
+
 }

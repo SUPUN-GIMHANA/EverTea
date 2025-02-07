@@ -138,4 +138,10 @@ public class TrackerController {
         trackerService.deleteExpenseRecord(trackerId,expenseId);
     }
 
+    // Deletes an income record related to a financial tracker
+    @DeleteMapping("/finances/{trackerId}/income/{incomeId}")
+    public void deleteIncomeRecord(@PathVariable int trackerId, @PathVariable int incomeId){
+        trackerService.deleteIncomeRecord(trackerId,incomeId);
+    }
+
 }
