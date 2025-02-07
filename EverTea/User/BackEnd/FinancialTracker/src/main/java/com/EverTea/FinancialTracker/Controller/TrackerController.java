@@ -84,36 +84,43 @@ public class TrackerController {
         return trackerService.calculateTotalIncome(trackerId,startDateTime,endDateTime);
     }
 
+    // Returns the total profit of a financial tracker for a particular time period
     @GetMapping("/finances/{trackerId}/profit/{startDateTime}/{endDateTime}")
     public Map<String,Float> getTotalProfit(@PathVariable int trackerId, @PathVariable LocalDateTime startDateTime,@PathVariable LocalDateTime endDateTime){
         return trackerService.calculateProfit(trackerId,startDateTime,endDateTime);
     }
 
+    // Creates a financial tracker
     @PostMapping("/finances")
     public void saveTracker(@RequestBody FinancialTracker financialTracker){
         trackerService.save(financialTracker);
     }
 
+    // Creates an expense record
     @PostMapping("/finances/{trackerId}/expenses")
     public void saveExpenseRecord(@RequestBody ExpenseRecord expenseRecord, @PathVariable int trackerId){
         trackerService.save(trackerId,expenseRecord);
     }
 
+    // Creates an income record
     @PostMapping("/finances/{trackerId}/income")
     public void saveIncomeRecord(@RequestBody IncomeRecord incomeRecord, @PathVariable int trackerId){
         trackerService.save(trackerId,incomeRecord);
     }
 
+    // Updates an expense record
     @PutMapping("/finances/{trackerId}/expenses/{expenseId}")
     public ExpenseRecord updateExpenseRecord(@PathVariable int expenseId, @RequestBody ExpenseRecord expenseRecord){
         return trackerService.update(expenseId,expenseRecord);
     }
 
+    // Updates an income record
     @PutMapping("/finances/{trackerId}/income/{incomeId}")
     public IncomeRecord updateIncomeRecord(@PathVariable int incomeId, @RequestBody IncomeRecord incomeRecord){
         return trackerService.update(incomeId,incomeRecord);
     }
 
+    // Deletes all income records related to a financial tracker
     @DeleteMapping("/finances/{trackerId}/income")
     public void deleteAllIncomeRecords(@PathVariable int trackerId){
         trackerService.deleteAllIncomeRecords(trackerId);
