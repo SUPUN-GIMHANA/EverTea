@@ -19,7 +19,7 @@ public class UserPlantationCreatingDTO {
     @JsonProperty("district")
     private String district;
     private String teaNameMainDTO;
-    private String teaModel;
+    private Integer teaModel;
     // private String teaNameSubDTO;
     private ArrayList<String> teaNameSubDTO = new ArrayList<>();
 
@@ -40,7 +40,7 @@ public class UserPlantationCreatingDTO {
     private String budgetPlanSystem;
     private String budgetPlanUser;
     private Double avgAreaForATeaPlant = 3.0;
-    private Double teaModelPrice;
+    private Double teaModelPrice = 0.0;
 
 
     //Plantation Creating Data Array

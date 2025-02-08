@@ -60,9 +60,9 @@ public class UserPlantationCreatingController {
         Double area = districtPlantation.getArea();
         Double avgAreaForATeaPlant = districtPlantation.getAvgAreaForATeaPlant();
         Integer landSlope = districtPlantation.getLandSlope();
-        Double teaModelPrice = districtPlantation.getTeaModelPrice();
+        Integer teaModel = districtPlantation.getTeaModel();
 
-        DistrictPlant.recommendedBudgetCalculator(district, area, avgAreaForATeaPlant, landSlope, teaModelPrice);     
+        DistrictPlant.recommendedBudgetCalculator(district, area, avgAreaForATeaPlant, landSlope, teaModel);     
         System.out.println("Started Calculating The Best Plan For The User");
 
         return "Started Calculating The Best Plan For The User";

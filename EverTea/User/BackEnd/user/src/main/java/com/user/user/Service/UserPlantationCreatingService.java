@@ -25,16 +25,17 @@ public class UserPlantationCreatingService {
     }
 
     // Recommended Tea Plantation Budget Calculation and User Given Budget Calculation
-    public String recommendedBudgetCalculator(String district, Double area, Double avgAreaForATeaPlant, Integer landSlope, Double teaModelPrice) {
+    public String recommendedBudgetCalculator(String district, Double area, Double avgAreaForATeaPlant, Integer landSlope, Integer teaModel) {
 
         Integer plantsForTheLand = (area.intValue()*4047) / avgAreaForATeaPlant.intValue() ;
         Integer plants = 500*area.intValue();
         Integer extraPlants = plantsForTheLand - plants;
         System.out.println(avgAreaForATeaPlant + area + district + landSlope + plantsForTheLand+ "\n" + "Recommended Plants" + plants + " Extra Plants" + extraPlants);
 
-        plantationCreation.teaModelPrice(teaModelPrice);
+
+        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(teaModel);
         
-        Integer estimatedCost = plants * teaModelPrice.intValue();
+        Integer estimatedCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
         System.out.println(estimatedCost);
         return null;
     }

@@ -60,17 +60,17 @@ public class UserPlantationCreatingRepo {
     }
 
 
-    public UserPlantationCreatingDTO teaModelPrice(Double teaModelPrice){
+    public UserPlantationCreatingDTO teaModelPrice(Integer teaModel){
         String sqlQuery = "SELECT price FROM teamodels WHERE teaid = ?"; // Check TeaModel Price
 
         try {
-            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{teaModelPrice}, (rs, rowNum) -> {
+            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{teaModel}, (rs, rowNum) -> {
                 UserPlantationCreatingDTO teaModelPriceValue = new UserPlantationCreatingDTO();
                 teaModelPriceValue.setTeaModelPrice(rs.getDouble("price"));
                 return teaModelPriceValue;
             });
         } catch (EmptyResultDataAccessException e) {
-            System.out.println("No recommended TeaModels for: " + teaModelPrice);
+            System.out.println("Price for the teamodel: " );
             return null;
         }
     
