@@ -8,7 +8,6 @@ import com.evertea.admin.DTO.AdminLoginDTO;
 import com.evertea.admin.DTO.AdminSignUpDTO;
 import com.evertea.admin.Service.AdminLoginService;
 
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController

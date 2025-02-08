@@ -1,8 +1,5 @@
 package com.user.user.Repository;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,6 +57,23 @@ public class UserPlantationCreatingRepo {
             System.out.println("No recommended TeaModels for: " + district);
             return null;
         }
+    }
+
+
+    public UserPlantationCreatingDTO teaModelPrice(Double teaModelPrice){
+        String sqlQuery = "SELECT price FROM teamodels WHERE teaid = ?"; // Check TeaModel Price
+
+        try {
+            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{teaModelPrice}, (rs, rowNum) -> {
+                UserPlantationCreatingDTO teaModelPriceValue = new UserPlantationCreatingDTO();
+                teaModelPriceValue.setTeaModelPrice(rs.getDouble("price"));
+                return teaModelPriceValue;
+            });
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println("No recommended TeaModels for: " + teaModelPrice);
+            return null;
+        }
+    
     }
     
 }

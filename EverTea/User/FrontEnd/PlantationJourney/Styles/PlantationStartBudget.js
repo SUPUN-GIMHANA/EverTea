@@ -111,14 +111,6 @@ export const styles = StyleSheet.create({
     },
 
 
-
-
-
-
-
-
-
-
     headerBackground: {
       height: 300,
       justifyContent: 'space-between',
@@ -208,7 +200,7 @@ export const styles = StyleSheet.create({
     budgetImageContainer: {
       width: 350,
       height: 350,
-      position: 'relative',
+      position: 'absolute',
     },
     budgetImage: {
       width: '100%',

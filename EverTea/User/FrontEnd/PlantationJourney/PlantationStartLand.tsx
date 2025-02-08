@@ -19,7 +19,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function FinancialTracker({ navigation }: HomeScreenProps) {
 
-  const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
+  const {  area, districtInputHandler, plantationAreaAndSlope } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -55,10 +55,10 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
           </View>
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} placeholder='Area' onChangeText={districtInputHandler}/>
+          <TextInput style={styles.textInput} placeholder='Area' />
           <View style={styles.searchContainer}>
             <TouchableOpacity 
-              onPress={districtSearchHandler} activeOpacity={0.7}>
+              onPress={plantationAreaAndSlope} activeOpacity={0.7}>
               <Image source={require('../assets/Images/HomePage/Plantation Journey/Search.png')} style={styles.searchIcon} />
             </TouchableOpacity>
           </View>

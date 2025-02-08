@@ -28,6 +28,7 @@ create TABLE TeaModels (
 	teaName VARCHAR NOT NULL UNIQUE,
 	mainDistrict INT NOT NULL,
 	subDistricts VARCHAR NOT NULL,
+	price INT NOT NULL,
 	FOREIGN KEY (mainDistrict) REFERENCES district(districtid) ON DELETE CASCADE
 );
 
@@ -35,6 +36,11 @@ create TABLE District (
 	districtId SERIAL PRIMARY KEY,
 	districtName VARCHAR NOT NULL UNIQUE,
 	mainplant VARCHAR NOT NULL UNIQUE
+);
+
+create TABLE LandSlopes (
+	slopeid SERIAL PRIMARY KEY,
+	slope VARCHAR NOT NULL UNIQUE
 );
 
 
@@ -50,5 +56,24 @@ VALUES (1, 'gall', 'nawodatea'),
 INSERT INTO "userlogin" (UserId, UserName, Password) 
 VALUES (1, 'admin', 'password');
 
+INSERT INTO "landslopes" (slopeid , slope)
+VALUES (1, '25'),
+(2, '50'),
+(3, ' 75');
 
 
+
+
+-- to update the database tables
+ALTER TABLE teamodels
+ADD COLUMN price INT DEFAULT 0 NOT NULL;
+
+
+
+UPDATE teamodels
+SET price = 100
+WHERE teaid = 1;
+
+UPDATE teamodels
+SET price = 200
+WHERE teaid = 2;

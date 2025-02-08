@@ -26,16 +26,21 @@ public class UserPlantationCreatingDTO {
     //Land Page
     @JsonProperty("area")
     private Double area;
-    private String landSlope;
+    private Integer landSlope;
 
 
     //Budget Page
     @JsonProperty("budget")
     private Double budget;
+    private Double teaPlantsUser;
+
+
 
     //Budget Recommendation Page
     private String budgetPlanSystem;
     private String budgetPlanUser;
+    private Double avgAreaForATeaPlant = 3.0;
+    private Double teaModelPrice;
 
 
     //Plantation Creating Data Array
