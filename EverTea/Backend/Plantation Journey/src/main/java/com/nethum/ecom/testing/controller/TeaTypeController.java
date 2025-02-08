@@ -18,8 +18,15 @@ public class TeaTypeController {
     @Autowired
     private TeaTypeService teaTypeService;
 
-    @PostMapping("post-tea-type")
-    public TeaType setTeaTypeByTeaTypeId(@RequestBody TeaType teaType){
+
+    /**
+     * Handles the HTTP POST request to save a new tea type to the tea_type table.
+     *
+     * @param teaType the tea type object to be saved
+     * @return the saved tea type object
+     */
+    @PostMapping("/post-tea-type")
+    public TeaType setTeaTypeByTeaTypeId(@RequestBody TeaType teaType) {
         System.out.println(teaType);
         return teaTypeService.saveTeaData(teaType);
     }
@@ -29,8 +36,16 @@ public class TeaTypeController {
 //        return teaTypeService.updateTeaTypeData(teaTypeId, updateTeaTypeDTO);
 //    }
 
-    @PatchMapping("update-tea-type/{teaTypeId}")
-    public ResponseEntity<TeaType> updateTeaTypeByTeaTypeId(@PathVariable Long teaTypeId, @RequestBody UpdateTeaTypeDTO updateTeaTypeDTO) throws IDNotFoundException{
+    /**
+     * Handles the HTTP PATCH request to update an existing tea type by its ID.
+     *
+     * @param teaTypeId the ID of the tea type to be updated
+     * @param updateTeaTypeDTO the data transfer object containing the updated tea type information
+     * @return a ResponseEntity containing the updated tea type object
+     * @throws IDNotFoundException if the tea type ID is not found
+     */
+    @PatchMapping("/update-tea-type/{teaTypeId}")
+    public ResponseEntity<TeaType> updateTeaTypeByTeaTypeId(@PathVariable Long teaTypeId, @RequestBody UpdateTeaTypeDTO updateTeaTypeDTO) throws IDNotFoundException {
         TeaType updatedTeaType = teaTypeService.updateTeaTypeData(teaTypeId, updateTeaTypeDTO);
         return ResponseEntity.ok(updatedTeaType);
     }

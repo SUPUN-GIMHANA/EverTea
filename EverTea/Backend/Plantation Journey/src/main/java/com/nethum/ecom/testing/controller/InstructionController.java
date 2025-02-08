@@ -14,14 +14,26 @@ import java.util.List;
 public class InstructionController {
 
     @Autowired
-    private InstructionService instructionService;
+    private InstructionService instructionService;  //Autowired to InstructionService
 
-    //EndPoint to get instructions for tea Type
+    //EndPoint to get instructions for tea type
+    /**
+     *
+     * @param teaTypeId
+     * @return List<instruction>
+     * @throws IDNotFoundException
+     */
     @GetMapping("get-instructions/tea-type/{teaTypeId}")
     public List<Instruction> getInstructionsByTeaTypeId(@PathVariable Long teaTypeId) throws IDNotFoundException{
         return instructionService.getInstructionByTeaTypeId(teaTypeId);
     }
 
+    //EndPoint to add new instructions for tea type
+    /**
+     *
+     * @param instruction
+     * @return Instruction
+     */
     @PostMapping("post-instructions")
     public Instruction setInstructionsByTeaTypeId(@RequestBody Instruction instruction){
         return instructionService.saveInstructions(instruction);

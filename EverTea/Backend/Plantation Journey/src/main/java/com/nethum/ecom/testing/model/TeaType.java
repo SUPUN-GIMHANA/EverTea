@@ -60,4 +60,15 @@ public class TeaType {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "TeaType{" +
+                "teaTypeId=" + teaTypeId +
+                ", name='" + name + '\'' +
+                ", lifecycleWeeks=" + lifecycleWeeks +
+                ", wateringIntervalDays=" + wateringIntervalDays +
+                ", fertilizerSchedule='" + fertilizerSchedule + '\'' +
+                '}';
+    }
 }

@@ -16,7 +16,7 @@ public class InstructionExecution {
     private Plantation plantation;
 
     @ManyToOne
-    @JoinColumn(name = "instruction_id", nullable = false)
+    @JoinColumn(name = "instruction_id", nullable = false)  //Detailed instruction
     private Instruction instruction;
 
     @Column(nullable = false)

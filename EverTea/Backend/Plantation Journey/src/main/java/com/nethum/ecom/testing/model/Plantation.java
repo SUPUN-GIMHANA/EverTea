@@ -3,22 +3,25 @@ package com.nethum.ecom.testing.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Plantation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //plantationId will be auto generated
     private long plantationId;
 
+    @ManyToOne
+    @JoinColumn(name = "tea_type_id", nullable = false) //foriegn fey from tea_type table
+    private TeaType teaType;
+
     @Column(nullable = false) // Non-nullable date
-    private LocalDate plantationStartDate;
+    private LocalDateTime plantationStartDateTime;  //The date and time of plantation created
 
     @Column(nullable = false, length = 100) // Plantation name with max length 100
-    private String plantationName;
+    private String plantationName;  //Plantation Name
 
-    @Column(nullable = false, length = 10) // Tea variation like 2026,2032
-    private String teaVariation;
 
     @Column(nullable = false, length = 100) // Location as string
     private String location;
@@ -47,12 +50,12 @@ public class Plantation {
         this.plantationId = plantationId;
     }
 
-    public LocalDate getPlantationStartDate() {
-        return plantationStartDate;
+    public LocalDateTime getPlantationStartDateTime() {
+        return plantationStartDateTime;
     }
 
-    public void setPlantationStartDate(LocalDate plantationStartDate) {
-        this.plantationStartDate = plantationStartDate;
+    public void setPlantationStartDateTime(LocalDateTime plantationStartDateTime) {
+        this.plantationStartDateTime = plantationStartDateTime;
     }
 
     public String getPlantationName() {
@@ -63,12 +66,12 @@ public class Plantation {
         this.plantationName = plantationName;
     }
 
-    public String getTeaVariation() {
-        return teaVariation;
+    public TeaType getTeaType() {
+        return teaType;
     }
 
-    public void setTeaVariation(String teaVariation) {
-        this.teaVariation = teaVariation;
+    public void setTeaType(TeaType teaType) {
+        this.teaType = teaType;
     }
 
     public String getLocation() {

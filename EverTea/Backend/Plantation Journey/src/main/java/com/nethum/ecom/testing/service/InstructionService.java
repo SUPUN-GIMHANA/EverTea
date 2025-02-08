@@ -15,6 +15,13 @@ public class InstructionService implements InstructionServiceInterface {
     @Autowired
     private InstructionRepository instructionRepository;
 
+    /**
+     *Retrive data from instrution repo by using teaTypeId
+     *
+     * @param teaTypeId
+     * @return instructions object
+     * @throws IDNotFoundException
+     */
     @Override
     public List<Instruction> getInstructionByTeaTypeId(Long teaTypeId) throws IDNotFoundException{
         List<Instruction> instructions = instructionRepository.findByTeaType_TeaTypeId(teaTypeId);
@@ -24,6 +31,12 @@ public class InstructionService implements InstructionServiceInterface {
         return instructions;
     }
 
+    /**
+     * Save instructions in database instruction table
+     *
+     * @param instruction
+     * @return saved instruction object body
+     */
     @Override
     public Instruction saveInstructions(Instruction instruction) {
         return instructionRepository.save(instruction);
