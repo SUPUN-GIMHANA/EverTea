@@ -12,7 +12,14 @@ public class UserPlantationCreatingService {
     @Autowired
     private UserPlantationCreatingRepo plantationCreation;
 
+    //Varibles for this class
+    private String lastDistrict; // Store last received district
+    private Double lastArea; // Store last received area
+    private Integer lastLandSlope; // Store last received landSlope
+    private Integer lastTeaModel; // Store last received teaModel
+
     public String districtChecker(String district) {
+        this.lastDistrict = district; // Save district for later use in budgetrecommendation
         plantationCreation.districtCheckerMain(district);
 
         UserPlantationCreatingDTO teaModel = plantationCreation.recomendedTeaPlantMain(district);
@@ -21,22 +28,43 @@ public class UserPlantationCreatingService {
         }
 
         plantationCreation.recomendedTeaPlantSubs(district);
+
+        // Array of all tea plant models
+
+
+
         return "Recommended Tea Models for " + district + " is " + teaModel.getTeaNameMainDTO();
     }
 
+    // Saving other variables 
+    public void variableSaver(Integer teaModel) {
+        this.lastTeaModel = teaModel;
+        System.out.println(lastTeaModel);
+    }
+    public void variableSaver(Double area, Integer landSlope){
+        this.lastArea = area;
+        this.lastLandSlope = landSlope;
+        System.out.println(lastArea + lastLandSlope);
+    }
+
     // Recommended Tea Plantation Budget Calculation and User Given Budget Calculation
-    public String recommendedBudgetCalculator(String district, Double area, Double avgAreaForATeaPlant, Integer landSlope, Integer teaModel) {
+    public String recommendedBudgetCalculator(UserPlantationCreatingDTO avgAreaForThePlant) {
 
-        Integer plantsForTheLand = (area.intValue()*4047) / avgAreaForATeaPlant.intValue() ;
-        Integer plants = 500*area.intValue();
+        Integer avgAreaForTheplant = avgAreaForThePlant.getAvgAreaForATeaPlant().intValue();
+        //Turns acre to meters to calculate uses squres for plant areas
+        Integer plantsForTheLand = (lastArea.intValue()*4047) / (avgAreaForTheplant*avgAreaForTheplant);
+
+        UserPlantationCreatingDTO avgplants = plantationCreation.avgPlantsForADistrict(lastDistrict);
+
+        //Calculated using slope with district and with the given area to give an accurate number of plants
+        Integer plants = avgplants.getAvgPlantsForADistrict()*lastArea.intValue();
         Integer extraPlants = plantsForTheLand - plants;
-        System.out.println(avgAreaForATeaPlant + area + district + landSlope + plantsForTheLand+ "\n" + "Recommended Plants" + plants + " Extra Plants" + extraPlants);
+        System.out.println(extraPlants);
+        System.out.println(avgAreaForTheplant + lastArea + lastDistrict + lastLandSlope + plantsForTheLand+ "\n" + "Recommended Plants : " + plants + " +- " + extraPlants);
 
-
-        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(teaModel);
+        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModel);
         
         Integer estimatedCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
-        System.out.println(estimatedCost);
-        return null;
+        return "Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost;
     }
 }

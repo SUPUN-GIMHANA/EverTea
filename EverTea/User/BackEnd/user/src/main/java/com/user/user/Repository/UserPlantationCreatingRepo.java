@@ -73,7 +73,22 @@ public class UserPlantationCreatingRepo {
             System.out.println("Price for the teamodel: " );
             return null;
         }
-    
     }
+
+    public UserPlantationCreatingDTO avgPlantsForADistrict(String district){
+        String sqlQuery = "SELECT avgplants FROM district WHERE districtname = ?"; // Check TeaModel Price
+        UserPlantationCreatingDTO avgPlantsForADistrictValue = new UserPlantationCreatingDTO();
+
+        try {
+            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{district}, (rs, rowNum) -> {
+                avgPlantsForADistrictValue.setAvgPlantsForADistrict(rs.getInt("avgplants"));
+                return avgPlantsForADistrictValue;
+            });
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println("Avg Plants for that district: " + avgPlantsForADistrictValue.getAvgPlantsForADistrict() );
+            return null;
+        }
+    }
+
     
 }

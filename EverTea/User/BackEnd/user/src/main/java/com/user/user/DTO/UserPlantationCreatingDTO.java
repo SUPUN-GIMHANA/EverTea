@@ -41,6 +41,7 @@ public class UserPlantationCreatingDTO {
     private String budgetPlanUser;
     private Double avgAreaForATeaPlant = 3.0;
     private Double teaModelPrice = 0.0;
+    private Integer avgPlantsForADistrict;
 
 
     //Plantation Creating Data Array

@@ -24,14 +24,15 @@ public class UserPlantationCreatingController {
         return "District found " + DistrictPlant.districtChecker(district);
     }
 
-    // @PostMapping("/plantationTeaModel")
-    // public String plantationTeaModel(@RequestBody UserPlantationCreatingDTO districtPlantation) {
+    @PostMapping("/plantationTeaModel")
+    public String plantationTeaModel(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-    //     String teaModel = districtPlantation.getTeaModel();;
-        
-    //     System.out.println("Received District: " + teaModel);
-    //     return "District found " + DistrictPlant.districtChecker(teaModel);
-    // }
+        Integer teaModel = districtPlantation.getTeaModel();
+        DistrictPlant.variableSaver(teaModel);
+
+        System.out.println("Received District: " + teaModel);
+        return "District found " ;
+    }
 
     @PostMapping("/plantationAreaAndSlope")
     public String plantationArea(@RequestBody UserPlantationCreatingDTO districtPlantation) {
@@ -40,6 +41,7 @@ public class UserPlantationCreatingController {
         Integer landSlope = districtPlantation.getLandSlope();
         System.out.println("Received Area: " + area + " Received Slope: " + landSlope);
 
+        DistrictPlant.variableSaver(area, landSlope);
         return "Area Enetered " + area;
     }
 
@@ -56,15 +58,8 @@ public class UserPlantationCreatingController {
     @PostMapping("/budgetRecommendation")
     public String budgetRecommendation(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-        String district = districtPlantation.getDistrict();
-        Double area = districtPlantation.getArea();
-        Double avgAreaForATeaPlant = districtPlantation.getAvgAreaForATeaPlant();
-        Integer landSlope = districtPlantation.getLandSlope();
-        Integer teaModel = districtPlantation.getTeaModel();
-
-        DistrictPlant.recommendedBudgetCalculator(district, area, avgAreaForATeaPlant, landSlope, teaModel);     
         System.out.println("Started Calculating The Best Plan For The User");
 
-        return "Started Calculating The Best Plan For The User";
+        return DistrictPlant.recommendedBudgetCalculator(districtPlantation);
     }
 }
