@@ -125,16 +125,17 @@ export const styles = StyleSheet.create({
     },
     headerTopic: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      justifyContent: 'center',
       width: '80%',
     },
     greetingText: {
       fontSize: 28,
       color: 'black',
+      
     },
     boldText: {
       fontWeight: 'bold',
+      
     },
     
     buttonIcon: {
@@ -145,16 +146,20 @@ export const styles = StyleSheet.create({
     inputContainer: {
         paddingTop: 20,
         flex:1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: 10,
+        marginHorizontal: 0,
+    },
+    textInputBorder: {
+      paddingBottom: 20,
+      width:'80%',
     },
     textInput: {
         borderWidth: 1,
         borderRadius: 50,
         borderColor: '#FD8045',
-        width:'80%',
+        width:'100%',
         color: 'black',
         paddingLeft: 20,
     },
@@ -199,7 +204,7 @@ export const styles = StyleSheet.create({
     },
     budgetImageContainer: {
       width: 350,
-      height: 350,
+      height: 300,
       position: 'absolute',
     },
     budgetImage: {

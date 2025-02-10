@@ -21,7 +21,9 @@ public class UserPlantationCreatingDTO {
     private String teaNameMainDTO;
     private Integer teaModel;
     // private String teaNameSubDTO;
-    private ArrayList<String> teaNameSubDTO = new ArrayList<>();
+    private ArrayList<String> teaNamesSubDTO = new ArrayList<>();
+    private ArrayList<Integer> teaSubIds = new ArrayList<>(); // New field to store tea IDs
+
 
     //Land Page
     @JsonProperty("area")
@@ -47,4 +49,12 @@ public class UserPlantationCreatingDTO {
     //Plantation Creating Data Array
     private ArrayList<String> plantationUserData = new ArrayList<>();
 
+     // Nested class to hold tea ID and name
+     @Data
+     @AllArgsConstructor
+     @NoArgsConstructor
+     public static class TeaInfo {
+         private int teaId;
+         private String teaName;
+     }
 }

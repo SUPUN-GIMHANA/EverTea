@@ -1,5 +1,7 @@
 package com.user.user.Repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,14 +47,23 @@ public class UserPlantationCreatingRepo {
     }
 
     public UserPlantationCreatingDTO recomendedTeaPlantSubs(String district) {
-        String sqlQuery = "SELECT mainplant FROM district WHERE districtname = ?"; // Check recommended TeaModels
+        String sqlQuery = "SELECT teaid, teaname FROM teamodels WHERE districts LIKE ?"; // Check recommended TeaModels
 
         try {
-            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{district}, (rs, rowNum) -> {
-                UserPlantationCreatingDTO plantmain = new UserPlantationCreatingDTO();
-                plantmain.setTeaNameMainDTO(rs.getString("mainplant"));
-                return plantmain;
+            List<UserPlantationCreatingDTO.TeaInfo> teaInfos = jdbcTemplate.query(sqlQuery, new Object[]{"%" + district + "%"}, (rs, rowNum) -> {
+                UserPlantationCreatingDTO.TeaInfo teaInfo = new UserPlantationCreatingDTO.TeaInfo();
+                teaInfo.setTeaId(rs.getInt("teaid")); // Fetch tea ID
+                teaInfo.setTeaName(rs.getString("teaname")); // Fetch tea name
+                return teaInfo;
             });
+            // Create a UserPlantationCreatingDTO object and set the tea names and IDs
+            UserPlantationCreatingDTO plantDTO = new UserPlantationCreatingDTO();
+            for (UserPlantationCreatingDTO.TeaInfo teaInfo : teaInfos) {
+                plantDTO.getTeaNamesSubDTO().add(teaInfo.getTeaName()); // Add tea names to the list
+                plantDTO.getTeaSubIds().add(teaInfo.getTeaId()); // Add tea IDs to the list
+            }
+    
+            return plantDTO;
         } catch (EmptyResultDataAccessException e) {
             System.out.println("No recommended TeaModels for: " + district);
             return null;

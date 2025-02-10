@@ -22,18 +22,18 @@ public class UserPlantationCreatingService {
         this.lastDistrict = district; // Save district for later use in budgetrecommendation
         plantationCreation.districtCheckerMain(district);
 
-        UserPlantationCreatingDTO teaModel = plantationCreation.recomendedTeaPlantMain(district);
-        if (teaModel == null) {
+        UserPlantationCreatingDTO teaModelMain = plantationCreation.recomendedTeaPlantMain(district);
+        if (teaModelMain == null) {
             return "No recommended Tea Models found";
         }
 
-        plantationCreation.recomendedTeaPlantSubs(district);
-
+        UserPlantationCreatingDTO teaModelSubs = plantationCreation.recomendedTeaPlantSubs(district);
+        System.out.println(teaModelSubs.getTeaNamesSubDTO().size());
         // Array of all tea plant models
 
 
 
-        return "Recommended Tea Models for " + district + " is " + teaModel.getTeaNameMainDTO();
+        return "Recommended Tea Models for " + district + " is " + teaModelMain.getTeaNameMainDTO() + teaModelSubs.getTeaNamesSubDTO();
     }
 
     // Saving other variables 

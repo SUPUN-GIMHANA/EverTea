@@ -16,9 +16,9 @@ type RootStackParamList = {
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 
-export default function FinancialTracker({ navigation }: HomeScreenProps) {
+export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
+  const {  district, teaData, selectedTea, districtInputHandler, districtSearchHandler, handleTeaSelection, sendSelectedTea } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -63,15 +63,12 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
           </View>
         </View>
         <View style={styles.bodyContent}>
-          <View style={styles.headerTopic}>
-            <Text style={styles.greetingText}>
-              <Text style={styles.topic}>Choose your tea type</Text>
-            </Text>
-          </View>
+        <View style={styles.headerTopic}>
+          <Text style={styles.greetingText}>
+            <Text style={styles.topic}>Choose your tea type</Text>
+          </Text>
         </View>
-
-        
-        
+      </View>
       </ScrollView>
 
       <View style={styles.navButtons}>
@@ -91,6 +88,7 @@ export default function FinancialTracker({ navigation }: HomeScreenProps) {
               </Text>
             </TouchableOpacity> 
           </View>
+
       </View>
     </View>
 

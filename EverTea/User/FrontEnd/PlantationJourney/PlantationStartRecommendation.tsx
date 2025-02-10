@@ -18,7 +18,7 @@ type RootStackParamList = {
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 
-export default function FinancialTracker({ navigation }: HomeScreenProps) {
+export default function PlantationStart({ navigation }: HomeScreenProps) {
 
   const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
 

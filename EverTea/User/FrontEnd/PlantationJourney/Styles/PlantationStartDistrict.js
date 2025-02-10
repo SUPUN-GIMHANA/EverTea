@@ -188,6 +188,50 @@ export const styles = StyleSheet.create({
 
 
 
+    teaButton: {
+      padding: 10,
+      marginVertical: 5,
+      backgroundColor: '#e0e0e0',
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    selectedTeaButton: {
+      backgroundColor: '#a0a0a0', // Change color for selected button
+    },
+    teaButtonText: {
+      fontSize: 16,
+      color: '#000',
+    },
+    sendButton: {
+      padding: 10,
+      marginVertical: 10,
+      backgroundColor: '#4CAF50',
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    sendButtonText: {
+      fontSize: 16,
+      color: '#fff',
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Next and Back Buttons
 
     navButtons:{
