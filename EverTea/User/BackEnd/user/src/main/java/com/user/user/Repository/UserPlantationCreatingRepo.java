@@ -101,5 +101,24 @@ public class UserPlantationCreatingRepo {
         }
     }
 
+
+    public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid){
+
+        String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid) VALUES (?, ?, ?, ?)";
+        try {
+            // Execute the SQL query to insert data
+            int rowsInserted = jdbcTemplate.update(sqlQuery, userid, location, plants, teamodelid);
     
+            // Check if the insertion was successful
+            if (rowsInserted > 0) {
+                return "Plantation created successfully!";
+            } else {
+                return "Failed to create plantation.";
+            }
+        } catch (Exception e) {
+            // Log the exception and return an error message
+            System.out.println("Error creating plantation: " + e.getMessage());
+            return "Error creating plantation: " + e.getMessage();
+        }
+    }
 }

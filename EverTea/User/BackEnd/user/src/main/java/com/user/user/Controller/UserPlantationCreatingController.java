@@ -31,7 +31,7 @@ public class UserPlantationCreatingController {
         DistrictPlant.variableSaver(teaModel);
 
         System.out.println("Received District: " + teaModel);
-        return "District found " ;
+        return "District found ";
     }
 
     @PostMapping("/plantationAreaAndSlope")
@@ -61,5 +61,14 @@ public class UserPlantationCreatingController {
         System.out.println("Started Calculating The Best Plan For The User");
 
         return DistrictPlant.recommendedBudgetCalculator(districtPlantation);
+    }
+
+    @PostMapping("/plantationCreation")
+    public String plantationCreation() {
+
+        System.out.println("Started Creating The Plantation For The User");
+
+        
+        return DistrictPlant.plantationCreation();
     }
 }

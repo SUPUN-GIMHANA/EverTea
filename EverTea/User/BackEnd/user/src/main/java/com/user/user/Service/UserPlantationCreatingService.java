@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.user.user.DTO.UserPlantationCreatingDTO;
 import com.user.user.Repository.UserPlantationCreatingRepo;
 
+
+
 @Service
 public class UserPlantationCreatingService {
 
@@ -13,10 +15,12 @@ public class UserPlantationCreatingService {
     private UserPlantationCreatingRepo plantationCreation;
 
     //Varibles for this class
+    
     private String lastDistrict; // Store last received district
     private Double lastArea; // Store last received area
     private Integer lastLandSlope; // Store last received landSlope
     private Integer lastTeaModel; // Store last received teaModel
+    private Integer plantsForTheLand; // Store last received plants
 
     public String districtChecker(String district) {
         this.lastDistrict = district; // Save district for later use in budgetrecommendation
@@ -62,9 +66,20 @@ public class UserPlantationCreatingService {
         System.out.println(extraPlants);
         System.out.println(avgAreaForTheplant + lastArea + lastDistrict + lastLandSlope + plantsForTheLand+ "\n" + "Recommended Plants : " + plants + " +- " + extraPlants);
 
+        this.plantsForTheLand = plants;
         UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModel);
         
         Integer estimatedCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
         return "Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost;
+    }
+
+    public String plantationCreation(){
+
+        Integer userid = 1;
+        String location = lastDistrict;
+        Integer teamodelid = lastTeaModel;
+        Integer plants = plantsForTheLand;
+
+        return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid);
     }
 }
