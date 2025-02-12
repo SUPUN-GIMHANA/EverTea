@@ -26,6 +26,19 @@ export const useAppLogic = () => {
       // Handle response
       console.log('Backend response:', response.data);
       setTeaData(response.data); // Update teaData state with fetched data
+
+      if (response.data && Array.isArray(response.data)) {
+        //converting 
+          const formattedTeaData = response.data.map((tea, index) => ({
+            id: (index + 1).toString(),
+            value: tea,
+          }));
+          setTeaModelNameArraySub(formattedTeaData);
+      }
+
+
+
+
     } catch (error) {
       // Handle errors
       console.error('Error fetching tea data:', error);
@@ -48,12 +61,7 @@ export const useAppLogic = () => {
   let teaModelNameMain;
 
   const [teaModelNameArraySub, setTeaModelNameArraySub] = useState([
-    { id: '1', value: 'Apple' },
-    { id: '2', value: 'Banana' },
-    { id: '3', value: 'Orange' },
-    { id: '4', value: 'Grape' },
-    { id: '5', value: 'Mango' },
-    { id: '6', value: 'Gerald' },
+    
   ]);
 
   const [selectedTeaType, setSelectedTeaType] = useState(null); // No type annotation
@@ -62,6 +70,7 @@ export const useAppLogic = () => {
     console.log('Pressed:', item.value);
     setSelectedTeaType(item.value);
     handleTeaSelection(item.value);
+    sendSelectedTea(item);
   };
 
   const renderTeaItem = ({ item }) => ( // No type annotation
@@ -69,7 +78,12 @@ export const useAppLogic = () => {
       style={[styles.teaButton, selectedTeaType === item.value && styles.selectedTeaButton]}
       onPress={() => handleTeaPress(item)}
     >
-      <Text style={styles.teaButtonText}>{item.value}</Text>
+       <Text style={[
+      styles.teaButtonText,
+      selectedTeaType === item.value && styles.selectedTeaButtonText // Conditional text color
+    ]}>
+      {item.value}
+    </Text>
     </TouchableOpacity>
   );
 
@@ -77,15 +91,15 @@ export const useAppLogic = () => {
     setSelectedTea({ teaId, teaName }); // Store selected tea
   };
 
-  const sendSelectedTea = async () => {
+  const sendSelectedTea = async (item) => {
     if (!selectedTea) {
       console.error('No tea selected');
       return;
     }
     try {
-      const response = await axios.post('http://192.168.1.3:8080/api/user/selectTea', {
+      const response = await axios.post('http://192.168.1.3:8080/api/user/plantationTeaModel', {
         teaId: selectedTea.teaId,
-        teaName: selectedTea.teaName,
+        teaName: item.value,
       });
 
       console.log('Backend response:', response.data);
@@ -93,6 +107,18 @@ export const useAppLogic = () => {
       console.error('Error sending selected tea:', error);
     }
   };
+
+
+
+
+
+
+
+
+
+
+
+
 
   const plantationAreaAndSlope = async () => {
     try {

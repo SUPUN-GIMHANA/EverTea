@@ -285,33 +285,44 @@ export const styles = StyleSheet.create({
 
 
 
+
+
+
+    //js styles
+
+
     // flatlist
     teaTypesContainer: {  // Style for the FlatList container
       flex: 1, // or a specific height
       width: '100%', // or a specific width
       padding: 10,
+      
     },
-  teaButton: {
-      backgroundColor: '#007bff', // Example blue color
-      padding: 10,
-      margin: 5,
-      borderRadius: 5,
-      alignItems: 'center', // Center text within the button
-      flex: 1, // Important to have the buttons take up the whole width in the columns
-    },
-    teaButtonText: {
-      color: 'white',
-      fontSize: 16,
-    },
-    selectedTeaButton: { // Style for the selected button
-      backgroundColor: 'green', // Example green color for selected button
-    },
-    selectedTeaContainer: {
-      marginTop: 20, // Add some space above
-      alignItems: 'center'
-    },
-    selectedTeaText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
+    teaButton: {
+        backgroundColor: 'transparent', // Example blue color
+        padding: 10,
+        margin: 5,
+        borderRadius: 20,
+        borderWidth: 1,
+        alignItems: 'center', // Center text within the button
+        flex: 1, // Important to have the buttons take up the whole width in the columns
+      },
+      teaButtonText: {
+        color: 'black',
+        fontSize: 16,
+      },
+      selectedTeaButton: { // Style for the selected button
+        backgroundColor: '#038C25', // Example green color for selected button
+      },
+      selectedTeaButtonText: {
+        color: 'white',
+      },
+      selectedTeaContainer: {
+        marginTop: 20, // Add some space above
+        alignItems: 'center'
+      },
+      selectedTeaText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
   });

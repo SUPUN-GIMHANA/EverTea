@@ -88,7 +88,25 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               <Text style={styles.selectedTeaText}>Selected Tea: {selectedTeaType}</Text>
               </Text>
             </View>
+            
           )}
+          
+          {/* <View style={styles.container}>
+            <FlatList
+              data={teaModelNameArraySub}
+              renderItem={renderTeaItem}
+              keyExtractor={(item) => item.id}
+              contentContainerStyle={styles.teaTypesContainer} // Style for the container
+            />
+            <View style={styles.selectedTeaContainer}>
+              <Text style={styles.selectedTeaText}>
+                Selected Tea: {selectedTeaType || 'None'}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={sendSelectedTea} style={styles.sendButton}>
+              <Text style={styles.sendButtonText}>Send Selected Tea</Text>
+            </TouchableOpacity>
+          </View> */}
 
 
         </View>

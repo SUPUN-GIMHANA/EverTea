@@ -1,6 +1,9 @@
 package com.user.user.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.user.user.DTO.UserPlantationCreatingDTO;
@@ -16,12 +19,15 @@ public class UserPlantationCreatingController {
     private UserPlantationCreatingService DistrictPlant; // Using Service
 
     @PostMapping("/plantationDistrict")
-    public String plantChoosingWithDistrict(@RequestBody UserPlantationCreatingDTO districtPlantation) {
+    public ResponseEntity<List<String>> plantChoosingWithDistrict(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
         String district = districtPlantation.getDistrict().toLowerCase().trim().replaceAll("\\s+", " ");
         
         System.out.println("Received District: " + district);
-        return "District found " + DistrictPlant.districtChecker(district);
+
+        List<String> teaModels = DistrictPlant.districtChecker(district);
+
+        return ResponseEntity.ok(teaModels);
     }
 
     @PostMapping("/plantationTeaModel")

@@ -1,5 +1,10 @@
 package com.user.user.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ListIterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +27,25 @@ public class UserPlantationCreatingService {
     private Integer lastTeaModel; // Store last received teaModel
     private Integer plantsForTheLand; // Store last received plants
 
-    public String districtChecker(String district) {
+    public List<String> districtChecker(String district) {
         this.lastDistrict = district; // Save district for later use in budgetrecommendation
         plantationCreation.districtCheckerMain(district);
 
         UserPlantationCreatingDTO teaModelMain = plantationCreation.recomendedTeaPlantMain(district);
         if (teaModelMain == null) {
-            return "No recommended Tea Models found";
+            return null;
         }
 
         UserPlantationCreatingDTO teaModelSubs = plantationCreation.recomendedTeaPlantSubs(district);
         System.out.println(teaModelSubs.getTeaNamesSubDTO().size());
         // Array of all tea plant models
 
+        List<String> teaList = new ArrayList<>();
+        teaList.add(teaModelMain.getTeaNameMainDTO()); // Main tea model
+        teaList.addAll(teaModelSubs.getTeaNamesSubDTO()); // Sub tea models
 
 
-        return teaModelMain.getTeaNameMainDTO() + teaModelSubs.getTeaNamesSubDTO();
+        return teaList;
     }
 
     // Saving other variables 
