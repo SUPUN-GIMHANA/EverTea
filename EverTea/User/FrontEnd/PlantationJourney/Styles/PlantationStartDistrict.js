@@ -126,10 +126,10 @@ export const styles = StyleSheet.create({
       paddingTop: '8%',
     },
     headerTopic: {
-      flexDirection: 'row',
+      flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '80%',
+      width: '100%',
     },
     greetingText: {
       fontSize: 28,
@@ -278,5 +278,40 @@ export const styles = StyleSheet.create({
       color: 'lavender',
     },
 
-    
+
+
+
+
+
+
+
+    // flatlist
+    teaTypesContainer: {  // Style for the FlatList container
+      flex: 1, // or a specific height
+      width: '100%', // or a specific width
+      padding: 10,
+    },
+  teaButton: {
+      backgroundColor: '#007bff', // Example blue color
+      padding: 10,
+      margin: 5,
+      borderRadius: 5,
+      alignItems: 'center', // Center text within the button
+      flex: 1, // Important to have the buttons take up the whole width in the columns
+    },
+    teaButtonText: {
+      color: 'white',
+      fontSize: 16,
+    },
+    selectedTeaButton: { // Style for the selected button
+      backgroundColor: 'green', // Example green color for selected button
+    },
+    selectedTeaContainer: {
+      marginTop: 20, // Add some space above
+      alignItems: 'center'
+    },
+    selectedTeaText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
   });

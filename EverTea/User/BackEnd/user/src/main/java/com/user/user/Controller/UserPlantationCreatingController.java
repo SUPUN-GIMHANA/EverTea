@@ -56,7 +56,7 @@ public class UserPlantationCreatingController {
     }
 
     @PostMapping("/budgetRecommendation")
-    public String budgetRecommendation(@RequestBody UserPlantationCreatingDTO districtPlantation) {
+    public String budgetRecommendation(UserPlantationCreatingDTO districtPlantation) {
 
         System.out.println("Started Calculating The Best Plan For The User");
 

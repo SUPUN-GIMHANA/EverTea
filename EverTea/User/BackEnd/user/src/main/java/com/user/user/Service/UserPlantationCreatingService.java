@@ -37,7 +37,7 @@ public class UserPlantationCreatingService {
 
 
 
-        return "Recommended Tea Models for " + district + " is " + teaModelMain.getTeaNameMainDTO() + teaModelSubs.getTeaNamesSubDTO();
+        return teaModelMain.getTeaNameMainDTO() + teaModelSubs.getTeaNamesSubDTO();
     }
 
     // Saving other variables 

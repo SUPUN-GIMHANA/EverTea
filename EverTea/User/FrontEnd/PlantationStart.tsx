@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Button } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Define the type for the navigation stack

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
+import { Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button, TextInput, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartDistrict'; // Import the styles
@@ -18,7 +18,9 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, teaData, selectedTea, districtInputHandler, districtSearchHandler, handleTeaSelection, sendSelectedTea } = useAppLogic();
+  const {  district, teaData, selectedTea, teaModelNameArraySub, selectedTeaType, renderTeaItem, districtInputHandler, districtSearchHandler, handleTeaSelection, sendSelectedTea ,fetchTeaModels} = useAppLogic();
+
+
 
   return (
     <View style={styles.container}>
@@ -67,6 +69,28 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           <Text style={styles.greetingText}>
             <Text style={styles.topic}>Choose your tea type</Text>
           </Text>
+
+
+          <View style={styles.teaTypesContainer}> {/* Container for the FlatList */}
+            <FlatList
+              data={teaModelNameArraySub}
+              renderItem={renderTeaItem}
+              keyExtractor={(item) => item.id}
+              numColumns={2}
+              // contentContainerStyle={{ padding: 10 }}  Add padding if needed
+            />
+          </View>
+
+          {/* Display the selected tea type */}
+          {selectedTeaType && (
+            <View style={styles.selectedTeaContainer}>
+              <Text>
+              <Text style={styles.selectedTeaText}>Selected Tea: {selectedTeaType}</Text>
+              </Text>
+            </View>
+          )}
+
+
         </View>
       </View>
       </ScrollView>
