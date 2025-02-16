@@ -58,6 +58,8 @@ public class UserPlantationCreatingController {
         Double teaPlantsUser = districtPlantation.getTeaPlantsUser();
         System.out.println("Received Budget: " + budget + " Received TeaPlants: " + teaPlantsUser);
 
+        DistrictPlant.variableSaver(budget, teaPlantsUser);
+
         return "Enetered Budget" + budget + " Enetered TeaPlants" + teaPlantsUser;
     }
 
