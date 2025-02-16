@@ -26,7 +26,8 @@ public class UserPlantationCreatingService {
     private Integer lastLandSlope; // Store last received landSlope
     private Integer lastTeaModel; // Store last received teaModel
     private Integer plantsForTheLand; // Store last received plants
-    
+    private Integer userPlantationInput;
+
 
     public List<String> districtChecker(String district) {
         this.lastDistrict = district; // Save district for later use in budgetrecommendation
@@ -94,14 +95,14 @@ public class UserPlantationCreatingService {
         //Calculated using slope with district and with the given area to give an accurate number of plants
         Integer plants = avgplants.getAvgPlantsForADistrict()*lastArea.intValue();
         System.out.println(plants);
-        System.out.println(avgAreaForTheplant + lastArea + lastDistrict + lastLandSlope + plantsForTheLand+ "\n" + "Recommended Plants : " + plants + " +- " + extraPlants);
+        System.out.println(avgAreaForTheplant + lastArea + lastDistrict + lastLandSlope + plantsForTheLand+ "\n" + "Recommended Plants : " + plants + " +- ");
 
         this.plantsForTheLand = plants;
         UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModel);
         
         Integer userCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
 
-        return "Your Plants : "+"Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost;
+        return "Your Plants : "+"Recommended Plants : " + plants;
     }
 
 
