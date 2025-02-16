@@ -19,7 +19,7 @@ export const useAppLogic = () => {
 
   const districtSearchHandler = async () => {
     try {
-      const response = await axios.post('http://192.168.1.3:8080/api/user/plantationDistrict', {
+      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationDistrict', {
         district: district, // Send district in the body
       });
 
@@ -48,7 +48,7 @@ export const useAppLogic = () => {
 
   const fetchTeaModels = async () => {
     try {
-      const response = await axios.get('http://192.168.1.3:8080/api/user/teaModels');
+      const response = await axios.get('http://192.168.1.2:8080/api/user/teaModels');
       console.log('Fetched tea models:', response.data);
       return response.data; // Return the fetched data
     } catch (error) {
@@ -97,7 +97,7 @@ export const useAppLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://192.168.1.3:8080/api/user/plantationTeaModel', {
+      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationTeaModel', {
         teaId: selectedTea.teaId,
         teaName: item.value,
       });
