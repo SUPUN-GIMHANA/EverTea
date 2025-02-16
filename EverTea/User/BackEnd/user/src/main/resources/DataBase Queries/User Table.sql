@@ -16,7 +16,7 @@ create TABLE UserLogin (
 	password VARCHAR NOT NULL
 );
 
-CREATE TABLE "plantations" (
+CREATE TABLE plantations (
     PlantationId INT PRIMARY KEY,
     UserId INT NOT NULL,
     Location VARCHAR(50) NOT NULL,
