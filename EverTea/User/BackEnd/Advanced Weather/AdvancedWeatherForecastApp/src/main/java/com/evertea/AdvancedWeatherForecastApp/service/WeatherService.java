@@ -1,12 +1,12 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
 import com.evertea.AdvancedWeatherForecastApp.Model.WeatherData;
+import com.evertea.AdvancedWeatherForecastApp.repo.WeatherRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,6 +17,9 @@ public class WeatherService {
 
     //Declare city variable
     private String city;
+
+    @Autowired
+    private WeatherRepository weatherRepository;
 
     public void retrieveCity(WeatherData data){
 
@@ -138,9 +141,19 @@ public class WeatherService {
             JSONArray windSpeedArray = (JSONArray) dailyWeatherJson.get("wind_speed_10m_max");
             JSONArray windDirectionArray = (JSONArray) dailyWeatherJson.get("wind_direction_10m_dominant");
 
+
+            if(!weatherRepository.doesCityTableExist(city)){
+                weatherRepository.createCityTableIfTableNotExist(city);
+            }else{
+                System.out.println(city+ "_weather_table is already created");
+            }
+
+
+
             for(int i=0; i < timeArray.size(); i++){
 
                 String date = (String) timeArray.get(i);
+                weatherData.setDateTime(date);
                 System.out.println(date);
 
                 int cloudCover = ((Number) currentWeatherJson.get("cloud_cover")).intValue();
@@ -182,7 +195,7 @@ public class WeatherService {
 
                 long dayLight = Math.round(((Number) dayLightArray.get(i)).longValue());
                 long dayLightHour = dayLight / 3600;
-                weatherData.setDatLight(dayLightHour);
+                weatherData.setDayLight(dayLightHour);
                 System.out.println("Day Light (hourly): "+ dayLightHour);
 
                 long sunShine = Math.round(((Number) sunShineArray.get(i)).longValue());
@@ -243,6 +256,23 @@ public class WeatherService {
                     weatherData.setWindDirection(message);
                     System.out.println(message);
                 }
+
+
+                weatherRepository.insertWeatherData(city,
+                        weatherData.getDateTime(),
+                        weatherData.getCloudCover(),
+                        weatherData.getCurrentTemp(),
+                        weatherData.getTempMax(),
+                        weatherData.getTempMin(),
+                        weatherData.getDayLight(),
+                        weatherData.getSunShine(),
+                        weatherData.getUvIndexMax(),
+                        weatherData.getPrecipitationSum(),
+                        weatherData.getRainSum(),
+                        weatherData.getWindSpeedMax(),
+                        weatherData.getWindDirection());
+
+
             }
 
 

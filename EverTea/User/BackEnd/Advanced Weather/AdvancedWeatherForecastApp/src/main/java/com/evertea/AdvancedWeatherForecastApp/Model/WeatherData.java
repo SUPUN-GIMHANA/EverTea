@@ -2,9 +2,6 @@ package com.evertea.AdvancedWeatherForecastApp.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -21,7 +18,7 @@ public class WeatherData implements Serializable {
     private double currentTemp;
     private double tempMax;
     private double tempMin;
-    private long datLight;
+    private long dayLight;
     private long sunShine;
     private double uvIndexMax;
     private double precipitationSum;
@@ -40,7 +37,7 @@ public class WeatherData implements Serializable {
         this.currentTemp = currentTemp;
         this.tempMax = tempMax;
         this.tempMin = tempMin;
-        this.datLight = datLight;
+        this.dayLight = datLight;
         this.sunShine = sunShine;
         this.uvIndexMax = uvIndexMax;
         this.precipitationSum = precipitationSum;
@@ -105,12 +102,12 @@ public class WeatherData implements Serializable {
         this.tempMin = tempMin;
     }
 
-    public long getDatLight() {
-        return datLight;
+    public long getDayLight() {
+        return dayLight;
     }
 
-    public void setDatLight(long datLight) {
-        this.datLight = datLight;
+    public void setDayLight(long datLight) {
+        this.dayLight = datLight;
     }
 
     public long getSunShine() {
