@@ -13,6 +13,8 @@ export const useAppLogic = () => {
   const [teaData, setTeaData] = useState(null); // State for fetched tea data
   const [selectedTea, setSelectedTea] = useState(null); // State for selected tea
   const [plantationSlope, setPlantationSlope] = useState(null);
+  const [selectedBudget, setSelectedBudget] = useState(null);
+  const [budgetPlans, setBudgetPlans] = useState([]);
 
 
   const districtInputHandler = (input) => {
@@ -171,6 +173,28 @@ export const useAppLogic = () => {
     }
   };
 
+  const handleBudgetPress = (item) => {
+    console.log('Selected Budget:', item.value);
+    setSelectedBudget(item.value); // Update the selected budget state
+  };
+
+  const renderTeaBudget = ({ item  }) => ( // No type annotation
+    <TouchableOpacity
+      style={[styles.budgetButton, selectedBudget  === item .value && styles.selectedBudgetButton]}
+      onPress={() => handleBudgetPress(item )}
+    >
+       <Text style={[
+      styles.budgetButtonText,
+      selectedBudget  === item .value && styles.selectedBudgetButtonText  // Conditional text color
+    ]}>
+      {item .value}
+    </Text>
+    </TouchableOpacity>
+  );
+
+
+
+
 
   //combined operations
   const handleButtonPress = () => {
@@ -193,6 +217,7 @@ export const useAppLogic = () => {
     teaModelNameArraySub,
     selectedTeaType,
     navigation,
+    budgetPlans,
     areaInputHandler,
     enterPlantationSlope,
     plantationSlopeSelection,
@@ -209,5 +234,6 @@ export const useAppLogic = () => {
     budgetInputHandler,
     plantsInputHandler,
     handleButtonPressBudget,
+    renderTeaBudget,
   };
 };

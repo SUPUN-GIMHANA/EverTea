@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView, TextInput, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartRecommendation'; // Import the styles
@@ -20,7 +20,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
+  const {budgetPlans,renderTeaBudget } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -53,6 +53,12 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             <Text style={styles.greetingText}>
               <Text style={styles.boldText}>Select your choice</Text>
             </Text>
+            <FlatList
+              data={budgetPlans} // Replace `budgetPlans` with your actual data
+              renderItem={renderTeaBudget}
+              keyExtractor={(item) => item.id}
+              numColumns={2} // Adjust the number of columns as needed
+            />
           </View>
         </View>
         <View style={styles.inputContainer}>

@@ -224,6 +224,24 @@ export const styles = StyleSheet.create({
       zIndex: 0,
     },
 
+    
+    budgetButton: {
+      padding: 10,
+      margin: 5,
+      backgroundColor: '#e0e0e0',
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    selectedBudgetButton: {
+      backgroundColor: '#a0a0a0', // Change color when selected
+    },
+    budgetButtonText: {
+      fontSize: 16,
+      color: '#000',
+    },
+    selectedBudgetButtonText: {
+      color: '#fff', // Change text color when selected
+    },
 
     // Next and Back Buttons
 
