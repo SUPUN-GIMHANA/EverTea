@@ -25,6 +25,7 @@ public class UserPlantationCreatingService {
     private Double lastArea; // Store last received area
     private Integer lastLandSlope; // Store last received landSlope
     private Integer lastTeaModel; // Store last received teaModel
+    private String lastTeaModelName; // Store last received teaModel
     private Integer plantsForTheLand; // Store last received plants
     private Double userPlantationPlantsInput;
     private Double userPlantationBudgetInput;
@@ -60,10 +61,14 @@ public class UserPlantationCreatingService {
         this.lastTeaModel = teaModel;
         System.out.println(lastTeaModel);
     }
+    public void variableSaver(String teaModelName) {
+        this.lastTeaModelName = teaModelName;
+        System.out.println(lastTeaModelName);
+    }
     public void variableSaver(Double area, Integer landSlope){
         this.lastArea = area;
         this.lastLandSlope = landSlope;
-        System.out.println(lastArea + lastLandSlope);
+        System.out.println(lastArea+ " "+ lastLandSlope);
     }
     public void variableSaver(Double budget, Double teaPlantsUser){
         this.userPlantationPlantsInput = teaPlantsUser;
@@ -88,7 +93,7 @@ public class UserPlantationCreatingService {
         System.out.println(avgAreaForTheplant + lastArea + lastDistrict + lastLandSlope + plantsForTheLand+ "\n" + "Recommended Plants : " + plants + " +- " + extraPlants);
 
         this.plantsForTheLandREC = plants;
-        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModel);
+        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModelName);
         
         Integer estimatedCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
         return "Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost;
@@ -100,7 +105,7 @@ public class UserPlantationCreatingService {
         Integer avgAreaForTheplant = avgAreaForThePlant.getAvgAreaForATeaPlant().intValue();
       
         this.plantsForTheLandUSER = userPlantationPlantsInput.intValue();
-        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModel);
+        UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModelName);
         
         Integer userCost = plantsForTheLandUSER * teaModelPriceValue.getTeaModelPrice().intValue();
 

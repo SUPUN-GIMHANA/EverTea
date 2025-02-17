@@ -33,10 +33,12 @@ public class UserPlantationCreatingController {
     @PostMapping("/plantationTeaModel")
     public String plantationTeaModel(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-        Integer teaModel = districtPlantation.getTeaModel();
-        DistrictPlant.variableSaver(teaModel);
+        // Integer teaModel = districtPlantation.getTeaModel();
 
-        System.out.println("Received District: " + teaModel);
+        String teaModelName = districtPlantation.getTeaModelName();
+        System.out.println("Received TeaModel: " + teaModelName);
+        DistrictPlant.variableSaver(teaModelName);
+
         return "District found ";
     }
 

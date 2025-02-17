@@ -20,6 +20,7 @@ public class UserPlantationCreatingDTO {
     private String district;
     private String teaNameMainDTO;
     private Integer teaModel;
+    private String teaModelName;
     // private String teaNameSubDTO;
     private ArrayList<String> teaNamesSubDTO = new ArrayList<>();
     private ArrayList<Integer> teaSubIds = new ArrayList<>(); // New field to store tea IDs

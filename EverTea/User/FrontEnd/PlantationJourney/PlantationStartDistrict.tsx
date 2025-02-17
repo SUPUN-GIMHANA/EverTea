@@ -18,7 +18,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, teaData, selectedTea, teaModelNameArraySub, selectedTeaType, renderTeaItem, districtInputHandler, districtSearchHandler, handleTeaSelection, sendSelectedTea ,fetchTeaModels} = useAppLogic();
+  const {teaModelNameArraySub, selectedTeaType, renderTeaItem, districtInputHandler, districtSearchHandler, handleTeaSelection, sendSelectedTea ,fetchTeaModels} = useAppLogic();
 
 
 

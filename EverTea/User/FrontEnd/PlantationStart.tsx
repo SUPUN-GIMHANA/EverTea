@@ -11,7 +11,7 @@ type RootStackParamList = {
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-export default function FinancialTracker({ navigation }: HomeScreenProps) {
+export default function PlantationStart({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>

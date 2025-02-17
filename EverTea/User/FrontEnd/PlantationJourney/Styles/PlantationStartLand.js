@@ -176,9 +176,15 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     searchIcon: {
-      width: 28,
-      height: 28, 
+      width: 40,
+      height: 30, 
       alignItems: 'center',
+    },
+    arcesInput: {
+      width:'100%',
+      color: 'black',
+      textAlign: 'center',
+      paddingTop: 2,
     },
 
     bodyContent: {
@@ -203,7 +209,7 @@ export const styles = StyleSheet.create({
     slopeImage: {
       width: 100,
       height: 100,
-      border: 1,
+      borderWidth: 1,
       borderColor: 'transparent',
       borderRadius: 20,
     },
@@ -217,7 +223,7 @@ export const styles = StyleSheet.create({
     imageContainer: { 
       justifyContent: 'center',
       alignItems: 'center',
-      paddingTop: '5%',
+      paddingTop: 20,
     },
     bodyContentSub: {
         border: 1,

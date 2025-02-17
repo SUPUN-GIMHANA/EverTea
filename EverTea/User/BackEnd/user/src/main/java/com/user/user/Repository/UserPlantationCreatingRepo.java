@@ -71,8 +71,8 @@ public class UserPlantationCreatingRepo {
     }
 
 
-    public UserPlantationCreatingDTO teaModelPrice(Integer teaModel){
-        String sqlQuery = "SELECT price FROM teamodels WHERE teaid = ?"; // Check TeaModel Price
+    public UserPlantationCreatingDTO teaModelPrice(String teaModel){
+        String sqlQuery = "SELECT price FROM teamodels WHERE teaname = ?"; // Check TeaModel Price
 
         try {
             return jdbcTemplate.queryForObject(sqlQuery, new Object[]{teaModel}, (rs, rowNum) -> {

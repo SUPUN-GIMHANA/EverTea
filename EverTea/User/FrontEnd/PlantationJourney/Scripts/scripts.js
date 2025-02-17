@@ -1,19 +1,34 @@
 import { useState } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { styles } from '../Styles/PlantationStartDistrict'; // Import the styles
 import axios from 'axios';
 
 export const useAppLogic = () => {
+  const navigation = useNavigation();
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
-  const [landSlope, setLandSlope] = useState('');
   const [budget, setBudget] = useState('');
   const [teaPlantsUser, setTeaPlantUser] = useState('');
   const [teaData, setTeaData] = useState(null); // State for fetched tea data
   const [selectedTea, setSelectedTea] = useState(null); // State for selected tea
+  const [plantationSlope, setPlantationSlope] = useState(null);
+
 
   const districtInputHandler = (input) => {
     setDistrict(input);
+    console.log(input);
+  };
+  const areaInputHandler = (input) => {
+    setArea(input);
+    console.log(input);
+  };
+  const budgetInputHandler = (input) => {
+    setBudget(input);
+    console.log(input);
+  };
+  const plantsInputHandler = (input) => {
+    setTeaPlantUser(input);
     console.log(input);
   };
 
@@ -22,7 +37,6 @@ export const useAppLogic = () => {
       const response = await axios.post('http://192.168.1.2:8080/api/user/plantationDistrict', {
         district: district, // Send district in the body
       });
-
       // Handle response
       console.log('Backend response:', response.data);
       setTeaData(response.data); // Update teaData state with fetched data
@@ -35,10 +49,6 @@ export const useAppLogic = () => {
           }));
           setTeaModelNameArraySub(formattedTeaData);
       }
-
-
-
-
     } catch (error) {
       // Handle errors
       console.error('Error fetching tea data:', error);
@@ -69,6 +79,7 @@ export const useAppLogic = () => {
   const handleTeaPress = (item) => {  // No type annotation
     console.log('Pressed:', item.value);
     setSelectedTeaType(item.value);
+    setSelectedTea({ teaId: item.id, teaName: item.value });
     handleTeaSelection(item.value);
     sendSelectedTea(item);
   };
@@ -92,15 +103,15 @@ export const useAppLogic = () => {
   };
 
   const sendSelectedTea = async (item) => {
-    if (!selectedTea) {
+    if (!item.value) {
       console.error('No tea selected');
       return;
     }
     try {
       const response = await axios.post('http://192.168.1.2:8080/api/user/plantationTeaModel', {
-        teaId: selectedTea.teaId,
-        teaName: item.value,
-      });
+        teaModelName: item.value,
+        
+      }); 
 
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -110,28 +121,26 @@ export const useAppLogic = () => {
 
 
 
-
-
-
-
-
-
-
-
-
+  const plantationSlopeSelection = () => {
+  };
+    const enterPlantationSlope = (slope) => {
+        setPlantationSlope(slope);
+        console.log("Selected Slope:", slope); // Debugging
+    };
+ 
 
   const plantationAreaAndSlope = async () => {
     try {
       const response = await axios.post('http://192.168.1.2:8080/api/user/plantationAreaAndSlope', {
-        area: district,  // Send district in the body
-        landSlope: district,  // Send district in the body
+        area: area,  // Send area in the body
+        landSlope: plantationSlope,  // Send slope in the body
       });
 
       // Handle response
       console.log('Backend response:', response.data);
     } catch (error) {
       // Handle errors
-      console.error('Error sending district:', error);
+      console.error('Error sending Data:', error);
     }
   };
 
@@ -141,7 +150,6 @@ export const useAppLogic = () => {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
       });
-
       // Handle response
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -163,16 +171,31 @@ export const useAppLogic = () => {
     }
   };
 
+
+  //combined operations
+  const handleButtonPress = () => {
+    plantationAreaAndSlope(); // Call the plantationAreaAndSlope function
+    navigation.navigate('PlantationStartBudget'); // Navigate to the next screen
+  };
+  const handleButtonPressBudget = () => {
+    budgetAndTheTeaPlantsOfTheUser(); // Call the plantationAreaAndSlope function
+    budgetRecommendation();
+    navigation.navigate('PlantationStartRecommendation'); // Navigate to the next screen
+  };
+
   return {
     district,
     area,
-    landSlope,
     budget,
     teaPlantsUser,
     teaData,
     selectedTea,
     teaModelNameArraySub,
     selectedTeaType,
+    navigation,
+    areaInputHandler,
+    enterPlantationSlope,
+    plantationSlopeSelection,
     renderTeaItem,
     districtInputHandler,
     districtSearchHandler,
@@ -182,5 +205,9 @@ export const useAppLogic = () => {
     handleTeaSelection,
     sendSelectedTea,
     fetchTeaModels,
+    handleButtonPress,
+    budgetInputHandler,
+    plantsInputHandler,
+    handleButtonPressBudget,
   };
 };

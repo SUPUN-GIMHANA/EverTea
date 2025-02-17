@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
@@ -19,7 +19,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  area, districtInputHandler, plantationAreaAndSlope } = useAppLogic();
+  const {plantationAreaAndSlope, plantationSlopeSelection, enterPlantationSlope, handleButtonPress, areaInputHandler} = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -55,11 +55,13 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} placeholder='Area' />
+          <TextInput style={styles.textInput} placeholder='Area' onChangeText={areaInputHandler}/>
           <View style={styles.searchContainer}>
             <TouchableOpacity 
               onPress={plantationAreaAndSlope} activeOpacity={0.7}>
-              <Image source={require('../assets/Images/HomePage/Plantation Journey/Search.png')} style={styles.searchIcon} />
+              <View style={styles.searchIcon}>
+                <Text style={styles.arcesInput}>Arces</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -78,15 +80,24 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           
           
             <View style={styles.slopeContainer}>
-                <View >
-                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
-                </View>
-                <View >
-                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
-                </View>
-                <View >
-                  <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
-                </View>
+              <TouchableOpacity 
+                onPress={() => enterPlantationSlope(30)} activeOpacity={0.7}>
+                  <View >
+                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                onPress={() => enterPlantationSlope(50)} activeOpacity={0.7}>
+                  <View >
+                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                  </View>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                onPress={() => enterPlantationSlope(70)} activeOpacity={0.7}>
+                  <View >
+                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                  </View>
+              </TouchableOpacity>
             </View>
             <View style={styles.imageContainer}>
               <Image source={require('.././assets/Images/HomePage/Plantation Journey/Land.png')} style={styles.landImage} />
@@ -110,7 +121,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartBudget')} activeOpacity={0.7}>
+              onPress={handleButtonPress} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>

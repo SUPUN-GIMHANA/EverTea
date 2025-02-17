@@ -19,7 +19,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  budget, teaPlantsUser, districtInputHandler, budgetAndTheTeaPlantsOfTheUser, budgetRecommendation } = useAppLogic();
+  const {budgetInputHandler, plantsInputHandler, handleButtonPressBudget, budgetRecommendation } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -56,10 +56,10 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Budget' onChangeText={districtInputHandler}/>
+            <TextInput style={styles.textInput} placeholder='Budget' onChangeText={budgetInputHandler}/>
           </Text>
           <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Plants' onChangeText={districtInputHandler}/>
+            <TextInput style={styles.textInput} placeholder='Plants' onChangeText={plantsInputHandler}/>
           </Text>
         </View>
 
@@ -96,7 +96,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartRecommendation')} onPressIn={budgetRecommendation} activeOpacity={0.7}>
+              onPress={handleButtonPressBudget} onPressIn={budgetRecommendation} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>
