@@ -148,48 +148,62 @@ public class WeatherService {
 
                 if(cloudCover >=0 && cloudCover <= 10){
                     feelsLike= "Clear";
+                    weatherData.setCloudCover(feelsLike);
                     System.out.println("cloud cover" +feelsLike);
                 }else if(cloudCover >= 11 && cloudCover <= 25){
                     feelsLike="Mostly Sunny";
+                    weatherData.setCloudCover(feelsLike);
                     System.out.println("cloud cover" +feelsLike);
                 }else if(cloudCover >= 26 && cloudCover <= 50){
                    feelsLike ="Partly Cloudy";
+                    weatherData.setCloudCover(feelsLike);
                     System.out.println("cloud cover" +feelsLike);
                 }else if(cloudCover >= 51 && cloudCover <= 75){
                     feelsLike = "Mostly Cloudy";
+                    weatherData.setCloudCover(feelsLike);
                     System.out.println("cloud cover" +feelsLike);
                 }else{
                     feelsLike = "Overcast";
+                    weatherData.setCloudCover(feelsLike);
                     System.out.println("cloud cover" +feelsLike);
                 }
 
                 double currentTemp = Math.round(((Number) currentWeatherJson.get("temperature_2m")).doubleValue());
+                weatherData.setCurrentTemp(currentTemp);
                 System.out.println("Current temperature: "+ currentTemp);
 
                 double tempMax = Math.round(((Number) temperatureMaxArray.get(i)).doubleValue());
+                weatherData.setTempMax(tempMax);
                 System.out.println("Maximum Temperature(2m) C: "+ tempMax);
 
                 double tempMin = Math.round(((Number) temperatureMinArray.get(i)).doubleValue());
+                weatherData.setTempMin(tempMin);
                 System.out.println("Minimum Temperature(2m) C: "+ tempMin);
 
                 long dayLight = Math.round(((Number) dayLightArray.get(i)).longValue());
                 long dayLightHour = dayLight / 3600;
+                weatherData.setDatLight(dayLightHour);
                 System.out.println("Day Light (hourly): "+ dayLightHour);
 
                 long sunShine = Math.round(((Number) sunShineArray.get(i)).longValue());
                 long sunShineHour = sunShine / 3600;
+                weatherData.setSunShine(sunShineHour);
                 System.out.println("Sun Shine (h)"+ sunShineHour);
 
                 double uvIndexMax = Math.round(((Number) uvIndexArray.get(i)).doubleValue());
+                weatherData.setUvIndexMax(uvIndexMax);
                 System.out.println("UV index max: "+ uvIndexMax);
 
                 double precipitationSum = Math.round(((Number) precipitationSumArray.get(i)).doubleValue());
+                weatherData.setPrecipitationSum(precipitationSum);
                 System.out.println("Precipitation Sum"+ precipitationSum);
 
                 double rainSum = Math.round(((Number) rainSumArray.get(i)).doubleValue());
+                weatherData.setRainSum(rainSum);
                 System.out.println("Rain sum"+ rainSum);
 
                 double windSpeedMax = Math.round(((Number) windSpeedArray.get(i)).doubleValue());
+                weatherData.setWindSpeedMax(windSpeedMax);
                 System.out.println("Wind speed 10m"+ windSpeedMax);
 
                 long windDirection = Math.round(((Number) windDirectionArray.get(i)).longValue());
@@ -198,27 +212,35 @@ public class WeatherService {
 
                 if(windDirection >= 338 || windDirection < 23){
                     message = "North (N)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 68){
                     message = "North-East(NE)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 113){
                     message = "East (E)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 158){
                     message = "South-East (SE)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 203){
                     message = "South (S)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 248){
                     message = "South-West (SW)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else if(windDirection < 293){
                     message = "West (W)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }else{
                     message = "North-West (NW)";
+                    weatherData.setWindDirection(message);
                     System.out.println(message);
                 }
             }
