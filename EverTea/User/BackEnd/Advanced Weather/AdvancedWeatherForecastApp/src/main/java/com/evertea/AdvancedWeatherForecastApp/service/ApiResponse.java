@@ -1,13 +1,18 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+@Service
 public class ApiResponse {
-
     public static HttpURLConnection fetchApiResponse(String urlString){
+        System.out.println("fetch Api method called");
         try{
             // attempt to create connection
             URL url = new URL(urlString);
@@ -24,6 +29,8 @@ public class ApiResponse {
     }
 
     public static String readApiResponses(HttpURLConnection apiConnection){
+
+        System.out.println("read API method called");
         try{
             // create a string builder to store the resulting JSON data
             StringBuilder resultJson = new StringBuilder();
@@ -36,7 +43,9 @@ public class ApiResponse {
                 // read and append the current line to the StringBuilder
                 resultJson.append(scanner.nextLine());
             }
+            scanner.close();
 
+            return resultJson.toString();
 
         }catch(IOException e){
             e.printStackTrace();
@@ -44,4 +53,7 @@ public class ApiResponse {
         return null;
 
     }
+
+
+
 }
