@@ -49,6 +49,7 @@ public class UserPlantationCreatingDTO {
 
     //Plantation Creating Data Array
     private ArrayList<String> plantationUserData = new ArrayList<>();
+    private Integer userChoiceForPlantationCreation;
 
      // Nested class to hold tea ID and name
      @Data

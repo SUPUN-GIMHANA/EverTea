@@ -129,64 +129,21 @@ export const styles = StyleSheet.create({
     },
     headerTopic: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: 'space-around',
       alignItems: 'center',
       width: '80%',
     },
     greetingText: {
       fontSize: 28,
       color: 'black',
+      
     },
     boldText: {
       fontWeight: 'bold',
+      
     },
     
-    buttonIcon: {
-      width: 24,
-      height: 24,
-    },
     
-    inputContainer: {
-        paddingTop: 20,
-        flex:1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginHorizontal: 10,
-    },
-    textInput: {
-        borderWidth: 1,
-        borderRadius: 50,
-        borderColor: '#FD8045',
-        width:'80%',
-        color: 'black',
-        paddingLeft: 20,
-    },
-    searchContainer: {
-      borderColor: 'transparent',
-      backgroundColor: '#FD8045',
-      borderWidth: 1,
-      borderRadius: 20,
-      width: 50,
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    searchIcon: {
-      width: 28,
-      height: 28, 
-      alignItems: 'center',
-    },
-
-    bodyContent: {
-        flex: 1,
-        padding: 20,
-    },
-    topic: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'black',
-    },
 
 
     
@@ -224,24 +181,80 @@ export const styles = StyleSheet.create({
       zIndex: 0,
     },
 
-    
-    budgetButton: {
-      padding: 10,
-      margin: 5,
-      backgroundColor: '#e0e0e0',
-      borderRadius: 5,
+
+
+    //Budget
+    inputContainer: {
+      paddingTop: 20,
+      flex:1,
+      flexDirection: 'column',
       alignItems: 'center',
+      marginHorizontal: 10,
     },
-    selectedBudgetButton: {
-      backgroundColor: '#a0a0a0', // Change color when selected
+    
+    recommendedBoarder:{
+      borderWidth: 3,
+      borderRadius: 20,
+      padding: 10,
+      borderColor: '#2DD284',
+      width: '100%',
+      marginTop: 10,
     },
-    budgetButtonText: {
-      fontSize: 16,
-      color: '#000',
+    userBoarder:{
+      borderWidth: 3,
+      borderRadius: 20,
+      padding: 10,
+      borderColor: '#B0B0B0',
+      marginTop: 30,
+      width: '100%',
     },
-    selectedBudgetButtonText: {
-      color: '#fff', // Change text color when selected
+    topic1: {
+      borderWidth: 0,
+      borderRadius: 20,
+      padding: 10,
+      backgroundColor: '#2DD284',
+      color:'white',
+      fontSize: 20,
+      textAlign:  'center',
     },
+    topic2: {
+      borderWidth: 0,
+      borderRadius: 20,
+      padding: 10,
+      backgroundColor: '#FD8045',
+      color:'white',
+      fontSize: 20,
+      textAlign:  'center',
+
+    },
+    content: {
+     
+    
+      
+    },
+    content1: {
+      borderWidth: 0,
+      borderRadius: 20,
+      padding: 10,
+      backgroundColor: '#DDFFEF',
+      marginTop: 10,
+      textAlign: 'center',
+      
+    },
+    content2: {
+      borderWidth: 0,
+      borderRadius: 20,
+      padding: 10,
+      backgroundColor: '#EEEEEE',
+      marginTop: 10,
+      textAlign: 'center',
+
+    },
+
+
+
+
+
 
     // Next and Back Buttons
 

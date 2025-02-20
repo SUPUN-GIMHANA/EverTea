@@ -102,12 +102,12 @@ public class UserPlantationCreatingRepo {
     }
 
 
-    public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid){
+    public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid, Integer cost){
 
-        String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid) VALUES (?, ?, ?, ?)";
+        String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid, cost) VALUES (?, ?, ?, ?, ?)";
         try {
             // Execute the SQL query to insert data
-            int rowsInserted = jdbcTemplate.update(sqlQuery, userid, location, plants, teamodelid);
+            int rowsInserted = jdbcTemplate.update(sqlQuery, userid, location, plants, teamodelid, cost);
     
             // Check if the insertion was successful
             if (rowsInserted > 0) {

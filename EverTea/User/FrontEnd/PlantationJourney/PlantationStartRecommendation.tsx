@@ -20,7 +20,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {budgetPlans,renderTeaBudget } = useAppLogic();
+  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, budgetPlan } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -53,30 +53,29 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             <Text style={styles.greetingText}>
               <Text style={styles.boldText}>Select your choice</Text>
             </Text>
-            <FlatList
-              data={budgetPlans} // Replace `budgetPlans` with your actual data
-              renderItem={renderTeaBudget}
-              keyExtractor={(item) => item.id}
-              numColumns={2} // Adjust the number of columns as needed
-            />
           </View>
         </View>
         <View style={styles.inputContainer}>
-          
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <TouchableOpacity
+            onPress={() => budgetPlan(1)} activeOpacity={0.7}>
+            <View style={styles.recommendedBoarder}>
+              <Text style={styles.topic1}>Recommended Plantation</Text>
+              <View style={styles.content}>
+              <Text style={styles.content1}>No. of tea plants : {recommendedPlants} +/- {extraPlants}</Text>
+              <Text style={styles.content1}>Estimate cost     : {recommendedBudget}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => budgetPlan(2)} activeOpacity={0.7}>
+            <View style={styles.userBoarder}>
+              <Text style={styles.topic2}>Plantation for your budget</Text>
+              <View style={styles.content}>
+                <Text style={styles.content2}>No. of tea plants : {userPlants}</Text>
+                <Text style={styles.content2}>Cost              : {userBudget}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
         </View>
 
       </ScrollView>
@@ -90,14 +89,14 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               </Text>
             </TouchableOpacity> 
           </View>
-          <View style={styles.nextButton}>
+          {/* <View style={styles.nextButton}>
             <TouchableOpacity
               onPress={() => navigation.navigate('PlantationStartSucessfull')} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>
             </TouchableOpacity> 
-          </View>
+          </View> */}
       </View>
     </View>
 

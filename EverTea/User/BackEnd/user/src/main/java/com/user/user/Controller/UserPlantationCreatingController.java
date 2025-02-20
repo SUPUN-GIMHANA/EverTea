@@ -1,5 +1,6 @@
 package com.user.user.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,19 +67,24 @@ public class UserPlantationCreatingController {
     }
 
     @PostMapping("/budgetRecommendation")
-    public String budgetRecommendation(UserPlantationCreatingDTO districtPlantation) {
+    public ResponseEntity<List<Integer>> budgetRecommendation(UserPlantationCreatingDTO districtPlantation) {
 
         System.out.println("Started Calculating The Best Plan For The User");
+        List<Integer> budgets = new ArrayList<>();
+        budgets.addAll(DistrictPlant.recommendedBudgetCalculator(districtPlantation));
+        budgets.addAll(DistrictPlant.userGivenDataBudgetCalculator(districtPlantation));
 
-        return DistrictPlant.recommendedBudgetCalculator(districtPlantation);
+        return ResponseEntity.ok(budgets);
+        
     }
 
     @PostMapping("/plantationCreation")
-    public String plantationCreation() {
+    public String plantationCreation(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-        System.out.println("Started Creating The Plantation For The User");
+        Integer userChoice = districtPlantation.getUserChoiceForPlantationCreation();
+        System.out.println("Recieved Users Choice. User Chose : " + userChoice + "as his budget plan");
 
-        
-        return DistrictPlant.plantationCreation();
+        DistrictPlant.saveUserChoice(userChoice);
+        return DistrictPlant.plantationCreation(userChoice);
     }
 }

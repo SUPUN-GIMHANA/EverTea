@@ -1,9 +1,7 @@
 package com.user.user.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +29,14 @@ public class UserPlantationCreatingService {
     private Double userPlantationBudgetInput;
     private Integer plantsForTheLandREC; // Store last received plants
     private Integer plantsForTheLandUSER; // Store last received plants
+    private Integer userChoiceForPlantationCreation; // Stores User's Choice
+    private Integer cost; //Stores Cost for the plantation Universal
+    private Integer userid;
+    private String location;
+    private Integer plants;
+    private Integer teamodelid;
+    private Integer recCost; //Stores Cost for the plantation by System
+    private Integer userCost; //Stores Cost for the plantation by user
 
 
 
@@ -75,10 +81,15 @@ public class UserPlantationCreatingService {
         this.userPlantationBudgetInput = budget;
         System.out.println(userPlantationPlantsInput + userPlantationBudgetInput);
     }
+    public void saveUserChoice(Integer userChoice){
+        this.userChoiceForPlantationCreation = userChoice;
+        System.out.println(userChoiceForPlantationCreation);
+    }
+    
     
 
     // Recommended Tea Plantation Budget Calculation and User Given Budget Calculation
-    public String recommendedBudgetCalculator(UserPlantationCreatingDTO avgAreaForThePlant) {
+    public List<Integer> recommendedBudgetCalculator(UserPlantationCreatingDTO avgAreaForThePlant) {
 
         Integer avgAreaForTheplant = avgAreaForThePlant.getAvgAreaForATeaPlant().intValue();
         //Turns acre to meters to calculate uses squres for plant areas
@@ -96,30 +107,53 @@ public class UserPlantationCreatingService {
         UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModelName);
         
         Integer estimatedCost = plants * teaModelPriceValue.getTeaModelPrice().intValue();
-        return "Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost;
+        this.recCost = estimatedCost;
+        List<Integer> recommendedBudget = new ArrayList<>();
+        recommendedBudget.add(plants);
+        recommendedBudget.add(extraPlants);
+        recommendedBudget.add(estimatedCost);
+        System.out.println("Recommended Plants : " + plants + " +- " + extraPlants + "\nEstimated Cost for TeaPlants Rs: " + estimatedCost);
+        return recommendedBudget;
     }
 
     // User Given Budget Calculation
-    public String userGivenDataBudgetCalculator(UserPlantationCreatingDTO avgAreaForThePlant){
+    public List<Integer> userGivenDataBudgetCalculator(UserPlantationCreatingDTO avgAreaForThePlant){
 
-        Integer avgAreaForTheplant = avgAreaForThePlant.getAvgAreaForATeaPlant().intValue();
       
         this.plantsForTheLandUSER = userPlantationPlantsInput.intValue();
         UserPlantationCreatingDTO teaModelPriceValue = plantationCreation.teaModelPrice(lastTeaModelName);
         
         Integer userCost = plantsForTheLandUSER * teaModelPriceValue.getTeaModelPrice().intValue();
 
-        return "Your Plants : "+ plantsForTheLandUSER + "\nEstimated Cost for TeaPlants Rs:" + userCost;
+        List<Integer> userBudget = new ArrayList<>();
+        userBudget.add(plantsForTheLandUSER);
+        userBudget.add(userCost);
+
+        return userBudget;
     }
 
 
-    public String plantationCreation(){
 
-        Integer userid = 1;
-        String location = lastDistrict;
-        Integer teamodelid = lastTeaModel;
-        Integer plants = plantsForTheLand;
+    public String plantationCreation(Integer userChoice){
 
-        return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid);
+        if (userChoiceForPlantationCreation==1){
+            this.userid = 1;
+            this.location = lastDistrict;
+            this.teamodelid = lastTeaModel;
+            this.plants = plantsForTheLandREC;
+            this.cost = recCost;
+
+        }
+        else{
+            this.userid = 1;
+            this.location = lastDistrict;
+            this.teamodelid = lastTeaModel;
+            this.plants = plantsForTheLandUSER;
+            this.cost = userCost;
+        }
+
+        
+
+        return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid, cost);
     }
 }
