@@ -101,7 +101,20 @@ public class UserPlantationCreatingRepo {
         }
     }
 
+    //TeaModel ID finder to store the plantation in the database
+    public Integer teaModelIDFinder(String teaModelName) {
+        
+        String sqlQuery = "SELECT teaid FROM teamodels WHERE teaname = ?"; // Check TeaModel ID
+        try{
+            return jdbcTemplate.queryForObject(sqlQuery, new Object[]{teaModelName}, Integer.class);
 
+        }
+        catch (EmptyResultDataAccessException e){
+            System.out.println("No ID found for: " + teaModelName);
+            return null;
+        }
+        
+    }
     public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid, Integer cost){
 
         String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid, cost) VALUES (?, ?, ?, ?, ?)";

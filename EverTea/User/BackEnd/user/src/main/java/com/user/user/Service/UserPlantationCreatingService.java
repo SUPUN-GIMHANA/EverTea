@@ -82,6 +82,9 @@ public class UserPlantationCreatingService {
         System.out.println(userPlantationPlantsInput + userPlantationBudgetInput);
     }
     public void saveUserChoice(Integer userChoice){
+        if (userChoice == null) {
+            throw new IllegalArgumentException("User choice cannot be null");
+        }
         this.userChoiceForPlantationCreation = userChoice;
         System.out.println(userChoiceForPlantationCreation);
     }
@@ -134,22 +137,27 @@ public class UserPlantationCreatingService {
 
 
 
+
     public String plantationCreation(Integer userChoice){
 
-        if (userChoiceForPlantationCreation==1){
-            this.userid = 1;
-            this.location = lastDistrict;
-            this.teamodelid = lastTeaModel;
-            this.plants = plantsForTheLandREC;
-            this.cost = recCost;
+        if (userChoice == null) {
+            throw new IllegalArgumentException("User choice cannot be null");
+        }else{
+            if (userChoice==1){
+                this.userid = 1;
+                this.location = lastDistrict;
+                this.teamodelid = plantationCreation.teaModelIDFinder(lastTeaModelName);
+                this.plants = plantsForTheLandREC;
+                this.cost = recCost;
 
-        }
-        else{
-            this.userid = 1;
-            this.location = lastDistrict;
-            this.teamodelid = lastTeaModel;
-            this.plants = plantsForTheLandUSER;
-            this.cost = userCost;
+            }
+            else{
+                this.userid = 1;
+                this.location = lastDistrict;
+                this.teamodelid = plantationCreation.teaModelIDFinder(lastTeaModelName);
+                this.plants = plantsForTheLandUSER;
+                this.cost = userCost;
+            }
         }
 
         

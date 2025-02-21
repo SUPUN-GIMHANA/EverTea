@@ -81,10 +81,10 @@ public class UserPlantationCreatingController {
     @PostMapping("/plantationCreation")
     public String plantationCreation(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
-        Integer userChoice = districtPlantation.getUserChoiceForPlantationCreation();
-        System.out.println("Recieved Users Choice. User Chose : " + userChoice + "as his budget plan");
+        Integer userChoice = districtPlantation.getUserChoice();
+        System.out.println("Recieved Users Choice. User Chose : " + userChoice + " as his budget plan");
 
-        DistrictPlant.saveUserChoice(userChoice);
+        // DistrictPlant.saveUserChoice(userChoice);
         return DistrictPlant.plantationCreation(userChoice);
     }
 }
