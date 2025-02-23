@@ -1,0 +1,103 @@
+.blackBar{
+    width: 20%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.logoAndName{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-left: 20px;
+
+}
+    
+
+.logo{
+    width: 70px;
+    height: 70px;
+    /* background-color: rgba(255, 0, 0, 0.9); */
+    margin-top: 30px;
+}
+
+.name{
+    width: 210px;
+    height: 70px;
+    /* background-color: rgba(109, 0, 119, 0.9); */
+    font-size: 40px;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.logoSize{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+
+.category{
+    width: 220px;
+    height: 570px;
+    /* background-color: rgb(47, 0, 255); */
+    margin-top:60px;
+    margin-left: 20px;
+    
+}
+
+.logoall{
+    width: 22px;
+    height: 22px;
+}
+
+.homeLine{
+    display: flex;
+    margin-top: 10px;
+}
+
+.notificationLine{
+    display: flex;
+    margin-top: 15px;
+    
+}
+
+.TitleAll{
+    color: #ffffff;
+    margin-left: 22px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.TitleAl {
+    display: flex;
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+
+.coloms{
+    display: flex;
+}
+
+.welcome{
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userName{
+    color: #ffffff;
+    font-size: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo1{
+    width: 70px;
+    height: 70px;
+    /* background-color: rgba(255, 0, 0, 0.9); */
+}
+.nameAndWelcome{
+    margin-left: 20px;
+}

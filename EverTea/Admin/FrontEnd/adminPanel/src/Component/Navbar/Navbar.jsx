@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className='blackBox'>
               <input className='btn' type='eamil' placeholder='Enter your Email'/>
               <input className='btn1' type="password" placeholder="Enter your password" />
-              <button className='btn2'><Link to="/Register">Login</Link></button>
+              <Link to="/Register"><button className='btn2'>Login</button></Link>
               <div className='p'>Forgot your password ?</div>
               <div><span style={{ color: "white" }}>Don't have an account ?</span> <span style={{ color: "green", fontWeight: "bold", cursor: "pointer" }}>sign up</span></div>
             </div>

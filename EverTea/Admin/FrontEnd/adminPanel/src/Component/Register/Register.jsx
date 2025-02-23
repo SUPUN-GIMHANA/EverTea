@@ -1,5 +1,6 @@
 import React from 'react'
 import './Register.css'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -17,7 +18,7 @@ const Navbar = () => {
               <input className='btn5' type='eamil' placeholder='Enter your Email'/>
               <input className='btn5' type="password" placeholder="Enter your password" />
               <input className='btn5' type='nic' placeholder='Enter NIC Number'/>
-              <button className='btn4'>Register</button>
+              <Link to="/HomePage"><button className='btn4'>Register</button></Link>
               <div><span style={{ color: "white" }}>Have an account ?</span> <span style={{ color: "green", fontWeight: "bold", cursor: "pointer" }}>Log in</span></div>
             </div>
           </div>
