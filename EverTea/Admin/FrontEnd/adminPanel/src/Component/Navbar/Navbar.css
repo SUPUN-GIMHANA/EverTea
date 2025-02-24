@@ -111,3 +111,8 @@ body{
     margin-top: 20px;
     cursor: pointer;
 }
+
+/* input:focus+btn{
+    transform: translateY(-25px);
+    color: #fcee2c;
+} */
