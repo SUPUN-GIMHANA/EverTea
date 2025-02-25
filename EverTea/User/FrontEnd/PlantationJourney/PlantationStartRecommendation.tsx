@@ -20,7 +20,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, budgetPlan } = useAppLogic();
+  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, budgetPlanRec, budgetPlanUser } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -57,7 +57,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
         <View style={styles.inputContainer}>
           <TouchableOpacity
-            onPress={() => budgetPlan(1)} activeOpacity={0.7}>
+            onPress={() => budgetPlanRec()} activeOpacity={0.7}>
             <View style={styles.recommendedBoarder}>
               <Text style={styles.topic1}>Recommended Plantation</Text>
               <View style={styles.content}>
@@ -67,7 +67,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => budgetPlan(2)} activeOpacity={0.7}>
+            onPress={() => budgetPlanUser()} activeOpacity={0.7}>
             <View style={styles.userBoarder}>
               <Text style={styles.topic2}>Plantation for your budget</Text>
               <View style={styles.content}>
