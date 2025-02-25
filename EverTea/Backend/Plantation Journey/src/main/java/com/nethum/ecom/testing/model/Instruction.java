@@ -22,6 +22,12 @@ public class Instruction {
     @Column(nullable = false)
     private int triggerDay;     // The day instruction should be executed based on tea_type
 
+    @Column(nullable = false)
+    private int startDay;
+
+    @Column(nullable = true)
+    private Integer endDay;
+
     @Column(nullable = true)
     private Integer recurringFrequencyWeek; // How much times should continue the instruction per week
 
@@ -74,6 +80,22 @@ public class Instruction {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public int getStartDay() {
+        return startDay;
+    }
+
+    public void setStartDay(int startDay) {
+        this.startDay = startDay;
+    }
+
+    public Integer getEndDay() {
+        return endDay;
+    }
+
+    public void setEndDay(int endDay) {
+        this.endDay = endDay;
     }
 
     @Override

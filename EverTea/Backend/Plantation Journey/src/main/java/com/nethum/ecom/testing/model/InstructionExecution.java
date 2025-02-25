@@ -3,6 +3,7 @@ package com.nethum.ecom.testing.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class InstructionExecution {
@@ -19,38 +20,35 @@ public class InstructionExecution {
     @JoinColumn(name = "instruction_id", nullable = false)  //Detailed instruction
     private Instruction instruction;
 
-    @Column(nullable = false)
-    private String status;  //PENDING , COMPLETED
 
     @Column(nullable = false)
-    private LocalDate executionDate;
+    private LocalDateTime executionDate;
 
-    @Column(nullable = false)
-    private boolean userConfirmed;
 
-    public boolean isUserConfirmed() {
-        return userConfirmed;
+    public InstructionExecution(){
+
     }
 
-    public void setUserConfirmed(boolean userConfirmed) {
-        this.userConfirmed = userConfirmed;
-    }
+    public InstructionExecution(Long instructionId, Long plantationId, LocalDateTime executionDate) {
+        this.instruction = new Instruction();
+        this.instruction.setInstructionId(instructionId);
+        this.plantation = new Plantation();
+        this.plantation.setPlantationId(plantationId);
 
-    public LocalDate getExecutionDate() {
-        return executionDate;
-    }
-
-    public void setExecutionDate(LocalDate executionDate) {
         this.executionDate = executionDate;
     }
 
-    public String getStatus() {
-        return status;
+
+
+    public LocalDateTime getExecutionDate() {
+        return executionDate;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setExecutionDate(LocalDateTime executionDate) {
+        this.executionDate = executionDate;
     }
+
+
 
     public Instruction getInstruction() {
         return instruction;
