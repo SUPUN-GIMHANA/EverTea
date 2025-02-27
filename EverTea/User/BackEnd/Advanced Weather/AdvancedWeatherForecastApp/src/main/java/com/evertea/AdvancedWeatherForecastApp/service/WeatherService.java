@@ -21,6 +21,9 @@ public class WeatherService {
     @Autowired
     private WeatherRepository weatherRepository;
 
+    @Autowired
+    private WeatherNotificationService notificationService;
+
     public void retrieveCity(WeatherData data){
 
         city = data.getCity();
@@ -274,6 +277,10 @@ public class WeatherService {
 
 
             }
+
+            notificationService.getNotificationMessage(weatherData);
+
+
 
 
 
