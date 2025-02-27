@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,6 +18,9 @@ public class WeatherService {
 
     //Declare city variable
     private String city;
+
+    double latitude = 0;
+    double longitude = 0;
 
     @Autowired
     private WeatherRepository weatherRepository;
@@ -32,10 +36,8 @@ public class WeatherService {
 
         JSONObject cityLocationData = (JSONObject) getLocationData(city);
 
-        double latitude = (double) cityLocationData.get("latitude");
-        double longitude = (double) cityLocationData.get("longitude");
-
-        displayWeatherData(latitude, longitude);
+        latitude = (double) cityLocationData.get("latitude");
+        longitude = (double) cityLocationData.get("longitude");
 
     }
 
@@ -97,7 +99,8 @@ public class WeatherService {
         return null;
     }
 
-    private void displayWeatherData(double latitude, double longitude){
+    @Scheduled(fixedRate = 10000, initialDelay = 6000)
+    private void displayWeatherData(){
 
         System.out.println("city : "+ city);
         // create an instance of WeatherData
@@ -279,10 +282,6 @@ public class WeatherService {
             }
 
             notificationService.getNotificationMessage(weatherData);
-
-
-
-
 
         }catch(IOException e){
             e.printStackTrace();
