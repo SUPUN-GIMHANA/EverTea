@@ -1,6 +1,6 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
-import com.evertea.AdvancedWeatherForecastApp.Model.WeatherData;
+import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
 import com.evertea.AdvancedWeatherForecastApp.repo.WeatherRepository;
 import com.evertea.AdvancedWeatherForecastApp.webSocket.WeatherDataWebSocketHandler;
 import org.json.simple.JSONArray;

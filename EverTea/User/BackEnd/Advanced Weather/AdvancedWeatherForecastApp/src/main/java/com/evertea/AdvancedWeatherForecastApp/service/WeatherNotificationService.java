@@ -1,7 +1,7 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
-import com.evertea.AdvancedWeatherForecastApp.Model.WeatherData;
-import com.evertea.AdvancedWeatherForecastApp.Model.WeatherNotification;
+import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
+import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherNotification;
 import com.evertea.AdvancedWeatherForecastApp.repo.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.Model;
+package com.evertea.AdvancedWeatherForecastApp.DTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
