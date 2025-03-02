@@ -21,21 +21,21 @@ const DataBase = () => {
         <div className='dataBox'>
                 <div className='top'>
                     <div className='tableDataBox'> <Link to="/Table/Table1">District</Link> </div>
-                    <div className='tableDataBox'>Land Slope</div>
-                    <div className='tableDataBox'>plantation</div>
-                    <div className='tableDataBox'>Tea Models</div>
+                    <div className='tableDataBox'> <Link to="/Table/Table2">Land Slope</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table3">plantation</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table4">Tea Model</Link></div>
                 </div>
                 <div className='top'>
-                    <div className='tableDataBox'>District</div>
-                    <div className='tableDataBox'>Land Slope</div>
-                    <div className='tableDataBox'>plantation</div>
-                    <div className='tableDataBox'>Tea Models</div>
+                    <div className='tableDataBox'> <Link to="/Table/Table5">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table6">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table7">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table8">District</Link> </div>
                 </div>
                 <div className='top'>
-                    <div className='tableDataBox'>District</div>
-                    <div className='tableDataBox'>Land Slope</div>
-                    <div className='tableDataBox'>plantation</div>
-                    <div className='tableDataBox'>Tea Models</div>
+                    <div className='tableDataBox'> <Link to="/Table/Table9">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table10">Land Slope</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table11">plantation</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table12">Tea Model</Link></div>
                 </div>
         </div>
     </div>

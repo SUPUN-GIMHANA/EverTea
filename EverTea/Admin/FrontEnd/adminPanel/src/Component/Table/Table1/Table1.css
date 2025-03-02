@@ -24,7 +24,7 @@
     height: 430px;
     background-color: rgba(0, 0, 0, 0.87);
     border-radius: 30px;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 25% ;
     display: flex;
     align-items: center;
@@ -46,4 +46,10 @@ table {
   th {
     background-color: #f2f2f2;
   }
-  
+  .arrow1{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-left: 20px;
+  }

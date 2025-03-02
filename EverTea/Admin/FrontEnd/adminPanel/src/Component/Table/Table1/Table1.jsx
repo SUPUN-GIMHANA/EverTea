@@ -3,6 +3,7 @@ import './Table1.css'
 
 import logo from '../../../assets/logo.jpg'
 import Menu from '../../../assets/Menu.png'
+import arrow1 from '../../../assets/arrow1.jpg'
 import { Link } from 'react-router-dom'
 
 const Table1 = () => {
@@ -15,6 +16,10 @@ const Table1 = () => {
         <Link to="/HomePage">
             <div className='menu'><img src={Menu} className='MenuLogo'/></div>
         </Link>
+        <Link to="/DataBase">
+        <div className='arrow1'><img src={arrow1} className='arrow1'/></div>
+        </Link>
+
         <div className='districtTopic'>District Data</div>
         <div className='dataBox1'>
             <div className='insideBox'>
@@ -22,7 +27,7 @@ const Table1 = () => {
                     <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Name1</th>
                                 <th>Age</th>
                                 <th>Country</th>
                                 <th>District</th>
