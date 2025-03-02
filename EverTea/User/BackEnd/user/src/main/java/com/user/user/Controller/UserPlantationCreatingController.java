@@ -13,7 +13,7 @@ import com.user.user.Service.UserPlantationCreatingService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/user")
+@RequestMapping("/api/userPlantationCreating")
 public class UserPlantationCreatingController {
 
     @Autowired
