@@ -10,7 +10,6 @@ import SosCard from '../../assets/SosCard.png'
 import { Link } from 'react-router-dom'
 
 
-
 const HomePage = () => {
   return (
 
@@ -40,7 +39,7 @@ const HomePage = () => {
         <div className='cardAndTitle'>
 
             <div  className='TitleAl'>
-                    <div className='logo1'><img src={logo} className='logoSize'/></div>
+                <div className='logo1'><img src={logo} className='logoSize'/></div>
                     <div className='nameAndWelcome'>
                         <div className='welcome'>Welcome back</div>
                         <div className='userName'>SUPUN GIMHANA</div>
@@ -54,12 +53,15 @@ const HomePage = () => {
                             <div className='message'>Handling</div>
                         </div>
                     </div>
+
+                    <Link to="/Account"><button className='credBtn'>
                     <div className='cardContainer'><img src={AccountCard} className='cardHandel'/>
                         <div className='textOverlay'>
                             <div  className='headMessage'>Account Maintenance</div>
                             <div className='message'>Forecasting</div>
                         </div>
                     </div>
+                    </button></Link>
 
                     {/* <Link to="/Register"><button className='btn2'>Login</button></Link> */}
 
