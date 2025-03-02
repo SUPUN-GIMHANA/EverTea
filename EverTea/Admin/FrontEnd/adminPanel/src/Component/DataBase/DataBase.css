@@ -1,0 +1,88 @@
+.dataBlack{
+    width: 100%;
+    height: 1000px;
+    background-color: rgba(0, 0, 0, 0.363);
+}
+
+.dataLogoAndName{
+    display: flex;
+}
+
+.dataLogo{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.dataName{
+    width: 210px;
+    height: 70px;
+    /* background-color: rgba(109, 0, 119, 0.9); */
+    font-size: 40px;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.MenuLogo{
+    width: 30px;
+    height: 30px;
+}
+
+.menu{
+    margin-top: 20px;
+    margin-left: 48px;
+}
+.dataTopic{
+    color: #ffff;
+    font-size: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 40%;
+    font-weight: bold;
+}
+
+.dataBox{
+    width: 800px;
+    height: 420px;
+    background-color: rgba(0, 0, 0, 0.87);
+    border-radius: 30px;
+    margin-top: 50px;
+    margin-left: 25% ;
+}
+.top{
+    width: 100%;
+    height: 140px;
+    /* background-color: red; */
+}
+
+.middle{
+    width: 100%;
+    height: 140px;
+    /* background-color: rgb(217, 255, 0); */
+}
+
+.bottom{
+    width: 100%;
+    height: 140px;
+    /* background-color: rgb(0, 255, 213); */
+}
+
+.tableDataBox{
+    margin: 17px;
+    width: 22%;
+    height: 90px;
+    background-color: rgba(8, 49, 4, 0.863);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    color: #ffff;
+    font-size: 20px;
+}
+.top{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

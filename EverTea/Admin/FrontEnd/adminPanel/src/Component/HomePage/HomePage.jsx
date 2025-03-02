@@ -47,25 +47,27 @@ const HomePage = () => {
             </div>
 
                 <div className='card'>
+                    <Link to="/DataBase">
                     <div className='cardContainer'><img src={DataBaseCard} className='cardHandel'/>
                         <div className='textOverlay'>
                             <div className='headMessage'>DataBase</div>
                             <div className='message'>Handling</div>
                         </div>
                     </div>
+                    </Link>
 
-                    <Link to="/Account"><button className='credBtn'>
+                    <Link to="/Account">
                     <div className='cardContainer'><img src={AccountCard} className='cardHandel'/>
                         <div className='textOverlay'>
                             <div  className='headMessage'>Account Maintenance</div>
                             <div className='message'>Forecasting</div>
                         </div>
                     </div>
-                    </button></Link>
+                    </Link>
 
                     {/* <Link to="/Register"><button className='btn2'>Login</button></Link> */}
 
-                    <Link to="/Contact"><button className='credBtn'>
+                    <Link to="/Contact">
                     <div className='cardContainer'><img src={SosCard} className='cardHandel'/>
                         <div className='textOverlay'>
                             <div  className='headMessage'>SOS Message</div>
@@ -73,7 +75,7 @@ const HomePage = () => {
                         </div>
                         
                     </div>
-                    </button></Link>
+                    </Link>
                     
                 </div>
 

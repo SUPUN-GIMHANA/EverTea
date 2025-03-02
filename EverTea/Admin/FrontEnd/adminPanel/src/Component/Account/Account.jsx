@@ -4,6 +4,7 @@ import './Account.css'
 import logo from '../../assets/logo.jpg'
 import Home from '../../assets/Home.png'
 import Bell from '../../assets/Bell.png'
+import { Link } from 'react-router-dom'
 
 const Account = () => {
   return (
@@ -17,10 +18,12 @@ const Account = () => {
           </div>
 
            <div className='category'>
+              <Link to="/HomePage">
               <div className='homeLine'>
                   <div className='home'><img src={Home} className='logoall'/></div>
                   <div className='TitleAll'>Home page</div>
               </div>
+              </Link>
 
               <div className='notificationLine'>
                   <div className='notification'><img src={Bell} className='logoall'/></div>
