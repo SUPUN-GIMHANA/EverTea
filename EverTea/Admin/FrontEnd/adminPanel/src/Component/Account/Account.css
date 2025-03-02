@@ -1,0 +1,25 @@
+.account{
+    display: flex;
+}
+
+.accountBlack{
+    width: 20%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+.accountText{
+    width: 169vh;
+    height: 100vh;
+    /* background-color: rgb(0, 161, 35); */
+}
+
+.plantation{
+    width: 350px;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.788);
+    border-radius: 20px;
+    margin-left: 350px;
+
+}

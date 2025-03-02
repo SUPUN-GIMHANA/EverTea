@@ -44,7 +44,7 @@ const HomePage = () => {
                         <div className='welcome'>Welcome back</div>
                         <div className='userName'>SUPUN GIMHANA</div>
                     </div>
-                </div>
+            </div>
 
                 <div className='card'>
                     <div className='cardContainer'><img src={DataBaseCard} className='cardHandel'/>
@@ -88,7 +88,7 @@ const HomePage = () => {
         </div>
 
     </div>
-  )
+    )
 }
 
 export default HomePage
