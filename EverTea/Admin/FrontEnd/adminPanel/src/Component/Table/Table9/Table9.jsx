@@ -1,12 +1,12 @@
 import React from 'react'
-import './Table6.css'
+import './Table9.css'
 
 import logo from '../../../assets/logo.jpg'
 import Menu from '../../../assets/Menu.png'
 import arrow1 from '../../../assets/arrow1.jpg'
 import { Link } from 'react-router-dom'
 
-const Table6 = () => {
+const Table9 = () => {
   return (
     <div className='table1Black'>
         <div className='dataLogoAndName'>
@@ -27,7 +27,7 @@ const Table6 = () => {
                     <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
                         <thead>
                             <tr>
-                                <th>Name6</th>
+                                <th>Name9</th>
                                 <th>Age</th>
                                 <th>Country</th>
                                 <th>District</th>
@@ -55,4 +55,4 @@ const Table6 = () => {
   )
 }
 
-export default Table6
+export default Table9
