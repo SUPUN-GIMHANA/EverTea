@@ -44,7 +44,7 @@ export const useAppLogic = () => {
 
   const districtSearchHandler = async () => {
     try {
-      const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/plantationDistrict', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationDistrict', {
         district: district, // Send district in the body
       });
       // Handle response
@@ -68,7 +68,7 @@ export const useAppLogic = () => {
 
   const fetchTeaModels = async () => {
     try {
-      const response = await axios.get('http://192.168.1.5:8080/api/userPlantationCreating/teaModels');
+      const response = await axios.get('http://192.168.1.2:8080/api/userPlantationCreating/teaModels');
       console.log('Fetched tea models:', response.data);
       return response.data; // Return the fetched data
     } catch (error) {
@@ -118,7 +118,7 @@ export const useAppLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/plantationTeaModel', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationTeaModel', {
         teaModelName: item.value,
         
       }); 
@@ -141,7 +141,7 @@ export const useAppLogic = () => {
 
   const plantationAreaAndSlope = async () => {
     try {
-      const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/plantationAreaAndSlope', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationAreaAndSlope', {
         area: area,  // Send area in the body
         landSlope: plantationSlope,  // Send slope in the body
       });
@@ -156,7 +156,7 @@ export const useAppLogic = () => {
 
   const budgetAndTheTeaPlantsOfTheUser = async () => {
     try {
-      const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
       });
@@ -170,7 +170,7 @@ export const useAppLogic = () => {
 
   const budgetRecommendation = async () => {
     try {
-      const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/budgetRecommendation', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation', {
       });
       setRecommendedPlants(response.data[0]);
       setExtraPlants(response.data[1]);
@@ -193,7 +193,7 @@ export const useAppLogic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://192.168.1.5:8080/api/userPlantationCreating/budgetRecommendation', {});
+        const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation', {});
         setRecommendedPlants(response.data[0]);
         setExtraPlants(response.data[1]);
         setRecommendedBudget(response.data[2]);
@@ -229,7 +229,7 @@ export const useAppLogic = () => {
 
   const plantationCreation = () => {
     try {
-      const response = axios.post('http://192.168.1.5:8080/api/userPlantationCreating/plantationCreation', {
+      const response = axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationCreation', {
       });
         
       // Handle response
