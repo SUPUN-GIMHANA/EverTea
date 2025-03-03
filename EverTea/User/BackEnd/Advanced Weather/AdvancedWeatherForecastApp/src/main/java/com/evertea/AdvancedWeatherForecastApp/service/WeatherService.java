@@ -106,6 +106,12 @@ public class WeatherService {
     @Scheduled(fixedRate = 10000, initialDelay = 6000)
     private void displayWeatherData(){
 
+        // prevent the program execute until get the API response
+        if(city == null || city.isBlank()){
+            System.out.println("City is null. waiting for API response.....");
+            return;
+        }
+
         System.out.println("city : "+ city);
         // create an instance of WeatherData
         WeatherData weatherData = new WeatherData();
@@ -160,7 +166,7 @@ public class WeatherService {
 
 
 
-            for(int i=0; i < timeArray.size(); i++){
+            for(int i=0; i < 1; i++){
 
                 String date = (String) timeArray.get(i);
                 weatherData.setDateTime(date);

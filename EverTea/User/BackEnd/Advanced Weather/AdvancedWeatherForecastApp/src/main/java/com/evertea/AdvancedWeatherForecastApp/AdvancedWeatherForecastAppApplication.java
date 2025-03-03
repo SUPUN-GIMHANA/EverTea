@@ -11,7 +11,7 @@ public class AdvancedWeatherForecastAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AdvancedWeatherForecastAppApplication.class, args);
 
-		System.out.println("Hello world");
+		System.out.println("------------------Advanced Weather Forecast Application------------------");
 	}
 
 }
