@@ -2,7 +2,6 @@ package com.growth_tracker.growth_tracker.controller;
 
 import com.growth_tracker.growth_tracker.entity.GrowthRecord;
 import com.growth_tracker.growth_tracker.repository.GrowthRecordRepository;
-import com.growth_tracker.growth_tracker.service.GrowthTrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
