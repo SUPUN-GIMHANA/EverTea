@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    tools{
+        maven "maven_in"
+    }
+    stages{
+        stage("Build application"){
+            steps{
+                checkout scmGit(branches: [[name: 'Financial-Tracker-Backend']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/ReidenRealm/EverTea']])
+                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install'
+            }
+        }
+        stage("Build docker image"){
+            steps{
+                script{
+                    sh 'cd EverTea/User/Backend/FinancialTracker && docker build -t rehabnaf/evertea .'
+                }
+            }
+        }
+        stage("Push image to hub"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u rehabnaf -p ${dockerhubpwd}'
+                    }
+                    sh 'docker push rehabnaf/evertea'
+                }
+            }
+        }
+
+    }
+}
