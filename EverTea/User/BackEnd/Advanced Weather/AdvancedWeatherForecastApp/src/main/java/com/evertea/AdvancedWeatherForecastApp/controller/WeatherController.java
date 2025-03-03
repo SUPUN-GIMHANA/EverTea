@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/weather")
+@RequestMapping("/api/weather")
 public class WeatherController {
 
     @Autowired
     private WeatherService service;
 
-    @PostMapping("/setCity")
-    public void setCity(@RequestBody LocationAndTokenReceiver receiver){
+    @PostMapping("/location")
+    public void locationAndTokenReceiver(@RequestBody LocationAndTokenReceiver receiver){
 
         // weatherService class
         service.retrieveLocation(receiver);

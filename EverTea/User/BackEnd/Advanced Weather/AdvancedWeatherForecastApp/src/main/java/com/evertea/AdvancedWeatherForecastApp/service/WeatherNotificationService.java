@@ -12,6 +12,9 @@ public class WeatherNotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    @Autowired
+    private FirebaseMessagingService firebaseMessagingService;
+
     public void getNotificationMessage(WeatherData weatherData){
         int[] notificationIdArray = new int[15];
 
@@ -69,6 +72,7 @@ public class WeatherNotificationService {
             if(notificationIdArray[i] != 0){
                 WeatherNotification notification = notificationRepository.findById(notificationIdArray[i]);
                 System.out.println("* "+notification.getMessage());
+                firebaseMessagingService.sendNotificationByToken(notification.getMessage());
                 System.out.println();
             }
 
