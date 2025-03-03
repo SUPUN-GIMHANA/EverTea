@@ -12,8 +12,11 @@ public class WeatherRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public boolean doesCityTableExist(String city){
-        String tableName = city.replaceAll("\\s+", "_").toLowerCase() + "_weather";
+    public boolean doesCityTableExist(String latitude, String longitude){
+        String tableName =  "weather_"
+                            + latitude.replace(".","_") +
+                            "_"+
+                            longitude.replace(".", "_");
 
         String sql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = ?";
 
@@ -22,12 +25,16 @@ public class WeatherRepository {
         return count > 0;
     }
 
-    public void createCityTableIfTableNotExist(String city){
-        String tableName = city.replaceAll("\\s+", "_").toLowerCase()+"_weather";
+    public void createCityTableIfTableNotExist(String latitude, String longitude){
+        String tableName =  "weather_"
+                + latitude.replace(".","_") +
+                "_"+
+                longitude.replace(".", "_");
 
         String createTableSql =    "CREATE TABLE IF NOT EXISTS " + tableName + " ("
                 + "id INT AUTO_INCREMENT PRIMARY KEY, "
-                + "city VARCHAR(50) NOT NULL, "
+                + "latitude VARCHAR(100) NOT NULL, "
+                + "longitude VARCHAR(100) NOT NULL, "
                 + "date_time VARCHAR(50) NOT NULL, "
                 + "cloud_cover VARCHAR(50), "
                 + "current_temp DECIMAL(5,2), "
@@ -46,11 +53,14 @@ public class WeatherRepository {
         jdbcTemplate.execute(createTableSql);
     }
 
-    public void insertWeatherData(String city, String dateTime, String cloud_cover, double currentTemp,double tempMax, double tempMin, long dayLight, long sunShine, double uvIndexSum, double precipitationSum, double rainSum,double windSpeedMax, String windDirection){
-        String tableName = city.replaceAll("\\s+", "_").toLowerCase()+"_weather";
-        String sql = "INSERT INTO "+ tableName + " (city, date_time,cloud_cover,current_temp, maximum_temp, minimum_temp, day_light, sun_shine, uv_index_max, precipitation_sum, rain_sum, wind_speed_max, wind_direction) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public void insertWeatherData(String latitude,String longitude, String dateTime, String cloud_cover, double currentTemp,double tempMax, double tempMin, long dayLight, long sunShine, double uvIndexSum, double precipitationSum, double rainSum,double windSpeedMax, String windDirection){
+        String tableName =  "weather_"
+                + latitude.replace(".","_") +
+                "_"+
+                longitude.replace(".", "_");
+        String sql = "INSERT INTO "+ tableName + " (latitude, longitude, date_time,cloud_cover,current_temp, maximum_temp, minimum_temp, day_light, sun_shine, uv_index_max, precipitation_sum, rain_sum, wind_speed_max, wind_direction) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql, city, dateTime, cloud_cover,currentTemp, tempMax, tempMin, dayLight, sunShine,uvIndexSum, precipitationSum, rainSum, windSpeedMax, windDirection);
+        jdbcTemplate.update(sql, latitude, longitude, dateTime, cloud_cover,currentTemp, tempMax, tempMin, dayLight, sunShine,uvIndexSum, precipitationSum, rainSum, windSpeedMax, windDirection);
 
     }
 }

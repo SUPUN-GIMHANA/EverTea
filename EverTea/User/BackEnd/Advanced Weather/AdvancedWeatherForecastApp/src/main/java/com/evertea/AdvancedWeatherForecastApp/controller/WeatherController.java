@@ -1,5 +1,6 @@
 package com.evertea.AdvancedWeatherForecastApp.controller;
 
+import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
 import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
 import com.evertea.AdvancedWeatherForecastApp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,10 @@ public class WeatherController {
     private WeatherService service;
 
     @PostMapping("/setCity")
-    public void setCity(@RequestBody WeatherData data){
-        System.out.println("Fetched the city: "+ data.getCity());
+    public void setCity(@RequestBody LocationAndTokenReceiver receiver){
 
-        service.retrieveCity(data);
+        // weatherService class
+        service.retrieveLocation(receiver);
+
     }
 }

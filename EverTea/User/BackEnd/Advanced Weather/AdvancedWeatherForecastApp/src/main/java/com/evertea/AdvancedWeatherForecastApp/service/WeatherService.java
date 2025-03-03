@@ -1,5 +1,6 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
+import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
 import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
 import com.evertea.AdvancedWeatherForecastApp.repo.WeatherRepository;
 import com.evertea.AdvancedWeatherForecastApp.webSocket.WeatherDataWebSocketHandler;
@@ -18,7 +19,6 @@ import java.net.HttpURLConnection;
 public class WeatherService {
 
     //Declare city variable
-    private String city;
 
     double latitude = 0;
     double longitude = 0;
@@ -32,87 +32,88 @@ public class WeatherService {
     @Autowired
     private WeatherDataWebSocketHandler webSocketHandler;
 
-    public void retrieveCity(WeatherData data){
+    public void retrieveLocation(LocationAndTokenReceiver receiver){
 
-        city = data.getCity();
-        System.out.println("City from retrieveCity method:" + city);
+        latitude = receiver.getLatitude();
+        longitude = receiver.getLongitude();
 
+        System.out.println("lat: "+ latitude);
+        System.out.println("lon: "+ longitude);
 
-        JSONObject cityLocationData = (JSONObject) getLocationData(city);
+       // JSONObject cityLocationData = (JSONObject) getLocationData(city);
 
-        latitude = (double) cityLocationData.get("latitude");
-        longitude = (double) cityLocationData.get("longitude");
+//        latitude = (double) cityLocationData.get("latitude");
+//        longitude = (double) cityLocationData.get("longitude");
 
     }
 
-    private static JSONObject getLocationData(String city){
-
-        System.out.println("Get location Data: "+ city);
-        // create an object of weather data
-        WeatherData weatherData = new WeatherData();
-
-        city = city.replaceAll(" ", "+");
-        weatherData.setCity(city);
-
-        // checking purpose
-        System.out.println("location method called");
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("City name from get location method: "+ city);
-
-        // Assigned the API key
-        String urlString = "https://geocoding-api.open-meteo.com/v1/search?name=" +
-                            city +
-                            "&count=1&language=en&format=json";
-
-        try{
-            // Fetch the API response based on API link
-            HttpURLConnection apiConnection = ApiResponse.fetchApiResponse(urlString);
-
-            // Response status check
-            if(apiConnection.getResponseCode() != 200){
-                System.out.println("Error: could not connect API");
-                return null;
-            }
-
-            // read the response and convert store string type
-            String jsonResponse = ApiResponse.readApiResponses(apiConnection);
-
-            System.out.println("API response: "+ jsonResponse);
-
-            // parse the string into a json object
-            // create an instance of a JSON parser
-            JSONParser parser = new JSONParser();
-            JSONObject resultJsonObject = (JSONObject) parser.parse(jsonResponse);
-
-            if(resultJsonObject == null){
-                throw new RuntimeException("API response is null. Check the API URL or parameters.");
-            }
-            // retrieve location data
-            JSONArray locationData = (JSONArray) resultJsonObject.get("results");
-            return (JSONObject) locationData.get(0);
-
-
-
-        }catch(Exception e){
-            e.printStackTrace();
-
-        }
-
-
-
-        return null;
-    }
+//    private static JSONObject getLocationData(String city){
+//
+//        System.out.println("Get location Data: "+ city);
+//        // create an object of weather data
+//        WeatherData weatherData = new WeatherData();
+//
+//        city = city.replaceAll(" ", "+");
+//        weatherData.setCity(city);
+//
+//        // checking purpose
+//        System.out.println("location method called");
+//        System.out.println("------------------------------------------------------------------");
+//        System.out.println("City name from get location method: "+ city);
+//
+//        // Assigned the API key
+//        String urlString = "https://geocoding-api.open-meteo.com/v1/search?name=" +
+//                            city +
+//                            "&count=1&language=en&format=json";
+//
+//        try{
+//            // Fetch the API response based on API link
+//            HttpURLConnection apiConnection = ApiResponse.fetchApiResponse(urlString);
+//
+//            // Response status check
+//            if(apiConnection.getResponseCode() != 200){
+//                System.out.println("Error: could not connect API");
+//                return null;
+//            }
+//
+//            // read the response and convert store string type
+//            String jsonResponse = ApiResponse.readApiResponses(apiConnection);
+//
+//            System.out.println("API response: "+ jsonResponse);
+//
+//            // parse the string into a json object
+//            // create an instance of a JSON parser
+//            JSONParser parser = new JSONParser();
+//            JSONObject resultJsonObject = (JSONObject) parser.parse(jsonResponse);
+//
+//            if(resultJsonObject == null){
+//                throw new RuntimeException("API response is null. Check the API URL or parameters.");
+//            }
+//            // retrieve location data
+//            JSONArray locationData = (JSONArray) resultJsonObject.get("results");
+//            return (JSONObject) locationData.get(0);
+//
+//
+//
+//        }catch(Exception e){
+//            e.printStackTrace();
+//
+//        }
+//
+//
+//
+//        return null;
+//    }
 
     @Scheduled(fixedRate = 10000, initialDelay = 6000)
     private void displayWeatherData(){
 
         // prevent the program execute until get the API response
-        if(city == null || city.isBlank()){
-            System.out.println("City is null. waiting for API response.....");
+        if(latitude == 0 && longitude == 0){
+            System.out.println("Latitude and Longitude is null, waiting for API response...");
             return;
         }
 
-        System.out.println("city : "+ city);
         // create an instance of WeatherData
         WeatherData weatherData = new WeatherData();
 
@@ -158,10 +159,10 @@ public class WeatherService {
             JSONArray windDirectionArray = (JSONArray) dailyWeatherJson.get("wind_direction_10m_dominant");
 
 
-            if(!weatherRepository.doesCityTableExist(city)){
-                weatherRepository.createCityTableIfTableNotExist(city);
+            if(!weatherRepository.doesCityTableExist(String.valueOf(latitude), String.valueOf(longitude))){
+                weatherRepository.createCityTableIfTableNotExist(String.valueOf(latitude), String.valueOf(longitude));
             }else{
-                System.out.println(city+ "_weather_table is already created");
+                System.out.println(latitude+"_"+longitude+ "_weather_table is already created");
             }
 
 
@@ -297,7 +298,8 @@ public class WeatherService {
                 }
 
 
-                weatherRepository.insertWeatherData(city,
+                weatherRepository.insertWeatherData(String.valueOf(latitude),
+                        String.valueOf(longitude),
                         weatherData.getDateTime(),
                         weatherData.getCloudCover(),
                         weatherData.getCurrentTemp(),
