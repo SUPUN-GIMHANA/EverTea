@@ -1,6 +1,5 @@
 package com.growth_tracker.growth_tracker.model;
 
-import com.growth_tracker.growth_tracker.entity.GrowthRecord;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

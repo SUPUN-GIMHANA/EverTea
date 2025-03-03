@@ -1,7 +1,5 @@
 package com.growth_tracker.growth_tracker.service;
 
-import com.growth_tracker.growth_tracker.dto.GrowthRequestDTO;
-import com.growth_tracker.growth_tracker.dto.GrowthResponseDTO;
 import com.growth_tracker.growth_tracker.entity.GrowthRecord;
 import com.growth_tracker.growth_tracker.repository.GrowthRecordRepository;
 import org.springframework.scheduling.annotation.Scheduled;
