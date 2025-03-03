@@ -3,8 +3,10 @@ package com.growth_tracker.growth_tracker.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Data
+@Component
 public class GrowthResponseDTO {
 
     private Long plantationId;

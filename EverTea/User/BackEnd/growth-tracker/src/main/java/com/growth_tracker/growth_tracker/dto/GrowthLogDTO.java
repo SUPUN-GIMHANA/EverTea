@@ -1,5 +1,10 @@
 package com.growth_tracker.growth_tracker.dto;
 
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
 public class GrowthLogDTO {
     private Long plantationId;
     private int month;
