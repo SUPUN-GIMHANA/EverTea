@@ -64,7 +64,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>EverTea.jar</finalName>
+		<finalName>EverTea</finalName>
 	</build>
 
 </project>
