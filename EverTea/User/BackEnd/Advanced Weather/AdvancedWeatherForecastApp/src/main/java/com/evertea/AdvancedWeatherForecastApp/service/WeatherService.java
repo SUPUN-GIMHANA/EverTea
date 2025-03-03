@@ -19,7 +19,6 @@ import java.net.HttpURLConnection;
 public class WeatherService {
 
     //Declare city variable
-
     double latitude = 0;
     double longitude = 0;
 
@@ -40,70 +39,8 @@ public class WeatherService {
         System.out.println("lat: "+ latitude);
         System.out.println("lon: "+ longitude);
 
-       // JSONObject cityLocationData = (JSONObject) getLocationData(city);
-
-//        latitude = (double) cityLocationData.get("latitude");
-//        longitude = (double) cityLocationData.get("longitude");
-
     }
 
-//    private static JSONObject getLocationData(String city){
-//
-//        System.out.println("Get location Data: "+ city);
-//        // create an object of weather data
-//        WeatherData weatherData = new WeatherData();
-//
-//        city = city.replaceAll(" ", "+");
-//        weatherData.setCity(city);
-//
-//        // checking purpose
-//        System.out.println("location method called");
-//        System.out.println("------------------------------------------------------------------");
-//        System.out.println("City name from get location method: "+ city);
-//
-//        // Assigned the API key
-//        String urlString = "https://geocoding-api.open-meteo.com/v1/search?name=" +
-//                            city +
-//                            "&count=1&language=en&format=json";
-//
-//        try{
-//            // Fetch the API response based on API link
-//            HttpURLConnection apiConnection = ApiResponse.fetchApiResponse(urlString);
-//
-//            // Response status check
-//            if(apiConnection.getResponseCode() != 200){
-//                System.out.println("Error: could not connect API");
-//                return null;
-//            }
-//
-//            // read the response and convert store string type
-//            String jsonResponse = ApiResponse.readApiResponses(apiConnection);
-//
-//            System.out.println("API response: "+ jsonResponse);
-//
-//            // parse the string into a json object
-//            // create an instance of a JSON parser
-//            JSONParser parser = new JSONParser();
-//            JSONObject resultJsonObject = (JSONObject) parser.parse(jsonResponse);
-//
-//            if(resultJsonObject == null){
-//                throw new RuntimeException("API response is null. Check the API URL or parameters.");
-//            }
-//            // retrieve location data
-//            JSONArray locationData = (JSONArray) resultJsonObject.get("results");
-//            return (JSONObject) locationData.get(0);
-//
-//
-//
-//        }catch(Exception e){
-//            e.printStackTrace();
-//
-//        }
-//
-//
-//
-//        return null;
-//    }
 
     @Scheduled(fixedRate = 10000, initialDelay = 6000)
     private void displayWeatherData(){
