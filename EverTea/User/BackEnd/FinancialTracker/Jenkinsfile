@@ -38,7 +38,7 @@ pipeline{
                     echo "Sending 'success' status to GitHub"
                     echo "The commit SHA is: ${env.commitSha}"
                     def response = httpRequest(
-                        url: "https://api.github.com/repos/rehabnaf/learn-jenkins-app/statuses/${env.commitSha}",
+                        url: "https://api.github.com/repos/ReidenRealm/EverTea/statuses/${env.commitSha}",
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         requestBody: """{
@@ -58,7 +58,7 @@ pipeline{
                     echo "Sending 'failure' status to GitHub"
                     echo "The commit SHA is: ${env.commitSha}"
                     def response = httpRequest(
-                        url: "https://api.github.com/repos/rehabnaf/learn-jenkins-app/statuses/${env.commitSha}",
+                        url: "https://api.github.com/repos/ReidenRealm/EverTea/statuses/${env.commitSha}",
                         httpMode: 'POST',
                         contentType: 'APPLICATION_JSON',
                         requestBody: """{
