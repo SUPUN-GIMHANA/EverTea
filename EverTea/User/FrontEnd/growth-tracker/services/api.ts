@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { PlantData } from '../types';
 
-//Base URL for your API
+// Base URL for your API
 // For Android emulator, use 10.0.2.2 instead of localhost
 // For iOS simulator, use localhost
 // For physical devices, use your computer's IP address
-const API_BASE_URL = "http://10.0.2.2:8080/api";
+const API_BASE_URL = "http://10.0.2.2:8080/api"; // Change this based on your setup
 
 // Create an axios instance
 const api = axios.create({
@@ -65,5 +65,4 @@ export const checkPlantStatus = async (plantId: string, height: number): Promise
     }
 };
 
-
-export default api
+export default api;

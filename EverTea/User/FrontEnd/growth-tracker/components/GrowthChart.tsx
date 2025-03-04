@@ -25,7 +25,7 @@ export default function GrowthChart({ data, status }: GrowthChartProps) {
     const barWidth = availableWidth / totalBars; // Each bar gets equal portion
     const actualBarWidth = barWidth * 0.6; // Bar width with spacing
     
-    return data.map((value, index) => {
+    return [...data].reverse().map((value, index) => {
       const height = (value / maxValue) * (CHART_HEIGHT - PADDING * 2);
       const x = PADDING + (index * barWidth) + (barWidth - actualBarWidth) / 1;
       const y = CHART_HEIGHT - PADDING - height;

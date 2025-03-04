@@ -10,7 +10,7 @@ import {
   ActivityIndicator
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { PlantData } from "../types";
+import { PlantData } from "../types/index";
 import GrowthChart from "./GrowthChart";
 import PreviousDetails from "./PreviousDetails";
 import { fetchPlantDetails, updatePlantHeight } from "../services/api";
@@ -62,37 +62,37 @@ export default function PlantCard() {
   const [updating, setUpdating] = useState(false);
 
   // Plant ID - this would typically come from navigation params or context
-  const plantId = "1"; // Assuming this is the ID plant
+  const plantId = "1"; // Assuming this is the ID of your plant
 
-  //function to load plant data
-  const loadPlantData = async ()=>{
+  // Function to load plant data
+  const loadPlantData = async () => {
     try {
       setLoading(true);
       const data = await fetchPlantDetails(plantId);
       setPlantData(data);
-    }catch(error){
+    } catch (error) {
       console.error("Failed to load plant data:", error);
-      Alert.alert("Error", "Failed to load plant data. Please try again");
-    }finally{
+      Alert.alert("Error", "Failed to load plant data. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
 
-  //load data when component mounts
-  useEffect(()=>{
+  // Load data when component mounts
+  useEffect(() => {
     loadPlantData();
   }, []);
 
-  //function to increase height
-  const increaseHeight = async ()=>{
+  // Function to increase height
+  const increaseHeight = async () => {
     if (!plantData) return;
-
-    try{
+    
+    try {
       setUpdating(true);
       const newHeight = plantData.height + 1;
       const result = await updatePlantHeight(plantId, newHeight);
-
-      //update local state with the new height and the status
+      
+      // Update local state with new height and status
       setPlantData({
         ...plantData,
         height: newHeight,
@@ -104,10 +104,10 @@ export default function PlantCard() {
     } finally {
       setUpdating(false);
     }
-  }
+  };
 
-   // Function to decrease height
-   const decreaseHeight = async () => {
+  // Function to decrease height
+  const decreaseHeight = async () => {
     if (!plantData || plantData.height <= 0) return;
     
     try {
@@ -129,16 +129,14 @@ export default function PlantCard() {
     }
   };
 
-
   // Show loading spinner while data is being fetched
-  if(loading){
+  if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#20C58D">
-          <Text style={styles.loadingText}>Loading plant data</Text>
-        </ActivityIndicator>
+        <ActivityIndicator size="large" color="#20C58D" />
+        <Text style={styles.loadingText}>Loading plant data...</Text>
       </View>
-    )
+    );
   }
 
   // If no data is available, show error
@@ -276,7 +274,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -312,7 +309,6 @@ const styles = StyleSheet.create({
   updatingIndicator: {
     marginTop: 8
   },
-
   topCardContainer: {
     marginBottom: 0,
     position: "relative"
@@ -370,7 +366,7 @@ const styles = StyleSheet.create({
   },
   heightInfo: {
     alignItems: "flex-end",
-    backgroundColor: "rgba(0, 0, 0, 0.09)", // Black with 9% opacity
+    backgroundColor: "rgba(0, 0, 0, 0.09)",
     padding: 20,
     borderRadius: 15
   },
@@ -381,7 +377,7 @@ const styles = StyleSheet.create({
   },
   heightLabel: {
     fontSize: 14,
-    fontWeight: 500,
+    fontWeight: "500",
     color: "#3D552F"
   },
   heightValue: {
@@ -395,9 +391,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 50,
     width: "100%",
-    justifyContent: "space-around", // Equal spacing around buttons
-    alignItems: "center", // Ensure buttons align properly
-    overflow: "hidden" // Prevents color from bleeding outside border radius
+    justifyContent: "space-around",
+    alignItems: "center",
+    overflow: "hidden"
   },
   controlButton: {
     justifyContent: "center",
@@ -410,14 +406,14 @@ const styles = StyleSheet.create({
     color: "#4a5568"
   },
   controlLeft: {
-    flex: 1, // Takes half width
+    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 8
   },
   controlRight: {
-    flex: 1, // Takes half width
+    flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
