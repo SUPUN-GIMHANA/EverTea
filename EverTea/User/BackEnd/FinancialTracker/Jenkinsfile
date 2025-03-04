@@ -10,12 +10,13 @@ pipeline{
         stage("Build application"){
             steps{
                 checkout scmGit(branches: [[name: 'Financial-Tracker-Backend']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/ReidenRealm/EverTea']])
-                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install'
+                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install' # Create the jar file
             }
         }
         stage("Build docker image"){
             steps{
                 script{
+                    // build the docker image using the docker file
                     sh 'cd EverTea/User/Backend/FinancialTracker && docker build -t rehabnaf/evertea .'
                 }
             }
@@ -47,7 +48,7 @@ pipeline{
                             "context": "ci/jenkins-pipeline",
                             "target_url": "${env.BUILD_URL}"
                         }""",
-                        authentication: 'github-token'
+                        authentication: 'github-token' // github token for changing commit status
                     )
                     echo "GitHub Response: ${response.status}"
                 }
@@ -67,7 +68,7 @@ pipeline{
                             "context": "ci/jenkins-pipeline",
                             "target_url": "${env.BUILD_URL}"
                         }""",
-                        authentication: 'github-token'
+                        authentication: 'github-token' // github token for changing commit status
                     )
                     echo "GitHub Response: ${response.status}"
                 }
