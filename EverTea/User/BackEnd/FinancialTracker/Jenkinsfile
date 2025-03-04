@@ -10,7 +10,8 @@ pipeline{
         stage("Build application"){
             steps{
                 checkout scmGit(branches: [[name: 'Financial-Tracker-Backend']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/ReidenRealm/EverTea']])
-                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install' # Create the jar file
+                // Create the jar file
+                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install'
             }
         }
         stage("Build docker image"){
