@@ -24,4 +24,44 @@ public class GrowthExpectation {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Plant getPlant() {
+        return plant;
+    }
+
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
+
+    public Integer getMonthNumber() {
+        return monthNumber;
+    }
+
+    public void setMonthNumber(Integer monthNumber) {
+        this.monthNumber = monthNumber;
+    }
+
+    public Double getExpectedHeight() {
+        return expectedHeight;
+    }
+
+    public void setExpectedHeight(Double expectedHeight) {
+        this.expectedHeight = expectedHeight;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }

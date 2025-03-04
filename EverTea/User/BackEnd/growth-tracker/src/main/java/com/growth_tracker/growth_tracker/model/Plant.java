@@ -31,4 +31,63 @@ public class Plant {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    public Plant(Long id, String name, List<GrowthRecord> growthRecords, List<GrowthExpectation> growthExpectations, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.growthRecords = growthRecords;
+        this.growthExpectations = growthExpectations;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Plant() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<GrowthRecord> getGrowthRecords() {
+        return growthRecords;
+    }
+
+    public void setGrowthRecords(List<GrowthRecord> growthRecords) {
+        this.growthRecords = growthRecords;
+    }
+
+    public List<GrowthExpectation> getGrowthExpectations() {
+        return growthExpectations;
+    }
+
+    public void setGrowthExpectations(List<GrowthExpectation> growthExpectations) {
+        this.growthExpectations = growthExpectations;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
