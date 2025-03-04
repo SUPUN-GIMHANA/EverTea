@@ -1,8 +1,5 @@
 package com.evertea.AdvancedWeatherForecastApp.DTO;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,7 +7,7 @@ public class LocationAndTokenReceiver {
 
     private double latitude;
     private double longitude;
-    private String recipientToken;
+    private String fcmToken;
 
 
     public double getLatitude() {
@@ -29,11 +26,11 @@ public class LocationAndTokenReceiver {
         this.longitude = longitude;
     }
 
-    public String getRecipientToken() {
-        return recipientToken;
+    public String getFcmToken() {
+        return fcmToken;
     }
 
-    public void setRecipientToken(String recipientToken) {
-        this.recipientToken = recipientToken;
+    public void setFcmToken(String fcmToken) {
+        this.fcmToken = fcmToken;
     }
 }

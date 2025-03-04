@@ -1,5 +1,6 @@
 package com.evertea.AdvancedWeatherForecastApp.service;
 
+import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
@@ -12,10 +13,14 @@ import java.util.Date;
 @Service
 public class FirebaseMessagingService {
 
-    String token = "cUOnGZ3LQTi7YWkKS2P9uZ:APA91bHrYNzHYVJMx6iH5rNKPN6BQvIa6SBTpBOIff0Hx9bpE5UaH42urhSCn43x4ZnIRuk2n8h5IfEgYfHerSwG7qHid2kCXlMqUYu0uzhr-DR7LagNsjQ";
-
+    String token;
     @Autowired
     private FirebaseMessaging firebaseMessaging;
+
+    public void getTokenFromController(LocationAndTokenReceiver receiver){
+        token = receiver.getFcmToken();
+        System.out.println("Token from getTokenFromController: "+token);
+    }
 
     public String sendNotificationByToken(String body){
 

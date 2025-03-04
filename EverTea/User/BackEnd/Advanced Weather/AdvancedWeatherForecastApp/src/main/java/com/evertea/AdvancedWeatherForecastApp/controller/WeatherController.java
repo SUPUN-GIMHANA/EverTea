@@ -1,7 +1,7 @@
 package com.evertea.AdvancedWeatherForecastApp.controller;
 
 import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
-import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
+import com.evertea.AdvancedWeatherForecastApp.service.FirebaseMessagingService;
 import com.evertea.AdvancedWeatherForecastApp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +16,19 @@ public class WeatherController {
     @Autowired
     private WeatherService service;
 
+    @Autowired
+    private FirebaseMessagingService firebaseMessagingService;
+
     @PostMapping("/location")
     public void locationAndTokenReceiver(@RequestBody LocationAndTokenReceiver receiver){
 
+        System.out.println("Token: "+receiver.getFcmToken());
+
         // weatherService class
         service.retrieveLocation(receiver);
+
+        firebaseMessagingService.getTokenFromController(receiver);
+
 
     }
 }
