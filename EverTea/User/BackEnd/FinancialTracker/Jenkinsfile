@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+        commitsha = "${env.GIT_COMMIT}" // Define commit SHA (unique id of last github commit) globally
+    }
     tools{
         maven "maven_in"
     }
