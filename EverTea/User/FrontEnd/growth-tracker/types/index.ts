@@ -1,15 +1,15 @@
 // types/index.ts
 export interface GrowthRecord {
     date: string;
-    status: 'Good' | 'Warning';
+    status: string;
     growth: string;
   }
   
   export interface PlantData {
-    id: string;
+    id: string | number;
     name: string;
     height: number;
-    status: 'Good' | 'Warning';
+    status: string;
     growthHistory: number[];
     previousDetails: GrowthRecord[];
   }

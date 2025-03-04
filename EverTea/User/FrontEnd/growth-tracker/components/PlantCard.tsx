@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Alert,
+  ActivityIndicator
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { PlantData } from "../types";
 import GrowthChart from "./GrowthChart";
 import PreviousDetails from "./PreviousDetails";
+import { fetchPlantDetails, updatePlantHeight } from "../services/api";
 
-const SAMPLE_DATA: PlantData = {
+/* const SAMPLE_DATA: PlantData = {
   id: "01",
   name: "Plantation 01",
   height: 15, //initial height(I change this when backend implement)
@@ -31,10 +34,10 @@ const SAMPLE_DATA: PlantData = {
     { date: "2024-12-25", status: "Good", growth: "+1 CM" },
     { date: "2024-12-25", status: "Good", growth: "+1 CM" },
   ]
-};
+}; */
 
 export default function PlantCard() {
-  const { name } = SAMPLE_DATA;
+/*   const { name } = SAMPLE_DATA;
 
   //state for changing height values
   const [heightValue, setHeightValue] = useState(SAMPLE_DATA.height);
@@ -50,11 +53,113 @@ export default function PlantCard() {
   //function to decrease hieght
   const decreaseHeight = () => {
     setHeightValue((prev) => (prev > 0 ? prev - 1 : 0));
+  }; */
+
+
+  // State to hold the plant data
+  const [plantData, setPlantData] = useState<PlantData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
+
+  // Plant ID - this would typically come from navigation params or context
+  const plantId = "1"; // Assuming this is the ID plant
+
+  //function to load plant data
+  const loadPlantData = async ()=>{
+    try {
+      setLoading(true);
+      const data = await fetchPlantDetails(plantId);
+      setPlantData(data);
+    }catch(error){
+      console.error("Failed to load plant data:", error);
+      Alert.alert("Error", "Failed to load plant data. Please try again");
+    }finally{
+      setLoading(false);
+    }
   };
 
+  //load data when component mounts
+  useEffect(()=>{
+    loadPlantData();
+  }, []);
+
+  //function to increase height
+  const increaseHeight = async ()=>{
+    if (!plantData) return;
+
+    try{
+      setUpdating(true);
+      const newHeight = plantData.height + 1;
+      const result = await updatePlantHeight(plantId, newHeight);
+
+      //update local state with the new height and the status
+      setPlantData({
+        ...plantData,
+        height: newHeight,
+        status: result.status
+      });
+    } catch (error) {
+      console.error("Failed to update height:", error);
+      Alert.alert("Error", "Failed to update plant height. Please try again.");
+    } finally {
+      setUpdating(false);
+    }
+  }
+
+   // Function to decrease height
+   const decreaseHeight = async () => {
+    if (!plantData || plantData.height <= 0) return;
+    
+    try {
+      setUpdating(true);
+      const newHeight = plantData.height - 1;
+      const result = await updatePlantHeight(plantId, newHeight);
+      
+      // Update local state with new height and status
+      setPlantData({
+        ...plantData,
+        height: newHeight,
+        status: result.status
+      });
+    } catch (error) {
+      console.error("Failed to update height:", error);
+      Alert.alert("Error", "Failed to update plant height. Please try again.");
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+
+  // Show loading spinner while data is being fetched
+  if(loading){
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#20C58D">
+          <Text style={styles.loadingText}>Loading plant data</Text>
+        </ActivityIndicator>
+      </View>
+    )
+  }
+
+  // If no data is available, show error
+  if (!plantData) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Could not load plant data</Text>
+        <TouchableOpacity style={styles.retryButton} onPress={loadPlantData}>
+          <Text style={styles.retryButtonText}>Retry</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  const { name, status, height, growthHistory, previousDetails } = plantData;
+
   return (
-    <ScrollView style={styles.container} keyboardShouldPersistTaps="handled"
-      showsVerticalScrollIndicator = {false}
+    <ScrollView 
+      style={styles.container} 
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
     >
       <View>
         <LinearGradient
@@ -109,13 +214,14 @@ export default function PlantCard() {
                       { color: status === "Good" ? "#436F29" : "#771212" }
                     ]}
                   >
-                    {heightValue} CM
+                    {height} CM
                   </Text>
 
                   <View style={styles.controls}>
                     <TouchableOpacity
                       style={styles.controlLeft}
                       onPress={increaseHeight}
+                      disabled={updating}
                     >
                       <View style={styles.controlButton}>
                         <Text style={styles.controlText}>+</Text>
@@ -130,6 +236,7 @@ export default function PlantCard() {
                         }
                       ]}
                       onPress={decreaseHeight}
+                      disabled={updating || height <= 0}
                     >
                       <View
                         style={[
@@ -141,15 +248,23 @@ export default function PlantCard() {
                       </View>
                     </TouchableOpacity>
                   </View>
+                  
+                  {updating && (
+                    <ActivityIndicator 
+                      size="small" 
+                      color={status === "Good" ? "#2e7d32" : "#f4511e"}
+                      style={styles.updatingIndicator}
+                    />
+                  )}
                 </View>
               </View>
             </View>
           </View>
         </LinearGradient>
 
-        <GrowthChart data={SAMPLE_DATA.growthHistory} status={status} />
+        <GrowthChart data={growthHistory} status={status} />
         <PreviousDetails
-          details={SAMPLE_DATA.previousDetails}
+          details={previousDetails}
           status={status}
         />
       </View>
@@ -160,6 +275,42 @@ export default function PlantCard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#666'
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20
+  },
+  errorText: {
+    fontSize: 16,
+    color: '#f44336',
+    marginBottom: 20
+  },
+  retryButton: {
+    backgroundColor: '#20C58D',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8
+  },
+  retryButtonText: {
+    color: 'white',
+    fontWeight: '500'
+  },
+  updatingIndicator: {
+    marginTop: 8
   },
 
   topCardContainer: {
