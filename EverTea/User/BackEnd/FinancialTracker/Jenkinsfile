@@ -1,0 +1,82 @@
+pipeline{
+    agent any
+    environment {
+        commitsha = "${env.GIT_COMMIT}" // Define commit SHA (unique id of last github commit) globally
+    }
+    tools{
+        maven "maven_in"
+    }
+    stages{
+        stage("Build application"){
+            steps{
+                checkout scmGit(branches: [[name: 'Financial-Tracker-Backend']], extensions: [], userRemoteConfigs: [[credentialsId: 'github-token', url: 'https://github.com/ReidenRealm/EverTea']])
+                // Create the jar file
+                sh 'cd EverTea/User/Backend/FinancialTracker && ls -la && mvn clean install'
+            }
+        }
+        stage("Build docker image"){
+            steps{
+                script{
+                    // build the docker image using the docker file
+                    sh 'cd EverTea/User/Backend/FinancialTracker && docker build -t rehabnaf/evertea .'
+                }
+            }
+        }
+        stage("Push image to hub"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                        sh 'docker login -u rehabnaf -p ${dockerhubpwd}'
+                    }
+                    sh 'docker push rehabnaf/evertea'
+                }
+            }
+        }
+
+    }
+    post {
+            success {
+                script {
+                    echo "Sending 'success' status to GitHub"
+                    echo "The commit SHA is: ${env.commitSha}"
+                    def response = httpRequest(
+                        url: "https://api.github.com/repos/ReidenRealm/EverTea/statuses/${env.commitSha}",
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "state": "success",
+                            "description": "Build passed",
+                            "context": "ci/jenkins-pipeline",
+                            "target_url": "${env.BUILD_URL}"
+                        }""",
+                        authentication: 'github-token' // github token for changing commit status
+                    )
+                    echo "GitHub Response: ${response.status}"
+                }
+            }
+
+            failure {
+                script {
+                    echo "Sending 'failure' status to GitHub"
+                    echo "The commit SHA is: ${env.commitSha}"
+                    def response = httpRequest(
+                        url: "https://api.github.com/repos/ReidenRealm/EverTea/statuses/${env.commitSha}",
+                        httpMode: 'POST',
+                        contentType: 'APPLICATION_JSON',
+                        requestBody: """{
+                            "state": "failure",
+                            "description": "Build failed",
+                            "context": "ci/jenkins-pipeline",
+                            "target_url": "${env.BUILD_URL}"
+                        }""",
+                        authentication: 'github-token' // github token for changing commit status
+                    )
+                    echo "GitHub Response: ${response.status}"
+                }
+            }
+
+            always {
+                echo "Pipeline finished. Commit SHA: ${env.commitSha}"
+            }
+        }
+}
