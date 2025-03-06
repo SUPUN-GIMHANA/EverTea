@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import GreetingScreen from './GreetingScreen';
 import HomeScreen from './HomeScreen';
 import FinancialTracker from './FinancialTracker';
 import PlantationStart from './PlantationStart'
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="GreetingScreen" component={GreetingScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="FinancialTracker" component={FinancialTracker} />
         <Stack.Screen name="PlantationStart" component={PlantationStart} />
