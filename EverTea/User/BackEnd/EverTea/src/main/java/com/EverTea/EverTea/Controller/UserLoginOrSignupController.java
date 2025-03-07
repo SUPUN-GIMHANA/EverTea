@@ -1,10 +1,13 @@
 package com.EverTea.EverTea.Controller;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.EverTea.EverTea.PlantationJourney.DTO.UserLoginOrSignupDTO;
+import com.EverTea.EverTea.UserLoginOrSignup.Service.UserLoginOrSignupService;
+import com.EverTea.EverTea.UserLoginOrSignup.DTO.UserLoginOrSignupDTO;
 
 
 @RestController
@@ -12,20 +15,28 @@ import com.EverTea.EverTea.PlantationJourney.DTO.UserLoginOrSignupDTO;
 @RequestMapping("/api/userLoginOrSignup")
 public class UserLoginOrSignupController {
 
+    @Autowired
+    private UserLoginOrSignupService loginAndSignup; // Using Service
+
     
 
     @PostMapping("/signUp")
-    public ResponseEntity<List<String>> plantChoosingWithDistrict(@RequestBody UserLoginOrSignupDTO userLoginOrSignup) {
+    public UserLoginOrSignupDTO plantChoosingWithDistrict(@RequestBody UserLoginOrSignupDTO userLoginOrSignup) {
 
         String userName = userLoginOrSignup.getUserName();
         String password = userLoginOrSignup.getPassword();
         String email = userLoginOrSignup.getEmail();
         Integer phone = userLoginOrSignup.getPhone();
         String nic = userLoginOrSignup.getNic();
+        String firstName = userLoginOrSignup.getFirstName();
+        String lastName = userLoginOrSignup.getLastName();
+
+
+        
 
         System.out.println("Received User: " + userName + " " + password + " " + email + " " + phone + " " + nic);
-        // return ResponseEntity.ok(teaModels);
-        return null;
+        
+        return loginAndSignup.userSignUp(userName, password, email, phone, nic, firstName, lastName);
     }
 
     @PostMapping("/login")
@@ -36,8 +47,9 @@ public class UserLoginOrSignupController {
         String userName = userLoginOrSignup.getUserName();
         String password = userLoginOrSignup.getPassword();
         String email = userLoginOrSignup.getEmail();
-
+        UserLoginOrSignupDTO login = loginAndSignup.userChecker(userName, password, email);
+        
         System.out.println("Received User: " + userName + " " + password + " " + email);
-        return "District found ";
+        return login.getUserName();
     }
 }

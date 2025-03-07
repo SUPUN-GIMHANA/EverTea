@@ -1,4 +1,4 @@
-package com.EverTea.EverTea.PlantationJourney.DTO;
+package com.EverTea.EverTea.UserLoginOrSignup.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,6 +24,14 @@ public class UserLoginOrSignupDTO {
     @JsonProperty("phone")
     private Integer phone;
 
+    @JsonProperty("firstName")
+    private String firstName;
+
+    @JsonProperty("lastName")
+    private String lastName;
+
     @JsonProperty("nic")
     private String nic;
+
+   
 }
