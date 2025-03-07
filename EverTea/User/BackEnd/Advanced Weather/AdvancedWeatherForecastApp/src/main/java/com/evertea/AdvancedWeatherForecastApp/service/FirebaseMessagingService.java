@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class FirebaseMessagingService {
@@ -23,6 +25,9 @@ public class FirebaseMessagingService {
     }
 
     public String sendNotificationByToken(String body){
+
+        // To store notification when user in offline
+        Map<String,String> data = new HashMap<>();
 
         String title = "☁️ System Alert!" + String.valueOf(new Date());
 

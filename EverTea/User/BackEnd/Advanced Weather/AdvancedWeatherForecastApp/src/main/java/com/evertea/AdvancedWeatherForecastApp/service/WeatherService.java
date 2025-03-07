@@ -117,27 +117,27 @@ public class WeatherService {
                 if(cloudCover >=0 && cloudCover <= 10){
                     feelsLike= "Clear";
                     weatherData.setCloudCover(feelsLike);
-                    System.out.println("cloud cover" +feelsLike);
+                    System.out.println("cloudCover" +feelsLike);
                     notifyWeatherDataWebSocket(feelsLike,"Coverage");
                 }else if(cloudCover >= 11 && cloudCover <= 25){
                     feelsLike="Mostly Sunny";
                     weatherData.setCloudCover(feelsLike);
-                    System.out.println("cloud cover" +feelsLike);
+                    System.out.println("cloudCover" +feelsLike);
                     notifyWeatherDataWebSocket(feelsLike,"Coverage");
                 }else if(cloudCover >= 26 && cloudCover <= 50){
                    feelsLike ="Partly Cloudy";
                     weatherData.setCloudCover(feelsLike);
-                    System.out.println("cloud cover" +feelsLike);
+                    System.out.println("cloudCover" +feelsLike);
                     notifyWeatherDataWebSocket(feelsLike,"Coverage");
                 }else if(cloudCover >= 51 && cloudCover <= 75){
                     feelsLike = "Mostly Cloudy";
                     weatherData.setCloudCover(feelsLike);
-                    System.out.println("cloud cover" +feelsLike);
+                    System.out.println("cloudCover" +feelsLike);
                     notifyWeatherDataWebSocket(feelsLike,"Coverage");
                 }else{
                     feelsLike = "Overcast";
                     weatherData.setCloudCover(feelsLike);
-                    System.out.println("cloud cover" +feelsLike);
+                    System.out.println("cloudCover" +feelsLike);
                     notifyWeatherDataWebSocket(feelsLike,"Coverage");
                 }
 
