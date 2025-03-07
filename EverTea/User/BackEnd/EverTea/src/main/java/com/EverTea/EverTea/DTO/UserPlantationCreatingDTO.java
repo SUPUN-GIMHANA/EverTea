@@ -1,4 +1,4 @@
-package com.user.user.DTO;
+package com.EverTea.FinancialTracker.DTO;
 
 
 import java.util.ArrayList;

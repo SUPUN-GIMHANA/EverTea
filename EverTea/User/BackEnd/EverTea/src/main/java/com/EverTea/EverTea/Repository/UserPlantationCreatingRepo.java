@@ -1,4 +1,4 @@
-package com.user.user.Repository;
+package com.EverTea.FinancialTracker.Repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.user.user.DTO.UserPlantationCreatingDTO;
+import com.EverTea.FinancialTracker.DTO.UserPlantationCreatingDTO;
 
 @Repository
 public class UserPlantationCreatingRepo {

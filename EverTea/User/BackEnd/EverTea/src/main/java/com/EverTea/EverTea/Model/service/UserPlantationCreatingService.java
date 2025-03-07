@@ -1,4 +1,4 @@
-package com.user.user.Service;
+package com.EverTea.FinancialTracker.Model.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.user.user.DTO.UserPlantationCreatingDTO;
-import com.user.user.Repository.UserPlantationCreatingRepo;
+import com.EverTea.FinancialTracker.DTO.UserPlantationCreatingDTO;
+import com.EverTea.FinancialTracker.Repository.UserPlantationCreatingRepo;
 
 
 

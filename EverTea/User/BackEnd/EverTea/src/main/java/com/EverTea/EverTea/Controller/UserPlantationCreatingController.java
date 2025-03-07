@@ -1,4 +1,4 @@
-package com.user.user.Controller;
+package com.EverTea.FinancialTracker.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.user.user.DTO.UserPlantationCreatingDTO;
-import com.user.user.Service.UserPlantationCreatingService;
+import com.EverTea.FinancialTracker.DTO.UserPlantationCreatingDTO;
+import com.EverTea.FinancialTracker.Model.service.UserPlantationCreatingService;
 
 
 @RestController
