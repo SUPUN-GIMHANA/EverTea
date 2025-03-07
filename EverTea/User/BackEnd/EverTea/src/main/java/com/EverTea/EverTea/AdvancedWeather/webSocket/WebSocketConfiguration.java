@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.webSocket;
+package com.EverTea.EverTea.AdvancedWeather.webSocket;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

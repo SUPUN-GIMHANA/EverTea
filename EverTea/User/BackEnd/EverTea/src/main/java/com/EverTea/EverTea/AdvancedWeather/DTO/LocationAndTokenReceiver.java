@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.DTO;
+package com.EverTea.EverTea.AdvancedWeather.DTO;
 
 import org.springframework.stereotype.Component;
 

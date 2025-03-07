@@ -1,6 +1,6 @@
-package com.evertea.AdvancedWeatherForecastApp.service;
+package com.EverTea.EverTea.AdvancedWeather.service;
 
-import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
+import com.EverTea.EverTea.AdvancedWeather.DTO.LocationAndTokenReceiver;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;

@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.webSocket;
+package com.EverTea.EverTea.AdvancedWeather.webSocket;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;

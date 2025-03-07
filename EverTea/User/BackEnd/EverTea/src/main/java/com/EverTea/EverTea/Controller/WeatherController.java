@@ -1,8 +1,8 @@
-package com.evertea.AdvancedWeatherForecastApp.controller;
+package com.EverTea.EverTea.Controller;
 
-import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
-import com.evertea.AdvancedWeatherForecastApp.service.FirebaseMessagingService;
-import com.evertea.AdvancedWeatherForecastApp.service.WeatherService;
+import com.EverTea.EverTea.AdvancedWeather.DTO.LocationAndTokenReceiver;
+import com.EverTea.EverTea.AdvancedWeather.service.FirebaseMessagingService;
+import com.EverTea.EverTea.AdvancedWeather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

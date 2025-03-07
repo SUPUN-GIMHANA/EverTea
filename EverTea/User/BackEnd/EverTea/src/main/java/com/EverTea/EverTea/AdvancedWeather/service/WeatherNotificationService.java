@@ -1,8 +1,8 @@
-package com.evertea.AdvancedWeatherForecastApp.service;
+package com.EverTea.EverTea.AdvancedWeather.service;
 
-import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
-import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherNotification;
-import com.evertea.AdvancedWeatherForecastApp.repo.NotificationRepository;
+import com.EverTea.EverTea.AdvancedWeather.DTO.WeatherData;
+import com.EverTea.EverTea.AdvancedWeather.DTO.WeatherNotification;
+import com.EverTea.EverTea.AdvancedWeather.repo.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

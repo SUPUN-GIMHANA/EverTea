@@ -1,9 +1,9 @@
-package com.evertea.AdvancedWeatherForecastApp.service;
+package com.EverTea.EverTea.AdvancedWeather.service;
 
-import com.evertea.AdvancedWeatherForecastApp.DTO.LocationAndTokenReceiver;
-import com.evertea.AdvancedWeatherForecastApp.DTO.WeatherData;
-import com.evertea.AdvancedWeatherForecastApp.repo.WeatherRepository;
-import com.evertea.AdvancedWeatherForecastApp.webSocket.WeatherDataWebSocketHandler;
+import com.EverTea.EverTea.AdvancedWeather.DTO.LocationAndTokenReceiver;
+import com.EverTea.EverTea.AdvancedWeather.DTO.WeatherData;
+import com.EverTea.EverTea.AdvancedWeather.repo.WeatherRepository;
+import com.EverTea.EverTea.AdvancedWeather.webSocket.WeatherDataWebSocketHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

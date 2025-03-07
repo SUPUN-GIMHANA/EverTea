@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.service;
+package com.EverTea.EverTea.AdvancedWeather.service;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

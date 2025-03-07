@@ -1,4 +1,4 @@
-package com.evertea.AdvancedWeatherForecastApp.repo;
+package com.EverTea.EverTea.AdvancedWeather.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
