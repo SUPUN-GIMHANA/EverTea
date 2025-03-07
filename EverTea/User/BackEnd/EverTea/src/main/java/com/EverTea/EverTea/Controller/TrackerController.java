@@ -1,9 +1,10 @@
-package com.EverTea.FinancialTracker.Controller;
+package com.EverTea.EverTea.Controller;
 
-import com.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
-import com.EverTea.FinancialTracker.Model.entity.FinancialTracker;
-import com.EverTea.FinancialTracker.Model.entity.IncomeRecord;
-import com.EverTea.FinancialTracker.Model.service.TrackerService;
+
+import com.EverTea.EverTea.FinancialTracker.Model.entity.ExpenseRecord;
+import com.EverTea.EverTea.FinancialTracker.Model.entity.FinancialTracker;
+import com.EverTea.EverTea.FinancialTracker.Model.entity.IncomeRecord;
+import com.EverTea.EverTea.FinancialTracker.Model.service.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
