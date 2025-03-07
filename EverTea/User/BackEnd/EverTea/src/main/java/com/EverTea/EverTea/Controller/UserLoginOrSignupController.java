@@ -31,9 +31,6 @@ public class UserLoginOrSignupController {
         String firstName = userLoginOrSignup.getFirstName();
         String lastName = userLoginOrSignup.getLastName();
 
-
-        
-
         System.out.println("Received User: " + userName + " " + password + " " + email + " " + phone + " " + nic);
         
         return loginAndSignup.userSignUp(userName, password, email, phone, nic, firstName, lastName);

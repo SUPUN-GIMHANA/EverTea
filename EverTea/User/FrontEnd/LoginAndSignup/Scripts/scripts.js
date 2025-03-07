@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from '../Styles/PlantationStartDistrict'; // Import the styles
+import { styles } from '../Styles/SignUp'; // Import the styles
 import axios from 'axios';
 
 export const useAppLogic = () => {

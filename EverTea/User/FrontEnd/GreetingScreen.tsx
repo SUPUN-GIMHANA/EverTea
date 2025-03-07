@@ -5,8 +5,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // Define the type for the navigation stack
 type RootStackParamList = {
   Home: undefined;
-  FinancialTracker: undefined;
-  PlantationStart: undefined;
+  Login: undefined;
+  SignUp: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -29,10 +29,14 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
 
           <View style={styles.buttonsContainer}>
             <TouchableOpacity style={styles.LoginOrSignupButton}>
-              <Text style={styles.LoginOrSignupText}>Login</Text>
+              <Text style={styles.LoginOrSignupText}
+              onPress={() => navigation.navigate('Login')}
+              >Login</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.LoginOrSignupButton}>
-              <Text style={styles.LoginOrSignupText}>SignUp</Text>
+              <Text style={styles.LoginOrSignupText}
+              onPress={() => navigation.navigate('SignUp')}
+              >SignUp</Text>
             </TouchableOpacity>
           </View>
       </ScrollView>

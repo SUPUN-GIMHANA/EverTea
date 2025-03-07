@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'reac
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
-import { styles } from './Styles/PlantationStartBudget'; // Import the styles
+import { styles } from './Styles/SignUp'; // Import the styles
 
 
 // Define the type for the navigation stack
