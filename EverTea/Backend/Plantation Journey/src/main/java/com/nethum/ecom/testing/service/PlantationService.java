@@ -61,35 +61,30 @@ public class PlantationService {
 
         for(Plantation plantation : plantationList){
 
-            System.out.println(plantation.getPlantationName());
+//            System.out.println(plantation.getPlantationName());
 
             LocalDateTime startTime = plantation.getPlantationStartDateTime();  //get and initialize plantation start date and time.
             LocalDateTime currentTime = LocalDateTime.now();
             Duration duration = Duration.between(startTime, currentTime); //get difference between present time and plantation started time
-            System.out.println("The time between starting data and present  : "+duration.toDays());
+//            System.out.println("The time between starting data and present  : "+duration.toDays());
             long ageofPlantation = duration.toDays();
 
 
             List<Instruction>InstructionList = instructionRepository.findByTeaType_TeaTypeId(plantation.getTeaType().getTeaTypeId());
 
             for(Instruction instructionDay : InstructionList){
-                System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " Checking........");
+//                System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " Checking........");
 
                 if(ageofPlantation>=instructionDay.getStartDay() && ageofPlantation <= instructionDay.getEndDay()){
-                    System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " still valid . Instruction not end.");
+//                    System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " still valid . Instruction not end.");
                        if(!isExecutedBefore(plantation.getPlantationId(), instructionDay.getInstructionId(),instructionDay.getRecurringFrequencyWeek(), currentTime)){
 
                            executeInstruction(plantation.getPlantationName(), instructionDay.getAction(), instructionDay.getDetails());
                            markInstruction(instructionDay.getInstructionId(), plantation.getPlantationId(), LocalDateTime.now());
                        }
-
-
-
-
-
                 }
                 else {
-                    System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " not valid. ");
+//                    System.out.println("Instruction ID : "+instructionDay.getInstructionId()+ " not valid. ");
                 }
 
 
@@ -127,9 +122,9 @@ public class PlantationService {
 //
 //            }
 
-            System.out.println("                                         ");
-            System.out.println("                                         ");
-            System.out.println("                                         ");
+//            System.out.println("                                         ");
+//            System.out.println("                                         ");
+//            System.out.println("                                         ");
         }
 
     }
@@ -167,11 +162,11 @@ public class PlantationService {
             long timeDiffereceBydays = timeDifference.toDays();
 
             if(timeDiffereceBydays >= requringWeek){
-                System.out.println("return false for" + plantation.getPlantationName());
+//                System.out.println("return false for" + plantation.getPlantationName());
                 return false;
             }
             else{
-                System.out.println("Time differce "+timeDiffereceBydays+" "+"require week "+requringWeek+"return true for "+ plantation.getPlantationName());
+//                System.out.println("Time differce "+timeDiffereceBydays+" "+"require week "+requringWeek+"return true for "+ plantation.getPlantationName());
                 return true;
             }
 
@@ -179,6 +174,7 @@ public class PlantationService {
         }
         else {
             return false;
+
         }
     }
 
