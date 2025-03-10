@@ -20,7 +20,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, budgetPlanRec, budgetPlanUser } = useAppLogic();
+  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, handlePlantationCreation } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -57,7 +57,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
         <View style={styles.inputContainer}>
           <TouchableOpacity
-            onPress={() => budgetPlanRec()} activeOpacity={0.7}>
+            onPress={() => handlePlantationCreation} activeOpacity={0.7}>
             <View style={styles.recommendedBoarder}>
               <Text style={styles.topic1}>Recommended Plantation</Text>
               <View style={styles.content}>
@@ -67,7 +67,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => budgetPlanUser()} activeOpacity={0.7}>
+            onPress={() => handlePlantationCreation} activeOpacity={0.7}>
             <View style={styles.userBoarder}>
               <Text style={styles.topic2}>Plantation for your budget</Text>
               <View style={styles.content}>
@@ -83,20 +83,12 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
       <View style={styles.navButtons}>
           <View style={styles.backButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartBudget')} activeOpacity={0.7}>
+              onPress={() => handlePlantationCreation} activeOpacity={0.7}>
               <Text style={styles.backButtonBorder}>
                 <Text style={styles.navButtonText}>Back</Text>
               </Text>
             </TouchableOpacity> 
           </View>
-          {/* <View style={styles.nextButton}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartSucessfull')} activeOpacity={0.7}>
-              <Text style={styles.nextButtonBorder}>
-                <Text style={styles.navButtonText}>Next</Text>
-              </Text>
-            </TouchableOpacity> 
-          </View> */}
       </View>
     </View>
 

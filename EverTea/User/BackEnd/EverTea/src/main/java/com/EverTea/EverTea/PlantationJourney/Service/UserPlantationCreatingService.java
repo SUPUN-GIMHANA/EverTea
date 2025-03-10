@@ -159,9 +159,7 @@ public class UserPlantationCreatingService {
                 this.cost = userCost;
             }
         }
-
-        
-
-        return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid, cost);
+        System.out.println(userid + location + teamodelid + plants + cost);
+    return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid, cost);
     }
 }

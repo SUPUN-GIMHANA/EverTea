@@ -14,7 +14,7 @@ export const useAppLogic = () => {
   const [selectedTea, setSelectedTea] = useState(null); // State for selected tea
   const [plantationSlope, setPlantationSlope] = useState(null);
   const [selectedBudget, setSelectedBudget] = useState(null);
-  const [budgetPlan, setBudgetPlan] = useState([]);
+  const [budgetPlan, setBudgetPlan] = useState(1);
 
   //budget
 
@@ -227,9 +227,10 @@ export const useAppLogic = () => {
   );
 
 
-  const plantationCreation = () => {
+  const plantationCreation = async () => {
     try {
-      const response = axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationCreation', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationCreation', {
+        userChoice: budgetPlan,  // Send budget plan in the body
       });
         
       // Handle response
@@ -240,6 +241,7 @@ export const useAppLogic = () => {
     }
   };
 
+  
 
   //combined operations
   const handleButtonPress = () => {
@@ -300,5 +302,6 @@ export const useAppLogic = () => {
     handleButtonPressBudget,
     renderTeaBudget,
     handlePlantationCreation,
+    plantationCreation,
   };
 };

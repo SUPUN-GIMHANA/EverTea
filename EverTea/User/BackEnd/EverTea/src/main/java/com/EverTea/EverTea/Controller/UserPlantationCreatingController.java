@@ -83,6 +83,7 @@ public class UserPlantationCreatingController {
 
         Integer userChoice = districtPlantation.getUserChoice();
         System.out.println("Recieved Users Choice. User Chose : " + userChoice + " as his budget plan");
+        DistrictPlant.saveUserChoice(userChoice);
 
         // DistrictPlant.saveUserChoice(userChoice);
         return DistrictPlant.plantationCreation(userChoice);
