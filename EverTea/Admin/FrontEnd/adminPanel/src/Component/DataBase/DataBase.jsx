@@ -21,12 +21,12 @@ const DataBase = () => {
         <div className='dataBox'>
                 <div className='top'>
                     <div className='tableDataBox'> <Link to="/Table/Table1">District</Link> </div>
-                    <div className='tableDataBox'> <Link to="/Table/Table2">Land Slope</Link></div>
-                    <div className='tableDataBox'>  <Link to="/Table/Table3">plantation</Link></div>
-                    <div className='tableDataBox'>  <Link to="/Table/Table4">Tea Model</Link></div>
+                    <div className='tableDataBox'> <Link to="/Table/Table2">Instruction</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table3">TeaModels</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table4">TeaType</Link></div>
                 </div>
                 <div className='top'>
-                    <div className='tableDataBox'> <Link to="/Table/Table5">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table5">Weather</Link> </div>
                     <div className='tableDataBox'> <Link to="/Table/Table6">District</Link> </div>
                     <div className='tableDataBox'> <Link to="/Table/Table7">District</Link> </div>
                     <div className='tableDataBox'> <Link to="/Table/Table8">District</Link> </div>
