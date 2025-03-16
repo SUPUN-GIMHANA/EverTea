@@ -1,16 +1,18 @@
 // Import Firebase SDK
 import { initializeApp } from "firebase/app";
 import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
+import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID } from "@env";
+
 
 // Firebase configuration (available in my firestore project settings)
 const firebaseConfig = {
-    apiKey: "AIzaSyARtdNgB1cEAVIu5AE1bFqEnPBfQMk4AfE",
-    authDomain: "growthtracker-13c04.firebaseapp.com",
-    projectId: "growthtracker-13c04",
-    storageBucket: "growthtracker-13c04.firebasestorage.app",
-    messagingSenderId: "297562593421",
-    appId: "1:297562593421:web:606afb540d63a7b09e2ac4"
-  };
+    apiKey: API_KEY,
+    authDomain: AUTH_DOMAIN,
+    projectId: PROJECT_ID,
+    storageBucket: STORAGE_BUCKET,
+    messagingSenderId: MESSAGING_SENDER_ID,
+    appId: APP_ID
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
