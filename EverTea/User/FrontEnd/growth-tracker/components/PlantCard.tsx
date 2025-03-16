@@ -62,7 +62,7 @@ export default function PlantCard() {
   const [updating, setUpdating] = useState(false);
 
   // Plant ID - this would typically come from navigation params or context
-  const plantId = "1"; // Assuming this is the ID of your plant
+  const plantId = "1"; // Assuming this is the ID of my plant
 
   // Function to load plant data
   const loadPlantData = async () => {

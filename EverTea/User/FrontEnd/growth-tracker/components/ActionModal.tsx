@@ -36,10 +36,9 @@ export default function ActionModal({
                 style={styles.modalImage} 
                 resizeMode="contain"
               />
-              <Text style={styles.modalTitle}>Soil Testing</Text>
+              <Text style={styles.modalTitle}>Growth is weak</Text>
               <Text style={styles.modalText}>
-                Conduct a soil test to check nutrient levels and pH balance. 
-                Amend the soil based on test results.
+                  Growth is weak. Conduct a soil test to check nutrient levels and pH balance. Amend soil based on results. Consult your adviser for guidance."
               </Text>
             </>
           ) : (

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PlantData } from '../types';
 
-// Base URL for your API
+// Base URL for  API
 // For Android emulator, use 10.0.2.2 instead of localhost
 // For iOS simulator, use localhost
 // For physical devices, use your computer's IP address
