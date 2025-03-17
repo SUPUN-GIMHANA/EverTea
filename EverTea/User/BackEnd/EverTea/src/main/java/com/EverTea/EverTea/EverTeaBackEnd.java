@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -14,6 +15,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.EverTea.EverTea.GrowthTracker.repository")
+@EnableScheduling
+/*@EnableScheduling is an annotation in Spring Framework that enables the scheduling of tasks.
+It allows your application to run scheduled tasks automatically at defined intervals or specific times.*/
 public class EverTeaBackEnd {
 
 	public static void main(String[] args) {
