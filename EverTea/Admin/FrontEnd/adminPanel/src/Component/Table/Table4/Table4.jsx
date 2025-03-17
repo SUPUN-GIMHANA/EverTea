@@ -27,24 +27,27 @@
 //                     <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
 //                         <thead>
 //                             <tr>
-//                                 <th>Name4</th>
-//                                 <th>Age</th>
-//                                 <th>Country</th>
-//                                 <th>District</th>
+//                                 <th>Tea Type ID</th>
+//                                 <th>Fertilizer Schedule</th>
+//                                 <th>Life Cycle week</th>
+//                                 <th>Tea type Name</th>
+//                                 <th>Watering Interval days </th>
 //                             </tr>
 //                         </thead>
 //                         <tbody>
 //                             <tr>
-//                                 <td>John Doe</td>
-//                                 <td>25</td>
-//                                 <td>USA</td>
-//                                 <td>Galle</td>
+//                                 <td>1</td>
+//                                 <td>supun</td>
+//                                 <td>2</td>
+//                                 <td>005</td>
+//                                 <td>3</td>
 //                             </tr>
 //                             <tr>
-//                                 <td>Jane Smith</td>
-//                                 <td>30</td>
-//                                 <td>UK</td>
-//                                 <td>Srilaka</td>
+//                                 <td>2</td>
+//                                 <td>gimhana</td>
+//                                 <td>5</td>
+//                                 <td>008</td>
+//                                 <td>3</td>
 //                             </tr>
 //                         </tbody>
 //                     </table>
@@ -58,26 +61,50 @@
 // export default Table4
 
 
-import React, { useState } from 'react';
+
+
+import React, { useState, useEffect } from 'react';
 import './Table4.css';
 import logo from '../../../assets/logo.jpg';
 import Menu from '../../../assets/Menu.png';
 import arrow1 from '../../../assets/arrow1.jpg';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Table4 = () => {
     // State to manage table data
-    const [tableData, setTableData] = useState([
-        { name: 'John Doe', age: 25, country: 'USA', district: 'Galle' },
-        { name: 'Jane Smith', age: 30, country: 'UK', district: 'Srilaka' },
-    ]);
-
-    // State to manage backend update status
+    const [tableData, setTableData] = useState([]);
     const [updateStatus, setUpdateStatus] = useState(null);
+
+    // Fetch TeaType data from the backend when the component mounts
+    useEffect(() => {
+
+        const fetchTeaTypes = async () => {
+            try {
+                const response = await fetch('http://localhost:8081/api/v1/district/get-teaType');
+                if (response.ok) {
+                    const data = await response.json();
+                    setTableData(data);
+                } else {
+                    console.error('Failed to fetch tea types');
+                }
+            } catch (error) {
+                console.error('Error fetching tea types:', error);
+            }
+        };
+        fetchTeaTypes();
+    }, []);
+
 
     // Function to add a new row
     const addRow = () => {
-        const newRow = { name: '', age: '', country: '', district: '' };
+        const newRow = {
+            teaTypeId: tableData.length + 1,
+            fertilizerSchedule: '',
+            lifeCycleWeek: '',
+            teaTypeName: '',
+            wateringIntervalDays: '',
+        };
         setTableData([...tableData, newRow]);
     };
 
@@ -91,16 +118,12 @@ const Table4 = () => {
     // Function to update the backend
     const updateBackend = async () => {
         try {
-            const response = await fetch('/api/updateData', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(tableData),
-            });
-
-            if (response.ok) {
+            const response = await axios.post('http://localhost:8081/api/v1/district/save-teaType', tableData);
+            if (response.status === 200) {
                 setUpdateStatus({ message: 'Data updated successfully!', className: 'success' });
+                // Optionally, fetch the updated data again
+                const fetchResponse = await axios.get('http://localhost:8081/api/v1/district/get-teaType');
+                setTableData(fetchResponse.data);
             } else {
                 setUpdateStatus({ message: 'Failed to update data.', className: 'error' });
             }
@@ -130,10 +153,11 @@ const Table4 = () => {
                         <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Country</th>
-                                    <th>District</th>
+                                    <th>Tea Type ID</th>
+                                    <th>Fertilizer Schedule</th>
+                                    <th>Life Cycle Week</th>
+                                    <th>Tea Type Name</th>
+                                    <th>Watering Interval Days</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,30 +165,37 @@ const Table4 = () => {
                                     <tr key={index}>
                                         <td>
                                             <input
+                                                type="number"
+                                                value={row.teaTypeId}
+                                                onChange={(e) => handleInputChange(index, 'teaTypeId', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
                                                 type="text"
-                                                value={row.name}
-                                                onChange={(e) => handleInputChange(index, 'name', e.target.value)}
+                                                value={row.fertilizerSchedule}
+                                                onChange={(e) => handleInputChange(index, 'fertilizerSchedule', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                        <input
+                                                type="number"
+                                                value={row.lifeCycleWeek}
+                                                onChange={(e) => handleInputChange(index, 'lifeCycleWeek', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="text"
+                                                value={row.teaTypeName}
+                                                onChange={(e) => handleInputChange(index, 'teaTypeName', e.target.value)}
                                             />
                                         </td>
                                         <td>
                                             <input
                                                 type="number"
-                                                value={row.age}
-                                                onChange={(e) => handleInputChange(index, 'age', e.target.value)}
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                value={row.country}
-                                                onChange={(e) => handleInputChange(index, 'country', e.target.value)}
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                value={row.district}
-                                                onChange={(e) => handleInputChange(index, 'district', e.target.value)}
+                                                value={row.wateringIntervalDays}
+                                                onChange={(e) => handleInputChange(index, 'wateringIntervalDays', e.target.value)}
                                             />
                                         </td>
                                     </tr>
