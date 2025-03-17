@@ -1,67 +1,3 @@
-// import React from 'react'
-// import './Table4.css'
-
-// import logo from '../../../assets/logo.jpg'
-// import Menu from '../../../assets/Menu.png'
-// import arrow1 from '../../../assets/arrow1.jpg'
-// import { Link } from 'react-router-dom'
-
-// const Table4 = () => {
-//   return (
-//     <div className='table1Black'>
-//         <div className='dataLogoAndName'>
-//             <div className='dataLogo'><img src={logo} className='logoSize'/></div>
-//             <div className='dataName'>Ever Tea</div>
-//         </div>
-//         <Link to="/HomePage">
-//             <div className='menu'><img src={Menu} className='MenuLogo'/></div>
-//         </Link>
-//         <Link to="/DataBase">
-//         <div className='arrow1'><img src={arrow1} className='arrow1'/></div>
-//         </Link>
-
-//         <div className='districtTopic'>TeaType Data</div>
-//         <div className='dataBox1'>
-//             <div className='insideBox'>
-//                 <div>
-//                     <table border="1" style={{ width: "100%", borderCollapse: "collapse" }}>
-//                         <thead>
-//                             <tr>
-//                                 <th>Tea Type ID</th>
-//                                 <th>Fertilizer Schedule</th>
-//                                 <th>Life Cycle week</th>
-//                                 <th>Tea type Name</th>
-//                                 <th>Watering Interval days </th>
-//                             </tr>
-//                         </thead>
-//                         <tbody>
-//                             <tr>
-//                                 <td>1</td>
-//                                 <td>supun</td>
-//                                 <td>2</td>
-//                                 <td>005</td>
-//                                 <td>3</td>
-//                             </tr>
-//                             <tr>
-//                                 <td>2</td>
-//                                 <td>gimhana</td>
-//                                 <td>5</td>
-//                                 <td>008</td>
-//                                 <td>3</td>
-//                             </tr>
-//                         </tbody>
-//                     </table>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Table4
-
-
-
 
 import React, { useState, useEffect } from 'react';
 import './Table4.css';
@@ -101,8 +37,8 @@ const Table4 = () => {
         const newRow = {
             teaTypeId: tableData.length + 1,
             fertilizerSchedule: '',
-            lifeCycleWeek: '',
-            teaTypeName: '',
+            lifecycleWeek: '',
+            teaName: '',
             wateringIntervalDays: '',
         };
         setTableData([...tableData, newRow]);
@@ -115,7 +51,6 @@ const Table4 = () => {
         setTableData(updatedData);
     };
 
-    // Function to update the backend
     const updateBackend = async () => {
         try {
             const response = await axios.post('http://localhost:8081/api/v1/district/save-teaType', tableData);
@@ -132,6 +67,24 @@ const Table4 = () => {
             setUpdateStatus({ message: 'An error occurred while updating data.', className: 'error' });
         }
     };
+
+    // Function to update the backend
+// const updateBackend = async () => {
+//     try {
+//         const response = await axios.post('http://localhost:8081/api/v1/district/save-teaType', tableData);
+//         if (response.status === 200) {
+//             setUpdateStatus({ message: 'Data updated successfully!', className: 'success' });
+//             // Optionally, fetch the updated data again
+//             const fetchResponse = await axios.get('http://localhost:8081/api/v1/district/get-teaType');
+//             setTableData(fetchResponse.data);
+//         } else {
+//             setUpdateStatus({ message: 'Failed to update data.', className: 'error' });
+//         }
+//     } catch (error) {
+//         console.error('Error updating backend:', error);
+//         setUpdateStatus({ message: 'An error occurred while updating data.', className: 'error' });
+//     }
+// };
 
     return (
         <div className='table1Black'>
@@ -180,15 +133,15 @@ const Table4 = () => {
                                         <td>
                                         <input
                                                 type="number"
-                                                value={row.lifeCycleWeek}
-                                                onChange={(e) => handleInputChange(index, 'lifeCycleWeek', e.target.value)}
+                                                value={row.lifecycleWeek}
+                                                onChange={(e) => handleInputChange(index, 'lifecycleWeek', e.target.value)}
                                             />
                                         </td>
                                         <td>
                                             <input
                                                 type="text"
-                                                value={row.teaTypeName}
-                                                onChange={(e) => handleInputChange(index, 'teaTypeName', e.target.value)}
+                                                value={row.teaName}
+                                                onChange={(e) => handleInputChange(index, 'teaName', e.target.value)}
                                             />
                                         </td>
                                         <td>

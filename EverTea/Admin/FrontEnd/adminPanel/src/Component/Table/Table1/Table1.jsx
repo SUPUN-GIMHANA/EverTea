@@ -38,9 +38,10 @@ const Table1 = () => {
         setTableData(updatedData);
     };
 
+
     const updateBackend = async () => {
         try {
-            const response = await axios.post('http://localhost:8081/api/v1/district/save-district', tableData);
+            const response = await axios.post('http://localhost:8081/api/v1/district/save-districts', tableData);
             if (response.status === 200) {
                 setUpdateStatus({ message: 'Data updated successfully!', className: 'success' });
                 // Optionally, fetch the updated data again
@@ -54,6 +55,22 @@ const Table1 = () => {
             setUpdateStatus({ message: 'An error occurred while updating data.', className: 'error' });
         }
     };
+    // const updateBackend = async () => {
+    //     try {
+    //         const response = await axios.post('http://localhost:8081/api/v1/district/save-district', tableData[0]);
+    //         if (response.status === 200) {
+    //             setUpdateStatus({ message: 'Data updated successfully!', className: 'success' });
+    //             // Optionally, fetch the updated data again
+    //             const fetchResponse = await axios.get('http://localhost:8081/api/v1/district/get-districts');
+    //             setTableData(fetchResponse.data);
+    //         } else {
+    //             setUpdateStatus({ message: 'Failed to update data.', className: 'error' });
+    //         }
+    //     } catch (error) {
+    //         console.error('Error updating backend:', error);
+    //         setUpdateStatus({ message: 'An error occurred while updating data.', className: 'error' });
+    //     }
+    // };
 
     return (
         <div className='table1Black'>
