@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.evertea</groupId>
-    <artifactId>AdvancedWeatherForecastApp</artifactId>
+    <artifactId>EverTeaApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>AdvancedWeatherForecastApp</name>
+    <name>EverTeaApp</name>
     <description>Demo project for Spring Boot</description>
     <url/>
     <licenses>
