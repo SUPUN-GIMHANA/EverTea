@@ -27,15 +27,15 @@ const DataBase = () => {
                 </div>
                 <div className='top'>
                     <div className='tableDataBox'> <Link to="/Table/Table5">Weather</Link> </div>
-                    <div className='tableDataBox'> <Link to="/Table/Table6">District</Link> </div>
-                    <div className='tableDataBox'> <Link to="/Table/Table7">District</Link> </div>
-                    <div className='tableDataBox'> <Link to="/Table/Table8">District</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table6">teble6</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table7">teble7</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table8">teble8</Link> </div>
                 </div>
                 <div className='top'>
-                    <div className='tableDataBox'> <Link to="/Table/Table9">District</Link> </div>
-                    <div className='tableDataBox'> <Link to="/Table/Table10">Land Slope</Link></div>
-                    <div className='tableDataBox'>  <Link to="/Table/Table11">plantation</Link></div>
-                    <div className='tableDataBox'>  <Link to="/Table/Table12">Tea Model</Link></div>
+                    <div className='tableDataBox'> <Link to="/Table/Table9">teble9</Link> </div>
+                    <div className='tableDataBox'> <Link to="/Table/Table10">teble10</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table11">teble11</Link></div>
+                    <div className='tableDataBox'>  <Link to="/Table/Table12">teble12</Link></div>
                 </div>
         </div>
     </div>
