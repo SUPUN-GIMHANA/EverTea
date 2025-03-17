@@ -1,4 +1,4 @@
-package com.growth_tracker.growth_tracker.model;
+package com.EverTea.EverTea.GrowthTracker.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

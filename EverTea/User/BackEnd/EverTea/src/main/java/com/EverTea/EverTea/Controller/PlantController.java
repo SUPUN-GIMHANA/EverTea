@@ -1,10 +1,10 @@
-package com.growth_tracker.growth_tracker.controller;
+package com.EverTea.EverTea.Controller;
 
 
-import com.growth_tracker.growth_tracker.dto.PlantDetailsDto;
-import com.growth_tracker.growth_tracker.dto.PlantDto;
-import com.growth_tracker.growth_tracker.dto.UpdateHeightRequest;
-import com.growth_tracker.growth_tracker.service.PlantService;
+import com.EverTea.EverTea.GrowthTracker.dto.PlantDetailsDto;
+import com.EverTea.EverTea.GrowthTracker.dto.PlantDto;
+import com.EverTea.EverTea.GrowthTracker.dto.UpdateHeightRequest;
+import com.EverTea.EverTea.GrowthTracker.service.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

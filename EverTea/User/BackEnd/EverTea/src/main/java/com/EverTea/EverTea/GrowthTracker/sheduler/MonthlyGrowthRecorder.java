@@ -1,10 +1,10 @@
-package com.growth_tracker.growth_tracker.sheduler;
+package com.EverTea.EverTea.GrowthTracker.sheduler;
 
-import com.growth_tracker.growth_tracker.model.GrowthRecord;
-import com.growth_tracker.growth_tracker.model.Plant;
-import com.growth_tracker.growth_tracker.repository.GrowthRecordRepository;
-import com.growth_tracker.growth_tracker.repository.PlantRepository;
-import com.growth_tracker.growth_tracker.service.PlantService;
+import com.EverTea.EverTea.GrowthTracker.model.GrowthRecord;
+import com.EverTea.EverTea.GrowthTracker.model.Plant;
+import com.EverTea.EverTea.GrowthTracker.repository.GrowthRecordRepository;
+import com.EverTea.EverTea.GrowthTracker.repository.PlantRepository;
+import com.EverTea.EverTea.GrowthTracker.service.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
