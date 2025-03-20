@@ -18,7 +18,7 @@ public class UserLoginOrSignupController {
     @Autowired
     private UserLoginOrSignupService loginAndSignup; // Using Service
 
-    
+
 
     @PostMapping("/signUp")
     public UserLoginOrSignupDTO plantChoosingWithDistrict(@RequestBody UserLoginOrSignupDTO userLoginOrSignup) {
@@ -32,7 +32,7 @@ public class UserLoginOrSignupController {
         String lastName = userLoginOrSignup.getLastName();
 
         System.out.println("Received User: " + userName + " " + password + " " + email + " " + phone + " " + nic);
-        
+
         return loginAndSignup.userSignUp(userName, password, email, phone, nic, firstName, lastName);
     }
 
@@ -45,7 +45,7 @@ public class UserLoginOrSignupController {
         String password = userLoginOrSignup.getPassword();
         String email = userLoginOrSignup.getEmail();
         UserLoginOrSignupDTO login = loginAndSignup.userChecker(userName, password, email);
-        
+
         System.out.println("Received User: " + userName + " " + password + " " + email);
         return login.getUserName();
     }

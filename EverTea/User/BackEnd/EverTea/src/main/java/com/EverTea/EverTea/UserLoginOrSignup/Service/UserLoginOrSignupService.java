@@ -19,13 +19,13 @@ public class UserLoginOrSignupService {
     private UserLoginOrSignupRepo loginAndSignup;
 
     //Varibles for this class
-    
+
     private String lastUserName; // Store last received district
     private String lastPassword; // Store last received area
     private String lastEmail; // Store last received landSlope
     private Integer lastPhone; // Store last received teaModel
     private String lastNIC; // Store last received teaModel
-    
+
 
     public UserLoginOrSignupDTO userChecker(String userName, String password, String email) {
         this.lastUserName = userName; // Save username for later use

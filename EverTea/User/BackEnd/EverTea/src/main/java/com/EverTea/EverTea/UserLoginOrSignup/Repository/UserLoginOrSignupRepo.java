@@ -39,12 +39,12 @@ public class UserLoginOrSignupRepo {
 
     public UserLoginOrSignupDTO userSignUp(String userName, String password, String email, Integer phone, String nic, String firstName, String lastName) {
 
- 
+
         String sqlQueryUsers = "INSERT INTO users (username, email, firstname, lastname, nic, phone) VALUES (?, ?, ?, ?, ?, ?)"; // Insert users
         String sqlQueryUserLogin = "INSERT INTO userlogin (username, email, password) VALUES (?, ?, ?)"; // Insert userlogin
 
         try {
-            
+
             int usersInsertResult = jdbcTemplate.update(sqlQueryUsers, userName, email, firstName, lastName, nic, phone);
             int userLoginInsertResult = jdbcTemplate.update(sqlQueryUserLogin, userName, email, password);
             System.out.println("User Created: " + userName);
@@ -59,7 +59,7 @@ public class UserLoginOrSignupRepo {
             return null;
         }
     }
-    
+
 
 
 }
