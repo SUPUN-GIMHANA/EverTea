@@ -15,6 +15,8 @@ import GrowthChart from "./GrowthChart";
 import PreviousDetails from "./PreviousDetails";
 import { fetchPlantDetails, updatePlantHeight } from "../services/api";
 
+//delete below sample codes
+
 /* const SAMPLE_DATA: PlantData = {
   id: "01",
   name: "Plantation 01",
@@ -62,7 +64,7 @@ export default function PlantCard() {
   const [updating, setUpdating] = useState(false);
 
   // Plant ID - this would typically come from navigation params or context
-  const plantId = "1"; // Assuming this is the ID of my plant
+  const plantId = "3"; // Assuming this is the ID of my plant
 
   // Function to load plant data
   const loadPlantData = async () => {
