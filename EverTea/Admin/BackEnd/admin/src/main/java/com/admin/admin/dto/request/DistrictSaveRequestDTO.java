@@ -20,6 +20,7 @@ public class DistrictSaveRequestDTO {
     private int teaId;
     private String teaName;
     private int price;
+    private String district;
 
     private int teaTypeId;
     private String fertilizerSchedule;
@@ -40,6 +41,13 @@ public class DistrictSaveRequestDTO {
     public String message;
     public int priority;
 
+    public String getDistrict(){
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
 
     public int getDistrictId() {
         return districtId;
