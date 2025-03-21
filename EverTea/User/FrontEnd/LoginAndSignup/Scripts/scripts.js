@@ -26,7 +26,7 @@ export const useAuthLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('https://your-backend-api.com/login', {
+      const response = await axios.post('http://10.31.5.85:8080/user/login', {
         email,
         password,
       });
@@ -37,6 +37,7 @@ export const useAuthLogic = () => {
       }
     } catch (error) {
       setErrorMessage('Login failed. Please try again.');
+      console.log(error);
     }
   };
 
