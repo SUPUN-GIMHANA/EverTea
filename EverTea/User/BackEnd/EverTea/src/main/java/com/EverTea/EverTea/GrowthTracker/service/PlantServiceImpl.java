@@ -135,7 +135,7 @@ public class PlantServiceImpl implements PlantService {
     @Override
     public String evaluatePlantStatus(Long id, Double currentHeight) {
 
-        
+
 
         //calculate the plant age in month
         int plantAgeInMonths = Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getMonths() +

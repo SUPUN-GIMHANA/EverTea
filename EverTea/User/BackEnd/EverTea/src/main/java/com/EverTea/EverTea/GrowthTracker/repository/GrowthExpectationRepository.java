@@ -1,6 +1,6 @@
 package com.EverTea.EverTea.GrowthTracker.repository;
 
-import com.growth_tracker.growth_tracker.model.GrowthExpectation;
+import com.EverTea.EverTea.GrowthTracker.model.GrowthExpectation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
