@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="287384fe-b393-4840-8d55-41a964572007" name="Changes" comment="" />
+    <list default="true" id="287384fe-b393-4840-8d55-41a964572007" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +60,19 @@
       <recent name="E:\IIT\2ndYear\SDGP_EverTea\EverTea\EverTea\User\BackEnd\GrouthTracker\app\(tabs)" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,6 +91,8 @@
       <updated>1737265612137</updated>
       <workItem from="1737265613359" duration="1130000" />
       <workItem from="1739298020522" duration="90000" />
+      <workItem from="1742564172712" duration="596000" />
+      <workItem from="1742564909097" duration="12000" />
     </task>
     <servers />
   </component>

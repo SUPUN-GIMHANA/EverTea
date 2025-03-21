@@ -1,4 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import { useCallback } from "react";
+
 import {
   StyleSheet,
   View,
@@ -9,6 +12,7 @@ import {
   Alert,
   ActivityIndicator
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import LinearGradient from "react-native-linear-gradient";
 import { PlantData } from "../types/index";
 import GrowthChart from "./GrowthChart";
@@ -22,22 +26,46 @@ export default function PlantCard() {
 
   const plantId = "4";
 
-  const loadPlantData = async () => {
+  const STORAGE_KEY = `plant_${plantId}_data`; // Unique key for local storage
+
+  const saveDataLocally = async (data: PlantData) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (error) {
+      console.error("Error saving data locally:", error);
+    }
+  };
+
+  const loadLocalData = useCallback(async () => {
+    try {
+      const storedData = await AsyncStorage.getItem(STORAGE_KEY);
+      console.log("Retrieved Data from AsyncStorage:", storedData); // Debugging log
+      if (storedData) {
+        setPlantData(JSON.parse(storedData));
+      }
+    } catch (error) {
+      console.error("Error loading local data:", error);
+    }
+  },[STORAGE_KEY]);
+
+  const loadPlantData = useCallback(async () => {
     try {
       setLoading(true);
       const data = await fetchPlantDetails(plantId);
       setPlantData(data);
+      await saveDataLocally(data); // Save data locally after fetching
     } catch (error) {
       console.error("Failed to load plant data:", error);
       Alert.alert("Error", "Failed to load plant data. Please try again.");
     } finally {
       setLoading(false);
     }
-  };
+  }, [plantId]);
 
   useEffect(() => {
-    loadPlantData();
-  }, []);
+    loadLocalData(); // Load saved data first
+    loadPlantData(); // Fetch fresh data when online
+  }, [loadLocalData, loadPlantData]);
 
   const increaseHeight = async () => {
     if (!plantData) return;
