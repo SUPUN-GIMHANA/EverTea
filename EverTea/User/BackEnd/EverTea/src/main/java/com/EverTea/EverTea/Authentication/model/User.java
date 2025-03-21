@@ -21,6 +21,28 @@ public class User {
     @Column(name = "role")  // New column to store the role of the user
     private String role;  // Example: "USER" or "ADMIN"
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "mob_num")
+    private String mobileNumber;
+
     public int getId() {
         return id;
     }
