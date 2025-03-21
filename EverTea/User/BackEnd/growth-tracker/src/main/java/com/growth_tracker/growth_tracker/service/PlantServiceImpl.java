@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -133,12 +134,18 @@ public class PlantServiceImpl implements PlantService {
 
     @Override
     public String evaluatePlantStatus(Long id, Double currentHeight) {
-        // Get current month (1-12)
-        int currentMonth = LocalDate.now().getMonthValue();
+
+        Plant plant = plantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Plant not found"));
+
+        //calculate the plant age in month
+        int plantAgeInMonths = Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getMonths() +
+                Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getYears() * 12;
+
 
         // Find expected height for current month
         Optional<GrowthExpectation> expectation =
-                growthExpectationRepository.findByPlantIdAndMonthNumber(id, currentMonth);
+                growthExpectationRepository.findByPlantIdAndMonthNumber(id, plantAgeInMonths);
 
         if (expectation.isPresent()) {
             Double expectedHeight = expectation.get().getExpectedHeight();

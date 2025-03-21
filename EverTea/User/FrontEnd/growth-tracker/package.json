@@ -12,7 +12,7 @@
     "@expo/vector-icons": "^14.0.4",
     "@react-native-async-storage/async-storage": "^1.24.0",
     "axios": "^1.8.1",
-    "expo": "~52.0.31",
+    "expo": "~52.0.38",
     "expo-linear-gradient": "~14.0.2",
     "expo-status-bar": "~2.0.1",
     "firebase": "^11.4.0",
@@ -21,7 +21,10 @@
     "react-native-chart-kit": "^6.12.0",
     "react-native-dotenv": "^3.4.11",
     "react-native-svg": "^15.8.0",
-    "victory-native": "^41.16.1"
+    "victory-native": "^41.16.1",
+    "react-dom": "18.3.1",
+    "react-native-web": "~0.19.13",
+    "@expo/metro-runtime": "~4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
