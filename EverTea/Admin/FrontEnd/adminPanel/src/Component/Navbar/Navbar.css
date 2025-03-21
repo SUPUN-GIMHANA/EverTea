@@ -1,0 +1,118 @@
+body{
+    background: url('../../assets/backgroundimg.png');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.boxText{
+    width: 40%;
+    height: 50vh;
+    /* background-color: aqua; */
+}
+.boxHed1{
+    font-size:42px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 50px;
+}
+.boxHed2{
+    font-size:42px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 50px;
+}
+.boxHed3{
+    font-size:42px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    font-family:'Times New Roman', Times, serif;
+    
+}
+
+
+.mid{
+    margin-left:90px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+.boxLetter{
+    font-size: 18px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    margin-left: 160px;
+    color: #03ff24;
+}
+
+.boxRegister{
+    width: 40%;
+    height: 50vh;
+    /* background-color: rgb(234, 0, 255); */
+    display: flex;
+    justify-content: center;
+}
+
+.boxHandel{
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    margin-right: 60px;
+}
+.blackBox{
+    width: 295px;
+    height: 320px;
+    background-color:rgba(21, 45, 21, 0.74);
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    align-items:center;
+
+}
+
+.btn1{
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 30px;
+    margin-bottom: 30px;
+}
+.btn{
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 30px;
+    margin-top: 30px;
+}
+
+.btn2{
+    width: 130px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: #fcee2c;
+}
+.btn2:hover{
+    background-color: rgb(255, 187, 0);
+}
+
+.p{
+    color: rgb(24, 255, 140);
+    margin-right: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* input:focus+btn{
+    transform: translateY(-25px);
+    color: #fcee2c;
+} */
