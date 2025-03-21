@@ -45,13 +45,13 @@ public class JwtService {
         }
     }
 
-    public String generateAccessToken(String userName) {      //generate token
+    public String generateAccessToken(String email) {      //generate token
 
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(userName)
+                .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*60))  //expirations is 3 minutes
                 .signWith(getKey(), SignatureAlgorithm.HS256)
@@ -59,12 +59,12 @@ public class JwtService {
     }
 
     // Generate Refresh Token (long-lived)
-    public String generateRefreshToken(String userName) {
+    public String generateRefreshToken(String email) {
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(userName)
+                .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))  // Refresh token expires in 24 hours
                 .signWith(getKey(), SignatureAlgorithm.HS256)
@@ -80,7 +80,7 @@ public class JwtService {
     }
 
 
-    public String extractUserName(String token) {
+    public String extractEmail(String token) {
         //Extract username from jwt tocken
         return extractClaim(token, Claims::getSubject);
     }
@@ -99,11 +99,11 @@ public class JwtService {
 
     public boolean validateToken(String token) {
         try {
-            final String userName = extractUserName(token);  // Extract username from token
+            final String email = extractEmail(token);  // Extract username from token
 
             // Check token expiration and the username
-            if (userName != null && !isTokenExpired(token)) {
-                User user = userRepo.findByUserName(userName);  // Ensure the user exists in DB
+            if (email != null && !isTokenExpired(token)) {
+                User user = userRepo.findByEmail(email);  // Ensure the user exists in DB
                 if (user != null) {
                     // Verify the token's signature
                     Jwts.parserBuilder()

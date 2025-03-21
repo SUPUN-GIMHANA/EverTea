@@ -1,5 +1,6 @@
 package com.EverTea.EverTea.PlantationJourneyInstructions.model;
 
+import com.EverTea.EverTea.Authentication.model.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,6 +12,10 @@ public class Plantation {
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //plantationId will be auto generated
     private long plantationId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")  // This tells Hibernate to create a foreign key column
+    private User userId;
 
     @ManyToOne
     @JoinColumn(name = "tea_type_id", nullable = false) //foriegn fey from tea_type table

@@ -38,14 +38,14 @@ public class UserController {
     @PostMapping("/user/login")   //when user login system have to generate a token
     public Map<String, String> login(@RequestBody User user){
         Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));     //Before generate token system have to check if username and password correct
+                .authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));     //Before generate token system have to check if username and password correct
 
         if(authentication.isAuthenticated()){   //if username and password correct then create a token
 
            // return jwtService.generateAccessToken(user.getUserName());       //in jwtservice that method doing it and after generating token user receive it as String
 
-            String accessToken = jwtService.generateAccessToken(user.getUserName());
-            String refreshToken = jwtService.generateRefreshToken(user.getUserName());
+            String accessToken = jwtService.generateAccessToken(user.getEmail());
+            String refreshToken = jwtService.generateRefreshToken(user.getEmail());
 
             Map<String, String> tokens = new HashMap<>();
             tokens.put("accessToken", accessToken);
@@ -65,8 +65,8 @@ public class UserController {
         System.out.println(refreshToken);
 
         if (refreshToken != null && jwtService.validateToken(refreshToken)) {
-            String userName = jwtService.extractUserName(refreshToken);
-            return jwtService.generateAccessToken(userName);  // Return a new access token
+            String email = jwtService.extractEmail(refreshToken);
+            return jwtService.generateAccessToken(email);  // Return a new access token
         }
 
         throw new RuntimeException("Invalid refresh token");

@@ -26,10 +26,10 @@ public class UserService {
 
     // Update User
     public void updateUser(User user) {
-        User existingUser = userRepo.findByUserName(user.getUserName());
+        User existingUser = userRepo.findByEmail(user.getEmail());
         if (existingUser != null) {
             existingUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); // Encrypt password
-            existingUser.setUserName(user.getUserName());
+            existingUser.setUserName(user.getEmail());
             userRepo.save(existingUser);
         } else {
             throw new RuntimeException("User not found");
