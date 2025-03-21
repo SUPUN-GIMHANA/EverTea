@@ -43,5 +43,4 @@
 //
 //        return loginAndSignup.userSignUp(userName, password, email, phone, nic, firstName, lastName);
 //    }
-//
 //}
