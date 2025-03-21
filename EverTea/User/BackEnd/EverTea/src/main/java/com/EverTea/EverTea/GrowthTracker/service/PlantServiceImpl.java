@@ -1,15 +1,15 @@
 package com.EverTea.EverTea.GrowthTracker.service;
 
-import com.growth_tracker.growth_tracker.dto.GrowthRecordDto;
-import com.growth_tracker.growth_tracker.dto.PlantDetailsDto;
-import com.growth_tracker.growth_tracker.dto.PlantDto;
-import com.growth_tracker.growth_tracker.dto.UpdateHeightRequest;
-import com.growth_tracker.growth_tracker.model.GrowthExpectation;
-import com.growth_tracker.growth_tracker.model.GrowthRecord;
-import com.growth_tracker.growth_tracker.model.Plant;
-import com.growth_tracker.growth_tracker.repository.GrowthExpectationRepository;
-import com.growth_tracker.growth_tracker.repository.GrowthRecordRepository;
-import com.growth_tracker.growth_tracker.repository.PlantRepository;
+import com.EverTea.EverTea.GrowthTracker.dto.GrowthRecordDto;
+import com.EverTea.EverTea.GrowthTracker.dto.PlantDetailsDto;
+import com.EverTea.EverTea.GrowthTracker.dto.PlantDto;
+import com.EverTea.EverTea.GrowthTracker.dto.UpdateHeightRequest;
+import com.EverTea.EverTea.GrowthTracker.model.GrowthExpectation;
+import com.EverTea.EverTea.GrowthTracker.model.GrowthRecord;
+import com.EverTea.EverTea.GrowthTracker.model.Plant;
+import com.EverTea.EverTea.GrowthTracker.repository.GrowthExpectationRepository;
+import com.EverTea.EverTea.GrowthTracker.repository.GrowthRecordRepository;
+import com.EverTea.EverTea.GrowthTracker.repository.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -135,8 +135,7 @@ public class PlantServiceImpl implements PlantService {
     @Override
     public String evaluatePlantStatus(Long id, Double currentHeight) {
 
-        Plant plant = plantRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Plant not found"));
+        
 
         //calculate the plant age in month
         int plantAgeInMonths = Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getMonths() +
