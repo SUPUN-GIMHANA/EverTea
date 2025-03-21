@@ -9,6 +9,8 @@ import com.admin.admin.service.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DistricServiceImpl implements DistrictService {
 
@@ -40,7 +42,7 @@ public class DistricServiceImpl implements DistrictService {
         TeaModels teaModels = new TeaModels(
                 saveTeaModelRequestDTO.getTeaId(),
                 saveTeaModelRequestDTO.getTeaName(),
-                saveTeaModelRequestDTO.getDistrictName(),
+                saveTeaModelRequestDTO.getDistrict(),
                 saveTeaModelRequestDTO.getPrice()
         );
 
@@ -99,5 +101,33 @@ public class DistricServiceImpl implements DistrictService {
         weatherRepo.save(weathr);
         return "weather table save";
     }
+
+
+
+    @Override
+    public List<District> getDistricts() {
+        return districtRepo.findAll();
+    }
+
+    @Override
+    public List<Instruction> getInstruction() {
+        return instructionRepo.findAll();
+    }
+
+    @Override
+    public List<TeaModels> getTeaModel() {
+        return teaTypeRepo.findAll();
+    }
+
+    @Override
+    public List<TeaType> getTeaType() {
+       return teaModelRepo.findAll();
+    }
+
+    @Override
+    public List<Weathr> getWeather() {
+       return weatherRepo.findAll();
+    }
+
 
 }
