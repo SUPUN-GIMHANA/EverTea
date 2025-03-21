@@ -134,12 +134,9 @@ public class PlantServiceImpl implements PlantService {
 
     @Override
     public String evaluatePlantStatus(Long id, Double currentHeight) {
-        // Get current month (1-12)
-        int currentMonth = LocalDate.now().getMonthValue();
+        
 
-        // Find expected height for current month
-        Optional<GrowthExpectation> expectation =
-                growthExpectationRepository.findByPlantIdAndMonthNumber(id, currentMonth);
+       
 
         if (expectation.isPresent()) {
             Double expectedHeight = expectation.get().getExpectedHeight();
