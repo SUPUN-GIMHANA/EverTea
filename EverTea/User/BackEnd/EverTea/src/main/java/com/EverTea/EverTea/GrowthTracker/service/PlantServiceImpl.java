@@ -136,6 +136,8 @@ public class PlantServiceImpl implements PlantService {
     public String evaluatePlantStatus(Long id, Double currentHeight) {
 
 
+        Plant plant = plantRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Plant not found"));
 
         //calculate the plant age in month
         int plantAgeInMonths = Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getMonths() +

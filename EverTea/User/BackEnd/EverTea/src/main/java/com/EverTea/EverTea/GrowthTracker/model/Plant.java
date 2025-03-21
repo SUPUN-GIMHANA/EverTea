@@ -1,4 +1,5 @@
 package com.EverTea.EverTea.GrowthTracker.model;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
