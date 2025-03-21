@@ -46,6 +46,141 @@ public class UserPlantationCreatingDTO {
     private Double teaModelPrice = 0.0;
     private Integer avgPlantsForADistrict;
 
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getTeaNameMainDTO() {
+        return teaNameMainDTO;
+    }
+
+    public void setTeaNameMainDTO(String teaNameMainDTO) {
+        this.teaNameMainDTO = teaNameMainDTO;
+    }
+
+    public Integer getTeaModel() {
+        return teaModel;
+    }
+
+    public void setTeaModel(Integer teaModel) {
+        this.teaModel = teaModel;
+    }
+
+    public String getTeaModelName() {
+        return teaModelName;
+    }
+
+    public void setTeaModelName(String teaModelName) {
+        this.teaModelName = teaModelName;
+    }
+
+    public ArrayList<String> getTeaNamesSubDTO() {
+        return teaNamesSubDTO;
+    }
+
+    public void setTeaNamesSubDTO(ArrayList<String> teaNamesSubDTO) {
+        this.teaNamesSubDTO = teaNamesSubDTO;
+    }
+
+    public ArrayList<Integer> getTeaSubIds() {
+        return teaSubIds;
+    }
+
+    public void setTeaSubIds(ArrayList<Integer> teaSubIds) {
+        this.teaSubIds = teaSubIds;
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
+    }
+
+    public Integer getLandSlope() {
+        return landSlope;
+    }
+
+    public void setLandSlope(Integer landSlope) {
+        this.landSlope = landSlope;
+    }
+
+    public Double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Double budget) {
+        this.budget = budget;
+    }
+
+    public Double getTeaPlantsUser() {
+        return teaPlantsUser;
+    }
+
+    public void setTeaPlantsUser(Double teaPlantsUser) {
+        this.teaPlantsUser = teaPlantsUser;
+    }
+
+    public String getBudgetPlanSystem() {
+        return budgetPlanSystem;
+    }
+
+    public void setBudgetPlanSystem(String budgetPlanSystem) {
+        this.budgetPlanSystem = budgetPlanSystem;
+    }
+
+    public String getBudgetPlanUser() {
+        return budgetPlanUser;
+    }
+
+    public void setBudgetPlanUser(String budgetPlanUser) {
+        this.budgetPlanUser = budgetPlanUser;
+    }
+
+    public Double getAvgAreaForATeaPlant() {
+        return avgAreaForATeaPlant;
+    }
+
+    public void setAvgAreaForATeaPlant(Double avgAreaForATeaPlant) {
+        this.avgAreaForATeaPlant = avgAreaForATeaPlant;
+    }
+
+    public Double getTeaModelPrice() {
+        return teaModelPrice;
+    }
+
+    public void setTeaModelPrice(Double teaModelPrice) {
+        this.teaModelPrice = teaModelPrice;
+    }
+
+    public Integer getAvgPlantsForADistrict() {
+        return avgPlantsForADistrict;
+    }
+
+    public void setAvgPlantsForADistrict(Integer avgPlantsForADistrict) {
+        this.avgPlantsForADistrict = avgPlantsForADistrict;
+    }
+
+    public ArrayList<String> getPlantationUserData() {
+        return plantationUserData;
+    }
+
+    public void setPlantationUserData(ArrayList<String> plantationUserData) {
+        this.plantationUserData = plantationUserData;
+    }
+
+    public Integer getUserChoice() {
+        return userChoice;
+    }
+
+    public void setUserChoice(Integer userChoice) {
+        this.userChoice = userChoice;
+    }
 
     //Plantation Creating Data Array
     private ArrayList<String> plantationUserData = new ArrayList<>();
@@ -56,6 +191,22 @@ public class UserPlantationCreatingDTO {
      @AllArgsConstructor
      @NoArgsConstructor
      public static class TeaInfo {
+         public int getTeaId() {
+             return teaId;
+         }
+
+         public void setTeaId(int teaId) {
+             this.teaId = teaId;
+         }
+
+         public String getTeaName() {
+             return teaName;
+         }
+
+         public void setTeaName(String teaName) {
+             this.teaName = teaName;
+         }
+
          private int teaId;
          private String teaName;
      }
