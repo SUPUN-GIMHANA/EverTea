@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EverTeaBackEnd",
+            "request": "launch",
+            "mainClass": "com.EverTea.EverTea.EverTeaBackEnd",
+            "projectName": "FinancialTracker"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
