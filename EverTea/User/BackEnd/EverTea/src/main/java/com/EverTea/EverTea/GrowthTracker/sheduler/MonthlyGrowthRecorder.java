@@ -1,4 +1,4 @@
-package com.growth_tracker.growth_tracker.sheduler;
+package com.EverTea.EverTea.GrowthTracker.sheduler;
 
 import com.growth_tracker.growth_tracker.model.GrowthRecord;
 import com.growth_tracker.growth_tracker.model.Plant;

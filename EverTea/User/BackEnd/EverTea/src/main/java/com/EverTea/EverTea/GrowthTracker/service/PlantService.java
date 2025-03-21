@@ -1,4 +1,4 @@
-package com.growth_tracker.growth_tracker.service;
+package com.EverTea.EverTea.GrowthTracker.service;
 
 
 import com.growth_tracker.growth_tracker.dto.PlantDetailsDto;

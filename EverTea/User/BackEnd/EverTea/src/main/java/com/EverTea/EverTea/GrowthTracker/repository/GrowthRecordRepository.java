@@ -1,4 +1,4 @@
-package com.growth_tracker.growth_tracker.repository;
+package com.EverTea.EverTea.GrowthTracker.repository;
 
 import com.growth_tracker.growth_tracker.model.GrowthRecord;
 import org.springframework.data.jpa.repository.JpaRepository;

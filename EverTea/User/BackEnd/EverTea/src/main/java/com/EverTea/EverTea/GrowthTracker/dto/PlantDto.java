@@ -1,4 +1,4 @@
-package com.growth_tracker.growth_tracker.dto;
+package com.EverTea.EverTea.GrowthTracker.dto;
 
 import lombok.Data;
 
