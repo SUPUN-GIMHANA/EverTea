@@ -136,7 +136,17 @@ public class PlantServiceImpl implements PlantService {
     public String evaluatePlantStatus(Long id, Double currentHeight) {
         
 
-       
+        Plant plant = plantRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Plant not found"));
+
+        //calculate the plant age in month
+        int plantAgeInMonths = Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getMonths() +
+                Period.between(plant.getCreatedAt().toLocalDate(), LocalDate.now()).getYears() * 12;
+
+
+        // Find expected height for current month
+        Optional<GrowthExpectation> expectation =
+                growthExpectationRepository.findByPlantIdAndMonthNumber(id, plantAgeInMonths);
 
         if (expectation.isPresent()) {
             Double expectedHeight = expectation.get().getExpectedHeight();
