@@ -29,6 +29,7 @@ public class UserPlantationCreatingController {
         List<String> teaModels = DistrictPlant.districtChecker(district);
 
         return ResponseEntity.ok(teaModels);
+
     }
 
     @PostMapping("/plantationTeaModel")
