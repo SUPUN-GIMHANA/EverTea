@@ -1,7 +1,6 @@
 package com.EverTea.EverTea.GrowthTracker.repository;
 
 import com.EverTea.EverTea.GrowthTracker.model.GrowthRecord;
-import org.springframework.data.convert.ReadingConverter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
