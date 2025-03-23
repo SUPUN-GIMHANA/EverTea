@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+
 import { TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../Styles/PlantationStartDistrict'; // Import the styles
 import axios from 'axios';
 
 export const useAppLogic = () => {
+  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuZXRodW0yQGdtYWlsLmNvbSIsImlhdCI6MTc0Mjc2MjAwNywiZXhwIjoxNzQyNzY1NjA3fQ.TAFJhGtk3IBiTepRFB_O_OixnQVB7omg92eUF-_IU7Y"; // Manually set token
   const navigation = useNavigation();
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
@@ -44,8 +46,15 @@ export const useAppLogic = () => {
 
   const districtSearchHandler = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationDistrict', {
+
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationDistrict', {
         district: district, // Send district in the body
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
       });
       // Handle response
       console.log('Backend response:', response.data);
@@ -68,7 +77,14 @@ export const useAppLogic = () => {
 
   const fetchTeaModels = async () => {
     try {
-      const response = await axios.get('http://192.168.1.2:8080/api/user/teaModels');
+      const response = await axios.get('http://192.168.1.2:8080/api/userPlantationCreating/teaModels',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
+      }
+      );
       console.log('Fetched tea models:', response.data);
       return response.data; // Return the fetched data
     } catch (error) {
@@ -118,10 +134,16 @@ export const useAppLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationTeaModel', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationTeaModel', {
         teaModelName: item.value,
-
-      });
+        
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
+      }); 
 
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -137,13 +159,19 @@ export const useAppLogic = () => {
         setPlantationSlope(slope);
         console.log("Selected Slope:", slope); // Debugging
     };
-
+ 
 
   const plantationAreaAndSlope = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/user/plantationAreaAndSlope', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationAreaAndSlope', {
         area: area,  // Send area in the body
         landSlope: plantationSlope,  // Send slope in the body
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
       });
 
       // Handle response
@@ -156,9 +184,15 @@ export const useAppLogic = () => {
 
   const budgetAndTheTeaPlantsOfTheUser = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/user/budgetAndTheTeaPlantsOfTheUser', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
       });
       // Handle response
       console.log('Backend response:', response.data);
@@ -170,7 +204,13 @@ export const useAppLogic = () => {
 
   const budgetRecommendation = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/user/budgetRecommendation', {
+      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation', {
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
       });
       setRecommendedPlants(response.data[0]);
       setExtraPlants(response.data[1]);
@@ -193,7 +233,13 @@ export const useAppLogic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://192.168.1.2:8080/api/user/budgetRecommendation', {});
+        const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Attach token
+              "Content-Type": "application/json",
+            },
+          },{});
         setRecommendedPlants(response.data[0]);
         setExtraPlants(response.data[1]);
         setRecommendedBudget(response.data[2]);
@@ -229,7 +275,13 @@ export const useAppLogic = () => {
 
   const plantationCreation = async () => {
     try {
-      const response = axios.post('http://192.168.1.2:8080/api/user/plantationCreation', {
+      const response = axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationCreation', {
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
       });
         
       // Handle response
