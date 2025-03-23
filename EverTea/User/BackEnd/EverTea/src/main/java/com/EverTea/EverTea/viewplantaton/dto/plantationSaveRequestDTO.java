@@ -3,8 +3,6 @@ package com.EverTea.EverTea.viewplantaton.dto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
 @NoArgsConstructor
 @AllArgsConstructor
 public class plantationSaveRequestDTO {
