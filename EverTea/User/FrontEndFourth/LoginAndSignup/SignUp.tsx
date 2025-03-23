@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'react-native-linear-gradient';
-import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/SignUp'; // Import the styles
 
 
@@ -19,7 +18,6 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {budgetInputHandler, plantsInputHandler, handleButtonPressBudget, budgetRecommendation } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -56,10 +54,10 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Budget' onChangeText={budgetInputHandler}/>
+            <TextInput style={styles.textInput} placeholder='Budget' />
           </Text>
           <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Plants' onChangeText={plantsInputHandler}/>
+            <TextInput style={styles.textInput} placeholder='Plants' />
           </Text>
         </View>
 
@@ -96,7 +94,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={handleButtonPressBudget} onPressIn={budgetRecommendation} activeOpacity={0.7}>
+                activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>

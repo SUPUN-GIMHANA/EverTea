@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Define the type for the navigation stack
@@ -114,12 +114,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   imageContainer: {
-    alignItems: 'center',    
+    alignItems: 'center',
   },
   plantationStatingBackground: {
     borderRadius: 30,
     width: '80%',
-    height: '90%'
+    height: '90%',
   },
   content2: {
     paddingHorizontal: '10%',
