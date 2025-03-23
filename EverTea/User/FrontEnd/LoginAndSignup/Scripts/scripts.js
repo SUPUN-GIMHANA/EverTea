@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { styles } from '../Styles/SignUp'; // Import the styles
 import axios from 'axios';
 
 
@@ -26,7 +23,7 @@ export const useAuthLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://10.31.5.85:8080/user/login', {
+      const response = await axios.post('http://192.168.1.2:8080/user/login', {
         email,
         password,
       });

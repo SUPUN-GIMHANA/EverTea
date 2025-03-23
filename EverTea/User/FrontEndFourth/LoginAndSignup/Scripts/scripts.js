@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { styles } from '../Styles/SignUp'; // Import the styles
+import { useState } from 'react';
 import axios from 'axios';
-
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../Navigation/RootStackParams';
 
 export const validateEmail = (text) => {
   // Allow only email format characters (letters, numbers, @, ., _)
@@ -26,7 +24,7 @@ export const useAuthLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://10.31.5.85:8080/user/login', {
+      const response = await axios.post('http://192.168.1.2:8080/user/login', {
         email,
         password,
       });
