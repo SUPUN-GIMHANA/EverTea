@@ -1,53 +1,52 @@
 package com.EverTea.EverTea.AdvancedWeather.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.apache.catalina.users.GenericRole;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.processing.Generated;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Component
 public class WeatherData implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     private String city;
     private String dateTime;
-    private String cloudCover;
-    private double currentTemp;
-    private double tempMax;
-    private double tempMin;
-    private long dayLight;
-    private long sunShine;
-    private double uvIndexMax;
-    private double precipitationSum;
-    private double rainSum;
-    private double windSpeedMax;
+    private double temp;
+    private int relativeHumidity;
+    private double precipitation;
+    private double rain;
+    private String weatherCode;
+    private double windSpeed;
     private String windDirection;
+    private double soilTemp;
 
     public WeatherData() {
     }
 
-    public WeatherData(int id, String city, String dateTime, String cloudCover, double currentTemp, double tempMax, double tempMin, long datLight, long sunShine, double uvIndexMax, double precipitationSum, double rainSum, double windSpeedMax, String windDirection) {
+    public int getId() {
+        return Id;
+    }
+
+    public WeatherData(int id, String city, String dateTime, double temp, int relativeHumidity, double precipitation, double rain, String weatherCode, double windSpeed, String windDirection, double soilTemp) {
         Id = id;
         this.city = city;
         this.dateTime = dateTime;
-        this.cloudCover = cloudCover;
-        this.currentTemp = currentTemp;
-        this.tempMax = tempMax;
-        this.tempMin = tempMin;
-        this.dayLight = datLight;
-        this.sunShine = sunShine;
-        this.uvIndexMax = uvIndexMax;
-        this.precipitationSum = precipitationSum;
-        this.rainSum = rainSum;
-        this.windSpeedMax = windSpeedMax;
+        this.temp = temp;
+        this.relativeHumidity = relativeHumidity;
+        this.precipitation = precipitation;
+        this.rain = rain;
+        this.weatherCode = weatherCode;
+        this.windSpeed = windSpeed;
         this.windDirection = windDirection;
-    }
-
-    public int getId() {
-        return Id;
+        this.soilTemp = soilTemp;
     }
 
     public void setId(int id) {
@@ -70,84 +69,52 @@ public class WeatherData implements Serializable {
         this.dateTime = dateTime;
     }
 
-    public String getCloudCover() {
-        return cloudCover;
+    public double getTemp() {
+        return temp;
     }
 
-    public void setCloudCover(String cloudCover) {
-        this.cloudCover = cloudCover;
+    public void setTemp(double temp) {
+        this.temp = temp;
     }
 
-    public double getCurrentTemp() {
-        return currentTemp;
+    public int getRelativeHumidity() {
+        return relativeHumidity;
     }
 
-    public void setCurrentTemp(double currentTemp) {
-        this.currentTemp = currentTemp;
+    public void setRelativeHumidity(int relativeHumidity) {
+        this.relativeHumidity = relativeHumidity;
     }
 
-    public double getTempMax() {
-        return tempMax;
+    public double getPrecipitation() {
+        return precipitation;
     }
 
-    public void setTempMax(double tempMax) {
-        this.tempMax = tempMax;
+    public void setPrecipitation(double precipitation) {
+        this.precipitation = precipitation;
     }
 
-    public double getTempMin() {
-        return tempMin;
+    public double getRain() {
+        return rain;
     }
 
-    public void setTempMin(double tempMin) {
-        this.tempMin = tempMin;
+    public void setRain(double rain) {
+        this.rain = rain;
     }
 
-    public long getDayLight() {
-        return dayLight;
+    public String getWeatherCode() {
+        return weatherCode;
     }
 
-    public void setDayLight(long datLight) {
-        this.dayLight = datLight;
+    public void setWeatherCode(String weatherCode) {
+        this.weatherCode = weatherCode;
     }
 
-    public long getSunShine() {
-        return sunShine;
+    public double getWindSpeed() {
+        return windSpeed;
     }
 
-    public void setSunShine(long sunShine) {
-        this.sunShine = sunShine;
-    }
-
-    public double getUvIndexMax() {
-        return uvIndexMax;
-    }
-
-    public void setUvIndexMax(double uvIndexMax) {
-        this.uvIndexMax = uvIndexMax;
-    }
-
-    public double getPrecipitationSum() {
-        return precipitationSum;
-    }
-
-    public void setPrecipitationSum(double precipitationSum) {
-        this.precipitationSum = precipitationSum;
-    }
-
-    public double getRainSum() {
-        return rainSum;
-    }
-
-    public void setRainSum(double rainSum) {
-        this.rainSum = rainSum;
-    }
-
-    public double getWindSpeedMax() {
-        return windSpeedMax;
-    }
-
-    public void setWindSpeedMax(double windSpeedMax) {
-        this.windSpeedMax = windSpeedMax;
+    public void setWindSpeed(double windSpeed) {
+        this.windSpeed = windSpeed;
     }
 
     public String getWindDirection() {
@@ -156,5 +123,13 @@ public class WeatherData implements Serializable {
 
     public void setWindDirection(String windDirection) {
         this.windDirection = windDirection;
+    }
+
+    public double getSoilTemp() {
+        return soilTemp;
+    }
+
+    public void setSoilTemp(double soilTemp) {
+        this.soilTemp = soilTemp;
     }
 }

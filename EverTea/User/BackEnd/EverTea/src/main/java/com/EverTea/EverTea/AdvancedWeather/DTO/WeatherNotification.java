@@ -7,45 +7,31 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "weather_notifications")
+@Table(name="weather_condtions_month1")
 public class WeatherNotification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
-    private String conditionType;
-    private String message;
-    private String priority;
+    private String notification_message;
 
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getConditionType() {
-        return conditionType;
+
+    public String getNotification_message() {
+        return notification_message;
     }
 
-    public void setConditionType(String conditionType) {
-        this.conditionType = conditionType;
+    public void setNotification_message(String notification_message) {
+        this.notification_message = notification_message;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
 }

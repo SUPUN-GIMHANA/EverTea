@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -37,6 +38,12 @@ public class EverTeaBackEnd {
 		FirebaseApp firebaseApp = FirebaseApp.initializeApp(firebaseOptions, "my-app");
 
 		return FirebaseMessaging.getInstance(firebaseApp);
+	}
+
+	@Bean
+	public RestTemplate restTemplate(){
+		System.out.println("rest template called");
+		return new RestTemplate();
 	}
 
 }

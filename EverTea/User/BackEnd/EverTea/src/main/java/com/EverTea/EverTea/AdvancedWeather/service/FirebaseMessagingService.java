@@ -1,6 +1,8 @@
 package com.EverTea.EverTea.AdvancedWeather.service;
 
 import com.EverTea.EverTea.AdvancedWeather.DTO.LocationAndTokenReceiver;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
@@ -18,6 +20,8 @@ public class FirebaseMessagingService {
     String token;
     @Autowired
     private FirebaseMessaging firebaseMessaging;
+
+    //private Firestore db;
 
     public void getTokenFromController(LocationAndTokenReceiver receiver){
         token = receiver.getFcmToken();
@@ -44,6 +48,8 @@ public class FirebaseMessagingService {
 
         try{
             firebaseMessaging.send(message);
+            //saveNotificationToFirestore(title,body);
+            System.out.println("Success sending push notification");
             return "Success sending notification";
         }catch (FirebaseMessagingException e){
             e.printStackTrace();
@@ -52,4 +58,20 @@ public class FirebaseMessagingService {
 
 
     }
+
+//    public void saveNotificationToFirestore(String title, String body){
+//        System.out.println("saveNotificationToFirestore called");
+//        Map<String,Object> notification = new HashMap<>();
+//
+//        notification.put("title",title);
+//        notification.put("body", body);
+//        notification.put("timestamp",System.currentTimeMillis());
+//        notification.put("status","pending");
+//
+//        db.collection("notifications").document(token)
+//                .collection("userNotification")
+//                .add(notification);
+//
+//        System.out.println("Saved notification to firestore");
+//    }
 }

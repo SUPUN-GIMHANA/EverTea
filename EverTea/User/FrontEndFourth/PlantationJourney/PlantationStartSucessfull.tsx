@@ -9,6 +9,7 @@ import { styles } from './Styles/PlantationStartSucessfull'; // Import the style
 // Define the type for the navigation stack
 type RootStackParamList = {
   Home: undefined;
+  ViewPlantation: undefined;
  
 };
 
@@ -79,7 +80,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
       <View style={styles.navButtons}>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('ViewPlantation')} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>View Plantation</Text>
               </Text>

@@ -7,6 +7,7 @@ type RootStackParamList = {
   Home: undefined;
   FinancialTracker: undefined;
   PlantationStart: undefined;
+  ViewPlantation: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -29,7 +30,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
             <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.profileImage} />
           </View>
 
-          <TouchableOpacity style={styles.plantationButton}>
+          <TouchableOpacity style={styles.plantationButton} onPress={() => navigation.navigate('ViewPlantation')} activeOpacity={0.7}>
             <Text style={styles.plantationButtonText}>View All Plantations</Text>
             <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.buttonIcon} />
           </TouchableOpacity>

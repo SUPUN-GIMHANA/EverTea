@@ -6,17 +6,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@EnableJpaRepositories
 public class WeatherRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public boolean doesCityTableExist(String latitude, String longitude){
-        String tableName =  "weather_"
-                            + latitude.replace(".","_") +
-                            "_"+
-                            longitude.replace(".", "_");
+    public boolean doesCityTableExist(String location){
+        String tableName =  location
+                .toLowerCase()
+                .replaceAll("[^a-z0-9_]", "_")
+                .replaceAll("_+","_")
+                .replaceAll("^_|_$","")
+                + "_plantation";
 
         String sql = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = ?";
 
@@ -25,42 +26,53 @@ public class WeatherRepository {
         return count > 0;
     }
 
-    public void createCityTableIfTableNotExist(String latitude, String longitude){
-        String tableName =  "weather_"
-                + latitude.replace(".","_") +
-                "_"+
-                longitude.replace(".", "_");
+    public void createCityTableIfTableNotExist(String location){
+        String tableName =  location
+                .toLowerCase()
+                .replaceAll("[^a-z0-9_]", "_")
+                .replaceAll("_+","_")
+                .replaceAll("^_|_$","")
+                + "_plantation";
 
         String createTableSql =    "CREATE TABLE IF NOT EXISTS " + tableName + " ("
                 + "id INT AUTO_INCREMENT PRIMARY KEY, "
-                + "latitude VARCHAR(100) NOT NULL, "
-                + "longitude VARCHAR(100) NOT NULL, "
-                + "date_time VARCHAR(50) NOT NULL, "
-                + "cloud_cover VARCHAR(50), "
-                + "current_temp DECIMAL(5,2), "
-                + "maximum_temp DECIMAL(5,2), "
-                + "minimum_temp DECIMAL(5,2), "
-                + "day_light DECIMAL(5,2), "
-                + "sun_shine DECIMAL(5,2), "
-                + "uv_index_max DECIMAL(5,2),"
-                + "precipitation_sum DECIMAL(5,2), "
-                + "rain_sum DECIMAL(5,2), "
+                + "Plantation_name VARCHAR(100) NOT NULL, "
+                + "Date_Time VARCHAR(50) NOT NULL UNIQUE, "
+                + "Temperature DECIMAL(5,2), "
+                + "Relative_humidity DECIMAL(5,2), "
+                + "Precipitation DECIMAL(5,2), "
+                + "Rain DECIMAL(5,2), "
+                + "Weather_code VARCHAR(50), "
                 + "wind_speed_max DECIMAL(5,2),"
-                + "wind_direction VARCHAR(50)"
+                + "wind_direction VARCHAR(50), "
+                + "Soil_Temperature DECIMAL(5,2) "
                 + ")";
 
         System.out.println(tableName + " created");
         jdbcTemplate.execute(createTableSql);
     }
 
-    public void insertWeatherData(String latitude,String longitude, String dateTime, String cloud_cover, double currentTemp,double tempMax, double tempMin, long dayLight, long sunShine, double uvIndexSum, double precipitationSum, double rainSum,double windSpeedMax, String windDirection){
-        String tableName =  "weather_"
-                + latitude.replace(".","_") +
-                "_"+
-                longitude.replace(".", "_");
-        String sql = "INSERT INTO "+ tableName + " (latitude, longitude, date_time,cloud_cover,current_temp, maximum_temp, minimum_temp, day_light, sun_shine, uv_index_max, precipitation_sum, rain_sum, wind_speed_max, wind_direction) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public void insertWeatherData(String location, String dateTime, double temp, int relativeHumidity, double precipitation,String weatherCode, double rain,double windSpeedMax, String windDirection, double soilTemp){
+        String tableName =  location
+                .toLowerCase()
+                .replaceAll("[^a-z0-9_]", "_")
+                .replaceAll("_+","_")
+                .replaceAll("^_|_$","")
+                + "_plantation";
 
-        jdbcTemplate.update(sql, latitude, longitude, dateTime, cloud_cover,currentTemp, tempMax, tempMin, dayLight, sunShine,uvIndexSum, precipitationSum, rainSum, windSpeedMax, windDirection);
+        String sql =    "INSERT INTO "+ tableName + " (Plantation_name, Date_Time,Temperature, Relative_Humidity, Precipitation, Rain, Weather_code, wind_speed_max, wind_direction, Soil_Temperature) " +
+                        "VALUES (?,?,?,?,?,?,?,?,?,?) " +
+                        "ON DUPLICATE KEY UPDATE "+
+                        "Temperature = VALUES(Temperature), "+
+                        "Relative_Humidity = VALUES(Relative_Humidity), "+
+                        "Precipitation = VALUES(Precipitation), "+
+                        "Rain = VALUES(Rain), "+
+                        "Weather_code = VALUES(Weather_code), "+
+                        "wind_speed_max = VALUES(wind_speed_max), "+
+                        "wind_direction = VALUES(wind_direction), "+
+                        "Soil_Temperature = VALUES(Soil_Temperature)";
+
+        jdbcTemplate.update(sql, location, dateTime,temp, relativeHumidity, precipitation, rain, weatherCode, windSpeedMax, windDirection, soilTemp);
 
     }
 }
