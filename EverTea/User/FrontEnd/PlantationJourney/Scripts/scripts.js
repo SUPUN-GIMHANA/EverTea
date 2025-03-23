@@ -120,8 +120,8 @@ export const useAppLogic = () => {
     try {
       const response = await axios.post('http://192.168.1.2:8080/api/user/plantationTeaModel', {
         teaModelName: item.value,
-        
-      }); 
+
+      });
 
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -137,7 +137,7 @@ export const useAppLogic = () => {
         setPlantationSlope(slope);
         console.log("Selected Slope:", slope); // Debugging
     };
- 
+
 
   const plantationAreaAndSlope = async () => {
     try {
