@@ -13,7 +13,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.EverTea.EverTea.viewplantation.repo"})
 @EnableScheduling
 @EnableJpaRepositories(basePackages = {"com.EverTea.EverTea.PlantationJourneyInstructions.repo","com.EverTea.EverTea.GrowthTracker.repository","com.EverTea.EverTea.Authentication.repo"})
 
