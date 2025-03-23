@@ -1,4 +1,4 @@
-package com.viewplantation.viewplantaton.entity;
+package com.EverTea.EverTea.viewplantaton.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

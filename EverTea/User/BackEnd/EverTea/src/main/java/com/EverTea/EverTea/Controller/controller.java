@@ -1,6 +1,6 @@
-package com.viewplantation.viewplantaton.controller;
+package com.EverTea.EverTea.Controller;
 
-import com.viewplantation.viewplantaton.dto.plantationSaveRequestDTO;
+import com.EverTea.EverTea.viewplantation.dto.plantationSaveRequestDTO;
 import com.viewplantation.viewplantaton.entity.plantationEntity;
 import com.viewplantation.viewplantaton.service.PlantationSave;
 import org.springframework.beans.factory.annotation.Autowired;

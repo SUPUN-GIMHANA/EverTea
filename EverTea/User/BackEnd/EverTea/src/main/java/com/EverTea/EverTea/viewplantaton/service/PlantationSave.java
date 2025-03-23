@@ -1,7 +1,7 @@
-package com.viewplantation.viewplantaton.service;
+package com.EverTea.EverTea.viewplantaton.service;
 
-import com.viewplantation.viewplantaton.dto.plantationSaveRequestDTO;
-import com.viewplantation.viewplantaton.entity.plantationEntity;
+import com.EverTea.EverTea.viewplantaton.dto.plantationSaveRequestDTO;
+import com.EverTea.EverTea.viewplantaton.entity.plantationEntity;
 
 import java.util.List;
 

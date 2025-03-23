@@ -1,4 +1,4 @@
-package com.viewplantation.viewplantaton.dto;
+package com.EverTea.EverTea.viewplantaton.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

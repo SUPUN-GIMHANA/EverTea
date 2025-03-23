@@ -1,6 +1,6 @@
-package com.viewplantation.viewplantaton.repo;
+package com.EverTea.EverTea.viewplantaton.repo;
 
-import com.viewplantation.viewplantaton.entity.plantationEntity;
+import com.EverTea.EverTea.viewplantaton.entity.plantationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
