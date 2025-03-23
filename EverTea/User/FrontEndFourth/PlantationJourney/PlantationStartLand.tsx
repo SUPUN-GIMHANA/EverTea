@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from 'react-native-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartLand'; // Import the styles
 
