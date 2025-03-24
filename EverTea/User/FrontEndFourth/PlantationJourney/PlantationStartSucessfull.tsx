@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import React from 'react';
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'react-native-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
@@ -18,7 +18,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
+  const {  } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -88,7 +88,5 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
       </View>
     </View>
-
-    
   );
 }

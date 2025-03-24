@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput, FlatList } from 'react-native';
+import React from 'react';
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartRecommendation'; // Import the styles

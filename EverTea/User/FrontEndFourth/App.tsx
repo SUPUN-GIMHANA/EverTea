@@ -21,7 +21,7 @@ import Flow5 from "./splashFlow/screens/Flow5";
 import LetsStart from "./splashFlow/screens/LetsStart";
 
 //View Plantations
-import ViewPlantations from './ViewPlantation/ViewPlant';
+// import ViewPlantations from './ViewPlantation/ViewPlant';
 
 //Plantation Instructions
 // import PlantationInstructions from './PlantationInstruction/PlantationInstructions';
@@ -52,7 +52,7 @@ export default function App() {
         <Stack.Screen name="PlantationStartSucessfull" component={PlantationStartSucessfull} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="ViewPlantations" component={ViewPlantations} />
+        {/* <Stack.Screen name="ViewPlantations" component={ViewPlantations} /> */}
         {/* <Stack.Screen name="PlantationInstructions" component={PlantationInstructions} /> */}
         
         
