@@ -3,14 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import GreetingScreen from './GreetingScreen';
 import HomeScreen from './HomeScreen';
 import FinancialTracker from './FinancialTracker';
-import PlantationStart from './PlantationStart'
-import PlantationStartDistrict from './PlantationJourney/PlantationStartDistrict'
-import PlantationStartLand from './PlantationJourney/PlantationStartLand'
-import PlantationStartBudget from './PlantationJourney/PlantationStartBudget'
-import PlantationStartRecommendation from './PlantationJourney/PlantationStartRecommendation'
-import PlantationStartSucessfull from './PlantationJourney/PlantationStartSucessfull'
-import Login from './LoginAndSignup/Login'
-import SignUp from './LoginAndSignup/SignUp'
+import PlantationStart from './PlantationStart';
+import PlantationStartDistrict from './PlantationJourney/PlantationStartDistrict';
+import PlantationStartLand from './PlantationJourney/PlantationStartLand';
+import PlantationStartBudget from './PlantationJourney/PlantationStartBudget';
+import PlantationStartRecommendation from './PlantationJourney/PlantationStartRecommendation';
+import PlantationStartSucessfull from './PlantationJourney/PlantationStartSucessfull';
+import Login from './LoginAndSignup/Login';
+import SignUp from './LoginAndSignup/SignUp';
 
 // App Navigator
 import Flow1 from "./splashFlow/screens/Flow1";

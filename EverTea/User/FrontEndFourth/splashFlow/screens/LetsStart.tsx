@@ -38,7 +38,7 @@ const LetsStart = () => {
       />
 
       <View style={styles.bottomContent}>
-        <TouchableOpacity style={styles.signUpBtn} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.signUpBtn} onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.signUpTxt}>Sign up</Text>
         </TouchableOpacity>
 

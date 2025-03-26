@@ -6,6 +6,7 @@ import { useAuthLogic, validateEmail, validatePassword } from './Scripts/scripts
 
 type RootStackParamList = {
   Home: undefined;
+  SignUp: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -58,7 +59,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             </TouchableOpacity>
             <TouchableOpacity style={styles.signUpTextBorder}>
               <Text style={styles.signUpText}>Don't have an account?</Text>
-              <Text style={styles.passwordResetter} onPress={() => navigation.navigate('Home')}>
+              <Text style={styles.passwordResetter} onPress={() => navigation.navigate('SignUp')}>
                 Sign up
               </Text>
             </TouchableOpacity>

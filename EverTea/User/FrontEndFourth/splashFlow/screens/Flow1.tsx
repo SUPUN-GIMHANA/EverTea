@@ -31,7 +31,7 @@ const Flow1 = () => {
       <TouchableOpacity>
       <Text style={styles.memberText}>
         <Text style={styles.alreadyMemberText}>Already a member?</Text>
-        <Text style={styles.signInText}>Sign in</Text>
+        <Text style={styles.signInText} >Sign in</Text>
       </Text>
       </TouchableOpacity>
       
