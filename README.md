@@ -21,7 +21,7 @@ The EverTea backend requires the following dependencies to be installed:
 
 ### Backend
 
-```
+```bash
 # Clone the repository
 
 $ git clone https://github.com/ReidenRealm/EverTea.git
