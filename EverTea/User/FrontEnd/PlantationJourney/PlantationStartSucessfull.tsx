@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import React from 'react';
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { LinearGradient } from 'expo-linear-gradient';
+import { LinearGradient } from 'react-native-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartSucessfull'; // Import the styles
 
@@ -9,6 +9,7 @@ import { styles } from './Styles/PlantationStartSucessfull'; // Import the style
 // Define the type for the navigation stack
 type RootStackParamList = {
   Home: undefined;
+  ViewPlantation: undefined;
  
 };
 
@@ -17,7 +18,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {  district, districtInputHandler, districtSearchHandler } = useAppLogic();
+  const {  } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -79,7 +80,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
       <View style={styles.navButtons}>
           <View style={styles.nextButton}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('ViewPlantation')} activeOpacity={0.7}>
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>View Plantation</Text>
               </Text>
@@ -87,7 +88,5 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
       </View>
     </View>
-
-    
   );
 }

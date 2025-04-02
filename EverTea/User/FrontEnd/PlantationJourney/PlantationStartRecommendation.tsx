@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput, FlatList } from 'react-native';
+import React from 'react';
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAppLogic } from './Scripts/scripts';
 import { styles } from './Styles/PlantationStartRecommendation'; // Import the styles
@@ -20,7 +20,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, handlePlantationCreation } = useAppLogic();
+  const { recommendedPlants, extraPlants, recommendedBudget, userPlants, userBudget, handlePlantationCreationSystem, handlePlantationCreationUser } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -57,7 +57,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
         <View style={styles.inputContainer}>
           <TouchableOpacity
-            onPress={() => handlePlantationCreation} activeOpacity={0.7}>
+            onPress={ handlePlantationCreationSystem} activeOpacity={0.7}>
             <View style={styles.recommendedBoarder}>
               <Text style={styles.topic1}>Recommended Plantation</Text>
               <View style={styles.content}>
@@ -67,7 +67,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => handlePlantationCreation} activeOpacity={0.7}>
+            onPress={ handlePlantationCreationUser} activeOpacity={0.7}>
             <View style={styles.userBoarder}>
               <Text style={styles.topic2}>Plantation for your budget</Text>
               <View style={styles.content}>
@@ -83,7 +83,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
       <View style={styles.navButtons}>
           <View style={styles.backButton}>
             <TouchableOpacity
-              onPress={() => handlePlantationCreation} activeOpacity={0.7}>
+              onPress={() => navigation.navigate('PlantationStartBudget')} activeOpacity={0.7}>
               <Text style={styles.backButtonBorder}>
                 <Text style={styles.navButtonText}>Back</Text>
               </Text>

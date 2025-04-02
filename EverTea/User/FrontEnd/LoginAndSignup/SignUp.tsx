@@ -1,110 +1,98 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import React from 'react';
+import { Text, View, TouchableOpacity, ScrollView, TextInput, ImageBackground } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useAppLogic } from './Scripts/scripts';
-import { styles } from './Styles/SignUp'; // Import the styles
+import { styles } from './Styles/SignUp';
+import { useAuthLogic, validateEmail, validatePassword, validateUserName, validateMobileNumber, validateRole } from './Scripts/scripts';
 
-
-// Define the type for the navigation stack
 type RootStackParamList = {
   Home: undefined;
-  FinancialTracker: undefined;
-  PlantationStartLand: undefined;
-  PlantationStartRecommendation: undefined;
+  Login: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-
 export default function PlantationStart({ navigation }: HomeScreenProps) {
-
-  const {budgetInputHandler, plantsInputHandler, handleButtonPressBudget, budgetRecommendation } = useAppLogic();
+  const { email, setEmail, password, setPassword, userName, setUserName, mobileNumber, setMobileNumber, role, setRole, errorMessage, handleRegistration } = useAuthLogic();
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
-        <View style={styles.cancelButton}>
-          <TouchableOpacity 
-            onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
-            <Text style={styles.cancelBorder}>
-              <Text style={styles.cancelText}>Cancel</Text>
-            </Text>
-          </TouchableOpacity> 
-        </View>
-
-        <View style={styles.progressIndicator}>
-            <Text style={styles.numberBorder1}>
-              <Text style={styles.number1}>1</Text>
-            </Text>
-            <View style={styles.numberBorderProgress1}/>
-            <Text style={styles.numberBorder2}>
-              <Text style={styles.number2}>2</Text>
-            </Text>
-            <View style={styles.numberBorderProgress2}/>
-            <Text style={styles.numberBorder3}>
-              <Text style={styles.number3}>3</Text>
-            </Text>
-        </View>
-
+        <ImageBackground
+          source={require('../assets/Images/HomePage/LoginAndSignup/LoginScreenIMG.png')}
+          style={styles.backgroundImage}
+        />
         <View style={styles.headerContent}>
-          <View style={styles.headerTopic}>
-            <Text style={styles.greetingText}>
-              <Text style={styles.boldText}>Enter Your Budget</Text>
-            </Text>
-          </View>
+          <Text style={styles.greetingText}> Welcome to EverTea </Text>
+          <Text style={styles.greetingTextSub}> Where you meet your Ultimate Tea Guider! </Text>
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Budget' onChangeText={budgetInputHandler}/>
+
+        <View style={styles.loginOrSignUpContainer}>
+        <Text style={styles.textInputBorder}>
+            <TextInput
+              style={styles.textInput}
+              maxLength={30}
+              placeholder="Username"
+              value={userName}
+              onChangeText={(text) => setUserName(validateUserName(text))}
+            />
           </Text>
           <Text style={styles.textInputBorder}>
-            <TextInput style={styles.textInput} placeholder='Plants' onChangeText={plantsInputHandler}/>
+            <TextInput
+              style={styles.textInput}
+              maxLength={30}
+              placeholder="Email"
+              value={email}
+              onChangeText={(text) => setEmail(validateEmail(text))}
+            />
           </Text>
-        </View>
+          <Text style={styles.textInputBorder}>
+            <TextInput
+              style={styles.textInput}
+              maxLength={30}
+              placeholder="Password"
+              value={password}
+              secureTextEntry
+              onChangeText={(text) => setPassword(validatePassword(text))}
+            />
+          </Text>
+          <Text style={styles.textInputBorder}>
+            <TextInput
+              style={styles.textInput}
+              maxLength={30}
+              placeholder="Role User/Admin"
+              value={role}
+              onChangeText={(text) => setRole(validateRole(text))}
+            />
+          </Text>
+          <Text style={styles.textInputBorder}>
+            <TextInput
+              style={styles.textInput}
+              maxLength={10}
+              placeholder="Mobile Number"
+              value={mobileNumber}
+              onChangeText={(number) => setMobileNumber(validateMobileNumber(number))}
+            />
+          </Text>
+          {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
+          <TouchableOpacity onPress={() => handleRegistration(navigation)}>
+            <Text style={styles.loginButton}>Register</Text>
+          </TouchableOpacity>
 
-        <View style={styles.bodyContent}>
-          <View style={styles.budgetContainer}>
-            <View style={styles.budgetImageContainer}>
-              
-              <LinearGradient
-                colors={['#FF7E5F', '#FEB47B', 'red']} // Orange to light orange gradient
-                start={{ x: 0, y: 0 }} // Top-left
-                end={{ x: 1, y: 1 }}   // Bottom-right
-                style={styles.borderOverlay}>
-
-              </LinearGradient>
-              <Image
-                source={require('.././assets/Images/HomePage/Plantation Journey/Budget.png')}
-                style={styles.budgetImage}
-              />
-            </View>
+          <View>
+            <TouchableOpacity>
+              <Text style={styles.passwordResetter} onPress={() => navigation.navigate('Home')}>
+                Forgot your password?
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signUpTextBorder}>
+              <Text style={styles.signUpText}>Have an account?</Text>
+              <Text style={styles.passwordResetter} onPress={() => navigation.navigate('Login')}>
+                Login
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
-
-
       </ScrollView>
-
-      <View style={styles.navButtons}>
-          <View style={styles.backButton}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('PlantationStartLand')} activeOpacity={0.7}>
-              <Text style={styles.backButtonBorder}>
-                <Text style={styles.navButtonText}>Back</Text>
-              </Text>
-            </TouchableOpacity> 
-          </View>
-          <View style={styles.nextButton}>
-            <TouchableOpacity
-              onPress={handleButtonPressBudget} onPressIn={budgetRecommendation} activeOpacity={0.7}>
-              <Text style={styles.nextButtonBorder}>
-                <Text style={styles.navButtonText}>Next</Text>
-              </Text>
-            </TouchableOpacity> 
-          </View>
-      </View>
     </View>
-
-    
   );
 }

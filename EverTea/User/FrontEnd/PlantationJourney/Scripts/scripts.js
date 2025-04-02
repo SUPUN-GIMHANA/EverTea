@@ -6,7 +6,7 @@ import { styles } from '../Styles/PlantationStartDistrict'; // Import the styles
 import axios from 'axios';
 
 export const useAppLogic = () => {
-  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuZXRodW0yQGdtYWlsLmNvbSIsImlhdCI6MTc0Mjc2MjAwNywiZXhwIjoxNzQyNzY1NjA3fQ.TAFJhGtk3IBiTepRFB_O_OixnQVB7omg92eUF-_IU7Y"; // Manually set token
+  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJncHNAZ21haWwuY29tIiwiaWF0IjoxNzQzMDAzODg3LCJleHAiOjE3NDMwMDc0ODd9.mKrBElytW2PmAiqUvIW4iSUuBcjir1aTcTBKBgvTL-g"; // Manually set token
   const navigation = useNavigation();
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
@@ -47,7 +47,7 @@ export const useAppLogic = () => {
   const districtSearchHandler = async () => {
     try {
 
-      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationDistrict', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationDistrict', {
         district: district, // Send district in the body
       },
       {
@@ -77,7 +77,7 @@ export const useAppLogic = () => {
 
   const fetchTeaModels = async () => {
     try {
-      const response = await axios.get('http://192.168.1.2:8080/api/userPlantationCreating/teaModels',
+      const response = await axios.get('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/teaModels',
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
@@ -134,7 +134,7 @@ export const useAppLogic = () => {
       return;
     }
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationTeaModel', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationTeaModel', {
         teaModelName: item.value,
         
       },
@@ -163,7 +163,7 @@ export const useAppLogic = () => {
 
   const plantationAreaAndSlope = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationAreaAndSlope', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationAreaAndSlope', {
         area: area,  // Send area in the body
         landSlope: plantationSlope,  // Send slope in the body
       },
@@ -184,7 +184,7 @@ export const useAppLogic = () => {
 
   const budgetAndTheTeaPlantsOfTheUser = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
       },
@@ -204,7 +204,7 @@ export const useAppLogic = () => {
 
   const budgetRecommendation = async () => {
     try {
-      const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetRecommendation', {
       },
       {
         headers: {
@@ -233,13 +233,12 @@ export const useAppLogic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://192.168.1.2:8080/api/userPlantationCreating/budgetRecommendation',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Attach token
-              "Content-Type": "application/json",
-            },
-          },{});
+        const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetRecommendation', {}, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
         setRecommendedPlants(response.data[0]);
         setExtraPlants(response.data[1]);
         setRecommendedBudget(response.data[2]);
@@ -249,7 +248,6 @@ export const useAppLogic = () => {
         console.error('Error fetching budget recommendation data:', error);
       }
     };
-
     fetchData();
   }, []);
   
@@ -273,9 +271,29 @@ export const useAppLogic = () => {
   );
 
 
-  const plantationCreation = async () => {
+  const plantationCreationSystem = async () => {
     try {
-      const response = axios.post('http://192.168.1.2:8080/api/userPlantationCreating/plantationCreation', {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationCreation', {
+        userChoice: 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Attach token
+          "Content-Type": "application/json",
+        },
+      });
+        
+      // Handle response
+      console.log('Backend response:', response.data);
+    } catch (error) {
+      // Handle errors
+      console.error('Error sending district:', error);
+    }
+  };
+  const plantationCreationUser = async () => {
+    try {
+      const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationCreation', {
+        userChoice: 2,
       },
       {
         headers: {
@@ -308,9 +326,17 @@ export const useAppLogic = () => {
       console.error('error : ', err);
     }
   };
-  const handlePlantationCreation = async () => {
+  const handlePlantationCreationSystem = async () => {
     try{
-    await plantationCreation(); // Call the plantationCreation function
+    await plantationCreationSystem(); // Call the plantationCreation function
+    navigation.navigate('PlantationStartSucessfull'); // Navigate to the next screen
+    } catch {
+      console.error('error : ', err);
+    }
+  };
+  const handlePlantationCreationUser = async () => {
+    try{
+    await plantationCreationUser(); // Call the plantationCreation function
     navigation.navigate('PlantationStartSucessfull'); // Navigate to the next screen
     } catch {
       console.error('error : ', err);
@@ -352,7 +378,9 @@ export const useAppLogic = () => {
     plantsInputHandler,
     handleButtonPressBudget,
     renderTeaBudget,
-    handlePlantationCreation,
-    plantationCreation,
+    handlePlantationCreationSystem,
+    handlePlantationCreationUser,
+    plantationCreationSystem,
+    plantationCreationUser,
   };
 };
