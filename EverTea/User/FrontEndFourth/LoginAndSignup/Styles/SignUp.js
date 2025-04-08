@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8FCFF',
+    backgroundColor: '#fff',
   },
   scrollContainer: {
     flex: 1,
@@ -12,13 +16,13 @@ export const styles = StyleSheet.create({
     flexGrow: 1, // Ensures the ScrollView expands to fill the screen
   },
   headerContent: {
-    marginTop: '50%',
+    marginTop: screenHeight * 0.15,
     alignItems: 'center',
     marginBottom: '40%',
   },
   greetingText: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: 500,
     color: '#2E2E2E',
   },
   greetingTextSub: {
@@ -28,18 +32,14 @@ export const styles = StyleSheet.create({
   loginOrSignUpContainer: {
     flexDirection: 'column',
     justifyContent: 'center',
-    margin: 20,
-    backgroundColor: '#152D15',
-    borderRadius: 10,
-    opacity: 0.8,
     alignItems: 'center',
-    paddingVertical: 20,
   },
   textInputBorder: {
-    textAlign: 'center',
-    backgroundColor: '#B1FAAB',
-    width: '70%',
-    borderRadius: 30,
+    textAlign: 'left',
+    width: screenWidth * 0.8, // 80% of screen width
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#D9D9D9',
     padding: 4,
     margin: 10,
   },
@@ -47,16 +47,21 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    backgroundColor: '#B1FAAB',
-    padding: 10,
-    paddingHorizontal: 30,
-    borderRadius: 30,
+    textAlign: 'center',
+    backgroundColor: '#058966',
+    color:'#fff',
+    paddingVertical:18,
+    width: screenWidth * 0.8, // 80% of screen width
+    borderRadius: 15,
     margin: 10,
     fontSize: 16,
+    fontWeight:600,
+    marginBottom:20
   },
   passwordResetter: {
-    fontSize: 16,
-    color: '#28A292',
+    ffontSize: 16,
+    color: '#6C6C6C',
+    fontWeight:500,
     textAlign: 'center',
   },
   signUpText: {
@@ -69,11 +74,17 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  backgroundImage: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-    position: 'absolute', 
+  
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
+  image: {
+    width: screenWidth * 0.2, // 80% of screen width
+    height: screenWidth * 0.2,
+    zIndex : 0,
+    marginTop:-screenHeight*0.2
   },
     
   });

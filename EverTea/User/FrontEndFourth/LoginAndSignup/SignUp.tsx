@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, ScrollView, TextInput, ImageBackground } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { styles } from './Styles/SignUp';
 import { useAuthLogic, validateEmail, validatePassword, validateUserName, validateMobileNumber, validateRole } from './Scripts/scripts';
@@ -17,13 +17,17 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
-        <ImageBackground
-          source={require('../assets/Images/HomePage/LoginAndSignup/LoginScreenIMG.png')}
-          style={styles.backgroundImage}
-        />
         <View style={styles.headerContent}>
-          <Text style={styles.greetingText}> Welcome to EverTea </Text>
-          <Text style={styles.greetingTextSub}> Where you meet your Ultimate Tea Guider! </Text>
+          <Text style={styles.greetingText}> Create yout account</Text>
+          <Text style={styles.greetingTextSub}> </Text>
+        </View>
+
+        <View style={styles.imageContainer}>
+          <Image
+            source={require('./assets/Images/HomePage/LoginAndSignup/logoRound.png')}
+            style={styles.image}
+            resizeMode="contain"
+          />
         </View>
 
         <View style={styles.loginOrSignUpContainer}>
