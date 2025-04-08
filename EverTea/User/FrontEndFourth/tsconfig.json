@@ -1,6 +1,6 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "jsx": "react-native"  // Explicitly define the JSX flag
+    "strict": true
   }
 }
