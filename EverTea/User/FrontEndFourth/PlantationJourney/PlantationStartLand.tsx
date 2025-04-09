@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, ScrollView, Button, TextInput } from 'react-native';
+import React from 'react';
+import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'react-native-linear-gradient';
 import { useAppLogic } from './Scripts/scripts';
@@ -19,18 +19,18 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {plantationAreaAndSlope, plantationSlopeSelection, enterPlantationSlope, handleButtonPress, areaInputHandler} = useAppLogic();
+  const {plantationAreaAndSlope, enterPlantationSlope, handleButtonPress, areaInputHandler} = useAppLogic();
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
         <View style={styles.cancelButton}>
-          <TouchableOpacity 
+          <TouchableOpacity
             onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
             <Text style={styles.cancelBorder}>
               <Text style={styles.cancelText}>Cancel</Text>
             </Text>
-          </TouchableOpacity> 
+          </TouchableOpacity>
         </View>
 
         <View style={styles.progressIndicator}>
@@ -55,9 +55,9 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           </View>
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} placeholder='Area' onChangeText={areaInputHandler}/>
+          <TextInput style={styles.textInput} placeholder="Area in Acres" onChangeText={areaInputHandler}/>
           <View style={styles.searchContainer}>
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={plantationAreaAndSlope} activeOpacity={0.7}>
               <View style={styles.searchIcon}>
                 <Text style={styles.arcesInput}>Arces</Text>
@@ -77,25 +77,25 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             start={{ x: 0, y: 0 }} // Top-left
             end={{ x: 1, y: 1 }}   // Bottom-right
             style={styles.bodyContentSub}>
-          
-          
+
+
             <View style={styles.slopeContainer}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => enterPlantationSlope(30)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/0.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => enterPlantationSlope(50)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/25.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => enterPlantationSlope(70)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/50.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
             </View>
@@ -103,8 +103,6 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               <Image source={require('../assets/Images/HomePage/PlantationJourney/Land.png')} style={styles.landImage} />
             </View>
           </LinearGradient>
-         
-          
         </View>
 
 
@@ -117,7 +115,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               <Text style={styles.backButtonBorder}>
                 <Text style={styles.navButtonText}>Back</Text>
               </Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>
           </View>
           <View style={styles.nextButton}>
             <TouchableOpacity
@@ -125,11 +123,10 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               <Text style={styles.nextButtonBorder}>
                 <Text style={styles.navButtonText}>Next</Text>
               </Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>
           </View>
       </View>
     </View>
 
-    
   );
 }

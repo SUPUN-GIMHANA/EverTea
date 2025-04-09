@@ -20,7 +20,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
             <Text style={[styles.greetingText, styles.boldText]}>
               Plantation Journey
             </Text>
-            <TouchableOpacity style={styles.bottomButton} 
+            <TouchableOpacity style={styles.bottomButton}
               onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
               <Image source={require('./assets/Home.png')} style={styles.navigationIcon} />
             </TouchableOpacity>
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     color: '#353535',
     fontWeight: 'bold',
   },
-  buttonJourney: { 
+  buttonJourney: {
     color: 'white',
     fontSize: 20,
     textAlign: 'center',

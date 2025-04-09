@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { storeToken } from '../../AuthRequests/authTokenStorage';
+import { storeUserId } from '../../AuthRequests/authTokenStorage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../Navigation/RootStackParams';
 
@@ -75,6 +76,8 @@ export const useAuthLogic = () => {
         mobileNumber,
       });
       if (response.status === 200) {
+        // const userId = response.data.id;
+        // await storeUserId(userId);
         navigation.navigate('Login');
       } else {
         setErrorMessage('Invalid credentials');

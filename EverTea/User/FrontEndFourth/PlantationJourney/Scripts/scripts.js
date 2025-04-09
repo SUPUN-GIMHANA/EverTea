@@ -9,7 +9,7 @@ import { getToken } from '../../AuthRequests/authTokenStorage';
 
 export const useAppLogic = () => {
   // const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJncHNAZ21haWwuY29tIiwiaWF0IjoxNzQzMDAzODg3LCJleHAiOjE3NDMwMDc0ODd9.mKrBElytW2PmAiqUvIW4iSUuBcjir1aTcTBKBgvTL-g"; // Manually set token
-  
+
   const navigation = useNavigation();
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
@@ -62,7 +62,7 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
@@ -71,7 +71,7 @@ export const useAppLogic = () => {
       setTeaData(response.data); // Update teaData state with fetched data
 
       if (response.data && Array.isArray(response.data)) {
-        //converting 
+        //converting
           const formattedTeaData = response.data.map((tea, index) => ({
             id: (index + 1).toString(),
             value: tea,
@@ -92,7 +92,7 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       }
       );
@@ -105,10 +105,10 @@ export const useAppLogic = () => {
   };
 
   // TeaModel Array Creating
-  let teaModelNameMain;
+
 
   const [teaModelNameArraySub, setTeaModelNameArraySub] = useState([
-    
+
   ]);
 
   const [selectedTeaType, setSelectedTeaType] = useState(null); // No type annotation
@@ -128,7 +128,7 @@ export const useAppLogic = () => {
     >
        <Text style={[
       styles.teaButtonText,
-      selectedTeaType === item.value && styles.selectedTeaButtonText // Conditional text color
+      selectedTeaType === item.value && styles.selectedTeaButtonText, // Conditional text color
     ]}>
       {item.value}
     </Text>
@@ -148,14 +148,14 @@ export const useAppLogic = () => {
       const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationTeaModel', {
         teaModelName: item.value,
-        
+
       },
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }); 
+      });
 
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -169,9 +169,8 @@ export const useAppLogic = () => {
   };
     const enterPlantationSlope = (slope) => {
         setPlantationSlope(slope);
-        console.log("Selected Slope:", slope); // Debugging
+        console.log('Selected Slope:', slope); // Debugging
     };
- 
 
   const plantationAreaAndSlope = async () => {
     try {
@@ -183,7 +182,7 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
 
@@ -206,7 +205,7 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       // Handle response
@@ -225,7 +224,7 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       console.log('Recommended Plants:', recommendedPlants);
@@ -247,7 +246,7 @@ export const useAppLogic = () => {
         const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetRecommendation', {}, {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
         setRecommendedPlants(response.data[0]);
@@ -261,7 +260,7 @@ export const useAppLogic = () => {
     };
     fetchData();
   }, []);
-  
+
   const handleBudgetPress = (item) => {
     console.log('Selected Budget:', item.value);
     setSelectedBudget(item.value); // Update the selected budget state
@@ -274,7 +273,7 @@ export const useAppLogic = () => {
     >
        <Text style={[
       styles.budgetButtonText,
-      selectedBudget  === item .value && styles.selectedBudgetButtonText  // Conditional text color
+      selectedBudget  === item .value && styles.selectedBudgetButtonText,// Conditional text color
     ]}>
       {item .value}
     </Text>
@@ -291,10 +290,10 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
-        
+
       // Handle response
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -311,10 +310,10 @@ export const useAppLogic = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`, // Attach token
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
-        
+
       // Handle response
       console.log('Backend response:', response.data);
     } catch (error) {
@@ -323,7 +322,6 @@ export const useAppLogic = () => {
     }
   };
 
-  
 
   //combined operations
   const handleButtonPress = () => {

@@ -11,6 +11,7 @@ import PlantationStartRecommendation from './PlantationJourney/PlantationStartRe
 import PlantationStartSucessfull from './PlantationJourney/PlantationStartSucessfull';
 import Login from './LoginAndSignup/Login';
 import SignUp from './LoginAndSignup/SignUp';
+import ViewPlantation from './ViewPlantation/ViewPlantation';
 
 // App Navigator
 import Flow1 from "./splashFlow/screens/Flow1";
@@ -52,11 +53,10 @@ export default function App() {
         <Stack.Screen name="PlantationStartSucessfull" component={PlantationStartSucessfull} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ViewPlantation" component={ViewPlantation} />
         {/* <Stack.Screen name="ViewPlantations" component={ViewPlantations} /> */}
         {/* <Stack.Screen name="PlantationInstructions" component={PlantationInstructions} /> */}
-        
-        
-        
+
 
         {/* <Stack.Screen name="Profile" component={Profile} /> */}
       </Stack.Navigator>

@@ -47,3 +47,34 @@ export const getToken = async () => {
     console.error('Error retrieving token:', error);
   }
 };
+
+
+// //Saving and retrieving user ID 
+// export const storeUserId = async (userId) => {
+//   try {
+//     if (!userId) {
+//       console.warn('⚠️ Attempted to store undefined or null userId.');
+//       return;
+//     }
+//     await AsyncStorage.setItem('userId', userId.toString());  // Ensure it's a string for ASYNC
+//     console.log('User ID stored:', userId);
+//   } catch (error) {
+//     console.error('Error storing user ID:', error);
+//   }
+// };
+
+
+// export const getUserId = async () => {
+//   try {
+//     const userId = await AsyncStorage.getItem('userId');
+//     if (userId !== null) {
+//       console.log('User ID retrieved:', userId);
+//       return userId;
+//     } else {
+//       console.warn('No user ID found.');
+//       return null;
+//     }
+//   } catch (error) {
+//     console.error('Error retrieving user ID:', error);
+//   }
+// };

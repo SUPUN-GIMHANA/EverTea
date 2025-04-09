@@ -143,12 +143,10 @@ export const styles = StyleSheet.create({
     boldText: {
       fontWeight: 'bold',
     },
-    
     buttonIcon: {
       width: 24,
       height: 24,
     },
-    
     inputContainer: {
         paddingTop: 20,
         flex:1,
@@ -177,7 +175,7 @@ export const styles = StyleSheet.create({
     },
     searchIcon: {
       width: 40,
-      height: 30, 
+      height: 30,
       alignItems: 'center',
     },
     arcesInput: {
@@ -209,8 +207,8 @@ export const styles = StyleSheet.create({
     slopeImage: {
       width: 100,
       height: 100,
-      borderWidth: 1,
-      borderColor: 'transparent',
+      borderWidth: 2,
+      borderColor: 'black',
       borderRadius: 20,
     },
     landImage: {
@@ -220,7 +218,7 @@ export const styles = StyleSheet.create({
       borderColor: 'green',
       borderRadius: 20,
     },
-    imageContainer: { 
+    imageContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 20,
@@ -230,7 +228,6 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderRadius: 20,
         paddingBottom: '15%',
-        
     },
 
 
@@ -286,5 +283,4 @@ export const styles = StyleSheet.create({
       color: 'lavender',
     },
 
-    
   });
