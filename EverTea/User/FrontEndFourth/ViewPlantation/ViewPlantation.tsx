@@ -51,33 +51,33 @@ const ViewPlantation = () => {
     }
   };
 
-  const addPlantation = async () => {
-    const newPlantation = {
-      plantaionId: plantations.length + 1,
-      date: new Date().toISOString().split('T')[0],
-      area: 'No 12/25 Moratuva Pitakotuwa',
-    };
+  // const addPlantation = async () => {
+  //   const newPlantation = {
+  //     plantaionId: plantations.length + 1,
+  //     date: new Date().toISOString().split('T')[0],
+  //     area: 'No 12/25 Moratuva Pitakotuwa',
+  //   };
 
-    try {
-      const token = await getToken();
-      const response = await axios.post(
-        'http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/v1/viewPlantation/save-plantation/',
-        newPlantation,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Attach token
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      if (response.data === 'view plantation table save') {
-        fetchPlantations();
-      }
-    } catch (error) {
-      console.error('Error adding plantation:', error);
-      Alert.alert('Error', 'Failed to add plantation');
-    }
-  };
+  //   try {
+  //     const token = await getToken();
+  //     const response = await axios.post(
+  //       'http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/v1/viewPlantation/save-plantation/',
+  //       newPlantation,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`, // Attach token
+  //           'Content-Type': 'application/json',
+  //         },
+  //       }
+  //     );
+  //     if (response.data === 'view plantation table save') {
+  //       fetchPlantations();
+  //     }
+  //   } catch (error) {
+  //     console.error('Error adding plantation:', error);
+  //     Alert.alert('Error', 'Failed to add plantation');
+  //   }
+  // };
 
   const deletePlantation = (id: any) => {
     Alert.alert(
@@ -159,7 +159,7 @@ const ViewPlantation = () => {
             })}
 
             {/* Add plantation button */}
-            <TouchableOpacity onPress={addPlantation}>
+            <TouchableOpacity >
               <View style={styles.plantation}>
                 <View style={styles.p1I}>
                   <Image
