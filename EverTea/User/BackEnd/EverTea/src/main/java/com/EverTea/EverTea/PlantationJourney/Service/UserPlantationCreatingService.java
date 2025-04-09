@@ -25,6 +25,7 @@ public class UserPlantationCreatingService {
     private Integer lastTeaModel; // Store last received teaModel
     private String lastTeaModelName; // Store last received teaModel
     private Integer plantsForTheLand; // Store last received plants
+    private String userPlantationPlantationName;
     private Double userPlantationPlantsInput;
     private Double userPlantationBudgetInput;
     private Integer plantsForTheLandREC; // Store last received plants
@@ -76,7 +77,8 @@ public class UserPlantationCreatingService {
         this.lastLandSlope = landSlope;
         System.out.println(lastArea+ " "+ lastLandSlope);
     }
-    public void variableSaver(Double budget, Double teaPlantsUser){
+    public void variableSaver(String plantationName, Double budget, Double teaPlantsUser){
+        this.userPlantationPlantationName = plantationName;
         this.userPlantationPlantsInput = teaPlantsUser;
         this.userPlantationBudgetInput = budget;
         System.out.println(userPlantationPlantsInput + userPlantationBudgetInput);
@@ -143,6 +145,7 @@ public class UserPlantationCreatingService {
         if (userChoice == null) {
             throw new IllegalArgumentException("User choice cannot be null");
         }else{
+            System.out.println(plantsForTheLandREC + " " + plantsForTheLandUSER);
             if (userChoice==1){
                 this.userid = 1;
                 this.location = lastDistrict;
@@ -159,7 +162,7 @@ public class UserPlantationCreatingService {
                 this.cost = userCost;
             }
         }
-        System.out.println(userid + location + teamodelid + plants + cost);
-    return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid, cost);
+        System.out.println(userid + location + teamodelid + plants + cost+ lastArea + lastLandSlope + userPlantationPlantationName);
+    return plantationCreation.plantationCreationRepo(userid, location, plants, teamodelid, cost, lastArea, lastLandSlope, userPlantationPlantationName);
     }
 }

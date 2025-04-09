@@ -34,10 +34,11 @@ public class UserPlantationCreatingDTO {
 
     //Budget Page
     @JsonProperty("budget")
+    
     private Double budget;
     private Double teaPlantsUser;
 
-
+    private String plantationName;
 
     //Budget Recommendation Page
     private String budgetPlanSystem;
@@ -110,6 +111,10 @@ public class UserPlantationCreatingDTO {
         this.landSlope = landSlope;
     }
 
+    
+    public String getPlantationName() {
+        return plantationName;
+    }
     public Double getBudget() {
         return budget;
     }

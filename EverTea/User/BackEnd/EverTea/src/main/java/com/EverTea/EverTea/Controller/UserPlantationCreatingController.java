@@ -52,17 +52,18 @@ public class UserPlantationCreatingController {
         System.out.println("Received Area: " + area + " Received Slope: " + landSlope);
 
         DistrictPlant.variableSaver(area, landSlope);
-        return "Area Enetered " + area;
+        return "Area Enetered " + area + "Slope " + landSlope;
     }
 
     @PostMapping("/budgetAndTheTeaPlantsOfTheUser")
     public String budgetOfTheUser(@RequestBody UserPlantationCreatingDTO districtPlantation) {
 
+        String plantationName = districtPlantation.getPlantationName();
         Double budget = districtPlantation.getBudget();
         Double teaPlantsUser = districtPlantation.getTeaPlantsUser();
         System.out.println("Received Budget: " + budget + " Received TeaPlants: " + teaPlantsUser);
 
-        DistrictPlant.variableSaver(budget, teaPlantsUser);
+        DistrictPlant.variableSaver(plantationName, budget, teaPlantsUser);
 
         return "Enetered Budget" + budget + " Enetered TeaPlants" + teaPlantsUser;
     }

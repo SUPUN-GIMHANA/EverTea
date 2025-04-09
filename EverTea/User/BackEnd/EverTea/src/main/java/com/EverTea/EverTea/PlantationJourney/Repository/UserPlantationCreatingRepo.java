@@ -115,12 +115,60 @@ public class UserPlantationCreatingRepo {
         }
         
     }
-    public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid, Integer cost){
 
-        String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid, cost) VALUES (?, ?, ?, ?, ?)";
+        //Plantations Table
+
+
+    // public String plantationCreationRepo( Integer userid, String location, Integer plants, Integer teamodelid, Integer cost){
+
+    //     String sqlQuery = "INSERT INTO plantations (userid, location, plants, teamodelid, cost) VALUES (?, ?, ?, ?, ?)";
+    //     try {
+    //         // Execute the SQL query to insert data
+    //         int rowsInserted = jdbcTemplate.update(sqlQuery, userid, location, plants, teamodelid, cost);
+    
+    //         // Check if the insertion was successful
+    //         if (rowsInserted > 0) {
+    //             return "Plantation created successfully!";
+    //         } else {
+    //             return "Failed to create plantation.";
+    //         }
+    //     } catch (Exception e) {
+    //         // Log the exception and return an error message
+    //         System.out.println("Error creating plantation: " + e.getMessage());
+    //         return "Error creating plantation: " + e.getMessage();
+    //     }
+    // }
+
+
+
+    //Plantation Table
+    public String plantationCreationRepo(Integer userid, String location, Integer plants, Integer teamodelid, Integer cost, Double lastArea, Integer lastLandSlope, String userPlantationName){ {
+
+        // Assuming plantation start date is the current timestamp
+        java.sql.Timestamp plantationStartDate = new java.sql.Timestamp(System.currentTimeMillis());
+        
+        //Till Google earth gonna add obstacles area is flat
+        String obstacleArea = "Flat";
+        Integer plantationAge = 3; // Default for new plantations
+
+    
+        String sqlQuery = "INSERT INTO plantation (user_id, location, obstacle_area, plantas_count, plantation_age, plantation_angle, plantation_name , plantation_size, plantation_start_date_time, tea_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try {
             // Execute the SQL query to insert data
-            int rowsInserted = jdbcTemplate.update(sqlQuery, userid, location, plants, teamodelid, cost);
+            int rowsInserted = jdbcTemplate.update(
+                sqlQuery,
+                userid,
+                location,
+                obstacleArea,
+                plants,
+                plantationAge,
+                lastLandSlope,
+                userPlantationName,
+                lastArea,
+                plantationStartDate, // Pass the plantation start date
+                teamodelid
+            );
     
             // Check if the insertion was successful
             if (rowsInserted > 0) {
@@ -133,5 +181,7 @@ public class UserPlantationCreatingRepo {
             System.out.println("Error creating plantation: " + e.getMessage());
             return "Error creating plantation: " + e.getMessage();
         }
+        }
     }
+
 }

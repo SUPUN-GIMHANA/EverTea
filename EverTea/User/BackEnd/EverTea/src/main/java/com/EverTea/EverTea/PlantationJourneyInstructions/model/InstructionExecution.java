@@ -2,6 +2,7 @@ package com.EverTea.EverTea.PlantationJourneyInstructions.model;
 
 import jakarta.persistence.*;
 
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,7 +13,7 @@ public class InstructionExecution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long InstructionExecutionId;
 
-    @ManyToOne      //each plantation can have multiple specific instructions
+    @ManyToOne(cascade = CascadeType.REMOVE)     //each plantation can have multiple specific instructions
     @JoinColumn(name = "plantation_id", nullable = false)
     private Plantation plantation;
 
