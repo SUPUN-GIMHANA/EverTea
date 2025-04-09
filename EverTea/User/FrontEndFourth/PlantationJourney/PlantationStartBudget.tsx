@@ -75,7 +75,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
 
               </LinearGradient>
               <Image
-                source={require('../assets/Images/HomePage/Plantation Journey/Budget.png')}
+                source={require('../assets/Images/HomePage/PlantationJourney/Budget.png')}
                 style={styles.budgetImage}
               />
             </View>

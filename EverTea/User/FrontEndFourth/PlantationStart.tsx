@@ -37,7 +37,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         </View>
 
         <View style={styles.imageContainer}>
-          <Image source={require('./assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.plantationStatingBackground} />
+          <Image source={require('./assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.plantationStatingBackground} />
         </View>
 
         <View style={styles.content2}>

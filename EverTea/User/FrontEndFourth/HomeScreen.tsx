@@ -1,5 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
+import { Dimensions } from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // Define the type for the navigation stack
@@ -13,6 +17,8 @@ type RootStackParamList = {
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 
+
+
 export default function HomeScreen({ navigation }: HomeScreenProps) {
   return (
     <View style={styles.container}>
@@ -24,41 +30,77 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           imageStyle={{ borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}
         >
           <View style={styles.headerContent}>
-            <Text style={styles.greetingText}>
-              Hello, <Text style={styles.boldText}>EverTea</Text>
-            </Text>
+            <View style={styles.notificationBtn}>
+              <View style={styles.iconWrapper}>
+                  <Image
+                    source={require('./assets/Images/HomePage/Vector.png')} // Adjust path to your icon
+                    style={styles.notificationIcon}
+                  />
+                </View>
+              </View>
             <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.profileImage} />
           </View>
 
+          <Text style={styles.greetingText}>
+              Hello, 
+          </Text>
+          <Text style={styles.boldText}>EverTea!</Text>
+
+
           <TouchableOpacity style={styles.plantationButton} onPress={() => navigation.navigate('ViewPlantation')} activeOpacity={0.7}>
-            <Text style={styles.plantationButtonText}>View All Plantations</Text>
-            <Image source={require('./assets/Images/HomePage/mainPhoto.png')} style={styles.buttonIcon} />
+            <View><Text style={styles.plantationButtonText}>View All Plantations</Text></View>
+            <View style={styles.vectorBg}>
+              <Image source={require('./assets/Images/HomePage/Vector2.png')} style={styles.vectorImage}/>
+            </View>
           </TouchableOpacity>
         </ImageBackground>
 
         {/* Explore Features Section  ++++Navigation++++ */}
         <View style={styles.exploreSection}>
-          <Text style={styles.sectionTitle}>Explore Features</Text>
+          <Text style={styles.sectionTitle}>Explore Features  {'>'} </Text>
           <View style={styles.featureCards}>
-            <TouchableOpacity style={styles.card} 
+            
+            <TouchableOpacity style={styles.card1} 
               onPress={() => navigation.navigate('PlantationStart')}
               activeOpacity={0.7}>
-              <Image source={require('./assets/Images/HomePage/Start.png')} style={styles.cardImage} />
+
+                  <View style={styles.startBtn}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/plus.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
               <Text style={styles.cardTitle}>Start</Text>
               <Text style={styles.cardSubtitle}>new Plantation</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card} activeOpacity={0.7}>
-              <Image source={require('./assets/Images/HomePage/weather.png')} style={styles.cardImage} />
+            <TouchableOpacity style={styles.card2} activeOpacity={0.7}>
+                  <View style={styles.startBtn2}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/weatherIcon.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
               <Text style={styles.cardTitle}>Weather</Text>
               <Text style={styles.cardSubtitle}>forecasting</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.card}
+            <TouchableOpacity style={styles.card3}
               onPress={() => navigation.navigate('FinancialTracker')}
               activeOpacity={0.7}
             >
-              <Image source={require('./assets/Images/HomePage/Financial.png')} style={styles.cardImage} />
+                  <View style={styles.startBtn3}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/dollar.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
               <Text style={styles.cardTitle}>Financial</Text>
               <Text style={styles.cardSubtitle}>tracker</Text>
             </TouchableOpacity>
@@ -67,10 +109,17 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
 
         {/* Services Section */}
         <View style={styles.servicesSection}>
-          <Text style={styles.sectionTitle}>Services</Text>
+          <Text style={[styles.sectionTitle, styles.serviceTitle]}>Services  {'>'}</Text>
           <View style={styles.rowContainer}>
             <TouchableOpacity style={[styles.serviceButton, styles.greenButton]} activeOpacity={0.7}>
-              <Image source={require('./assets/Images/HomePage/DiseaseIdentifier.png')} style={styles.serviceIcon} />
+                  <View style={styles.service1}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/desease.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
               <Text style={styles.serviceText}>Disease Identifier</Text>
             </TouchableOpacity>
 
@@ -80,15 +129,36 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           </View>
 
           <TouchableOpacity style={[styles.serviceButton, styles.yellowButton]} activeOpacity={0.7}>
-            <Image source={require('./assets/Images/HomePage/Supervisor.png')} style={styles.serviceIcon} />
+                  <View style={styles.service2}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/superviser.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
             <Text style={styles.serviceText}>Contact a Supervisor</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.serviceButton, styles.skyblueButton]} activeOpacity={0.7}>
-            <Image source={require('./assets/Images/HomePage/Articles.png')} style={styles.serviceIcon} />
+                  <View style={styles.service3}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/Articles.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
             <Text style={styles.serviceText}>Find Articles</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.serviceButton, styles.tealButton]} activeOpacity={0.7}>
-            <Image source={require('./assets/Images/HomePage/Video.png')} style={styles.serviceIcon} />
+                  <View style={styles.service4}>
+                    <View style={styles.iconWrapper}>
+                      <Image
+                       source={require('./assets/Images/HomePage/desease.png')} // Adjust path to your icon
+                       style={styles.notificationIcon}
+                       />
+                    </View>
+                  </View>
             <Text style={styles.serviceText}>Find Video Guides</Text>
           </TouchableOpacity>
         </View>
@@ -126,10 +196,58 @@ const styles = StyleSheet.create({
     paddingBottom: 80, // Ensures the content is spaced above the bottom navigation
   },
   headerBackground: {
-    height: 300,
+    marginTop: screenHeight * 0.05,
+    margin: screenWidth * 0.03,
+    height: screenHeight*0.36,
     justifyContent: 'space-between',
     paddingTop: 50,
     paddingHorizontal: 20,
+    borderRadius: 30,        
+    overflow: 'hidden',       
+  },
+  notificationBtn:{
+    width: 50,
+    height: 50,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  startBtn:{
+    width: 50,
+    height: 50,
+    backgroundColor: '#6ddb9c',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  startBtn2:{
+    width: 50,
+    height: 50,
+    backgroundColor: '#71b7e6',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  startBtn3:{
+    width: 50,
+    height: 50,
+    backgroundColor: '#f5d657',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  iconWrapper: {
+    display:'flex',
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notificationIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   headerContent: {
     flexDirection: 'row',
@@ -139,9 +257,14 @@ const styles = StyleSheet.create({
   greetingText: {
     fontSize: 28,
     color: '#FFF',
+    fontWeight:400,
+    marginTop:-screenWidth*0.1,
   },
   boldText: {
-    fontWeight: 'bold',
+    fontSize: 36,
+    color: '#FFF',
+    fontWeight:600,
+    marginTop:-screenWidth*0.15,
   },
   profileImage: {
     width: 50,
@@ -152,42 +275,82 @@ const styles = StyleSheet.create({
   },
   plantationButton: {
     flexDirection: 'row',
-    backgroundColor: '#C8F1D1',
+    backgroundColor: 'rgba(228, 255, 245, 0.9)',
     borderRadius: 30,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    height:screenHeight*0.06,
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: screenHeight * 0.03,
+    elevation: 2, // For Android shadow
+    shadowColor: '#000', // For iOS shadow
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    paddingRight:screenWidth*0.01,
   },
   plantationButtonText: {
     color: '#004D40',
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '400',
+    paddingLeft:screenWidth*0.05,
   },
-  buttonIcon: {
+  vectorBg: {
+    backgroundColor: '#25DB9B',
+    width: 80,
+    height:screenHeight*0.05,
+    borderRadius: 25, // Make it circular
+    alignItems: 'center',
+    justifyContent: 'center',
+    resizeMode: 'cover',
+  },
+  vectorImage: {
     width: 24,
     height: 24,
+    resizeMode: 'contain',
   },
   exploreSection: {
     marginTop: 20,
     paddingHorizontal: 20,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '400',
     marginBottom: 10,
+  },
+  serviceTitle:{
+    marginTop:15
   },
   featureCards: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  card: {
-    backgroundColor: '#FFF',
-    borderRadius: 10,
-    alignItems: 'center',
-    padding: 10,
+  card1: {
+    justifyContent: 'center',
+    backgroundColor: '#2ecc71',
+    borderRadius: 15,
+    alignItems: 'flex-start',
+    padding: 15,
     width: '30%',
-    elevation: 3,
+    height:screenHeight*0.16,
+    
+  },
+  card2: {
+    justifyContent: 'center',
+    backgroundColor: '#3498db',
+    borderRadius: 15,
+    alignItems: 'flex-start',
+    padding: 15,
+    width: '30%',
+    height:screenHeight*0.16
+  },
+  card3: {
+    justifyContent: 'center',
+    backgroundColor: '#f1c40f',
+    borderRadius: 15,
+    alignItems: 'flex-start',
+    padding: 15,
+    width: '30%',
+    height:screenHeight*0.16
   },
   cardImage: {
     width: 60,
@@ -195,15 +358,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   cardTitle: {
+    fontSize:18,
     fontWeight: 'bold',
+    color:'#fff',
+    marginTop : 10
   },
   cardSubtitle: {
     fontSize: 12,
-    color: 'gray',
+    color: '#fff',
+    
   },
   servicesSection: {
-    marginTop: 20,
+    marginTop: 30,
     paddingHorizontal: 20,
+    borderTopLeftRadius : 25,
+    borderTopRightRadius : 25,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -214,37 +383,72 @@ const styles = StyleSheet.create({
   serviceButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 15,
+    textAlign:'center',
     padding: 15,
     justifyContent: 'space-between',
     marginVertical: 5,
+    height:screenHeight*0.08
   },
   greenButton: {
-    backgroundColor: '#5BD5A6',
-    width: '70%',
+    backgroundColor: '#116b4d',
+    width: screenWidth*0.7,
+    textAlign: 'center',
   },
   yellowButton: {
-    backgroundColor: '#FDD835',
+    backgroundColor: '#363636',
   },
   skyblueButton: {
-    backgroundColor: '#9FE9C8',
+    backgroundColor: '#363636',
   },
   tealButton: {
-    backgroundColor: '#20C58D',
+    backgroundColor: '#363636',
   },
   iconButton: {
-    backgroundColor: '#5BD5A6',
-    padding: 15,
+    backgroundColor: '#116b4d',
     borderRadius: 10,
-    marginLeft: 10,
+    marginLeft: screenWidth*0.02,
+    width:screenWidth*0.18,
   },
   serviceText: {
     fontWeight: 'bold',
     color: '#FFF',
   },
   serviceIcon: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+  },
+  service1:{
+    width: 40,
+    height: 40,
+    backgroundColor: '#259670',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  service2:{
+    width: 40,
+    height: 40,
+    backgroundColor: '#676767',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  service3:{
+    width: 40,
+    height: 40,
+    backgroundColor: '#676767',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
+  },
+  service4:{
+    width: 40,
+    height: 40,
+    backgroundColor: '#676767',
+    borderRadius: 50,
+    justifyContent: 'center',  // Center vertically
+    alignItems: 'center',      // Center horizontally
   },
   // Bottom Navigation Styles
   bottomNav: {
@@ -266,6 +470,6 @@ const styles = StyleSheet.create({
   },
   navigationIcon: {
     width: 25,
-    height: 25,
-  },
+    height: 25,
+  },
 });

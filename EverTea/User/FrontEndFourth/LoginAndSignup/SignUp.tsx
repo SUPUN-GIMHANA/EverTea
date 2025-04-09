@@ -24,7 +24,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
 
         <View style={styles.imageContainer}>
           <Image
-            source={require('./assets/Images/HomePage/LoginAndSignup/logoRound.png')}
+            source={require('../assets/Images/HomePage/LoginAndSignup/logoRound.png')}
             style={styles.image}
             resizeMode="contain"
           />

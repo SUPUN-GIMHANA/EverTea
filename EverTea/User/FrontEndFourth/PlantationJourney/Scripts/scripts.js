@@ -5,8 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from '../Styles/PlantationStartDistrict'; // Import the styles
 import axios from 'axios';
 
+import { getToken } from '../../AuthRequests/authTokenStorage';
+
 export const useAppLogic = () => {
-  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJncHNAZ21haWwuY29tIiwiaWF0IjoxNzQzMDAzODg3LCJleHAiOjE3NDMwMDc0ODd9.mKrBElytW2PmAiqUvIW4iSUuBcjir1aTcTBKBgvTL-g"; // Manually set token
+  // const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJncHNAZ21haWwuY29tIiwiaWF0IjoxNzQzMDAzODg3LCJleHAiOjE3NDMwMDc0ODd9.mKrBElytW2PmAiqUvIW4iSUuBcjir1aTcTBKBgvTL-g"; // Manually set token
+  
   const navigation = useNavigation();
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
@@ -46,7 +49,8 @@ export const useAppLogic = () => {
 
   const districtSearchHandler = async () => {
     try {
-
+      const token = await getToken();
+      console.log('Token:', token);
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationDistrict', {
         district: district, // Send district in the body
       },
@@ -56,6 +60,7 @@ export const useAppLogic = () => {
           "Content-Type": "application/json",
         },
       });
+
       // Handle response
       console.log('Backend response:', response.data);
       setTeaData(response.data); // Update teaData state with fetched data
@@ -77,6 +82,7 @@ export const useAppLogic = () => {
 
   const fetchTeaModels = async () => {
     try {
+      const token = await getToken();
       const response = await axios.get('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/teaModels',
       {
         headers: {
@@ -134,6 +140,7 @@ export const useAppLogic = () => {
       return;
     }
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationTeaModel', {
         teaModelName: item.value,
         
@@ -163,6 +170,7 @@ export const useAppLogic = () => {
 
   const plantationAreaAndSlope = async () => {
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationAreaAndSlope', {
         area: area,  // Send area in the body
         landSlope: plantationSlope,  // Send slope in the body
@@ -184,6 +192,7 @@ export const useAppLogic = () => {
 
   const budgetAndTheTeaPlantsOfTheUser = async () => {
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
@@ -204,6 +213,7 @@ export const useAppLogic = () => {
 
   const budgetRecommendation = async () => {
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetRecommendation', {
       },
       {
@@ -233,6 +243,7 @@ export const useAppLogic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const token = await getToken();
         const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetRecommendation', {}, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -273,6 +284,7 @@ export const useAppLogic = () => {
 
   const plantationCreationSystem = async () => {
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationCreation', {
         userChoice: 1,
       },
@@ -292,6 +304,7 @@ export const useAppLogic = () => {
   };
   const plantationCreationUser = async () => {
     try {
+      const token = await getToken();
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/plantationCreation', {
         userChoice: 2,
       },

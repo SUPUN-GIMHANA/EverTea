@@ -83,24 +83,24 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
               <TouchableOpacity 
                 onPress={() => enterPlantationSlope(30)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
               <TouchableOpacity 
                 onPress={() => enterPlantationSlope(50)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
               <TouchableOpacity 
                 onPress={() => enterPlantationSlope(70)} activeOpacity={0.7}>
                   <View >
-                    <Image source={require('.././assets/Images/HomePage/Plantation Journey/Tea P.png')} style={styles.slopeImage} />
+                    <Image source={require('../assets/Images/HomePage/PlantationJourney/TeaP.png')} style={styles.slopeImage} />
                   </View>
               </TouchableOpacity>
             </View>
             <View style={styles.imageContainer}>
-              <Image source={require('.././assets/Images/HomePage/Plantation Journey/Land.png')} style={styles.landImage} />
+              <Image source={require('../assets/Images/HomePage/PlantationJourney/Land.png')} style={styles.landImage} />
             </View>
           </LinearGradient>
          

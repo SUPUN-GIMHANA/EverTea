@@ -60,7 +60,7 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
           <View style={styles.searchContainer}>
             <TouchableOpacity 
               onPress={districtSearchHandler} activeOpacity={0.7}>
-              <Image source={require('./Plantation Journey/Search.png')} style={styles.searchIcon} />
+              <Image source={require('../assets/Images/HomePage/PlantationJourney/Search.png')} style={styles.searchIcon} />
             </TouchableOpacity>  
           </View>
         </View>
