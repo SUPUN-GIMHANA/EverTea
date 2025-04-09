@@ -31,57 +31,58 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     width: '100%',
-    bottom: 25
+    bottom:25
 
   },
-  growth: {
-    bottom: 400,
-    borderWidth: 1,
-    padding: 20,
-    paddingVertical: 40,
-    borderRadius: 20,
+  growth:{
+    bottom:360,
+    borderWidth:1,
+    padding:25,
+    // paddingVertical:40,
+    borderRadius:20,
     backgroundColor: 'rgba(0, 128, 0, 0.5)', // Green with 50% opacity
-    left: 120,
-    borderColor: '#fff',
+    left:100,
+    borderColor:'#fff',
 
   },
-  percentage: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#fff',
+  percentage:{
+    fontSize:30,
+    fontWeight:'bold',
+    color:'#fff',
 
   },
-  growthName: {
-    fontSize: 15,
-    color: '#fff',
+  growthName:{
+    fontSize:15,
+    color:'#fff',
 
   },
-  boxTwo: {
-    right: 30,
-    justifyContent: 'space-around',
-    bottom: 250,
+  boxTwo:{
+    justifyContent:'space-around',
+    bottom:250,
+    right:20,
   },
-  month: {
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    color: '#fff',
-    backgroundColor: 'rgb(0, 0, 0)',
-    fontWeight: 'bold',
-    borderColor: '#fff',
-    opacity: 0.5
+  
+  month:{
+    borderWidth:1,
+    padding:10,
+    borderRadius:20,
+    paddingHorizontal:20,
+    color:'#fff',
+    backgroundColor:'rgb(0, 0, 0)',
+    fontWeight:'bold',
+    borderColor:'#fff',
+    opacity:0.5
   },
-  height: {
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    backgroundColor: 'rgb(0, 0, 0)',
-    color: '#fff',
-    fontWeight: 'bold',
-    borderColor: '#fff',
-    opacity: 0.5
+  height:{
+    borderWidth:1,
+    padding:10,
+    borderRadius:20,
+    paddingHorizontal:20,
+    backgroundColor:'rgb(0, 0, 0)',
+    color:'#fff',
+    fontWeight:'bold',
+    borderColor:'#fff',
+    opacity:0.5
   }
 
 });

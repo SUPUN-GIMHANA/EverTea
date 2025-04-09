@@ -1,180 +1,145 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, AppState } from 'react-native';
-import PlantationHome from './homePage/PlantationHome'
-import PlantationDownPage from './homeDownPage/PlantationDownPage';
-import { getApps, initializeApp } from '@react-native-firebase/app';
+import {StyleSheet, Image, AppState, SafeAreaView } from 'react-native';
+import PlantationHome from './plantation-home-page/PlantationHome';
+import PlantationDownPage from './plantation-home-downpage/PlantationDownPage';
+import messaging, { getMessaging, getToken } from '@react-native-firebase/messaging';
+import firebase from '@react-native-firebase/app';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getMessaging, getToken } from '@react-native-firebase/messaging';
-import axios from "axios";
+import axios from 'axios';
 
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBFFqb7YClV2GcZ58bwFw8g4TA3CZGJkso",
-  authDomain: "plantation-journey-instruction.firebaseapp.com",
-  projectId: "plantation-journey-instruction",
-  storageBucket: "plantation-journey-instruction.firebasestorage.app",
-  messagingSenderId: "118437091928",
-  appId: "1:118437091928:android:5b9c870427da521ec5082d"
-};
-
-const saveTokenManually = async () => {
-  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdW5ldGhAZ21haWwuY29tIiwiaWF0IjoxNzQyNzM1NTM4LCJleHAiOjE3NDI3MzkxMzh9.8hCdM-s7dxhI1IGCCwnFx8buKB2KBOPx-o_CGUeQa00";
-  await AsyncStorage.setItem("jwtToken", token);
-  console.log("✅ Token saved successfully!")
-};
-
-// Initialize Firebase only if not already initialized
-if (!getApps().length) {
-  initializeApp(firebaseConfig);
-}
-
-const notificationMessage = getMessaging(); // Now that Firebase is initialized, you can safely call this
+const notificationMessage = getMessaging();
 
 const PlantationInstructions = () => {
-
-  const [fcmToken, setFcmToken] = React.useState<String | null>(null);
-  const [loading, setLoading] = React.useState(false);
-  const [notificationBody, setNotificationBody] = React.useState<string | null>(null);
+  const [fcmToken, setFcmToken] = React.useState<string | null>(null);
+  const [notificationBody, setNotificationBody] = React.useState<String | null>(null);
   const appState = React.useRef(AppState.currentState);
 
-  saveTokenManually();
-
-  const appSate = React.useRef(AppState.currentState);
-
-
-  // Request notification permission
   React.useEffect(() => {
+    checkFirebaseApp();
     requestUserPermission();
+    printFirebaseConfig(); // 🔍 Debug config
   }, []);
 
-  // ✅ Request Notification Permission (Updated)
+  React.useEffect(() => {
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+    return () => subscription.remove();
+  }, []);
+
+  const checkFirebaseApp = () => {
+    try {
+      const app = firebase.app(); // 🔥 If this fails, Firebase is not initialized
+      console.log('✅ Firebase default app initialized:', app.name);
+    } catch (e) {
+      console.error('❌ Firebase not initialized. Check google-services.json placement and build.gradle setup.');
+    }
+  };
+
+  const printFirebaseConfig = () => {
+    try {
+      const options = firebase.app().options;
+      console.log('📦 Firebase Config Loaded from google-services.json:');
+      console.log('🔑 apiKey:', options.apiKey);
+      console.log('📛 projectId:', options.projectId);
+      console.log('📦 appId:', options.appId);
+    } catch (e) {
+      console.error('❌ Failed to load Firebase config', e);
+    }
+  };
+
+  const handleAppStateChange = (nextAppState: string) => {
+    if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
+      getFCMToken();
+      getInstructions();
+    }
+    appState.current = nextAppState;
+  };
+
   const requestUserPermission = async () => {
     try {
-      const messagingInstance = getMessaging(); // Now Firebase is initialized
-      const authStatus = await messagingInstance.requestPermission();
-      console.log("✅ Notification Permission Status:", authStatus);
-      getFCMToken();
-
-
+      const authStatus = await messaging().requestPermission();
+      if (
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL
+      ) {
+        console.log('✅ Permission granted');
+        getFCMToken();
+      } else {
+        console.warn('⚠️ Permission not granted');
+      }
     } catch (error) {
-      console.error("❌ Firebase Messaging Error:", error);
+      console.error('❌ Permission error:', error);
     }
   };
 
-
-  React.useEffect(() => {
-    const handleAppStateChange = (nextAppState: string) => {
-      console.log("App state changed:", nextAppState);
-  
-      // Only trigger when app comes to foreground
-      if (appState.current.match(/inactive|background/) && nextAppState === "active") {
-        console.log("🔄 App refreshed, fetching instructions...");
-  
-        getInstructions(); // Call your method
-      }
-  
-      appState.current = nextAppState; // Update app state
-    };
-  
-    const subscription = AppState.addEventListener("change", handleAppStateChange);
-    
-    return () => subscription.remove(); // Clean up on unmount
-  }, []);
-  
-  
-
-  // Retrieve FCM token
   const getFCMToken = async () => {
     try {
+      //const token = await messaging().getToken();
       const token = await getToken(notificationMessage);
       if (token) {
-        console.log("✅ FCM Token:", token);
-      
+        console.log('📲 FCM Token:', token);
         setFcmToken(token);
-        // console.log("Saved..........................................");
-        console.log(fcmToken);
-
-      } else {
-        console.log("❌ No FCM Token retrieved.");
-      
       }
-    } catch (error) {
-      console.log("❌ Error getting FCM token:", error);
+    } catch (e) {
+      console.error('❌ Error getting FCM token:', e);
     }
   };
 
-
-
-
-
   const getInstructions = async () => {
-    setLoading(true);
-  
-    const token = await AsyncStorage.getItem("jwtToken");
-  
-    if (!token) {
-      console.log("❌ No JWT Token Found!");
-      setLoading(false);
-      return;
-    }
-  
-    if (!fcmToken) {
-      console.log("❌ FCM Token is not available yet.");
-      setLoading(false);
-      return;
-    }
-  
+    const token = await AsyncStorage.getItem('jwtToken');
+    if (!token || !fcmToken) return;
+
     try {
       const response = await axios.post(
-        "http://192.168.8.169:8080/api/weather/token",
-        {
-          fcmToken,
-        },
+        'http://172.24.128.1:8080/api/weather/token',
+        { fcmToken },
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
-  
-      console.log("✅ Server Response:", JSON.stringify(response.data));
+      console.log('✅ Server Response:', response.data);
     } catch (error) {
-      console.error("❌ Error sending FCM token:", error);
-      
-    } finally {
-      setLoading(false);
-    
+      console.error('❌ Error sending token:', error);
     }
   };
-  
 
+  React.useEffect(() => {
+    const unsubscribe = notificationMessage.onMessage(async (remoteMessage) => {
+      console.log("New FCM notification: ", remoteMessage);
 
+      if(remoteMessage.notification){
+        const messageBody = remoteMessage.notification.body;
+        console.log("✅ Notification Body:", messageBody);
 
+        setNotificationBody(messageBody);
 
-
-
-
+      }
+    });
+    return unsubscribe;
+  });
 
   return (
-    <View style={styles.container}>
-      <Text>
-        <Image source={require('./assets/teaState.jpeg')} style={styles.backgroundImage} />
-        <PlantationHome />
-        <PlantationDownPage />
-      </Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Image source={require('./assets/teaState.jpeg')} style={styles.backgroundImage} />
+      <PlantationHome />
+      <PlantationDownPage notification= {notificationBody} />
+    </SafeAreaView>
   );
 };
 
 export default PlantationInstructions;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingBottom: 20,
+  },
   backgroundImage: {
     width: '100%',
-    height: '48%',
+    height: 400,
+    resizeMode: 'cover',
     zIndex: -1,
-  }
+  },
 });

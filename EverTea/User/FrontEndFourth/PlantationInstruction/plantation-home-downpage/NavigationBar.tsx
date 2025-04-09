@@ -34,8 +34,8 @@ const NavigationBar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    //position: 'absolute',
-    bottom: 230,
+    position: 'absolute',
+    top: 360,
     left: 0,
     right: 0,
     backgroundColor: '#fff',
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     elevation: 20,
+    
     
   },
   navItem: {

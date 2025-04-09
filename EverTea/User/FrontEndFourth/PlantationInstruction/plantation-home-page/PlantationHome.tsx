@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { SafeAreaView} from 'react-native';
+import { StyleSheet ,SafeAreaView} from 'react-native';
 import PlantationLeftHeader from './PlantationLeftHeader';
 import PlantationRightHeader from './PlantationRightHeader';
 const PlantationHome = () => {
   return (
     
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <PlantationLeftHeader/>
       <PlantationRightHeader/>
     </SafeAreaView>
@@ -14,4 +14,7 @@ const PlantationHome = () => {
 
 export default PlantationHome;
 
-
+const styles = StyleSheet.create({
+  container: {
+  }
+});
