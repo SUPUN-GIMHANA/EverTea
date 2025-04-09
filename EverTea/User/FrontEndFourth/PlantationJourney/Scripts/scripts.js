@@ -14,6 +14,7 @@ export const useAppLogic = () => {
   const [district, setDistrict] = useState('');
   const [area, setArea] = useState('');
   const [budget, setBudget] = useState('');
+  const [teaPlantationName, setTeaPlantationName] = useState('');
   const [teaPlantsUser, setTeaPlantUser] = useState('');
   const [teaData, setTeaData] = useState(null); // State for fetched tea data
   const [selectedTea, setSelectedTea] = useState(null); // State for selected tea
@@ -36,6 +37,10 @@ export const useAppLogic = () => {
   };
   const areaInputHandler = (input) => {
     setArea(input);
+    console.log(input);
+  };
+  const plantationNameHandler = (input) => {
+    setTeaPlantationName(input);
     console.log(input);
   };
   const budgetInputHandler = (input) => {
@@ -196,6 +201,7 @@ export const useAppLogic = () => {
       const response = await axios.post('http://evertea-env.eba-7df8sfdm.eu-north-1.elasticbeanstalk.com/api/userPlantationCreating/budgetAndTheTeaPlantsOfTheUser', {
         budget: budget,  // Send district in the body
         teaPlantsUser: teaPlantsUser,
+        plantationName:teaPlantationName,
       },
       {
         headers: {
@@ -222,12 +228,6 @@ export const useAppLogic = () => {
           "Content-Type": "application/json",
         },
       });
-      setRecommendedPlants(response.data[0]);
-      setExtraPlants(response.data[1]);
-      setRecommendedBudget(response.data[2]);
-      setUserPlants(response.data[3]);
-      setUserBudget(response.data[4]);
-
       console.log('Recommended Plants:', recommendedPlants);
       console.log('Extra Plants:', extraPlants);
       console.log('Recommended Budget:', recommendedBudget);
@@ -335,7 +335,7 @@ export const useAppLogic = () => {
     await budgetAndTheTeaPlantsOfTheUser(); // Call the plantationAreaAndSlope function
     await budgetRecommendation();
     navigation.navigate('PlantationStartRecommendation'); // Navigate to the next screen
-    } catch {
+    } catch (err) {
       console.error('error : ', err);
     }
   };
@@ -343,7 +343,7 @@ export const useAppLogic = () => {
     try{
     await plantationCreationSystem(); // Call the plantationCreation function
     navigation.navigate('PlantationStartSucessfull'); // Navigate to the next screen
-    } catch {
+    } catch (err) {
       console.error('error : ', err);
     }
   };
@@ -351,7 +351,7 @@ export const useAppLogic = () => {
     try{
     await plantationCreationUser(); // Call the plantationCreation function
     navigation.navigate('PlantationStartSucessfull'); // Navigate to the next screen
-    } catch {
+    } catch (err){
       console.error('error : ', err);
     }
   };
@@ -370,6 +370,7 @@ export const useAppLogic = () => {
     recommendedPlants,
     extraPlants,
     recommendedBudget,
+    teaPlantationName,
     userPlants,
     userBudget,
     // budgetPlanUser,
@@ -387,6 +388,7 @@ export const useAppLogic = () => {
     sendSelectedTea,
     fetchTeaModels,
     handleButtonPress,
+    plantationNameHandler,
     budgetInputHandler,
     plantsInputHandler,
     handleButtonPressBudget,

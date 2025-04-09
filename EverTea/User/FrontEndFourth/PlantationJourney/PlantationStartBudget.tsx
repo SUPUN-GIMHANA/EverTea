@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { LinearGradient } from 'react-native-linear-gradient';
@@ -19,7 +19,7 @@ type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function PlantationStart({ navigation }: HomeScreenProps) {
 
-  const {budgetInputHandler, plantsInputHandler, handleButtonPressBudget, budgetRecommendation } = useAppLogic();
+  const {budgetInputHandler, plantationNameHandler, plantsInputHandler, handleButtonPressBudget, budgetRecommendation } = useAppLogic();
 
   return (
     <View style={styles.container}>
@@ -50,11 +50,14 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
         <View style={styles.headerContent}>
           <View style={styles.headerTopic}>
             <Text style={styles.greetingText}>
-              <Text style={styles.boldText}>Enter Your Budget</Text>
+              <Text style={styles.boldText}>Enter Your Budget & Plantation Name</Text>
             </Text>
           </View>
         </View>
         <View style={styles.inputContainer}>
+          <Text style={styles.textInputBorder}>
+            <TextInput style={styles.textInput} placeholder='Plantation Name' onChangeText={plantationNameHandler}/>
+          </Text>
           <Text style={styles.textInputBorder}>
             <TextInput style={styles.textInput} placeholder='Budget' onChangeText={budgetInputHandler}/>
           </Text>

@@ -131,18 +131,15 @@ export const styles = StyleSheet.create({
     greetingText: {
       fontSize: 28,
       color: 'black',
-      
+      textAlign: 'center',
     },
     boldText: {
       fontWeight: 'bold',
-      
     },
-    
     buttonIcon: {
       width: 24,
       height: 24,
     },
-    
     inputContainer: {
         paddingTop: 20,
         flex:1,

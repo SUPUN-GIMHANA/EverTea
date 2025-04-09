@@ -6,6 +6,7 @@ import Flow3 from "../screens/Flow3";
 import Flow4 from "../screens/Flow4";
 import Flow5 from "../screens/Flow5";
 import LetsStart from "../screens/LetsStart";
+import Login from "../../LoginAndSignup/Login";
 
 export type RootStackParamList = {
   Flow1: undefined;
@@ -14,6 +15,7 @@ export type RootStackParamList = {
   Flow4: undefined;
   Flow5: undefined;
   LetsStart: undefined;
+  Login: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -27,6 +29,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Flow4" component={Flow4} />
       <Stack.Screen name="Flow5" component={Flow5} />
       <Stack.Screen name="LetsStart" component={LetsStart} />
+      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 };

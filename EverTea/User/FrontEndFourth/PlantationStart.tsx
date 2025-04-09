@@ -17,13 +17,13 @@ export default function PlantationStart({ navigation }: HomeScreenProps) {
       <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContent}>
         <View style={styles.headerContent}>
           <View style={styles.headerTopic}>
-            <Text style={styles.greetingText}>
-              <Text style={styles.boldText}>Plantation Journey</Text>
+            <Text style={[styles.greetingText, styles.boldText]}>
+              Plantation Journey
             </Text>
             <TouchableOpacity style={styles.bottomButton} 
               onPress={() => navigation.navigate('Home')} activeOpacity={0.7}>
               <Image source={require('./assets/Home.png')} style={styles.navigationIcon} />
-            </TouchableOpacity>        
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.content}>

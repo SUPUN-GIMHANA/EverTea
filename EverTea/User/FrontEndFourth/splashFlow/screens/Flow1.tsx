@@ -8,7 +8,7 @@ const { width, height } = Dimensions.get("window"); // Get device width and heig
 
 const Flow1 = () => {
 
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Flow1'>>();  // Type the navigation
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Flow1', 'Login'>>();  // Type the navigation
 
   return (
     <View style={styles.container} >
@@ -31,7 +31,7 @@ const Flow1 = () => {
       <TouchableOpacity>
       <Text style={styles.memberText}>
         <Text style={styles.alreadyMemberText}>Already a member?</Text>
-        <Text style={styles.signInText} >Sign in</Text>
+        <Text style={styles.signInText} onPress={() => navigation.navigate('Login')}>Sign in</Text>
       </Text>
       </TouchableOpacity>
       
