@@ -13,6 +13,7 @@ type RootStackParamList = {
   PlantationStart: undefined;
   ViewPlantation: undefined;
   AdvancedWeather: undefined;
+  PlantationInstructions: undefined;
 };
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
@@ -48,7 +49,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           <Text style={styles.boldText}>EverTea!</Text>
 
 
-          <TouchableOpacity style={styles.plantationButton} onPress={() => navigation.navigate('ViewPlantation')} activeOpacity={0.7}>
+          <TouchableOpacity style={styles.plantationButton} onPress={() => navigation.navigate('PlantationInstructions')} activeOpacity={0.7}>
             <View><Text style={styles.plantationButtonText}>View All Plantations</Text></View>
             <View style={styles.vectorBg}>
               <Image source={require('./assets/Images/HomePage/Vector2.png')} style={styles.vectorImage}/>

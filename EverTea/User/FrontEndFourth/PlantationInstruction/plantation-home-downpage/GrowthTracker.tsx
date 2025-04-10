@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 
 
@@ -7,7 +7,7 @@ const GrowthTracker = () => {
   return (
     <TouchableOpacity style={styles.container}>
       <Image source={require('../assets/Vector.png')}  style={styles.icon}/>
-      <Text style={styles.text}>Growth Tracker</Text>
+      <Text style={styles.text} >Growth Tracker</Text>
     </TouchableOpacity>
   );
 };

@@ -13,6 +13,8 @@ import Login from './LoginAndSignup/Login';
 import SignUp from './LoginAndSignup/SignUp';
 import ViewPlantation from './ViewPlantation/ViewPlantation';
 import AdvancedWeather from './AdvancedWeather/AdvancedWeather';
+
+import PlantationInstructions from './PlantationInstruction/PlantationInstructions';
 // App Navigator
 import Flow1 from "./splashFlow/screens/Flow1";
 import Flow2 from "./splashFlow/screens/Flow2";
@@ -56,7 +58,7 @@ export default function App() {
         <Stack.Screen name="ViewPlantation" component={ViewPlantation} />
         <Stack.Screen name="AdvancedWeather" component={AdvancedWeather} />
         {/* <Stack.Screen name="ViewPlantations" component={ViewPlantations} /> */}
-        {/* <Stack.Screen name="PlantationInstructions" component={PlantationInstructions} /> */}
+        <Stack.Screen name="PlantationInstructions" component={PlantationInstructions} />
 
 
         {/* <Stack.Screen name="Profile" component={Profile} /> */}
