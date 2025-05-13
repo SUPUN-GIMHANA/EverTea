@@ -1,4 +1,5 @@
-
+![CI/CD Pipeline](https://raw.githubusercontent.com/ReidenRealm/EverTea/7a0a5fd35daa4672041d363a3a5612cc471de01c/Screenshot%202025-04-09%20082555.png)
+![CI/CD Pipeline](https://raw.githubusercontent.com/ReidenRealm/EverTea/7a0a5fd35daa4672041d363a3a5612cc471de01c/Screenshot%202025-05-13%20213552.png)
 # EverTea
 
 A mobile application that helps tea plantation owners optimize their tea production by providing them with smart insights in the form of plant growth monitoring, fertilizer recommendations, real time weather notifications and financial tracking.
@@ -45,8 +46,7 @@ $ java -jar EverTea.jar
 
 ## CI/CD pipeline
 
-![CI/CD Pipeline](https://raw.githubusercontent.com/ReidenRealm/EverTea/7a0a5fd35daa4672041d363a3a5612cc471de01c/Screenshot%202025-04-09%20082555.png)
-![CI/CD Pipeline](https://raw.githubusercontent.com/ReidenRealm/EverTea/7a0a5fd35daa4672041d363a3a5612cc471de01c/Screenshot%202025-05-13%20213552.png)
+
 
 ## Contributors
 
