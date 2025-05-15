@@ -398,4 +398,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Developed with ❤️ by [Your Name] | [Your Email] | [Your Portfolio]
+Developed with ❤️ by supun gimhana | supung367@gmail.com | https://portfoliyo-eight.vercel.app/
